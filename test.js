@@ -14250,6 +14250,170 @@ test("Restrictions do not affect detachments without factionKeywordRestrictions"
     "isFactionKeywordRestrictionBlockedT must return false for detachments without the field");
 });
 
+// ── Section 118: exclusiveCharacter — New Constraint Feature ─────────────────
+
+section("118. exclusiveCharacter — New Constraint Feature");
+
+// Mirror the app's exclusiveCharacter logic from getUnitStatus()
+function isExclusiveCharacterBlocked(unitId, det, list, units) {
+  const unit = units.find(u => u.id === unitId);
+  if (!unit || unit.type !== "CHARACTER") return false;
+  const detUnitEntry = det.units.find(du => du.id === unitId);
+  if (detUnitEntry?.exclusiveCharacter) {
+    // This unit is exclusive — blocked if any other CHARACTER is already in the list
+    return list.some(l => l.unitId !== unitId && units.find(u => u.id === l.unitId)?.type === "CHARACTER");
+  } else {
+    // Normal CHARACTER — blocked if an exclusiveCharacter unit is already in the list
+    return list.some(l => {
+      const ldEntry = det.units.find(du => du.id === l.unitId);
+      return ldEntry?.exclusiveCharacter === true;
+    });
+  }
+}
+
+const aeldariDataExcl  = loadJSON("data/factions/aeldari.json");
+const sdmDet           = aeldariDataExcl.detachments.find(d => d.id === "aeldari_star_dancer_masque");
+const aeldariUnitsExcl = aeldariDataExcl.units;
+const aeldariUnit      = id => aeldariUnitsExcl.find(u => u.id === id);
+
+const OTHER_CHARS = ["aeldari_death_jester", "aeldari_shadowseer", "aeldari_troupe_master"];
+
+// ── Data shape ────────────────────────────────────────────────────────────────
+
+test("Star-Dancer Masque detachment exists", () => {
+  assert(!!sdmDet, "aeldari_star_dancer_masque detachment must exist");
+});
+
+test("Solitaire detachment entry has exclusiveCharacter: true", () => {
+  const entry = sdmDet.units.find(du => du.id === "aeldari_solitaire");
+  assert(!!entry, "aeldari_solitaire must be in the Star-Dancer Masque units list");
+  assert(entry.exclusiveCharacter === true,
+    "Solitaire detachment unit entry must have exclusiveCharacter: true");
+});
+
+test("No other unit in Star-Dancer Masque has exclusiveCharacter set", () => {
+  sdmDet.units.filter(du => du.id !== "aeldari_solitaire").forEach(du => {
+    assert(!du.exclusiveCharacter,
+      `Unit "${du.id}" should not have exclusiveCharacter set — only Solitaire has this flag`);
+  });
+});
+
+test("Solitaire unit is type CHARACTER", () => {
+  assertEqual(aeldariUnit("aeldari_solitaire")?.type, "CHARACTER",
+    "Solitaire must be type CHARACTER");
+});
+
+// ── HTML presence ─────────────────────────────────────────────────────────────
+
+test("HTML defines exclusiveCharacter constraint check in getUnitStatus", () => {
+  assert(html.includes("exclusiveCharacter"),
+    "HTML must contain exclusiveCharacter constraint logic in getUnitStatus");
+});
+
+test("HTML blocks exclusive unit when other CHARACTERs are present", () => {
+  assert(html.includes("cannot be taken alongside other CHARACTER units"),
+    "HTML must include hint text for exclusiveCharacter block");
+});
+
+test("HTML blocks normal CHARACTERs when an exclusiveCharacter unit is in the list", () => {
+  assert(html.includes("Cannot be taken alongside"),
+    "HTML must include hint text blocking normal CHARACTERs when exclusive unit is present");
+});
+
+// ── Constraint logic — Solitaire blocked by other CHARACTERs ─────────────────
+
+test("Solitaire is not blocked in an empty list", () => {
+  assert(!isExclusiveCharacterBlocked("aeldari_solitaire", sdmDet, [], aeldariUnitsExcl),
+    "Solitaire must not be blocked when the list is empty");
+});
+
+OTHER_CHARS.forEach(otherId => {
+  test(`Solitaire is blocked when ${otherId} is already in the list`, () => {
+    const list = [{ unitId: otherId }];
+    assert(isExclusiveCharacterBlocked("aeldari_solitaire", sdmDet, list, aeldariUnitsExcl),
+      `Solitaire must be blocked when ${otherId} is already in the list`);
+  });
+});
+
+test("Solitaire is blocked when multiple other CHARACTERs are present", () => {
+  const list = [{ unitId: "aeldari_death_jester" }, { unitId: "aeldari_shadowseer" }];
+  assert(isExclusiveCharacterBlocked("aeldari_solitaire", sdmDet, list, aeldariUnitsExcl),
+    "Solitaire must be blocked when multiple other CHARACTERs are in the list");
+});
+
+// ── Constraint logic — other CHARACTERs blocked when Solitaire is present ────
+
+OTHER_CHARS.forEach(otherId => {
+  test(`${otherId} is blocked when Solitaire is already in the list`, () => {
+    const list = [{ unitId: "aeldari_solitaire" }];
+    assert(isExclusiveCharacterBlocked(otherId, sdmDet, list, aeldariUnitsExcl),
+      `${otherId} must be blocked when Solitaire is already in the list`);
+  });
+});
+
+test("All non-Solitaire CHARACTERs in the detachment are blocked when Solitaire is present", () => {
+  const list = [{ unitId: "aeldari_solitaire" }];
+  OTHER_CHARS.forEach(id => {
+    assert(isExclusiveCharacterBlocked(id, sdmDet, list, aeldariUnitsExcl),
+      `${id} must be blocked when Solitaire is in the list`);
+  });
+});
+
+// ── Constraint logic — Solitaire not blocked by its own presence ──────────────
+
+test("Solitaire is not exclusive-blocked by its own presence in the list", () => {
+  const list = [{ unitId: "aeldari_solitaire" }];
+  // The unit would be blocked by its own max:1, but the exclusive check itself
+  // must not fire against self — mirrors the app's l.unitId !== unitId guard
+  assert(!isExclusiveCharacterBlocked("aeldari_solitaire", sdmDet, list, aeldariUnitsExcl),
+    "Solitaire must not be exclusively-blocked by its own presence");
+});
+
+// ── Constraint logic — non-CHARACTER units are never affected ─────────────────
+
+test("Troupe (INFANTRY) is never blocked by the exclusiveCharacter constraint", () => {
+  const list = [{ unitId: "aeldari_solitaire" }];
+  assert(!isExclusiveCharacterBlocked("aeldari_troupe", sdmDet, list, aeldariUnitsExcl),
+    "Troupe (INFANTRY) must not be affected by the exclusiveCharacter constraint");
+});
+
+test("exclusiveCharacter has no effect on detachments without the flag", () => {
+  // Wraiths of the Void has no exclusiveCharacter flag on any unit
+  const wovDet = aeldariDataExcl.detachments.find(d => d.id === "aeldari_wraiths_of_the_void");
+  const spiritseer = aeldariUnit("aeldari_spiritseer");
+  const list = [{ unitId: "aeldari_spiritseer" }];
+  assert(!isExclusiveCharacterBlocked("aeldari_spiritseer", wovDet, list, aeldariUnitsExcl),
+    "exclusiveCharacter logic must not affect detachments where no unit has the flag");
+});
+
+// ── Smoke test ────────────────────────────────────────────────────────────────
+
+test("Smoke — Solitaire + Troupe (x3) is a legal combination", () => {
+  // Solitaire 115pts + Troupe 85pts * 3 = 370pts — valid, no CHARACTER conflict
+  const list = [
+    { unitId: "aeldari_solitaire", pts: 115 },
+    { unitId: "aeldari_troupe",    pts: 85  },
+    { unitId: "aeldari_troupe",    pts: 85  },
+    { unitId: "aeldari_troupe",    pts: 85  }
+  ];
+  const pts = list.reduce((s, l) => s + l.pts, 0);
+  assert(!isExclusiveCharacterBlocked("aeldari_solitaire", sdmDet, list, aeldariUnitsExcl),
+    "Solitaire must not be blocked when only INFANTRY units accompany it");
+  assertEqual(pts, 370, "Expected 370pts total");
+  assert(pts <= 500, "Must be within 500pt limit");
+});
+
+test("Smoke — Death Jester + Shadowseer is a legal combination (no Solitaire)", () => {
+  const list = [
+    { unitId: "aeldari_death_jester", pts: 90 },
+    { unitId: "aeldari_shadowseer",   pts: 60 }
+  ];
+  assert(!isExclusiveCharacterBlocked("aeldari_death_jester", sdmDet, list, aeldariUnitsExcl),
+    "Death Jester must not be blocked by another non-exclusive CHARACTER");
+  assert(!isExclusiveCharacterBlocked("aeldari_shadowseer", sdmDet, list, aeldariUnitsExcl),
+    "Shadowseer must not be blocked by another non-exclusive CHARACTER");
+});
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);
