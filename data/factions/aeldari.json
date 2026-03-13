@@ -45,6 +45,111 @@
           "max": 3
         }
       ]
+    },
+    {
+      "id": "aeldari_wraiths_of_the_void",
+      "name": "Wraiths of the Void",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Wraith-Marked",
+        "desc": "In your Command phase, you can select one AELDARI unit from your army within range of an objective marker you control. That unit must take a Leadership test, subtracting 2 from the result if it has the WRAITH CONSTRUCT keyword: if passed, that objective marker is Secured by your army."
+      },
+      "enhancements": [
+        {
+          "id": "enh_aeldari_direct_guidance",
+          "name": "Direct Guidance",
+          "desc": "At the end of your Movement phase, select one friendly WRAITH CONSTRUCT unit within 6\" of, and visible to the bearer. Until the end of the turn, that WRAITH CONSTRUCT unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_aeldari_song_of_renewal",
+          "name": "Song of Renewal",
+          "desc": "In your Command phase, the bearer can use this enhancement. If it does, select one friendly WRAITH CONSTRUCT unit within 6\" of, and visible to the bearer. Return one destroyed model to that WRAITH CONSTRUCT unit with its full wounds remaining. The bearer can only use this Enhancement up to two times.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "aeldari_spiritseer",
+          "max": 2
+        },
+        {
+          "id": "aeldari_wraithblades",
+          "max": 2
+        },
+        {
+          "id": "aeldari_wraithguard",
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "aeldari_protector_host",
+      "name": "Protector Host",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Determined Defence",
+        "desc": "Each time an attack targets a GUARDIANS or Dire Avengers unit from your army, if that unit is within range of an objective marker, add 1 to any armour saving throw made against that attack."
+      },
+      "enhancements": [
+        {
+          "id": "enh_aeldari_grace_of_khaine",
+          "name": "Grace of Khaine",
+          "desc": "Each time the bearer makes an attack, re-roll a Hit roll of 1, re-roll a Wound roll of 1 and re-roll a Damage roll of 1.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_aeldari_rallying_cry",
+          "name": "Rallying Cry",
+          "desc": "In the Deploy Armies step, when the bearer is set up in an Entry Zone, you can set up two friendly GUARDIANS units within that Entry Zone instead of any other units.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "aeldari_autarch",
+          "max": 1
+        },
+        {
+          "id": "aeldari_eldrad_ulthran",
+          "max": 1
+        },
+        {
+          "id": "aeldari_farseer",
+          "max": 1
+        },
+        {
+          "id": "aeldari_warlock",
+          "max": 1
+        },
+        {
+          "id": "aeldari_guardian_defenders",
+          "max": 3
+        },
+        {
+          "id": "aeldari_storm_guardians",
+          "max": 3
+        },
+        {
+          "id": "aeldari_dire_avengers",
+          "max": 2
+        },
+        {
+          "id": "aeldari_warlock_conclave",
+          "max": 1
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "aeldari_autarch",
+          "aeldari_eldrad_ulthran",
+          "aeldari_farseer"
+        ],
+        [
+          "aeldari_warlock",
+          "aeldari_warlock_conclave"
+        ]
+      ]
     }
   ],
   "units": [
@@ -144,6 +249,218 @@
         }
       ],
       "rulesAdaptations": "In the Form Boarding Squads step, Troupe units containing 11 models are each split into two Boarding Squads, one containing 6 models and the other containing the remaining 5 models."
+    },
+    {
+      "id": "aeldari_spiritseer",
+      "name": "Spiritseer",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Tears of Isha ability."
+    },
+    {
+      "id": "aeldari_wraithblades",
+      "name": "Wraithblades",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "WRAITH CONSTRUCT"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 150
+        }
+      ]
+    },
+    {
+      "id": "aeldari_wraithguard",
+      "name": "Wraithguard",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "WRAITH CONSTRUCT"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 160
+        }
+      ],
+      "rulesAdaptations": "This unit loses the War Construct ability."
+    },
+    {
+      "id": "aeldari_autarch",
+      "name": "Autarch",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "aeldari_eldrad_ulthran",
+      "name": "Eldrad Ulthran",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "FARSEER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This model loses the Diviner of Futures ability."
+    },
+    {
+      "id": "aeldari_farseer",
+      "name": "Farseer",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "FARSEER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This model loses the Branching Fates ability."
+    },
+    {
+      "id": "aeldari_warlock",
+      "name": "Warlock",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "WARLOCK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ]
+    },
+    {
+      "id": "aeldari_guardian_defenders",
+      "name": "Guardian Defenders",
+      "type": "BATTLELINE",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "BATTLELINE",
+        "GUARDIANS"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Defenders of Fate ability. In the Form Boarding Squads step, this unit is split into two Boarding Squads, one containing 6 models (including the Heavy Weapon Platform) and the other containing the remaining 5 models."
+    },
+    {
+      "id": "aeldari_storm_guardians",
+      "name": "Storm Guardians",
+      "type": "BATTLELINE",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "BATTLELINE",
+        "GUARDIANS"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 110
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Stormblades ability. In the Form Boarding Squads step, this unit is split into two Boarding Squads, one containing 6 models (including the Serpent's Scale Platform) and the other containing the remaining 5 models."
+    },
+    {
+      "id": "aeldari_dire_avengers",
+      "name": "Dire Avengers",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ]
+    },
+    {
+      "id": "aeldari_warlock_conclave",
+      "name": "Warlock Conclave",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "PSYKER",
+        "WARLOCK"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 55
+        },
+        {
+          "label": "4 models",
+          "pts": 130
+        }
+      ]
     }
   ]
 }
