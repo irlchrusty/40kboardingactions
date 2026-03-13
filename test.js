@@ -14414,6 +14414,907 @@ test("Smoke — Death Jester + Shadowseer is a legal combination (no Solitaire)"
     "Shadowseer must not be blocked by another non-exclusive CHARACTER");
 });
 
+
+
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  ASTRA MILITARUM                                                         ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
+// NOTE: Do not add tests here for ID uniqueness, cross-faction ID collisions,
+// enhancement ID uniqueness, unit→detachment cross-references, or required-field
+// schema checks. Section 3 covers all of these globally. Only faction-specific
+// behaviour is tested here: points values, keywords, rules adaptations content,
+// and constraint logic.
+
+section("119. Astra Militarum Faction");
+
+const amFaction = index.factions.find(f => f.id === "astra_militarum");
+const amData    = factionData["astra_militarum"];
+const amUnits   = amData ? amData.units : [];
+const amDets    = amData ? amData.detachments : [];
+const amUnit    = id => amUnits.find(u => u.id === id);
+
+test("Astra Militarum exists in index.json factions", () => {
+  assert(amFaction !== undefined, "astra_militarum must exist in index.json factions");
+});
+
+test("Astra Militarum has correct name", () => {
+  assertEqual(amFaction.name, "Astra Militarum", "faction name must be 'Astra Militarum'");
+});
+
+test("Astra Militarum file path is factions/astra_militarum.json", () => {
+  assertEqual(amFaction.file, "factions/astra_militarum.json",
+    "file must be 'factions/astra_militarum.json' (no data/ prefix)");
+});
+
+test("Astra Militarum has Direct Orders army rule", () => {
+  assert(amFaction.armyRule !== undefined, "Astra Militarum must have an armyRule");
+  assertEqual(amFaction.armyRule.name, "Direct Orders", "armyRule name must be 'Direct Orders'");
+  assert(typeof amFaction.armyRule.desc === "string" && amFaction.armyRule.desc.length > 0,
+    "armyRule must have a non-empty desc");
+});
+
+test("Direct Orders desc references Voice of Command ability", () => {
+  assert(amFaction.armyRule.desc.includes("Voice of Command"),
+    "Direct Orders desc must reference 'Voice of Command'");
+});
+
+test("Direct Orders desc references OFFICER keyword", () => {
+  assert(amFaction.armyRule.desc.includes("OFFICER"),
+    "Direct Orders desc must reference 'OFFICER'");
+});
+
+test("Direct Orders desc references ASTRA MILITARUM keyword", () => {
+  assert(amFaction.armyRule.desc.includes("ASTRA MILITARUM"),
+    "Direct Orders desc must reference 'ASTRA MILITARUM'");
+});
+
+test("Astra Militarum has exactly 2 detachments", () => {
+  assertEqual(amDets.length, 2,
+    `Expected 2 Astra Militarum detachments, found ${amDets.length}`);
+  const ids = amDets.map(d => d.id);
+  assert(ids.includes("am_tempestus_boarding_regiment"), "am_tempestus_boarding_regiment must exist");
+  assert(ids.includes("am_embarked_regiment"),           "am_embarked_regiment must exist");
+});
+
+
+// ── 120. Astra Militarum — Tempestus Boarding Regiment Detachment ────────────
+
+section("120. Astra Militarum — Tempestus Boarding Regiment");
+
+const tbrDet = amDets ? amDets.find(d => d.id === "am_tempestus_boarding_regiment") : null;
+
+test("Tempestus Boarding Regiment detachment exists", () => {
+  assert(tbrDet !== undefined, "am_tempestus_boarding_regiment must exist");
+});
+
+test("Tempestus Boarding Regiment has correct name", () => {
+  assertEqual(tbrDet.name, "Tempestus Boarding Regiment",
+    "detachment name must be 'Tempestus Boarding Regiment'");
+});
+
+test("Tempestus Boarding Regiment has Purge-Sweep Protocols special rule", () => {
+  assert(tbrDet.specialRule !== undefined, "must have a specialRule");
+  assertEqual(tbrDet.specialRule.name, "Purge-Sweep Protocols",
+    "specialRule name must be 'Purge-Sweep Protocols'");
+  assert(tbrDet.specialRule.desc.includes("MILITARUM TEMPESTUS"),
+    "Purge-Sweep Protocols desc must reference MILITARUM TEMPESTUS");
+  assert(tbrDet.specialRule.desc.includes("LETHAL HITS"),
+    "Purge-Sweep Protocols desc must reference LETHAL HITS");
+  assert(tbrDet.specialRule.desc.includes("Hatchway"),
+    "Purge-Sweep Protocols desc must reference Hatchway");
+  assert(tbrDet.specialRule.desc.includes("Tempestus Scion"),
+    "Purge-Sweep Protocols desc must reference Tempestus Scion");
+});
+
+test("Tempestus Boarding Regiment has maxCharacters set to 2", () => {
+  assertEqual(tbrDet.maxCharacters, 2, "maxCharacters must be 2");
+});
+
+test("Tempestus Boarding Regiment has exactly 2 enhancements", () => {
+  assertEqual(tbrDet.enhancements.length, 2,
+    "Tempestus Boarding Regiment must have exactly 2 enhancements");
+});
+
+test("Tempestus Boarding Regiment has Covert Breach enhancement", () => {
+  const enh = tbrDet.enhancements.find(e => e.id === "enh_am_covert_breach");
+  assert(enh !== undefined, "enh_am_covert_breach must exist");
+  assertEqual(enh.name, "Covert Breach", "enhancement name must be 'Covert Breach'");
+  assert(enh.desc.includes("Normal move"), "Covert Breach desc must reference 'Normal move'");
+  assert(enh.desc.includes("6\""), "Covert Breach desc must reference 6\"");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Covert Breach must have no keyword requirements");
+});
+
+test("Tempestus Boarding Regiment has Elimination Force enhancement", () => {
+  const enh = tbrDet.enhancements.find(e => e.id === "enh_am_elimination_force");
+  assert(enh !== undefined, "enh_am_elimination_force must exist");
+  assertEqual(enh.name, "Elimination Force", "enhancement name must be 'Elimination Force'");
+  assert(enh.desc.includes("Wound roll"), "Elimination Force desc must reference 'Wound roll'");
+  assert(enh.desc.includes("Strength"), "Elimination Force desc must reference 'Strength'");
+  assert(enh.desc.includes("Toughness"), "Elimination Force desc must reference 'Toughness'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Elimination Force must have no keyword requirements");
+});
+
+test("Tempestus Boarding Regiment has exactly 8 units", () => {
+  assertEqual(tbrDet.units.length, 8,
+    `Tempestus Boarding Regiment must have exactly 8 unit entries, found ${tbrDet.units.length}`);
+});
+
+test("Tempestus Boarding Regiment unit roster — correct IDs and maxes", () => {
+  const expected = [
+    { id: "am_militarum_tempestus_command_squad", max: 1 },
+    { id: "am_commissar",                         max: 1 },
+    { id: "am_ministorum_priest",                 max: 1 },
+    { id: "am_ogryn_bodyguard",                   max: 1 },
+    { id: "am_primaris_psyker",                   max: 1 },
+    { id: "am_tech_priest_enginseer",             max: 1 },
+    { id: "am_tempestus_scions",                  max: 3 },
+    { id: "am_bullgryn_squad",                    max: 1 },
+  ];
+  expected.forEach(({ id, max }) => {
+    const entry = tbrDet.units.find(u => u.id === id);
+    assert(entry !== undefined, `Unit "${id}" must be in Tempestus Boarding Regiment`);
+    assertEqual(entry.max, max, `"${id}" must have max ${max}`);
+  });
+});
+
+test("Tempestus Boarding Regiment has exclusiveUnitGroups with exactly 1 group", () => {
+  assert(Array.isArray(tbrDet.exclusiveUnitGroups) && tbrDet.exclusiveUnitGroups.length === 1,
+    "Tempestus Boarding Regiment must have exactly 1 exclusiveUnitGroup");
+});
+
+test("Tempestus Boarding Regiment exclusive group contains exactly the 5 correct unit IDs", () => {
+  const group = tbrDet.exclusiveUnitGroups[0];
+  const expected = [
+    "am_commissar", "am_ministorum_priest", "am_ogryn_bodyguard",
+    "am_primaris_psyker", "am_tech_priest_enginseer"
+  ];
+  assertEqual(group.length, 5, "Exclusive group must contain exactly 5 unit IDs");
+  expected.forEach(id => assert(group.includes(id), `Exclusive group must include "${id}"`));
+});
+
+
+// ── 121. Astra Militarum — Tempestus Boarding Regiment Unit Definitions ───────
+
+section("121. Astra Militarum — Tempestus Boarding Regiment Unit Definitions");
+
+test("Militarum Tempestus Command Squad has correct fields", () => {
+  const u = amUnit("am_militarum_tempestus_command_squad");
+  assert(!!u, "am_militarum_tempestus_command_squad must exist");
+  assertEqual(u.name, "Militarum Tempestus Command Squad");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "ASTRA MILITARUM", "MILITARUM TEMPESTUS", "INFANTRY", "CHARACTER", "OFFICER", "IMPERIUM"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Militarum Tempestus Command Squad must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 85, "Must cost 85pts");
+  assertEqual(u.sizes[0].label, "5 models", "Size label must be '5 models'");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+});
+
+test("Commissar has correct fields", () => {
+  const u = amUnit("am_commissar");
+  assert(!!u, "am_commissar must exist");
+  assertEqual(u.name, "Commissar");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "OFFICER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Commissar must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 30, "Must cost 30pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Commissar must have no rulesAdaptations");
+});
+
+test("Ministorum Priest has correct fields", () => {
+  const u = amUnit("am_ministorum_priest");
+  assert(!!u, "am_ministorum_priest must exist");
+  assertEqual(u.name, "Ministorum Priest");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "OFFICER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Ministorum Priest must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 35, "Must cost 35pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Ministorum Priest must have no rulesAdaptations");
+});
+
+test("Ogryn Bodyguard has correct fields", () => {
+  const u = amUnit("am_ogryn_bodyguard");
+  assert(!!u, "am_ogryn_bodyguard must exist");
+  assertEqual(u.name, "Ogryn Bodyguard");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "OGRYN", "INFANTRY", "CHARACTER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Ogryn Bodyguard must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 40, "Must cost 40pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Loyal Protector"),
+    "rulesAdaptations must reference 'Loyal Protector'");
+  assert(u.rulesAdaptations?.includes("Form Boarding Squads"),
+    "rulesAdaptations must reference 'Form Boarding Squads'");
+});
+
+test("Primaris Psyker has correct fields", () => {
+  const u = amUnit("am_primaris_psyker");
+  assert(!!u, "am_primaris_psyker must exist");
+  assertEqual(u.name, "Primaris Psyker");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "PSYKER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Primaris Psyker must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 60, "Must cost 60pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Primaris Psyker must have no rulesAdaptations");
+});
+
+test("Tech-Priest Enginseer has correct fields", () => {
+  const u = amUnit("am_tech_priest_enginseer");
+  assert(!!u, "am_tech_priest_enginseer must exist");
+  assertEqual(u.name, "Tech-Priest Enginseer");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Tech-Priest Enginseer must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 45, "Must cost 45pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Tech-Priest Enginseer must have no rulesAdaptations");
+});
+
+test("Tempestus Scions has correct fields", () => {
+  const u = amUnit("am_tempestus_scions");
+  assert(!!u, "am_tempestus_scions must exist");
+  assertEqual(u.name, "Tempestus Scions");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["ASTRA MILITARUM", "MILITARUM TEMPESTUS", "INFANTRY", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Tempestus Scions must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 2, "Must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 70,  "5-model size must cost 70pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assertEqual(u.sizes[1].pts, 140, "10-model size must cost 140pts");
+  assertEqual(u.sizes[1].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+});
+
+test("Bullgryn Squad has correct fields", () => {
+  const u = amUnit("am_bullgryn_squad");
+  assert(!!u, "am_bullgryn_squad must exist");
+  assertEqual(u.name, "Bullgryn Squad");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["ASTRA MILITARUM", "OGRYN", "INFANTRY", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Bullgryn Squad must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 100, "Must cost 100pts");
+  assertEqual(u.sizes[0].label, "3 models");
+  assert(!u.rulesAdaptations, "Bullgryn Squad must have no rulesAdaptations");
+});
+
+
+// ── 122. Astra Militarum — Tempestus Boarding Regiment Game Rule Logic ────────
+
+section("122. Astra Militarum — Tempestus Boarding Regiment Game Rule Logic");
+
+const tbrHelpers   = makeDetHelpers(tbrDet, amUnit);
+const isTbrExcBlocked = makeExcGroupChecker(tbrDet.exclusiveUnitGroups);
+
+test("Character cap — first CHARACTER can be added to an empty list", () => {
+  assert(tbrHelpers.canAdd([], "am_militarum_tempestus_command_squad"),
+    "First CHARACTER must be addable to an empty list");
+});
+
+test("Character cap — second CHARACTER can be added when one is present", () => {
+  const list = [{ unitId: "am_militarum_tempestus_command_squad" }];
+  assert(tbrHelpers.canAdd(list, "am_commissar"),
+    "Second CHARACTER must be addable when one CHARACTER is already in the list");
+});
+
+test("Character cap — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [
+    { unitId: "am_militarum_tempestus_command_squad" },
+    { unitId: "am_commissar" }
+  ];
+  assert(!tbrHelpers.canAdd(list, "am_primaris_psyker"),
+    "Third CHARACTER must be blocked when 2 CHARACTERs are already in the list");
+});
+
+test("Character cap — non-CHARACTER units are never blocked by the cap", () => {
+  const list = [
+    { unitId: "am_militarum_tempestus_command_squad" },
+    { unitId: "am_commissar" }
+  ];
+  assert(tbrHelpers.canAdd(list, "am_tempestus_scions"),
+    "Tempestus Scions (INFANTRY) must not be blocked by the character cap");
+  assert(tbrHelpers.canAdd(list, "am_bullgryn_squad"),
+    "Bullgryn Squad (INFANTRY) must not be blocked by the character cap");
+});
+
+test("Exclusive group — each support character can be added to an empty list", () => {
+  ["am_commissar", "am_ministorum_priest", "am_ogryn_bodyguard",
+   "am_primaris_psyker", "am_tech_priest_enginseer"].forEach(id => {
+    assert(!isTbrExcBlocked(id, []),
+      `"${id}" must not be blocked in an empty list`);
+  });
+});
+
+test("Exclusive group — taking Commissar blocks all other support characters", () => {
+  const list = [{ unitId: "am_commissar" }];
+  ["am_ministorum_priest", "am_ogryn_bodyguard",
+   "am_primaris_psyker", "am_tech_priest_enginseer"].forEach(id => {
+    assert(isTbrExcBlocked(id, list),
+      `"${id}" must be blocked when Commissar is in the list`);
+  });
+});
+
+test("Exclusive group — taking Primaris Psyker blocks all other support characters", () => {
+  const list = [{ unitId: "am_primaris_psyker" }];
+  ["am_commissar", "am_ministorum_priest", "am_ogryn_bodyguard",
+   "am_tech_priest_enginseer"].forEach(id => {
+    assert(isTbrExcBlocked(id, list),
+      `"${id}" must be blocked when Primaris Psyker is in the list`);
+  });
+});
+
+test("Exclusive group — a support character is never blocked by its own presence", () => {
+  ["am_commissar", "am_ministorum_priest", "am_ogryn_bodyguard",
+   "am_primaris_psyker", "am_tech_priest_enginseer"].forEach(id => {
+    const list = [{ unitId: id }];
+    assert(!isTbrExcBlocked(id, list),
+      `"${id}" must not be blocked by its own presence in the list`);
+  });
+});
+
+test("Exclusive group — Command Squad and Tempestus Scions are outside the exclusive group", () => {
+  const list = [{ unitId: "am_commissar" }];
+  ["am_militarum_tempestus_command_squad", "am_tempestus_scions", "am_bullgryn_squad"].forEach(id => {
+    assert(!isTbrExcBlocked(id, list),
+      `"${id}" must not be blocked by the support character exclusive group`);
+  });
+});
+
+test("Exclusive group — removing the taken unit unblocks the rest", () => {
+  const list = [{ id: 0, unitId: "am_ogryn_bodyguard" }];
+  assert(isTbrExcBlocked("am_commissar", list),
+    "Commissar must be blocked while Ogryn Bodyguard is in the list");
+  const trimmed = list.filter(l => l.id !== 0);
+  assert(!isTbrExcBlocked("am_commissar", trimmed),
+    "Commissar must be unblocked once Ogryn Bodyguard is removed");
+});
+
+test("Tempestus Scions unit max — up to 3 copies can be added", () => {
+  const list = [];
+  for (let i = 0; i < 3; i++) {
+    assert(tbrHelpers.canAdd(list, "am_tempestus_scions"),
+      `Tempestus Scions copy ${i + 1} must be addable`);
+    list.push({ unitId: "am_tempestus_scions" });
+  }
+  assert(!tbrHelpers.canAdd(list, "am_tempestus_scions"),
+    "4th Tempestus Scions unit must be blocked (max 3)");
+});
+
+test("Smoke — Command Squad + Commissar + 3x Scions (5-model) = 85+30+210 = 325pts (legal)", () => {
+  const pts = 85 + 30 + (70 * 3);
+  assertEqual(pts, 325, "Expected 325pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "am_militarum_tempestus_command_squad" },
+    { unitId: "am_commissar" },
+    { unitId: "am_tempestus_scions" },
+    { unitId: "am_tempestus_scions" },
+    { unitId: "am_tempestus_scions" },
+  ];
+  // Two characters — cap not exceeded
+  const charCount = list.filter(l => amUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= tbrDet.maxCharacters, "Character count must not exceed cap");
+  // Only one support character (Commissar) — exclusive group satisfied
+  assert(!isTbrExcBlocked("am_commissar", []), "Commissar alone must not be blocked");
+});
+
+
+// ── 123. Astra Militarum — Embarked Regiment Detachment ──────────────────────
+
+section("123. Astra Militarum — Embarked Regiment");
+
+const erDet = amDets ? amDets.find(d => d.id === "am_embarked_regiment") : null;
+
+test("Embarked Regiment detachment exists", () => {
+  assert(erDet !== undefined, "am_embarked_regiment must exist");
+});
+
+test("Embarked Regiment has correct name", () => {
+  assertEqual(erDet.name, "Embarked Regiment", "detachment name must be 'Embarked Regiment'");
+});
+
+test("Embarked Regiment has Get Down! special rule", () => {
+  assert(erDet.specialRule !== undefined, "must have a specialRule");
+  assertEqual(erDet.specialRule.name, "Get Down!",
+    "specialRule name must be 'Get Down!'");
+  assert(erDet.specialRule.desc.includes("ASTRA MILITARUM"),
+    "Get Down! desc must reference ASTRA MILITARUM");
+  assert(erDet.specialRule.desc.includes("OGRYN"),
+    "Get Down! desc must reference OGRYN");
+  assert(erDet.specialRule.desc.includes("visibility"),
+    "Get Down! desc must reference visibility");
+});
+
+test("Embarked Regiment has maxCharacters set to 2", () => {
+  assertEqual(erDet.maxCharacters, 2, "maxCharacters must be 2");
+});
+
+test("Embarked Regiment has exactly 2 enhancements", () => {
+  assertEqual(erDet.enhancements.length, 2,
+    "Embarked Regiment must have exactly 2 enhancements");
+});
+
+test("Embarked Regiment has Rigged Blind Grenades enhancement", () => {
+  const enh = erDet.enhancements.find(e => e.id === "enh_am_er_rigged_blind_grenades");
+  assert(enh !== undefined, "enh_am_er_rigged_blind_grenades must exist");
+  assertEqual(enh.name, "Rigged Blind Grenades");
+  assert(enh.desc.includes("Hatchway"), "Rigged Blind Grenades desc must reference 'Hatchway'");
+  assert(enh.desc.includes("Battle-shocked"), "Rigged Blind Grenades desc must reference 'Battle-shocked'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Rigged Blind Grenades must have no keyword requirements");
+});
+
+test("Embarked Regiment has Shipboard Veteran enhancement", () => {
+  const enh = erDet.enhancements.find(e => e.id === "enh_am_er_shipboard_veteran");
+  assert(enh !== undefined, "enh_am_er_shipboard_veteran must exist");
+  assertEqual(enh.name, "Shipboard Veteran");
+  assert(enh.desc.includes("Strategem"), "Shipboard Veteran desc must reference 'Strategem'");
+  assert(enh.desc.includes("CP"), "Shipboard Veteran desc must reference 'CP'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Shipboard Veteran must have no keyword requirements");
+});
+
+test("Embarked Regiment has exactly 18 units", () => {
+  assertEqual(erDet.units.length, 18,
+    `Embarked Regiment must have exactly 18 unit entries, found ${erDet.units.length}`);
+});
+
+test("Embarked Regiment unit roster — correct IDs and maxes", () => {
+  const expected = [
+    { id: "am_commissar",              max: 1 },
+    { id: "am_ogryn_bodyguard",        max: 1 },
+    { id: "am_primaris_psyker",        max: 1 },
+    { id: "am_ministorum_priest",      max: 1 },
+    { id: "am_tech_priest_enginseer",  max: 1 },
+    { id: "am_bullgryn_squad",         max: 1 },
+    { id: "am_cadian_castellan",       max: 1 },
+    { id: "am_cadian_command_squad",   max: 1 },
+    { id: "am_gaunts_ghosts",          max: 1 },
+    { id: "am_nork_deddog",            max: 1 },
+    { id: "am_sly_marbo",              max: 1 },
+    { id: "am_ursula_creed",           max: 1 },
+    { id: "am_cadian_shock_troops",    max: 3 },
+    { id: "am_catachan_jungle_fighters", max: 3 },
+    { id: "am_death_korps_of_krieg",   max: 3 },
+    { id: "am_kasrkin",                max: 1 },
+    { id: "am_ratlings",               max: 1 },
+    { id: "am_ogryn_squad",            max: 1 },
+  ];
+  expected.forEach(({ id, max }) => {
+    const entry = erDet.units.find(u => u.id === id);
+    assert(entry !== undefined, `Unit "${id}" must be in Embarked Regiment`);
+    assertEqual(entry.max, max, `"${id}" must have max ${max}`);
+  });
+});
+
+test("Embarked Regiment has exactly 2 exclusiveUnitGroups", () => {
+  assert(Array.isArray(erDet.exclusiveUnitGroups) && erDet.exclusiveUnitGroups.length === 2,
+    "Embarked Regiment must have exactly 2 exclusiveUnitGroups");
+});
+
+test("Embarked Regiment exclusive group 1 contains the 5 correct commander unit IDs", () => {
+  const group = erDet.exclusiveUnitGroups[0];
+  const expected = [
+    "am_cadian_castellan", "am_cadian_command_squad", "am_gaunts_ghosts",
+    "am_sly_marbo", "am_ursula_creed"
+  ];
+  assertEqual(group.length, 5, "Commander exclusive group must contain exactly 5 unit IDs");
+  expected.forEach(id => assert(group.includes(id),
+    `Commander exclusive group must include "${id}"`));
+});
+
+test("Embarked Regiment exclusive group 2 contains the 6 correct support unit IDs", () => {
+  const group = erDet.exclusiveUnitGroups[1];
+  const expected = [
+    "am_commissar", "am_ministorum_priest", "am_nork_deddog",
+    "am_ogryn_bodyguard", "am_primaris_psyker", "am_tech_priest_enginseer"
+  ];
+  assertEqual(group.length, 6, "Support exclusive group must contain exactly 6 unit IDs");
+  expected.forEach(id => assert(group.includes(id),
+    `Support exclusive group must include "${id}"`));
+});
+
+
+// ── 124. Astra Militarum — Embarked Regiment Unit Definitions ─────────────────
+
+section("124. Astra Militarum — Embarked Regiment Unit Definitions");
+
+test("Cadian Castellan has correct fields", () => {
+  const u = amUnit("am_cadian_castellan");
+  assert(!!u, "am_cadian_castellan must exist");
+  assertEqual(u.name, "Cadian Castellan");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "OFFICER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Cadian Castellan must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 55, "Must cost 55pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Cadian Castellan must have no rulesAdaptations");
+});
+
+test("Cadian Command Squad has correct fields", () => {
+  const u = amUnit("am_cadian_command_squad");
+  assert(!!u, "am_cadian_command_squad must exist");
+  assertEqual(u.name, "Cadian Command Squad");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "OFFICER", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Cadian Command Squad must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 65, "Must cost 65pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assert(u.rulesAdaptations?.includes("Master Vox"),
+    "rulesAdaptations must reference 'Master Vox'");
+  assert(u.rulesAdaptations?.includes("12\""),
+    "rulesAdaptations must reference the 12\" range");
+});
+
+test("Gaunt's Ghosts has correct fields", () => {
+  const u = amUnit("am_gaunts_ghosts");
+  assert(!!u, "am_gaunts_ghosts must exist");
+  assertEqual(u.name, "Gaunt's Ghosts");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "ASTRA MILITARUM", "INFANTRY", "CHARACTER", "EPIC HERO", "OFFICER", "IMPERIUM"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Gaunt's Ghosts must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 100, "Must cost 100pts");
+  assertEqual(u.sizes[0].label, "6 models");
+  assert(u.rulesAdaptations?.includes("Covert Stealth Team"),
+    "rulesAdaptations must reference 'Covert Stealth Team'");
+});
+
+test("Gaunt's Ghosts has EPIC HERO keyword", () => {
+  assert(amUnit("am_gaunts_ghosts")?.keywords.includes("EPIC HERO"),
+    "Gaunt's Ghosts must have EPIC HERO keyword");
+});
+
+test("Nork Deddog has correct fields", () => {
+  const u = amUnit("am_nork_deddog");
+  assert(!!u, "am_nork_deddog must exist");
+  assertEqual(u.name, "Nork Deddog");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "ASTRA MILITARUM", "OGRYN", "INFANTRY", "CHARACTER", "EPIC HERO", "IMPERIUM"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Nork Deddog must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 60, "Must cost 60pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Thunderous Head-butt"),
+    "rulesAdaptations must reference 'Thunderous Head-butt'");
+  assert(u.rulesAdaptations?.includes("Loyal Protector"),
+    "rulesAdaptations must reference 'Loyal Protector'");
+});
+
+test("Nork Deddog has EPIC HERO and OGRYN keywords", () => {
+  const u = amUnit("am_nork_deddog");
+  assert(u?.keywords.includes("EPIC HERO"), "Nork Deddog must have EPIC HERO keyword");
+  assert(u?.keywords.includes("OGRYN"),     "Nork Deddog must have OGRYN keyword");
+});
+
+test("Sly Marbo has correct fields", () => {
+  const u = amUnit("am_sly_marbo");
+  assert(!!u, "am_sly_marbo must exist");
+  assertEqual(u.name, "Sly Marbo");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "EPIC HERO", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Sly Marbo must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 55, "Must cost 55pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Like Fighting a Shadow"),
+    "rulesAdaptations must reference 'Like Fighting a Shadow'");
+});
+
+test("Ursula Creed has correct fields", () => {
+  const u = amUnit("am_ursula_creed");
+  assert(!!u, "am_ursula_creed must exist");
+  assertEqual(u.name, "Ursula Creed");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "CHARACTER", "EPIC HERO", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Ursula Creed must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 55, "Must cost 55pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Tactical Genius"),
+    "rulesAdaptations must reference 'Tactical Genius'");
+});
+
+test("Cadian Shock Troops has correct fields", () => {
+  const u = amUnit("am_cadian_shock_troops");
+  assert(!!u, "am_cadian_shock_troops must exist");
+  assertEqual(u.name, "Cadian Shock Troops");
+  assertEqual(u.type, "BATTLELINE");
+  const expectedKws = [
+    "ASTRA MILITARUM", "INFANTRY", "BATTLELINE", "IMPERIUM", "REGIMENT", "PLATOON"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Cadian Shock Troops must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 65, "Must cost 65pts");
+  assertEqual(u.sizes[0].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Shock Troops"),
+    "rulesAdaptations must reference 'Shock Troops'");
+  assert(u.rulesAdaptations?.includes("Form Boarding Squads"),
+    "rulesAdaptations must reference 'Form Boarding Squads'");
+});
+
+test("Catachan Jungle Fighters has correct fields", () => {
+  const u = amUnit("am_catachan_jungle_fighters");
+  assert(!!u, "am_catachan_jungle_fighters must exist");
+  assertEqual(u.name, "Catachan Jungle Fighters");
+  assertEqual(u.type, "BATTLELINE");
+  const expectedKws = [
+    "ASTRA MILITARUM", "INFANTRY", "BATTLELINE", "IMPERIUM", "REGIMENT", "PLATOON"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Catachan Jungle Fighters must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 65, "Must cost 65pts");
+  assertEqual(u.sizes[0].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Scouts"),
+    "rulesAdaptations must reference 'Scouts'");
+  assert(u.rulesAdaptations?.includes("Form Boarding Squads"),
+    "rulesAdaptations must reference 'Form Boarding Squads'");
+});
+
+test("Death Korps of Krieg has correct fields", () => {
+  const u = amUnit("am_death_korps_of_krieg");
+  assert(!!u, "am_death_korps_of_krieg must exist");
+  assertEqual(u.name, "Death Korps of Krieg");
+  assertEqual(u.type, "BATTLELINE");
+  const expectedKws = [
+    "ASTRA MILITARUM", "INFANTRY", "BATTLELINE", "IMPERIUM", "REGIMENT", "PLATOON"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Death Korps of Krieg must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 65, "Must cost 65pts");
+  assertEqual(u.sizes[0].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Form Boarding Squads"),
+    "rulesAdaptations must reference 'Form Boarding Squads'");
+});
+
+test("Kasrkin has correct fields", () => {
+  const u = amUnit("am_kasrkin");
+  assert(!!u, "am_kasrkin must exist");
+  assertEqual(u.name, "Kasrkin");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "IMPERIUM", "REGIMENT"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Kasrkin must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 2, "Kasrkin must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 55, "5-model size must cost 55pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assertEqual(u.sizes[1].pts, 110, "10-model size must cost 110pts");
+  assertEqual(u.sizes[1].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Scouts"),
+    "rulesAdaptations must reference 'Scouts'");
+});
+
+test("Ratlings has correct fields", () => {
+  const u = amUnit("am_ratlings");
+  assert(!!u, "am_ratlings must exist");
+  assertEqual(u.name, "Ratlings");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["ASTRA MILITARUM", "INFANTRY", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Ratlings must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 60, "Must cost 60pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assert(u.rulesAdaptations?.includes("Shoot Sharp and Scarper"),
+    "rulesAdaptations must reference 'Shoot Sharp and Scarper'");
+});
+
+test("Ogryn Squad has correct fields", () => {
+  const u = amUnit("am_ogryn_squad");
+  assert(!!u, "am_ogryn_squad must exist");
+  assertEqual(u.name, "Ogryn Squad");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["ASTRA MILITARUM", "OGRYN", "INFANTRY", "IMPERIUM"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Ogryn Squad must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length, `Must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 60, "Must cost 60pts");
+  assertEqual(u.sizes[0].label, "3 models");
+  assert(!u.rulesAdaptations, "Ogryn Squad must have no rulesAdaptations");
+});
+
+test("Astra Militarum has exactly 20 units total", () => {
+  assertEqual(amUnits.length, 20,
+    `Expected 20 Astra Militarum units, found ${amUnits.length}`);
+});
+
+
+// ── 125. Astra Militarum — Embarked Regiment Game Rule Logic ──────────────────
+
+section("125. Astra Militarum — Embarked Regiment Game Rule Logic");
+
+const erHelpers      = makeDetHelpers(erDet, amUnit);
+const isErExcBlocked = makeExcGroupChecker(erDet.exclusiveUnitGroups);
+
+test("Character cap — first CHARACTER can be added to an empty list", () => {
+  assert(erHelpers.canAdd([], "am_cadian_castellan"),
+    "Cadian Castellan must be addable to an empty list");
+});
+
+test("Character cap — second CHARACTER can be added when one is present", () => {
+  const list = [{ unitId: "am_cadian_castellan" }];
+  assert(erHelpers.canAdd(list, "am_commissar"),
+    "Second CHARACTER must be addable when one is already present");
+});
+
+test("Character cap — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "am_cadian_castellan" }, { unitId: "am_commissar" }];
+  assert(!erHelpers.canAdd(list, "am_primaris_psyker"),
+    "Third CHARACTER must be blocked when cap of 2 is reached");
+});
+
+test("Character cap — INFANTRY units are never blocked by the cap", () => {
+  const list = [{ unitId: "am_cadian_castellan" }, { unitId: "am_commissar" }];
+  ["am_cadian_shock_troops", "am_catachan_jungle_fighters",
+   "am_kasrkin", "am_ratlings", "am_ogryn_squad"].forEach(id => {
+    assert(erHelpers.canAdd(list, id),
+      `"${id}" (INFANTRY/BATTLELINE) must not be blocked by the character cap`);
+  });
+});
+
+test("Exclusive group 1 (commanders) — each unit can be added to an empty list", () => {
+  ["am_cadian_castellan", "am_cadian_command_squad", "am_gaunts_ghosts",
+   "am_sly_marbo", "am_ursula_creed"].forEach(id => {
+    assert(!isErExcBlocked(id, []),
+      `"${id}" must not be blocked in an empty list`);
+  });
+});
+
+test("Exclusive group 1 — taking Gaunt's Ghosts blocks all other commanders", () => {
+  const list = [{ unitId: "am_gaunts_ghosts" }];
+  ["am_cadian_castellan", "am_cadian_command_squad",
+   "am_sly_marbo", "am_ursula_creed"].forEach(id => {
+    assert(isErExcBlocked(id, list),
+      `"${id}" must be blocked when Gaunt's Ghosts is in the list`);
+  });
+});
+
+test("Exclusive group 1 — taking Ursula Creed blocks all other commanders", () => {
+  const list = [{ unitId: "am_ursula_creed" }];
+  ["am_cadian_castellan", "am_cadian_command_squad",
+   "am_gaunts_ghosts", "am_sly_marbo"].forEach(id => {
+    assert(isErExcBlocked(id, list),
+      `"${id}" must be blocked when Ursula Creed is in the list`);
+  });
+});
+
+test("Exclusive group 2 (support) — each unit can be added to an empty list", () => {
+  ["am_commissar", "am_ministorum_priest", "am_nork_deddog",
+   "am_ogryn_bodyguard", "am_primaris_psyker", "am_tech_priest_enginseer"].forEach(id => {
+    assert(!isErExcBlocked(id, []),
+      `"${id}" must not be blocked in an empty list`);
+  });
+});
+
+test("Exclusive group 2 — taking Nork Deddog blocks all other support units", () => {
+  const list = [{ unitId: "am_nork_deddog" }];
+  ["am_commissar", "am_ministorum_priest", "am_ogryn_bodyguard",
+   "am_primaris_psyker", "am_tech_priest_enginseer"].forEach(id => {
+    assert(isErExcBlocked(id, list),
+      `"${id}" must be blocked when Nork Deddog is in the list`);
+  });
+});
+
+test("Exclusive groups are independent — group 1 choice does not block group 2", () => {
+  const list = [{ unitId: "am_cadian_castellan" }];
+  ["am_commissar", "am_ministorum_priest", "am_nork_deddog",
+   "am_ogryn_bodyguard", "am_primaris_psyker", "am_tech_priest_enginseer"].forEach(id => {
+    assert(!isErExcBlocked(id, list),
+      `"${id}" (group 2) must not be blocked by a group 1 selection`);
+  });
+});
+
+test("Exclusive groups are independent — group 2 choice does not block group 1", () => {
+  const list = [{ unitId: "am_commissar" }];
+  ["am_cadian_castellan", "am_cadian_command_squad", "am_gaunts_ghosts",
+   "am_sly_marbo", "am_ursula_creed"].forEach(id => {
+    assert(!isErExcBlocked(id, list),
+      `"${id}" (group 1) must not be blocked by a group 2 selection`);
+  });
+});
+
+test("Exclusive group — a unit is never blocked by its own presence", () => {
+  ["am_cadian_castellan", "am_gaunts_ghosts", "am_commissar", "am_nork_deddog"].forEach(id => {
+    const list = [{ unitId: id }];
+    assert(!isErExcBlocked(id, list),
+      `"${id}" must not be blocked by its own presence in the list`);
+  });
+});
+
+test("Infantry units are never affected by either exclusive group", () => {
+  const list = [{ unitId: "am_cadian_castellan" }, { unitId: "am_commissar" }];
+  ["am_cadian_shock_troops", "am_catachan_jungle_fighters", "am_death_korps_of_krieg",
+   "am_kasrkin", "am_ratlings", "am_ogryn_squad", "am_bullgryn_squad"].forEach(id => {
+    assert(!isErExcBlocked(id, list),
+      `"${id}" must not be affected by the exclusive groups`);
+  });
+});
+
+test("Regiment BATTLELINE units can be taken up to max 3 each", () => {
+  ["am_cadian_shock_troops", "am_catachan_jungle_fighters", "am_death_korps_of_krieg"].forEach(id => {
+    const list = [];
+    for (let i = 0; i < 3; i++) {
+      assert(erHelpers.canAdd(list, id), `Copy ${i + 1} of "${id}" must be addable`);
+      list.push({ unitId: id });
+    }
+    assert(!erHelpers.canAdd(list, id), `4th copy of "${id}" must be blocked (max 3)`);
+  });
+});
+
+test("Smoke — Sly Marbo + Commissar + 3x Cadian Shock Troops = 55+30+195 = 280pts (legal)", () => {
+  const pts = 55 + 30 + (65 * 3);
+  assertEqual(pts, 280, "Expected 280pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "am_sly_marbo"           },
+    { unitId: "am_commissar"           },
+    { unitId: "am_cadian_shock_troops" },
+    { unitId: "am_cadian_shock_troops" },
+    { unitId: "am_cadian_shock_troops" },
+  ];
+  const charCount = list.filter(l => amUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= erDet.maxCharacters, "Character count must not exceed cap of 2");
+  assert(!isErExcBlocked("am_sly_marbo", []),  "Sly Marbo alone must not be blocked");
+  assert(!isErExcBlocked("am_commissar", []),  "Commissar alone must not be blocked");
+});
+
+test("Smoke — Ursula Creed + Nork Deddog + Kasrkin (10) + Ogryn Squad = 55+60+110+60 = 285pts (legal)", () => {
+  const pts = 55 + 60 + 110 + 60;
+  assertEqual(pts, 285, "Expected 285pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "am_ursula_creed" },
+    { unitId: "am_nork_deddog" },
+    { unitId: "am_kasrkin"     },
+    { unitId: "am_ogryn_squad" },
+  ];
+  const charCount = list.filter(l => amUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= erDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);
