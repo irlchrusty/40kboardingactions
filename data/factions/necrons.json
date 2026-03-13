@@ -1,0 +1,751 @@
+{
+  "detachments": [
+    {
+      "id": "nec_harbinger_cabal",
+      "name": "Harbinger Cabal",
+      "specialRule": {
+        "name": "Arcanoscientific Expertise",
+        "desc": "In your Command phase, for each CRYPTEK unit in your army, select one of the following abilities. Until the start of your next Command phase, your unit has that ability.\n\n• Hyperlocation Stutter (Aura): While a friendly NECRONS unit is within 6\" of this model, add 2 to Advance rolls made for that unit.\n\n• Transharmonic Disruption (Aura): While a friendly NECRONS unit is within 6\" of this model, add 1 to the Strength characteristic of weapons equipped by models in that unit.\n\n• Quantum Interface (Aura): While a friendly NECRONS unit is within 6\" of this model, models in that unit have a 5+ invulnerable save."
+      },
+      "enhancements": [
+        {
+          "id": "enh_nec_cryptometric",
+          "name": "Cryptometric Enhancement",
+          "desc": "Add 1 to the Toughness and Wounds characteristics of the bearer. This model has a 4+ invulnerable save.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_nec_portal_transmuter",
+          "name": "Portal Transmuter",
+          "desc": "Once per turn, when the bearer ends a Normal, Advance or Fall Back move within 3\" of an open Hatchway or when the bearer opens a Hatchway, it can, before any units decide if they wish to fire Overwatch, use this ability. If it does, remove the bearer from the battlefield, and set it back up on the battlefield, wholly within 3\" of another open Hatchway and not within Engagement Range of one or more enemy units. When doing so, if the bearer cannot be set back up on the battlefield, it is destroyed.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "nec_chronomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_geomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_illuminor_szeras",
+          "max": 1
+        },
+        {
+          "id": "nec_orikan_the_diviner",
+          "max": 1
+        },
+        {
+          "id": "nec_plasmancer",
+          "max": 1
+        },
+        {
+          "id": "nec_psychomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_technomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_immortals",
+          "max": 3
+        },
+        {
+          "id": "nec_warriors",
+          "max": 3
+        }
+      ],
+      "maxCharacters": 3
+    },
+    {
+      "id": "nec_deranged_outcasts",
+      "name": "Deranged Outcasts",
+      "specialRule": {
+        "name": "Terrifying Charge",
+        "desc": "Each time a NECRONS unit from your army declares a charge, each enemy unit that is a target of that charge must take a Leadership test: if failed, until the end of the turn, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
+      },
+      "enhancements": [
+        {
+          "id": "enh_nec_inured_to_damage",
+          "name": "Inured to Damage",
+          "desc": "The bearer has the Feel No Pain 6+ ability. Once the unit has destroyed one or more enemy units, it has the Feel No Pain 5+ ability instead.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_nec_domineering_presence",
+          "name": "Domineering Presence",
+          "desc": "In your opponents Command phase, at the start of the Battle-shock step, select one enemy unit within 3\" of the bearer; that enemy unit must take a Battle-shock test. When doing so, if that enemy unit is below Half-strength, subtract 1 from that test. This Enhancement cannot cause a unit to take two Battle-shock tests in the same phase.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "nec_hexmark_destroyer",
+          "max": 1
+        },
+        {
+          "id": "nec_skorpekh_lord",
+          "max": 1
+        },
+        {
+          "id": "nec_flayed_ones",
+          "max": 2
+        },
+        {
+          "id": "nec_ophydian_destroyers",
+          "max": 2
+        },
+        {
+          "id": "nec_skorpekh_destroyers",
+          "max": 2
+        }
+      ],
+      "maxCharacters": 2
+    },
+    {
+      "id": "nec_canoptek_harvesters",
+      "name": "Canoptek Harvesters",
+      "specialRule": {
+        "name": "Retribution Protocols",
+        "desc": "Each time an enemy unit destroys a CRYPTEK model from your army, until the end of the battle, each time a NECRONS unit from your army makes an attack that targets that enemy unit, you can re-roll the hit roll. CRYPTEK units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_nec_nanoscarab_reconstitution",
+          "name": "Nanoscarab Reconstitution",
+          "desc": "In each player's Command Phase, the bearer regains one lost wound.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_nec_impromptu_translocation",
+          "name": "Impromptu Translocation",
+          "desc": "Once per battle, after the bearer has shot, it can make a Normal move of up to 6\".",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "nec_chronomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_illuminor_szeras",
+          "max": 1
+        },
+        {
+          "id": "nec_orikan_the_diviner",
+          "max": 1
+        },
+        {
+          "id": "nec_geomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_plasmancer",
+          "max": 1
+        },
+        {
+          "id": "nec_psychomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_technomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_warriors",
+          "max": 2
+        },
+        {
+          "id": "nec_canoptek_wraiths",
+          "max": 2
+        },
+        {
+          "id": "nec_canoptek_scarab_swarm",
+          "max": 2
+        }
+      ],
+      "maxCharacters": 3
+    },
+    {
+      "id": "nec_tomb_ship",
+      "name": "Tomb Ship Complement",
+      "specialRule": {
+        "name": "Conquest Protocols",
+        "desc": "Each time a NECRONS unit from your army makes an attack, if that model is within range of an objective marker, or the target of that attack is within range of an objective marker, on a Critical Wound, improve the Armour Penetration Characteristic of that attack by 1."
+      },
+      "enhancements": [
+        {
+          "id": "enh_nec_resurrection_protocols",
+          "name": "Resurrection Protocols",
+          "desc": "The first time the bearer is destroyed, roll one D6 at the end of the phase. On a 2+, set the bearer back up on the battlefield, as close as possible to where it was destroyed and not within Engagement range of any enemy units, with D3 wounds remaining.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_nec_mindshackle_scarabs",
+          "name": "Mindshackle Scarabs",
+          "desc": "CRYPTEK model only. In your Command Phase, select one enemy unit within 12\" of and visible to the bearer. That enemy unit must take a Leadership test subtracting 1 from the result: if failed, until the start of your next Command phase, subtract 2\" from the Move characteristic of models in that enemy unit and subtract 2 from Advance and Charge Rolls made for it.",
+          "requiresKeywords": ["CRYPTEK"]
+        }
+      ],
+      "maxCharacters": 2,
+      "maxKeywordUnits": [
+        {
+          "keyword": "CRYPTEK",
+          "max": 1,
+          "description": "Only 1 CRYPTEK unit may be included"
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "nec_imotekh",
+          "nec_overlord",
+          "nec_hexmark_destroyer",
+          "nec_overlord_shroud",
+          "nec_trazyn",
+          "nec_royal_warden",
+          "nec_skorpekh_lord"
+        ],
+        [
+          "nec_canoptek_scarab_swarm",
+          "nec_ophydian_destroyers",
+          "nec_triarch_praetorians"
+        ]
+      ],
+      "units": [
+        {
+          "id": "nec_hexmark_destroyer",
+          "max": 1
+        },
+        {
+          "id": "nec_skorpekh_lord",
+          "max": 1
+        },
+        {
+          "id": "nec_chronomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_illuminor_szeras",
+          "max": 1
+        },
+        {
+          "id": "nec_orikan_the_diviner",
+          "max": 1
+        },
+        {
+          "id": "nec_plasmancer",
+          "max": 1
+        },
+        {
+          "id": "nec_psychomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_technomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_immortals",
+          "max": 3
+        },
+        {
+          "id": "nec_warriors",
+          "max": 3
+        },
+        {
+          "id": "nec_flayed_ones",
+          "max": 1
+        },
+        {
+          "id": "nec_skorpekh_destroyers",
+          "max": 1
+        },
+        {
+          "id": "nec_imotekh",
+          "max": 1
+        },
+        {
+          "id": "nec_overlord",
+          "max": 1
+        },
+        {
+          "id": "nec_overlord_shroud",
+          "max": 1
+        },
+        {
+          "id": "nec_royal_warden",
+          "max": 1
+        },
+        {
+          "id": "nec_trazyn",
+          "max": 1
+        },
+        {
+          "id": "nec_deathmarks",
+          "max": 1
+        },
+        {
+          "id": "nec_lychguard",
+          "max": 1
+        },
+        {
+          "id": "nec_geomancer",
+          "max": 1
+        },
+        {
+          "id": "nec_canoptek_scarab_swarm",
+          "max": 1
+        },
+        {
+          "id": "nec_ophydian_destroyers",
+          "max": 1
+        },
+        {
+          "id": "nec_triarch_praetorians",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "nec_chronomancer",
+      "name": "Chronomancer",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Chronometron ability."
+    },
+    {
+      "id": "nec_geomancer",
+      "name": "Geomancer",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Molecular Breach ability."
+    },
+    {
+      "id": "nec_illuminor_szeras",
+      "name": "Illuminor Szeras",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 165
+        }
+      ],
+      "rulesAdaptations": "When setting up this model on the battlefield, no other units can be set up in the same Entry Zone they are set up in."
+    },
+    {
+      "id": "nec_orikan_the_diviner",
+      "name": "Orikan the Diviner",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This model loses the The Stars are Right ability."
+    },
+    {
+      "id": "nec_plasmancer",
+      "name": "Plasmancer",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This model loses the Living Lightning ability."
+    },
+    {
+      "id": "nec_psychomancer",
+      "name": "Psychomancer",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This model loses the Harbinger of Despair ability."
+    },
+    {
+      "id": "nec_technomancer",
+      "name": "Technomancer",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "CRYPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This model loses the Technomancer ability."
+    },
+    {
+      "id": "nec_immortals",
+      "name": "Immortals",
+      "type": "BATTLELINE",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "BATTLELINE"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 70
+        },
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ]
+    },
+    {
+      "id": "nec_warriors",
+      "name": "Necron Warriors",
+      "type": "BATTLELINE",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "BATTLELINE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "nec_hexmark_destroyer",
+      "name": "Hexmark Destroyer",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "DESTROYER CULT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Inescapable Death ability."
+    },
+    {
+      "id": "nec_skorpekh_lord",
+      "name": "Skorpekh Lord",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "DESTROYER CULT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Crimson Harvest ability. When setting up this unit on the battlefield, no other units can be set up in the same Entry Zone they are set up in."
+    },
+    {
+      "id": "nec_flayed_ones",
+      "name": "Flayed Ones",
+      "type": "INFANTRY",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 60
+        },
+        {
+          "label": "10 models",
+          "pts": 120
+        }
+      ]
+    },
+    {
+      "id": "nec_ophydian_destroyers",
+      "name": "Ophydian Destroyers",
+      "type": "INFANTRY",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "DESTROYER CULT"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Plasmacyte and Tunnelling Horrors abilities."
+    },
+    {
+      "id": "nec_skorpekh_destroyers",
+      "name": "Skorpekh Destroyers",
+      "type": "INFANTRY",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "DESTROYER CULT"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Plasmacyte ability."
+    },
+    {
+      "id": "nec_canoptek_wraiths",
+      "name": "Canoptek Wraiths",
+      "type": "BEASTS",
+      "keywords": [
+        "NECRONS",
+        "BEASTS",
+        "CANOPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 110
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Wraith Form ability. Its movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "nec_canoptek_scarab_swarm",
+      "name": "Canoptek Scarab Swarm",
+      "type": "SWARM",
+      "keywords": [
+        "NECRONS",
+        "SWARM",
+        "CANOPTEK"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Self-destruction ability. Its movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "nec_imotekh",
+      "name": "Imotekh the Stormlord",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "NOBLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Grand Strategist and Lord of the Storm abilities."
+    },
+    {
+      "id": "nec_overlord",
+      "name": "Overlord",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "NOBLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "nec_overlord_shroud",
+      "name": "Overlord with Translocation Shroud",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "NOBLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Translocation Shroud ability."
+    },
+    {
+      "id": "nec_royal_warden",
+      "name": "Royal Warden",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "nec_trazyn",
+      "name": "Trazyn the Infinite",
+      "type": "CHARACTER",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "NOBLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This model loses the Ancient Collector ability."
+    },
+    {
+      "id": "nec_deathmarks",
+      "name": "Deathmarks",
+      "type": "INFANTRY",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 60
+        },
+        {
+          "label": "10 models",
+          "pts": 120
+        }
+      ]
+    },
+    {
+      "id": "nec_lychguard",
+      "name": "Lychguard",
+      "type": "INFANTRY",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
+        {
+          "label": "10 models",
+          "pts": 170
+        }
+      ]
+    },
+    {
+      "id": "nec_triarch_praetorians",
+      "name": "Triarch Praetorians",
+      "type": "INFANTRY",
+      "keywords": [
+        "NECRONS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        },
+        {
+          "label": "10 models",
+          "pts": 180
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    }
+  ]
+}

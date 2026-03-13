@@ -1,0 +1,2944 @@
+{
+  "detachments": [
+    {
+      "id": "sm_vanguard",
+      "name": "Pilum Strike Team",
+      "specialRule": {
+        "name": "Relentless Salvoes",
+        "desc": "ADEPTUS ASTARTES units from your army are eligible to shoot in a turn in which they Advanced or Fell Back. Infiltrator Squad and Incursors Squad units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_auspex",
+          "name": "Omni-Structural Auspex",
+          "desc": "In your shooting phase, after the bearer has shot, select one enemy unit hit by one or more of these attacks. Until the end of the phase, each time a friendly ADEPTUS ASTARTES model (excluding CHARACTER models) makes an attack that targets that unit, improve the Armour Penetration characteristic of that attack by 1.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_void_warrior",
+          "name": "Void Warrior",
+          "desc": "You can re-roll Advance or Charge rolls for this model. In addition, the bearer is eligible to declare a charge in a turn in which it Advanced.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "sm_phobos_captain",
+          "max": 1
+        },
+        {
+          "id": "sm_incursors",
+          "max": 3
+        },
+        {
+          "id": "sm_kayvaan_shrike",
+          "max": 1
+        },
+        {
+          "id": "sm_librarian_phobos",
+          "max": 1
+        },
+        {
+          "id": "sm_infiltrators",
+          "max": 3
+        },
+        {
+          "id": "sm_lieutenant_phobos",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant_reiver",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant_combi",
+          "max": 1
+        },
+        {
+          "id": "sm_reivers",
+          "max": 3
+        }
+      ],
+      "maxCharacters": 3,
+      "factionKeywordGroups": [
+        [
+          "SPACE WOLVES",
+          "DARK ANGELS",
+          "DEATHWATCH",
+          "IMPERIAL FISTS",
+          "ULTRAMARINES",
+          "RAVEN GUARD",
+          "SALAMANDERS",
+          "BLOOD ANGELS",
+          "BLACK TEMPLARS",
+          "CRIMSON FISTS",
+          "WHITE SCARS",
+          "IRON HANDS"
+        ]
+      ]
+    },
+    {
+      "id": "sm_terminator_assault",
+      "name": "Terminator Assault",
+      "specialRule": {
+        "name": "Sacred Oath",
+        "desc": "Once per battle, at the start of your Command phase, when you select a target for Oath of Moment, you can use this Detachment rule. If you do, until the start of your next Command phase, each time an ADEPTUS ASTARTES unit from your army makes an attack that targets your Oath of Moment target, you can re-roll your Wound roll. Terminator Squad and Terminator Assault Squad units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_sm_seal_of_indomitability",
+          "name": "Seal of Indomitability",
+          "desc": "Once per battle, when the bearer's unit is selected as the target of one or more attacks, it can use this Enhancement. Until the end of the phase, the bearer has a 3+ invulnerable save.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_sm_resolute",
+          "name": "Resolute",
+          "desc": "The bearer is eligible to declare a charge in a turn in which it Fell Back. In addition, Desperate Escape tests taken for the bearer are automatically passed, and each time the bearer makes a Fall Back move, it can move through enemy models as if they were not there.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "sm_terminators",
+          "max": 2
+        },
+        {
+          "id": "sm_terminator_assault_squad",
+          "max": 2
+        },
+        {
+          "id": "sm_ancient_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_librarian_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_arjac_rockfist",
+          "max": 1
+        },
+        {
+          "id": "sm_logan_grimnar",
+          "max": 1
+        },
+        {
+          "id": "sm_wolf_guard_terminators",
+          "max": 2
+        },
+        {
+          "id": "sm_belial",
+          "max": 1
+        },
+        {
+          "id": "sm_deathwing_knights",
+          "max": 2
+        },
+        {
+          "id": "sm_deathwing_terminators",
+          "max": 2
+        },
+        {
+          "id": "sm_darnath_lysander",
+          "max": 1
+        },
+        {
+          "id": "sm_deathwatch_terminators",
+          "max": 2
+        }
+      ],
+      "maxCharacters": 2,
+      "factionKeywordGroups": [
+        [
+          "SPACE WOLVES",
+          "DARK ANGELS",
+          "DEATHWATCH",
+          "IMPERIAL FISTS",
+          "ULTRAMARINES",
+          "RAVEN GUARD",
+          "SALAMANDERS",
+          "BLOOD ANGELS",
+          "BLACK TEMPLARS",
+          "CRIMSON FISTS",
+          "WHITE SCARS",
+          "IRON HANDS"
+        ]
+      ]
+    },
+    {
+      "id": "sm_boarding_strike",
+      "name": "Boarding Strike",
+      "specialRule": {
+        "name": "Drive Home the Blade",
+        "desc": "Each time an ADEPTUS ASTARTES unit from your army is selected to shoot, if one or more models from that unit are within 1\" of an open Hatchway, and every model in that unit is on the same side of that Hatchway, select one enemy unit on the opposite side of that Hatchway from your unit. Until the end of the phase, ranged models equipped by models in your unit have the [SUSTAINED HITS 1] ability while targeting that enemy unit."
+      },
+      "enhancements": [
+        {
+          "id": "enh_sm_adamantine_mantle",
+          "name": "Adamantine Mantle",
+          "desc": "Each time an attack is allocated to the bearer, subtract 1 from the Damage characteristic of that attack.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_sm_clavitine_reliquary",
+          "name": "Clavitine Reliquary",
+          "desc": "In your movement phase, each time the bearer is selected to make a Normal or Advance move, if it is within 1\" of a Hatchway, it can attempt to operate that Hatchway. If it does, it cannot attempt to operate a Hatchway again this turn.",
+          "requiresKeywords": []
+        }
+      ],
+      "maxCharacters": 2,
+      "factionKeywordGroups": [
+        [
+          "SPACE WOLVES",
+          "DARK ANGELS",
+          "DEATHWATCH",
+          "IMPERIAL FISTS",
+          "ULTRAMARINES",
+          "RAVEN GUARD",
+          "SALAMANDERS",
+          "BLOOD ANGELS",
+          "BLACK TEMPLARS",
+          "CRIMSON FISTS",
+          "WHITE SCARS",
+          "IRON HANDS"
+        ]
+      ],
+      "units": [
+        {
+          "id": "sm_adrax_agatone",
+          "max": 1
+        },
+        {
+          "id": "sm_ancient",
+          "max": 1
+        },
+        {
+          "id": "sm_apothecary",
+          "max": 1
+        },
+        {
+          "id": "sm_apothecary_biologis",
+          "max": 1
+        },
+        {
+          "id": "sm_bladeguard_ancient",
+          "max": 1
+        },
+        {
+          "id": "sm_captain",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_gravis",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_sicarius",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_jump_pack",
+          "max": 1
+        },
+        {
+          "id": "sm_cato_sicarius",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain_jump_pack",
+          "max": 1
+        },
+        {
+          "id": "sm_chief_librarian_tigurius",
+          "max": 1
+        },
+        {
+          "id": "sm_iron_father_feirros",
+          "max": 1
+        },
+        {
+          "id": "sm_judiciar",
+          "max": 1
+        },
+        {
+          "id": "sm_librarian",
+          "max": 1
+        },
+        {
+          "id": "sm_assault_intercessors",
+          "max": 3
+        },
+        {
+          "id": "sm_heavy_intercessors",
+          "max": 3
+        },
+        {
+          "id": "sm_intercessor_squad",
+          "max": 3
+        },
+        {
+          "id": "sm_tacticals",
+          "max": 3
+        },
+        {
+          "id": "sm_aggressor_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_assault_intercessors_jump",
+          "max": 1
+        },
+        {
+          "id": "sm_bladeguard_veterans",
+          "max": 1
+        },
+        {
+          "id": "sm_eradicator_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_hellblaster_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_infernus_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_korsarro_khan",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant",
+          "max": 1
+        },
+        {
+          "id": "sm_marneus_calgar",
+          "max": 1
+        },
+        {
+          "id": "sm_marneus_calgar_antilochus",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_titus",
+          "max": 1
+        },
+        {
+          "id": "sm_pedro_kantor",
+          "max": 1
+        },
+        {
+          "id": "sm_roboute_guilliman",
+          "max": 1
+        },
+        {
+          "id": "sm_sternguard_veterans",
+          "max": 1
+        },
+        {
+          "id": "sm_techmarine",
+          "max": 1
+        },
+        {
+          "id": "sm_tor_garadon",
+          "max": 1
+        },
+        {
+          "id": "sm_uriel_ventris",
+          "max": 1
+        },
+        {
+          "id": "sm_vanguard_veterans_jump",
+          "max": 1
+        },
+        {
+          "id": "sm_vulkan_hestan",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain_grimaldus",
+          "max": 1
+        },
+        {
+          "id": "sm_high_marshal_helbrecht",
+          "max": 1
+        },
+        {
+          "id": "sm_castellan",
+          "max": 1
+        },
+        {
+          "id": "sm_crusade_ancient",
+          "max": 1
+        },
+        {
+          "id": "sm_emperors_champion",
+          "max": 1
+        },
+        {
+          "id": "sm_execrator",
+          "max": 1
+        },
+        {
+          "id": "sm_marshal",
+          "max": 1
+        },
+        {
+          "id": "sm_crusader_squad",
+          "max": 3
+        },
+        {
+          "id": "sm_astorath",
+          "max": 1
+        },
+        {
+          "id": "sm_chief_librarian_mephiston",
+          "max": 1
+        },
+        {
+          "id": "sm_commander_dante",
+          "max": 1
+        },
+        {
+          "id": "sm_lemartes",
+          "max": 1
+        },
+        {
+          "id": "sm_the_sanguinor",
+          "max": 1
+        },
+        {
+          "id": "sm_blood_angels_captain",
+          "max": 1
+        },
+        {
+          "id": "sm_death_company_captain",
+          "max": 1
+        },
+        {
+          "id": "sm_death_company_captain_jetpack",
+          "max": 1
+        },
+        {
+          "id": "sm_sanguinary_priest",
+          "max": 1
+        },
+        {
+          "id": "sm_death_company_marines",
+          "max": 1
+        },
+        {
+          "id": "sm_death_company_marines_bolt_rifles",
+          "max": 1
+        },
+        {
+          "id": "sm_death_company_marines_jump_packs",
+          "max": 1
+        },
+        {
+          "id": "sm_sanguinary_guard",
+          "max": 1
+        },
+        {
+          "id": "sm_asmodai",
+          "max": 1
+        },
+        {
+          "id": "sm_azrael",
+          "max": 1
+        },
+        {
+          "id": "sm_ezekiel",
+          "max": 1
+        },
+        {
+          "id": "sm_lazarus",
+          "max": 1
+        },
+        {
+          "id": "sm_lion_eljonson",
+          "max": 1
+        },
+        {
+          "id": "sm_inner_circle_companions",
+          "max": 1
+        },
+        {
+          "id": "sm_sword_brethren",
+          "max": 1
+        },
+        {
+          "id": "sm_watch_captain_artemis",
+          "max": 1
+        },
+        {
+          "id": "sm_watch_master",
+          "max": 1
+        },
+        {
+          "id": "sm_deathwatch_veterans",
+          "max": 3
+        },
+        {
+          "id": "sm_njal_stormcaller",
+          "max": 1
+        },
+        {
+          "id": "sm_ragnar_blackmane",
+          "max": 1
+        },
+        {
+          "id": "sm_ulrik_the_slayer",
+          "max": 1
+        },
+        {
+          "id": "sm_iron_priest",
+          "max": 1
+        },
+        {
+          "id": "sm_wolf_guard_battle_leader",
+          "max": 1
+        },
+        {
+          "id": "sm_wolf_priest",
+          "max": 1
+        },
+        {
+          "id": "sm_bloodclaws",
+          "max": 3
+        },
+        {
+          "id": "sm_grey_hunters",
+          "max": 3
+        },
+        {
+          "id": "sm_wolf_guard_headtakers",
+          "max": 1
+        },
+        {
+          "id": "sm_wulfen",
+          "max": 1
+        },
+        {
+          "id": "sm_wulfen_storm_shields",
+          "max": 1
+        },
+        {
+          "id": "sm_fenrisian_wolves",
+          "max": 1
+        },
+        {
+          "id": "sm_company_heroes",
+          "max": 1
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "sm_captain_sicarius",
+          "sm_cato_sicarius"
+        ],
+        [
+          "sm_marneus_calgar",
+          "sm_marneus_calgar_antilochus"
+        ],
+        [
+          "sm_eradicator_squad",
+          "sm_hellblaster_squad"
+        ],
+        [
+          "sm_wulfen",
+          "sm_wulfen_storm_shields"
+        ],
+        [
+          "sm_assault_intercessors_jump",
+          "sm_death_company_marines_jump_packs",
+          "sm_fenrisian_wolves",
+          "sm_sanguinary_guard",
+          "sm_vanguard_veterans_jump"
+        ]
+      ]
+    },
+    {
+      "id": "sm_shield_of_the_void",
+      "name": "Shield of the Void",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Focused Response",
+        "desc": "Each time an ADEPTUS ASTARTES unit from your army makes an attack while firing Overwatch, an unmodified hit roll of 5+ is required to score a hit, instead of an unmodified 6. Each time an enemy unit makes an attack that targets an ADEPTUS ASTARTES unit from your army that is Set To Defend, subtract 1 from the hit roll."
+      },
+      "enhancements": [
+        {
+          "id": "enh_sm_speartip_of_the_chapter",
+          "name": "Speartip of the Chapter",
+          "desc": "At the start of the first battle round, the bearer's unit and up to one other friendly unit within the same Entry Zone can each make a normal move of up to 6\".",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_sm_tolorek_data_djinn",
+          "name": "Tolorek Data Djinn",
+          "desc": "In your Command phase, select one objective marker that you control and is within range of the bearer. Roll one D6: on a 2+, that objective marker is Secured by your army.",
+          "requiresKeywords": []
+        }
+      ],
+      "factionKeywordGroups": [
+        [
+          "SPACE WOLVES",
+          "DARK ANGELS",
+          "DEATHWATCH",
+          "IMPERIAL FISTS",
+          "ULTRAMARINES",
+          "RAVEN GUARD",
+          "SALAMANDERS",
+          "BLOOD ANGELS",
+          "BLACK TEMPLARS",
+          "CRIMSON FISTS",
+          "WHITE SCARS",
+          "IRON HANDS"
+        ]
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "sm_captain_sicarius",
+          "sm_cato_sicarius"
+        ],
+        [
+          "sm_marneus_calgar",
+          "sm_marneus_calgar_antilochus"
+        ]
+      ],
+      "units": [
+        {
+          "id": "sm_ancient",
+          "max": 1
+        },
+        {
+          "id": "sm_ancient_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_apothecary",
+          "max": 1
+        },
+        {
+          "id": "sm_apothecary_biologis",
+          "max": 1
+        },
+        {
+          "id": "sm_bladeguard_ancient",
+          "max": 1
+        },
+        {
+          "id": "sm_captain",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_gravis",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_jump_pack",
+          "max": 1
+        },
+        {
+          "id": "sm_phobos_captain",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_sicarius",
+          "max": 1
+        },
+        {
+          "id": "sm_cato_sicarius",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_chaplain_jump_pack",
+          "max": 1
+        },
+        {
+          "id": "sm_chief_librarian_tigurius",
+          "max": 1
+        },
+        {
+          "id": "sm_company_heroes",
+          "max": 1
+        },
+        {
+          "id": "sm_aggressor_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_assault_intercessors",
+          "max": 1
+        },
+        {
+          "id": "sm_assault_intercessors_jump",
+          "max": 1
+        },
+        {
+          "id": "sm_bladeguard_veterans",
+          "max": 1
+        },
+        {
+          "id": "sm_eradicator_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_heavy_intercessors",
+          "max": 1
+        },
+        {
+          "id": "sm_hellblaster_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_incursors",
+          "max": 1
+        },
+        {
+          "id": "sm_infiltrators",
+          "max": 1
+        },
+        {
+          "id": "sm_infernus_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_intercessor_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_judiciar",
+          "max": 1
+        },
+        {
+          "id": "sm_librarian",
+          "max": 1
+        },
+        {
+          "id": "sm_librarian_terminator",
+          "max": 1
+        },
+        {
+          "id": "sm_librarian_phobos",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant_phobos",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant_reiver",
+          "max": 1
+        },
+        {
+          "id": "sm_lieutenant_combi",
+          "max": 1
+        },
+        {
+          "id": "sm_marneus_calgar",
+          "max": 1
+        },
+        {
+          "id": "sm_marneus_calgar_antilochus",
+          "max": 1
+        },
+        {
+          "id": "sm_captain_titus",
+          "max": 1
+        },
+        {
+          "id": "sm_reivers",
+          "max": 1
+        },
+        {
+          "id": "sm_roboute_guilliman",
+          "max": 1
+        },
+        {
+          "id": "sm_sternguard_veterans",
+          "max": 1
+        },
+        {
+          "id": "sm_tacticals",
+          "max": 1
+        },
+        {
+          "id": "sm_techmarine",
+          "max": 1
+        },
+        {
+          "id": "sm_terminator_assault_squad",
+          "max": 1
+        },
+        {
+          "id": "sm_terminators",
+          "max": 1
+        },
+        {
+          "id": "sm_uriel_ventris",
+          "max": 1
+        },
+        {
+          "id": "sm_vanguard_veterans_jump",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "sm_captain",
+      "name": "Captain",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "sm_phobos_captain",
+      "name": "Captain in Phobos Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_librarian",
+      "name": "Librarian",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ]
+    },
+    {
+      "id": "sm_tacticals",
+      "name": "Tactical Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ]
+    },
+    {
+      "id": "sm_terminators",
+      "name": "Terminator Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 170
+        },
+        {
+          "label": "10 models",
+          "pts": 340
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Teleport Homer ability."
+    },
+    {
+      "id": "sm_assault",
+      "name": "Assault Marines",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "JUMP PACK"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        },
+        {
+          "label": "10 models",
+          "pts": 155
+        }
+      ]
+    },
+    {
+      "id": "sm_incursors",
+      "name": "Incursors",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Haywire Mine and Scouts Ability."
+    },
+    {
+      "id": "sm_kayvaan_shrike",
+      "name": "Kayvaan Shrike",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "PHOBOS",
+        "RAVEN GUARD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Echo of the Ravenspire abilities. Its Movement characteristic is reduced to 9."
+    },
+    {
+      "id": "sm_librarian_phobos",
+      "name": "Librarian in Phobos Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_infiltrators",
+      "name": "Infiltrators",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 200
+        }
+      ]
+    },
+    {
+      "id": "sm_lieutenant_phobos",
+      "name": "Lieutenant in Phobos Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Scouts abilities."
+    },
+    {
+      "id": "sm_lieutenant_reiver",
+      "name": "Lieutenant in Reiver Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "sm_lieutenant_combi",
+      "name": "Lieutenant with Combi-Weapon",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Evade and Survive ability."
+    },
+    {
+      "id": "sm_reivers",
+      "name": "Reivers",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "PHOBOS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Reiver Grav-chute abilities."
+    },
+    {
+      "id": "sm_terminator_assault_squad",
+      "name": "Terminator Assault Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 180
+        },
+        {
+          "label": "10 models",
+          "pts": 360
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Teleport Homer ability."
+    },
+    {
+      "id": "sm_ancient_terminator",
+      "name": "Ancient in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "sm_captain_terminator",
+      "name": "Captain in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "sm_chaplain_terminator",
+      "name": "Chaplain in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "sm_librarian_terminator",
+      "name": "Librarian in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "sm_arjac_rockfist",
+      "name": "Arjac Rockfist",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 105
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Champion of the Kingsguard ability."
+    },
+    {
+      "id": "sm_logan_grimnar",
+      "name": "Logan Grimnar",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 110
+        }
+      ]
+    },
+    {
+      "id": "sm_wolf_guard_terminators",
+      "name": "Wolf Guard Terminators",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 170
+        },
+        {
+          "label": "10 models",
+          "pts": 340
+        }
+      ]
+    },
+    {
+      "id": "sm_belial",
+      "name": "Belial",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Strikes of Retribution ability."
+    },
+    {
+      "id": "sm_deathwing_knights",
+      "name": "Deathwing Knights",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 250
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Inner Circle ability."
+    },
+    {
+      "id": "sm_deathwing_terminators",
+      "name": "Deathwing Terminator Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 180
+        },
+        {
+          "label": "10 models",
+          "pts": 360
+        }
+      ]
+    },
+    {
+      "id": "sm_darnath_lysander",
+      "name": "Darnath Lysander",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "IMPERIAL FISTS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "sm_deathwatch_terminators",
+      "name": "Deathwatch Terminator Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DEATHWATCH",
+        "INFANTRY",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 190
+        },
+        {
+          "label": "10 models",
+          "pts": 350
+        }
+      ]
+    },
+    {
+      "id": "sm_adrax_agatone",
+      "name": "Adrax Agatone",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SALAMANDERS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "sm_aggressor_squad",
+      "name": "Aggressor Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "sm_ancient",
+      "name": "Ancient",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "sm_apothecary",
+      "name": "Apothecary",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Narthecium and Gene-seed Recovery abilities."
+    },
+    {
+      "id": "sm_apothecary_biologis",
+      "name": "Apothecary Biologis",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_assault_intercessors",
+      "name": "Assault Intercessor Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ]
+    },
+    {
+      "id": "sm_assault_intercessors_jump",
+      "name": "Assault Intercessors with Jump Packs",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        },
+        {
+          "label": "10 models",
+          "pts": 170
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Hammer of Wrath abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_bladeguard_ancient",
+      "name": "Bladeguard Ancient",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ]
+    },
+    {
+      "id": "sm_bladeguard_veterans",
+      "name": "Bladeguard Veteran Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "sm_captain_gravis",
+      "name": "Captain in Gravis Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "sm_captain_sicarius",
+      "name": "Captain Sicarius",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This model loses the Knight Champion of Macragge ability."
+    },
+    {
+      "id": "sm_captain_jump_pack",
+      "name": "Captain with Jump Pack",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_cato_sicarius",
+      "name": "Cato Sicarius",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ],
+      "rulesAdaptations": "This model loses the Knight Champion of Macragge ability."
+    },
+    {
+      "id": "sm_chaplain",
+      "name": "Chaplain",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "sm_chaplain_jump_pack",
+      "name": "Chaplain with Jump Pack",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_chief_librarian_tigurius",
+      "name": "Chief Librarian Tigurius",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This model loses the Master of Prescience ability."
+    },
+    {
+      "id": "sm_eradicator_squad",
+      "name": "Eradicator Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "sm_heavy_intercessors",
+      "name": "Heavy Intercessor Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 200
+        }
+      ]
+    },
+    {
+      "id": "sm_hellblaster_squad",
+      "name": "Hellblaster Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 110
+        }
+      ],
+      "rulesAdaptations": "This unit loses the For the Chapter! ability."
+    },
+    {
+      "id": "sm_infernus_squad",
+      "name": "Infernus Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        },
+        {
+          "label": "10 models",
+          "pts": 180
+        }
+      ]
+    },
+    {
+      "id": "sm_intercessor_squad",
+      "name": "Intercessor Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Objective Secured ability."
+    },
+    {
+      "id": "sm_iron_father_feirros",
+      "name": "Iron Father Feirros",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "IRON HANDS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Iron Father and Master of the Forge abilities."
+    },
+    {
+      "id": "sm_judiciar",
+      "name": "Judiciar",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_korsarro_khan",
+      "name": "Kor'sarro Khan",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "WHITE SCARS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "sm_lieutenant",
+      "name": "Lieutenant",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "sm_marneus_calgar",
+      "name": "Marneus Calgar",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 200
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Master Tactician ability."
+    },
+    {
+      "id": "sm_captain_titus",
+      "name": "Captain Titus",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "sm_marneus_calgar_antilochus",
+      "name": "Marneus Calgar in Armour of Antilochus",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 140
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Master Tactician ability."
+    },
+    {
+      "id": "sm_pedro_kantor",
+      "name": "Pedro Kantor",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "CRIMSON FISTS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "sm_roboute_guilliman",
+      "name": "Roboute Guilliman",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "MONSTER",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "PRIMARCH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 340
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Armour of Fate ability."
+    },
+    {
+      "id": "sm_sternguard_veterans",
+      "name": "Sternguard Veteran Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 170
+        }
+      ]
+    },
+    {
+      "id": "sm_techmarine",
+      "name": "Techmarine",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "sm_tor_garadon",
+      "name": "Tor Garadon",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "IMPERIAL FISTS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "GRAVIS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "sm_uriel_ventris",
+      "name": "Uriel Ventris",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "ULTRAMARINES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ],
+      "rulesAdaptations": "This model loses the Master of the Fleet ability."
+    },
+    {
+      "id": "sm_vanguard_veterans_jump",
+      "name": "Vanguard Veteran Squad with Jump Packs",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 200
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_vulkan_hestan",
+      "name": "Vulkan He'stan",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SALAMANDERS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "sm_chaplain_grimaldus",
+      "name": "Chaplain Grimaldus",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "4 models",
+          "pts": 110
+        }
+      ]
+    },
+    {
+      "id": "sm_high_marshal_helbrecht",
+      "name": "High Marshal Helbrecht",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ]
+    },
+    {
+      "id": "sm_castellan",
+      "name": "Castellan",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_crusade_ancient",
+      "name": "Crusade Ancient",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "sm_emperors_champion",
+      "name": "Emperor's Champion",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "sm_execrator",
+      "name": "Execrator",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "sm_marshal",
+      "name": "Marshal",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "sm_crusader_squad",
+      "name": "Crusader Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ]
+    },
+    {
+      "id": "sm_astorath",
+      "name": "Astorath",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_chief_librarian_mephiston",
+      "name": "Chief Librarian Mephiston",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit loses the The Quickening ability."
+    },
+    {
+      "id": "sm_commander_dante",
+      "name": "Commander Dante",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_lemartes",
+      "name": "Lemartes",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_the_sanguinor",
+      "name": "The Sanguinor",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 130
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Miraculous Saviour abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_blood_angels_captain",
+      "name": "Blood Angels Captain",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "sm_death_company_captain",
+      "name": "Death Company Captain",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This model loses the Death Visions of Sanguinius ability."
+    },
+    {
+      "id": "sm_death_company_captain_jetpack",
+      "name": "Death Company Captain with Jetpack",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Death Visions of Sanguinius and Deep Strike abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_sanguinary_priest",
+      "name": "Sanguinary Priest",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "sm_death_company_marines",
+      "name": "Death Company Marines",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ]
+    },
+    {
+      "id": "sm_death_company_marines_bolt_rifles",
+      "name": "Death Company Marines with Bolt Rifles",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Visions of Heresy ability."
+    },
+    {
+      "id": "sm_death_company_marines_jump_packs",
+      "name": "Death Company Marines with Jump Packs",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 120
+        },
+        {
+          "label": "10 models",
+          "pts": 230
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_sanguinary_guard",
+      "name": "Sanguinary Guard",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLOOD ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 125
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_asmodai",
+      "name": "Asmodai",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_azrael",
+      "name": "Azrael",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 125
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Masterful Tactician ability."
+    },
+    {
+      "id": "sm_ezekiel",
+      "name": "Ezekiel",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "sm_lazarus",
+      "name": "Lazarus",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_lion_eljonson",
+      "name": "Lion El'Jonson",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "MONSTER",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "PRIMARCH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 315
+        }
+      ]
+    },
+    {
+      "id": "sm_inner_circle_companions",
+      "name": "Inner Circle Companions",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DARK ANGELS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "sm_sword_brethren",
+      "name": "Sword Brethren",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "BLACK TEMPLARS",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 130
+        },
+        {
+          "label": "10 models",
+          "pts": 260
+        }
+      ]
+    },
+    {
+      "id": "sm_watch_captain_artemis",
+      "name": "Watch Captain Artemis",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DEATHWATCH",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ]
+    },
+    {
+      "id": "sm_watch_master",
+      "name": "Watch Master",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DEATHWATCH",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "sm_deathwatch_veterans",
+      "name": "Deathwatch Veterans",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "DEATHWATCH",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 190
+        }
+      ]
+    },
+    {
+      "id": "sm_njal_stormcaller",
+      "name": "Njal Stormcaller",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "sm_ragnar_blackmane",
+      "name": "Ragnar Blackmane",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "sm_ulrik_the_slayer",
+      "name": "Ulrik the Slayer",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_iron_priest",
+      "name": "Iron Priest",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "sm_wolf_guard_battle_leader",
+      "name": "Wolf Guard Battle Leader",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "sm_wolf_priest",
+      "name": "Wolf Priest",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sm_bloodclaws",
+      "name": "Bloodclaws",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 135
+        }
+      ]
+    },
+    {
+      "id": "sm_grey_hunters",
+      "name": "Grey Hunters",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 165
+        }
+      ]
+    },
+    {
+      "id": "sm_wolf_guard_headtakers",
+      "name": "Wolf Guard Headtakers",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "sm_wulfen",
+      "name": "Wulfen",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
+        {
+          "label": "10 models",
+          "pts": 170
+        }
+      ]
+    },
+    {
+      "id": "sm_wulfen_storm_shields",
+      "name": "Wulfen with Storm Shields",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 200
+        }
+      ]
+    },
+    {
+      "id": "sm_fenrisian_wolves",
+      "name": "Fenrisian Wolves",
+      "type": "BEAST",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "SPACE WOLVES",
+        "BEAST",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "This unit's Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sm_company_heroes",
+      "name": "Company Heroes",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS ASTARTES",
+        "INFANTRY",
+        "IMPERIUM",
+        "TACTICUS"
+      ],
+      "sizes": [
+        {
+          "label": "4 models",
+          "pts": 105
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Company Heroes ability."
+    }
+  ]
+}

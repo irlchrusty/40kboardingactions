@@ -1,0 +1,551 @@
+{
+  "detachments": [
+    {
+      "id": "orks_kaptin_killers",
+      "name": "Kaptin Killers",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Comin' Through",
+        "desc": "In your Movement phase, Desperate Escape tests taken for ORKS models in your army are automatically passed, and each time an ORKS unit from your army makes a Normal, Advance or Fall Back move, it can move through other units as if they were not there, provided those models have a lower Toughness characteristic than it."
+      },
+      "enhancements": [
+        {
+          "id": "enh_orks_tellyporta",
+          "name": "Tellyporta",
+          "desc": "In the Deploy Armies step, select one Meganobz unit from your army. Until the end of the battle, models in that unit have the Deep Strike ability.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_orks_gnasher_squig_crates",
+          "name": "Gnasher Squig Crates",
+          "desc": "WARBOSS model only. In your Command phase, you can select one Nobz or Meganobz unit from your army (excluding Battle-shocked units) that is within 6\" of the bearer and is within range of an objective marker. If there is no enemy units within range of that objective marker, it is Secured by your army.",
+          "requiresKeywords": [
+            "WARBOSS"
+          ]
+        }
+      ],
+      "units": [
+        {
+          "id": "orks_big_mek_mega_armour",
+          "max": 1
+        },
+        {
+          "id": "orks_beastboss",
+          "max": 1
+        },
+        {
+          "id": "orks_warboss",
+          "max": 1
+        },
+        {
+          "id": "orks_warboss_mega_armour",
+          "max": 1
+        },
+        {
+          "id": "orks_meganobz",
+          "max": 2
+        },
+        {
+          "id": "orks_nobz",
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "orks_ramship_raiders",
+      "name": "Ramship Raiders",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Belligerent Boarders",
+        "desc": "Each time an attack targets an ORKS unit from your army (excluding GROT units), if the Strength characteristic of the attack is greater than the Toughness characteristic of that Orks unit, subtract 1 from the Wound roll."
+      },
+      "enhancements": [
+        {
+          "id": "enh_orks_living_battering_ram",
+          "name": "Living Battering Ram",
+          "desc": "Each time the bearer tries to operate a closed Hatchway, your opponent cannot try to prevent it. In addition, each time the bearer opens a Hatchway, each enemy unit within 6\" of that Hatchway and wholly on the opposite side of it from the bearer must take a Battle-shock test.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_orks_scarred_brute",
+          "name": "Scarred Brute",
+          "desc": "The bearer has the Feel No Pain 5+ ability.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "orks_beastboss",
+          "max": 1
+        },
+        {
+          "id": "orks_warboss",
+          "max": 1
+        },
+        {
+          "id": "orks_warboss_mega_armour",
+          "max": 1
+        },
+        {
+          "id": "orks_nobz",
+          "max": 1,
+          "allowedSizeIndices": [
+            0
+          ]
+        },
+        {
+          "id": "orks_boss_snikrot",
+          "max": 1
+        },
+        {
+          "id": "orks_zodgrod_wortsnagga",
+          "max": 1
+        },
+        {
+          "id": "orks_big_mek",
+          "max": 1
+        },
+        {
+          "id": "orks_big_mek_shokk_attack_gun",
+          "max": 1
+        },
+        {
+          "id": "orks_mek",
+          "max": 1
+        },
+        {
+          "id": "orks_painboss",
+          "max": 1
+        },
+        {
+          "id": "orks_painboy",
+          "max": 1
+        },
+        {
+          "id": "orks_weirdboy",
+          "max": 1
+        },
+        {
+          "id": "orks_wurrboy",
+          "max": 1
+        },
+        {
+          "id": "orks_beast_snagga_boyz",
+          "max": 3
+        },
+        {
+          "id": "orks_boyz",
+          "max": 3
+        },
+        {
+          "id": "orks_burna_boyz",
+          "max": 1
+        },
+        {
+          "id": "orks_flash_gitz",
+          "max": 1
+        },
+        {
+          "id": "orks_gretchin",
+          "max": 1
+        },
+        {
+          "id": "orks_kommandos",
+          "max": 1
+        },
+        {
+          "id": "orks_stormboyz",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "orks_big_mek_mega_armour",
+      "name": "Big Mek in Mega Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "MEGA ARMOUR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Fix Dat Armour Up ability."
+    },
+    {
+      "id": "orks_beastboss",
+      "name": "Beastboss",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "WARBOSS",
+        "BEAST SNAGGA"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "orks_warboss",
+      "name": "Warboss",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "WARBOSS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "orks_warboss_mega_armour",
+      "name": "Warboss in Mega Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "WARBOSS",
+        "MEGA ARMOUR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "orks_meganobz",
+      "name": "Meganobz",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "MEGA ARMOUR"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 95
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Krumpin' Time ability."
+    },
+    {
+      "id": "orks_nobz",
+      "name": "Nobz",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 95
+        },
+        {
+          "label": "10 models",
+          "pts": 210
+        }
+      ]
+    },
+    {
+      "id": "orks_boss_snikrot",
+      "name": "Boss Snikrot",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Kunnin' Infiltrator ability."
+    },
+    {
+      "id": "orks_zodgrod_wortsnagga",
+      "name": "Zodgrod Wortsnagga",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Special Dose abilities."
+    },
+    {
+      "id": "orks_big_mek",
+      "name": "Big Mek",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "orks_big_mek_shokk_attack_gun",
+      "name": "Big Mek with Shokk Attack Gun",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "orks_mek",
+      "name": "Mek",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ]
+    },
+    {
+      "id": "orks_painboss",
+      "name": "Painboss",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "orks_painboy",
+      "name": "Painboy",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "orks_weirdboy",
+      "name": "Weirdboy",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses Waagh! Energy and Da Jump abilities."
+    },
+    {
+      "id": "orks_wurrboy",
+      "name": "Wurrboy",
+      "type": "CHARACTER",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "BEAST SNAGGA"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Unstable Oracle ability."
+    },
+    {
+      "id": "orks_beast_snagga_boyz",
+      "name": "Beast Snagga Boyz",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "BATTLELINE",
+        "MOB",
+        "BEAST SNAGGA"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "orks_boyz",
+      "name": "Boyz",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "BATTLELINE",
+        "MOB"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Get Da Good Bitz ability."
+    },
+    {
+      "id": "orks_burna_boyz",
+      "name": "Burna Boyz",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 60
+        },
+        {
+          "label": "10 models",
+          "pts": 120
+        }
+      ]
+    },
+    {
+      "id": "orks_flash_gitz",
+      "name": "Flash Gitz",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ]
+    },
+    {
+      "id": "orks_gretchin",
+      "name": "Gretchin",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY",
+        "GROTS"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "orks_kommandos",
+      "name": "Kommandos",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 120
+        }
+      ]
+    },
+    {
+      "id": "orks_stormboyz",
+      "name": "Stormboyz",
+      "type": "INFANTRY",
+      "keywords": [
+        "ORKS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 65
+        },
+        {
+          "label": "10 models",
+          "pts": 130
+        }
+      ],
+      "rulesAdaptations": "This model's Movement characteristic is reduced to 9\"."
+    }
+  ]
+}

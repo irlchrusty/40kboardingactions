@@ -1,0 +1,566 @@
+{
+  "detachments": [
+    {
+      "id": "am_tempestus_boarding_regiment",
+      "name": "Tempestus Boarding Regiment",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Purge-Sweep Protocols",
+        "desc": "Each time a MILITARUM TEMPESTUS unit from your army is selected to shoot, if one or more models from that unit are within 1\" of an open Hatchway and every model in that unit is on the same side of that Hatchway, select one enemy unit on the opposite side of that Hatchway from the unit. Until the end of the phase, ranged weapons equipped by models in that unit have the [LETHAL HITS] ability while targeting that enemy unit. Tempestus Scion units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_am_covert_breach",
+          "name": "Covert Breach",
+          "desc": "At the start of the first battle round, the bearer's unit may make a Normal move of up to 6\".",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_am_elimination_force",
+          "name": "Elimination Force",
+          "desc": "At the start of the first battle round, select one enemy unit. Each time a model in the bearer's unit makes an attack that targets that enemy unit, if the Strength characteristic of the attack is less than the Toughness characteristic of that enemy unit, add 1 to the Wound roll.",
+          "requiresKeywords": []
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "am_commissar",
+          "am_ministorum_priest",
+          "am_ogryn_bodyguard",
+          "am_primaris_psyker",
+          "am_tech_priest_enginseer"
+        ]
+      ],
+      "units": [
+        {
+          "id": "am_militarum_tempestus_command_squad",
+          "max": 1
+        },
+        {
+          "id": "am_commissar",
+          "max": 1
+        },
+        {
+          "id": "am_ministorum_priest",
+          "max": 1
+        },
+        {
+          "id": "am_ogryn_bodyguard",
+          "max": 1
+        },
+        {
+          "id": "am_primaris_psyker",
+          "max": 1
+        },
+        {
+          "id": "am_tech_priest_enginseer",
+          "max": 1
+        },
+        {
+          "id": "am_tempestus_scions",
+          "max": 3
+        },
+        {
+          "id": "am_bullgryn_squad",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "am_embarked_regiment",
+      "name": "Embarked Regiment",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Get Down!",
+        "desc": "Each time an ASTRA MILITARUM unit from your army is selected to shoot, you can select one other friendly ASTRA MILITARUM unit (excluding OGRYN units). Until the end of the phase, models in the attacking unit can ignore models in the friendly unit for the purposes of determining visibility."
+      },
+      "enhancements": [
+        {
+          "id": "enh_am_er_rigged_blind_grenades",
+          "name": "Rigged Blind Grenades",
+          "desc": "Once per battle, when an enemy unit opens a Hatchway, if the bearer is on the battlefield, it can use this Enhancement. If it does, roll one D6: on a 2+, that enemy unit is Battle-shocked.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_am_er_shipboard_veteran",
+          "name": "Shipboard Veteran",
+          "desc": "Each time you target an ASTRA MILITARUM unit from your army with a Strategem, if that unit is visible to the bearer, roll one D6: on a 4+, you gain 1CP.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "am_commissar",
+          "max": 1
+        },
+        {
+          "id": "am_ogryn_bodyguard",
+          "max": 1
+        },
+        {
+          "id": "am_primaris_psyker",
+          "max": 1
+        },
+        {
+          "id": "am_ministorum_priest",
+          "max": 1
+        },
+        {
+          "id": "am_tech_priest_enginseer",
+          "max": 1
+        },
+        {
+          "id": "am_bullgryn_squad",
+          "max": 1
+        },
+        {
+          "id": "am_cadian_castellan",
+          "max": 1
+        },
+        {
+          "id": "am_cadian_command_squad",
+          "max": 1
+        },
+        {
+          "id": "am_gaunts_ghosts",
+          "max": 1
+        },
+        {
+          "id": "am_nork_deddog",
+          "max": 1
+        },
+        {
+          "id": "am_sly_marbo",
+          "max": 1
+        },
+        {
+          "id": "am_ursula_creed",
+          "max": 1
+        },
+        {
+          "id": "am_cadian_shock_troops",
+          "max": 3
+        },
+        {
+          "id": "am_catachan_jungle_fighters",
+          "max": 3
+        },
+        {
+          "id": "am_death_korps_of_krieg",
+          "max": 3
+        },
+        {
+          "id": "am_kasrkin",
+          "max": 1
+        },
+        {
+          "id": "am_ratlings",
+          "max": 1
+        },
+        {
+          "id": "am_ogryn_squad",
+          "max": 1
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "am_cadian_castellan",
+          "am_cadian_command_squad",
+          "am_gaunts_ghosts",
+          "am_sly_marbo",
+          "am_ursula_creed"
+        ],
+        [
+          "am_commissar",
+          "am_ministorum_priest",
+          "am_nork_deddog",
+          "am_ogryn_bodyguard",
+          "am_primaris_psyker",
+          "am_tech_priest_enginseer"
+        ]
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "am_militarum_tempestus_command_squad",
+      "name": "Militarum Tempestus Command Squad",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "MILITARUM TEMPESTUS",
+        "INFANTRY",
+        "CHARACTER",
+        "OFFICER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "am_commissar",
+      "name": "Commissar",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "OFFICER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 30
+        }
+      ]
+    },
+    {
+      "id": "am_ministorum_priest",
+      "name": "Ministorum Priest",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "OFFICER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 35
+        }
+      ]
+    },
+    {
+      "id": "am_ogryn_bodyguard",
+      "name": "Ogryn Bodyguard",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "OGRYN",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "In the Form Boarding Squads step, this model must be attached to a Command Squad unit as specified in its Loyal Protector rule."
+    },
+    {
+      "id": "am_primaris_psyker",
+      "name": "Primaris Psyker",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "am_tech_priest_enginseer",
+      "name": "Tech-Priest Enginseer",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ]
+    },
+    {
+      "id": "am_tempestus_scions",
+      "name": "Tempestus Scions",
+      "type": "INFANTRY",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "MILITARUM TEMPESTUS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 70
+        },
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "am_bullgryn_squad",
+      "name": "Bullgryn Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "OGRYN",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "am_cadian_castellan",
+      "name": "Cadian Castellan",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "OFFICER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "am_cadian_command_squad",
+      "name": "Cadian Command Squad",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "OFFICER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "The Master Vox wargear ability only allows the unit's OFFICER to issue orders up to 12\" away, instead of up to 24\", but when doing so, Walls and Closed Hatchways are ignored."
+    },
+    {
+      "id": "am_gaunts_ghosts",
+      "name": "Gaunt's Ghosts",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "OFFICER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "6 models",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Covert Stealth Team ability."
+    },
+    {
+      "id": "am_nork_deddog",
+      "name": "Nork Deddog",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "OGRYN",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Thunderous Head-butt ability. In the Form Boarding Squads step, this model must be attached to a Command Squad unit as specified in its Loyal Protector rule."
+    },
+    {
+      "id": "am_sly_marbo",
+      "name": "Sly Marbo",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Like Fighting a Shadow ability."
+    },
+    {
+      "id": "am_ursula_creed",
+      "name": "Ursula Creed",
+      "type": "CHARACTER",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Tactical Genius ability."
+    },
+    {
+      "id": "am_cadian_shock_troops",
+      "name": "Cadian Shock Troops",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "REGIMENT",
+        "PLATOON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Shock Troops ability. This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "am_catachan_jungle_fighters",
+      "name": "Catachan Jungle Fighters",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "REGIMENT",
+        "PLATOON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability. This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "am_death_korps_of_krieg",
+      "name": "Death Korps of Krieg",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM",
+        "REGIMENT",
+        "PLATOON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "am_kasrkin",
+      "name": "Kasrkin",
+      "type": "INFANTRY",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "IMPERIUM",
+        "REGIMENT"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 55
+        },
+        {
+          "label": "10 models",
+          "pts": 110
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "am_ratlings",
+      "name": "Ratlings",
+      "type": "INFANTRY",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Shoot Sharp and Scarper ability."
+    },
+    {
+      "id": "am_ogryn_squad",
+      "name": "Ogryn Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ASTRA MILITARUM",
+        "OGRYN",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 60
+        }
+      ]
+    }
+  ]
+}

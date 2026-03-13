@@ -1,0 +1,123 @@
+{
+  "detachments": [
+    {
+      "id": "ec_sublime_strike",
+      "name": "Sublime Strike",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Dark Radiance",
+        "desc": "Each time an EMPEROR'S CHILDREN unit from your army makes a Normal, Advance or Charge move, models in that unit can move through friendly and enemy models. Terminator squads can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ec_venom_six_fanged",
+          "name": "Venom of the Six-Fanged Serpent",
+          "desc": "Add 1 to the Strength and Damage characteristics of the bearer's melee weapons and improve the Armour Penetration characteristic of those weapons by 2.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ec_daemonshrieker",
+          "name": "Daemonshrieker",
+          "desc": "In your shooting phase, you can select one closed Hatchway within 12\" of and visible to the bearer. If you do, roll one D6: on a 2+ open that Hatchway and, until the end of the battle, that Hatchway cannot be closed.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ec_lord_kakophonist",
+          "max": 2
+        },
+        {
+          "id": "ec_lucius",
+          "max": 1
+        },
+        {
+          "id": "ec_flawless_blades",
+          "max": 2
+        },
+        {
+          "id": "ec_chaos_terminators",
+          "max": 2
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "ec_lord_kakophonist",
+      "name": "Lord Kakophonist",
+      "type": "CHARACTER",
+      "keywords": [
+        "EMPEROR'S CHILDREN",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "SLAANESH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "ec_lucius",
+      "name": "Lucius the Eternal",
+      "type": "CHARACTER",
+      "keywords": [
+        "EMPEROR'S CHILDREN",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "SLAANESH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "ec_flawless_blades",
+      "name": "Flawless Blades",
+      "type": "INFANTRY",
+      "keywords": [
+        "EMPEROR'S CHILDREN",
+        "INFANTRY",
+        "CHAOS",
+        "SLAANESH"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 100
+        },
+        {
+          "label": "6 models",
+          "pts": 200
+        }
+      ]
+    },
+    {
+      "id": "ec_chaos_terminators",
+      "name": "Chaos Terminators",
+      "type": "INFANTRY",
+      "keywords": [
+        "EMPEROR'S CHILDREN",
+        "INFANTRY",
+        "CHAOS",
+        "SLAANESH",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 145
+        }
+      ]
+    }
+  ]
+}

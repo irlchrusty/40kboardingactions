@@ -1,0 +1,274 @@
+{
+  "detachments": [
+    {
+      "id": "we_skullsworn",
+      "name": "Skullsworn",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Reap the Tally",
+        "desc": "Each time a WORLD EATERS unit from your army (excluding Kharn the Betrayer) is destroyed by a melee attack and it has not fought this phase, roll one D6: on a 5+ do not remove it from play. The destroyed model can fight after the attacking unit has finished making it's attacks, and is then removed from play. Chaos Terminator squads can perform the Secure Site Tactical Manoeuve as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_we_frenzied",
+          "name": "Frenzied",
+          "desc": "You can re-roll Advance and Charge rolls made for the bearer, and the bearer is eligible to declare a charge in a turn in which it Advanced.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_we_carmine_corona",
+          "name": "Carmine Corona",
+          "desc": "When the bearer destroys a unit for the first time, until the end of the battle, the bearer has an Objective Control characteristic of 5.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "we_kharn",
+          "max": 1
+        },
+        {
+          "id": "we_master_of_executions",
+          "max": 2
+        },
+        {
+          "id": "we_eightbound",
+          "max": 2
+        },
+        {
+          "id": "we_exalted_eightbound",
+          "max": 2
+        },
+        {
+          "id": "we_chaos_terminators",
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "we_boarding_butchers",
+      "name": "Boarding Butchers",
+      "maxCharacters": 2,
+      "exclusiveUnitGroups": [
+        [
+          "we_eightbound",
+          "we_exalted_eightbound"
+        ]
+      ],
+      "keywordRatio": {
+        "numeratorUnitIds": [
+          "we_jakhals"
+        ],
+        "denominatorUnitIds": [
+          "we_khorne_berserkers"
+        ],
+        "description": "Jakhals units cannot outnumber Khorne Berserkers units"
+      },
+      "specialRule": {
+        "name": "Focused Ferocity",
+        "desc": "Each time a WORLD EATERS unit from your army declares a charge, each target of that charge must take a Battle-shock test."
+      },
+      "enhancements": [
+        {
+          "id": "enh_we_chosen_of_khorne",
+          "name": "Chosen of Khorne",
+          "desc": "Once the bearer has destroyed one or more enemy units, until the end of the battle, each time you make a Blessings of Khorne roll, if the bearer is on the battlefield, you can re-roll all of the dice (if you do, you must re-roll every dice).",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_we_battle_lust",
+          "name": "Battle Lust",
+          "desc": "Each time an enemy unit is selected to shoot, after that unit has shot, if the bearer was the target of one or more of those attacks, it can make a Battle Lust move. To do so, roll one D6: the bearer can be moved a distance in inches up to the result, but must end that move as close as possible to the attacking unit. When doing so, the bearer can be moved within Engagement range of that enemy unit, but only that enemy unit.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "we_kharn",
+          "max": 1
+        },
+        {
+          "id": "we_master_of_executions",
+          "max": 2
+        },
+        {
+          "id": "we_chaos_terminators",
+          "max": 1
+        },
+        {
+          "id": "we_eightbound",
+          "max": 1
+        },
+        {
+          "id": "we_exalted_eightbound",
+          "max": 1
+        },
+        {
+          "id": "we_khorne_berserkers",
+          "max": 3
+        },
+        {
+          "id": "we_jakhals",
+          "max": 3
+        },
+        {
+          "id": "we_chaos_spawn",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "we_kharn",
+      "name": "Kharn the Betrayer",
+      "type": "CHARACTER",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "KHORNE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the The Betrayer ability."
+    },
+    {
+      "id": "we_master_of_executions",
+      "name": "Master of Executions",
+      "type": "CHARACTER",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "KHORNE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "we_eightbound",
+      "name": "Eightbound",
+      "type": "INFANTRY",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON",
+        "POSSESSED"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 135
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "we_exalted_eightbound",
+      "name": "Exalted Eightbound",
+      "type": "INFANTRY",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON",
+        "POSSESSED"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 140
+        }
+      ],
+      "rulesAdaptations": "This unit's Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "we_chaos_terminators",
+      "name": "Chaos Terminators",
+      "type": "INFANTRY",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "CHAOS",
+        "KHORNE",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 175
+        }
+      ]
+    },
+    {
+      "id": "we_khorne_berserkers",
+      "name": "Khorne Berserkers",
+      "type": "BATTLELINE",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "KHORNE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 180
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Blood Surge ability."
+    },
+    {
+      "id": "we_jakhals",
+      "name": "Jakhals",
+      "type": "INFANTRY",
+      "keywords": [
+        "WORLD EATERS",
+        "INFANTRY",
+        "CHAOS",
+        "KHORNE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Objective Ravaged ability. This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "we_chaos_spawn",
+      "name": "Chaos Spawn",
+      "type": "BEAST",
+      "keywords": [
+        "WORLD EATERS",
+        "BEAST",
+        "CHAOS",
+        "KHORNE"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    }
+  ]
+}

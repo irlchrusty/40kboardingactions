@@ -1,0 +1,402 @@
+{
+  "detachments": [
+    {
+      "id": "cust_voyagers",
+      "name": "Voyagers into Darkness",
+      "maxCharacters": 2,
+      "keywordRatio": {
+        "numeratorKeyword": "ANATHEMA PSYKANA",
+        "denominatorUnitIds": [
+          "cust_custodian_guard",
+          "cust_allarus_custodians",
+          "cust_custodian_wardens"
+        ],
+        "description": "ANATHEMA PSYKANA units cannot outnumber Custodian Guard, Allarus Custodians and Custodian Wardens combined"
+      },
+      "specialRule": {
+        "name": "Overwhelming Magnificence",
+        "desc": "While an enemy unit is within Engagement range of one or more ADEPTUS CUSTODES units from your army, subtract 1 from the Objective Control characteristic of models in that enemy unit."
+      },
+      "enhancements": [
+        {
+          "id": "enh_voidstrider",
+          "name": "Voidstrider",
+          "desc": "Add 2 to the bearer's Move characteristic.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_mantle_emissary",
+          "name": "Mantle of the Emissary",
+          "desc": "The bearer has an Objective Control characteristic of 5.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "cust_blade_champion",
+          "max": 1
+        },
+        {
+          "id": "cust_custodian_guard",
+          "max": 3
+        },
+        {
+          "id": "cust_prosecutors",
+          "max": 1
+        },
+        {
+          "id": "cust_allarus_custodians",
+          "max": 1
+        },
+        {
+          "id": "cust_custodian_wardens",
+          "max": 1
+        },
+        {
+          "id": "cust_vigilators",
+          "max": 1
+        },
+        {
+          "id": "cust_witchseekers",
+          "max": 1
+        },
+        {
+          "id": "cust_valerian",
+          "max": 1
+        },
+        {
+          "id": "cust_trajann_valoris",
+          "max": 1
+        },
+        {
+          "id": "cust_shield_captain",
+          "max": 1
+        },
+        {
+          "id": "cust_shield_captain_allarus",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "cust_black_ship_guardians",
+      "name": "Black Ship Guardians",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Priority Quarry",
+        "desc": "At the start of the first battle round, you can select up to two enemy units to be your army's quarry, one of which must be your opponent's WARLORD. Each time an ANATHEMA PSYKANA unit from your army makes an attack that targets one of your army's quarries, re-roll a Hit roll of 1. Each time an ANATHEMA PSYKANA unit from your army declares a charge, it can include one or more of your army's quarries as targets of that charge, even if they are not visible to it."
+      },
+      "enhancements": [
+        {
+          "id": "enh_vratine_aquila",
+          "name": "The Vratine Aquila (Aura)",
+          "desc": "ANATHEMA PSYKANA model only. While a friendly ANATHEMA PSYKANA unit is within 3\" of the bearer, models in that unit have a 4+ invulnerable save.",
+          "requiresKeywords": [
+            "ANATHEMA PSYKANA"
+          ]
+        },
+        {
+          "id": "enh_sinister_presence",
+          "name": "Sinister Presence (Aura)",
+          "desc": "ANATHEMA PSYKANA models only. While an enemy unit is within 6\" of the bearer (when measuring this distance, Walls and closed Hatchways are ignored), that unit cannot Seize objective markers and, in your opponents Command Phase, that unit must take a Battle-shock test. This Enhancement cannot cause a unit to take two Battle-shock tests in the same phase.",
+          "requiresKeywords": [
+            "ANATHEMA PSYKANA"
+          ]
+        }
+      ],
+      "units": [
+        {
+          "id": "cust_prosecutors",
+          "max": 3
+        },
+        {
+          "id": "cust_vigilators",
+          "max": 3
+        },
+        {
+          "id": "cust_witchseekers",
+          "max": 1
+        },
+        {
+          "id": "cust_valerian",
+          "max": 1,
+          "requiresCharacterWithKeyword": "ANATHEMA PSYKANA"
+        },
+        {
+          "id": "cust_shield_captain",
+          "max": 1,
+          "requiresCharacterWithKeyword": "ANATHEMA PSYKANA"
+        },
+        {
+          "id": "cust_shield_captain_allarus",
+          "max": 1,
+          "requiresCharacterWithKeyword": "ANATHEMA PSYKANA"
+        },
+        {
+          "id": "cust_aleya",
+          "max": 1
+        },
+        {
+          "id": "cust_knight_centura",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "cust_blade_champion",
+      "name": "Blade Champion",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Martial Inspiration ability."
+    },
+    {
+      "id": "cust_custodian_guard",
+      "name": "Custodian Guard",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "4 models",
+          "pts": 160
+        },
+        {
+          "label": "5 models",
+          "pts": 200
+        }
+      ],
+      "rulesAdaptations": "This unit cannot perform the Secure Site Tactical Manoeuver."
+    },
+    {
+      "id": "cust_prosecutors",
+      "name": "Prosecutors",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "IMPERIUM",
+        "ANATHEMA PSYKANA"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 50
+        },
+        {
+          "label": "10 models",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "cust_allarus_custodians",
+      "name": "Allarus Custodians",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "TERMINATOR",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 110
+        },
+        {
+          "label": "3 models",
+          "pts": 165
+        }
+      ],
+      "rulesAdaptations": "This unit loses the From Golden Light ability."
+    },
+    {
+      "id": "cust_custodian_wardens",
+      "name": "Custodian Wardens",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "4 models",
+          "pts": 210
+        },
+        {
+          "label": "5 models",
+          "pts": 260
+        }
+      ]
+    },
+    {
+      "id": "cust_vigilators",
+      "name": "Vigilators",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "IMPERIUM",
+        "ANATHEMA PSYKANA"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 55
+        },
+        {
+          "label": "10 models",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "cust_witchseekers",
+      "name": "Witchseekers",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "IMPERIUM",
+        "ANATHEMA PSYKANA"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 55
+        },
+        {
+          "label": "10 models",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "cust_valerian",
+      "name": "Valerian",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 110
+        }
+      ]
+    },
+    {
+      "id": "cust_trajann_valoris",
+      "name": "Trajann Valoris",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 140
+        }
+      ]
+    },
+    {
+      "id": "cust_shield_captain",
+      "name": "Shield Captain",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Mastery of the Stances ability."
+    },
+    {
+      "id": "cust_shield_captain_allarus",
+      "name": "Shield Captain in Allarus Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "TERMINATOR",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 130
+        }
+      ]
+    },
+    {
+      "id": "cust_aleya",
+      "name": "Aleya",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM",
+        "ANATHEMA PSYKANA"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ]
+    },
+    {
+      "id": "cust_knight_centura",
+      "name": "Knight-Centura",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTUS CUSTODES",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "ANATHEMA PSYKANA"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    }
+  ]
+}

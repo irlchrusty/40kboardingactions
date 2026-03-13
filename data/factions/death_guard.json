@@ -1,0 +1,587 @@
+{
+  "detachments": [
+    {
+      "id": "dg_arch_contaminators",
+      "name": "Arch-Contaminators",
+      "specialRule": {
+        "name": "Inescapable Corruption",
+        "desc": "Each time an enemy unit is selected to perform a Tactical Manoeuvre, if that unit is within Contagion Range of one or more units from your army, that enemy unit must take a Leadership test. If that test is failed, that Tactical Manoeuvre has no effect (that enemy unit is still eligible to shoot and declare a charge this turn as normal). In addition, in your Command Phase, roll one D6 for each objective marker that is within Contagion Range of one or more units from your army and is Secured by your opponents army: on a 5+, that objective is no longer secured. Blightlord Terminator units may perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_dg_miasmic_odour",
+          "name": "Miasmic Odour",
+          "desc": "Add 3\" to the Contagion Range of the bearer.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dg_disgusting_reinvigoration",
+          "name": "Disgusting Reinvigoration",
+          "desc": "Each time the bearer destroys an enemy model with a melee attack, roll one D6: on a 5+, the bearer regains one lost wound (to a maximum of two wounds per phase).",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "dg_typhus",
+          "max": 1
+        },
+        {
+          "id": "dg_lord_of_contagion",
+          "max": 1
+        },
+        {
+          "id": "dg_lord_of_virulence",
+          "max": 1
+        },
+        {
+          "id": "dg_blightlord_terminators",
+          "max": 1
+        },
+        {
+          "id": "dg_deathshroud_terminators",
+          "max": 1
+        },
+        {
+          "id": "dg_chaos_spawn",
+          "max": 1
+        }
+      ],
+      "maxCharacters": 2
+    },
+    {
+      "id": "dg_unclean_uprising",
+      "name": "Unclean Uprising",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Relentless Spread",
+        "desc": "Each time a DEATH GUARD unit from your army makes a Consolidation move, it can move up to D3 + 3\" instead of up to 3\". If it cannot end that move within Engagement Range of one or more enemy units that are visible to it (and in Unit Coherency), it can still make that move, and when doing so can move in any direction."
+      },
+      "enhancements": [
+        {
+          "id": "enh_dg_pox_bearer",
+          "name": "Pox-Bearer",
+          "desc": "Once per battle, at the end of your Movement phase, the bearer can use this Enhancement. If it does, select one friendly Poxwalkers units within 9\" and visible to the bearer, return up to D3+2 destroyed models to that unit.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dg_hand_of_nurgle",
+          "name": "Hand of Nurgle",
+          "desc": "In your Command phase, select one objective marker that you control and is within range of the bearer. Roll a D6: on a 2+ that objective marker is Secured by your army.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "dg_lord_of_contagion",
+          "max": 1
+        },
+        {
+          "id": "dg_lord_of_virulence",
+          "max": 1
+        },
+        {
+          "id": "dg_typhus",
+          "max": 1
+        },
+        {
+          "id": "dg_chaos_spawn",
+          "max": 1
+        },
+        {
+          "id": "dg_lord_of_poxes",
+          "max": 1
+        },
+        {
+          "id": "dg_malignant_plaguecaster",
+          "max": 1
+        },
+        {
+          "id": "dg_biologus_putrifier",
+          "max": 1
+        },
+        {
+          "id": "dg_icon_bearer",
+          "max": 1
+        },
+        {
+          "id": "dg_foul_blightspawn",
+          "max": 1
+        },
+        {
+          "id": "dg_noxious_blightbringer",
+          "max": 1
+        },
+        {
+          "id": "dg_plague_surgeon",
+          "max": 1
+        },
+        {
+          "id": "dg_tallyman",
+          "max": 1
+        },
+        {
+          "id": "dg_poxwalkers",
+          "max": 6
+        }
+      ],
+      "maxFromGroup": [
+        {
+          "max": 1,
+          "unitIds": [
+            "dg_lord_of_poxes",
+            "dg_lord_of_contagion",
+            "dg_lord_of_virulence",
+            "dg_typhus",
+            "dg_malignant_plaguecaster"
+          ],
+          "description": "Only 1 of these lord units may be included in the list."
+        },
+        {
+          "max": 1,
+          "unitIds": [
+            "dg_biologus_putrifier",
+            "dg_icon_bearer",
+            "dg_foul_blightspawn",
+            "dg_noxious_blightbringer",
+            "dg_plague_surgeon",
+            "dg_tallyman"
+          ],
+          "description": "Only 1 of these specialist units may be included in the list."
+        }
+      ]
+    },
+    {
+      "id": "dg_vectors_of_decay",
+      "name": "Vectors of Decay",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Sevenfold Offerings",
+        "desc": "For every seven enemy models that have been destroyed, add 2\" to the Contagion Range of units from your army. Note that any increase to the Contagion Range of units from your army as a result of this rule does not take place while a unit from your army is attacking. In such an event, the increase will take place after such a unit has finished making its attacks."
+      },
+      "enhancements": [
+        {
+          "id": "enh_dg_foul_constitution",
+          "name": "Foul Constitution",
+          "desc": "Each time an attack is allocated to the bearer, subtract 1 from the Damage characteristic of the attack.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dg_fountaining_filth",
+          "name": "Fountaining Filth",
+          "desc": "When the bearer is destroyed, before removing it from the battlefield, select one enemy unit within engagement range of the bearer and roll one D6: On a 2-3, that enemy unit suffers one mortal wound, on a 4-5, that enemy unit suffers two mortal wounds, on a 6, that enemy unit suffers 3 mortal wounds.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "dg_lord_of_poxes",
+          "max": 1
+        },
+        {
+          "id": "dg_lord_of_contagion",
+          "max": 1
+        },
+        {
+          "id": "dg_lord_of_virulence",
+          "max": 1
+        },
+        {
+          "id": "dg_malignant_plaguecaster",
+          "max": 1
+        },
+        {
+          "id": "dg_typhus",
+          "max": 1
+        },
+        {
+          "id": "dg_poxwalkers",
+          "max": 3
+        },
+        {
+          "id": "dg_blightlord_terminators",
+          "max": 1
+        },
+        {
+          "id": "dg_chaos_spawn",
+          "max": 1
+        },
+        {
+          "id": "dg_deathshroud_terminators",
+          "max": 1
+        },
+        {
+          "id": "dg_biologus_putrifier",
+          "max": 1
+        },
+        {
+          "id": "dg_icon_bearer",
+          "max": 1
+        },
+        {
+          "id": "dg_foul_blightspawn",
+          "max": 1
+        },
+        {
+          "id": "dg_noxious_blightbringer",
+          "max": 1
+        },
+        {
+          "id": "dg_plague_surgeon",
+          "max": 1
+        },
+        {
+          "id": "dg_tallyman",
+          "max": 1
+        },
+        {
+          "id": "dg_plague_marines",
+          "max": 3
+        }
+      ],
+      "maxFromGroup": [
+        {
+          "max": 1,
+          "unitIds": [
+            "dg_lord_of_poxes",
+            "dg_lord_of_contagion",
+            "dg_lord_of_virulence",
+            "dg_typhus",
+            "dg_malignant_plaguecaster"
+          ],
+          "description": "Only 1 of these lord units may be included in the list."
+        },
+        {
+          "max": 1,
+          "unitIds": [
+            "dg_biologus_putrifier",
+            "dg_icon_bearer",
+            "dg_foul_blightspawn",
+            "dg_noxious_blightbringer",
+            "dg_plague_surgeon",
+            "dg_tallyman"
+          ],
+          "description": "Only 1 of these specialist units may be included in the list."
+        }
+      ],
+      "keywordRatio": {
+        "numeratorUnitIds": [
+          "dg_poxwalkers"
+        ],
+        "denominatorUnitIds": [
+          "dg_plague_marines"
+        ],
+        "description": "You cannot have more Poxwalkers units than Plague Marines units."
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "dg_typhus",
+      "name": "Typhus",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "EPIC HERO",
+        "CHAOS",
+        "NURGLE",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This model loses the Eater Plague ability."
+    },
+    {
+      "id": "dg_lord_of_contagion",
+      "name": "Lord of Contagion",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This model loses the Unholy Resilience ability."
+    },
+    {
+      "id": "dg_lord_of_virulence",
+      "name": "Lord of Virulence",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "dg_blightlord_terminators",
+      "name": "Blightlord Terminators",
+      "type": "INFANTRY",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHAOS",
+        "NURGLE",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 185
+        }
+      ]
+    },
+    {
+      "id": "dg_deathshroud_terminators",
+      "name": "Deathshroud Terminators",
+      "type": "INFANTRY",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHAOS",
+        "NURGLE",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 160
+        }
+      ]
+    },
+    {
+      "id": "dg_chaos_spawn",
+      "name": "Chaos Spawn",
+      "type": "BEAST",
+      "keywords": [
+        "DEATH GUARD",
+        "BEAST",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This model loses the Scouts ability."
+    },
+    {
+      "id": "dg_lord_of_poxes",
+      "name": "Lord of Poxes",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "dg_malignant_plaguecaster",
+      "name": "Malignant Plaguecaster",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "dg_biologus_putrifier",
+      "name": "Biologus Putrifier",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "dg_icon_bearer",
+      "name": "Icon Bearer",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ]
+    },
+    {
+      "id": "dg_foul_blightspawn",
+      "name": "Foul Blightspawn",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "dg_noxious_blightbringer",
+      "name": "Noxious Blightbringer",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "dg_plague_surgeon",
+      "name": "Plague Surgeon",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Tainted Narthecium ability."
+    },
+    {
+      "id": "dg_tallyman",
+      "name": "Tallyman",
+      "type": "CHARACTER",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Sevenfold Chant ability."
+    },
+    {
+      "id": "dg_poxwalkers",
+      "name": "Poxwalkers",
+      "type": "INFANTRY",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "dg_plague_marines",
+      "name": "Plague Marines",
+      "type": "BATTLELINE",
+      "keywords": [
+        "DEATH GUARD",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "NURGLE"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 95
+        },
+        {
+          "label": "7 models",
+          "pts": 130
+        },
+        {
+          "label": "10 models",
+          "pts": 190
+        }
+      ]
+    }
+  ]
+}

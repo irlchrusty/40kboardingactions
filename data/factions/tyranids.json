@@ -1,0 +1,396 @@
+{
+  "detachments": [
+    {
+      "id": "tyr_boarding_swarm",
+      "name": "Boarding Swarm",
+      "specialRule": {
+        "name": "Priority Predation",
+        "desc": "Each time an enemy unit within Engagement range of one or more TYRANIDS units from your army is selected to Fall Back, after that enemy unit has made that Fall Back move, for each of those TYRANIDS units, if there are no other enemy units within Engagement range of it, it can make a Normal move of up to 3\". Hormagaunt units cannot perform the Secure Site Tactical Manoeuvre."
+      },
+      "enhancements": [
+        {
+          "id": "enh_tyr_monoform_predators",
+          "name": "Monoform Predators",
+          "desc": "TYRANIDS models in this detachment cannot be given Enhancements.",
+          "requiresKeywords": [],
+          "noAssign": true
+        }
+      ],
+      "units": [
+        {
+          "id": "tyr_lictor",
+          "max": 1
+        },
+        {
+          "id": "tyr_hormagaunts",
+          "max": 2
+        },
+        {
+          "id": "tyr_deathleaper",
+          "max": 1
+        },
+        {
+          "id": "tyr_neurolictor",
+          "max": 1
+        },
+        {
+          "id": "tyr_raveners",
+          "max": 2
+        },
+        {
+          "id": "tyr_von_ryans_leapers",
+          "max": 2
+        }
+      ],
+      "maxFromGroup": [
+        {
+          "max": 2,
+          "unitIds": [
+            "tyr_deathleaper",
+            "tyr_lictor",
+            "tyr_neurolictor"
+          ],
+          "description": "Only 2 of these hunter units may be included in the list."
+        }
+      ]
+    },
+    {
+      "id": "tyr_biotide",
+      "name": "Biotide",
+      "specialRule": {
+        "name": "Unstoppable Swarm",
+        "desc": "Each time a TYRANIDS unit from your army moves, models in that unit can move through friendly TYRANIDS models as if they were not there. In addition, each time a TYRANIDS model from your army attempts to operate a closed Hatchway, if your opponent tries to prevent it, add 1 to your result of the roll-off."
+      },
+      "enhancements": [
+        {
+          "id": "enh_tyr_synaptic_beacon",
+          "name": "Synaptic Beacon",
+          "desc": "While a friendly TYRANIDS unit is within 9\" of the bearer (ignoring Walls and closed Hatchways), that unit is within Synapse Range of the bearer and of your army.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_tyr_hypersurge_gland",
+          "name": "Hypersurge Gland",
+          "desc": "Once per battle, at the end of your opponent's Charge phase, the bearer can use this Enhancement. If it does, it can declare a charge as if it were your Charge phase.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "tyr_winged_prime",
+          "max": 2
+        },
+        {
+          "id": "tyr_hormagaunts",
+          "max": 3
+        },
+        {
+          "id": "tyr_neurogaunts",
+          "max": 3
+        },
+        {
+          "id": "tyr_ripper_swarm",
+          "max": 3
+        },
+        {
+          "id": "tyr_termagants",
+          "max": 3
+        }
+      ]
+    },
+    {
+      "id": "tyr_attack",
+      "name": "Tyranid Attack",
+      "specialRule": {
+        "name": "Xeno-Terror",
+        "desc": "When you unleash the Shadow in the Warp, subtract 1 from the Battle-shock test each enemy unit on the battlefield must take as a result. For each enemy unit that fails one of those tests, that enemy unit cannot fire overwatch this turn. ENDLESS MULTITUDE and Ripper Swarm units from your army are ignored for the purposes of determining visibility for friendly TYRANIDS models that are not ENDLESS MULTITUDE or Ripper Swarm units. The Tyranid Prime models in Tyranid Warrior units may be given enhancements as if they were CHARACTER models. Tyranid Warrior units may perform the the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword. ENDLESS MULTITUDE units cannot perform the Secure Site Tactical Manoeuvre."
+      },
+      "enhancements": [
+        {
+          "id": "enh_tyr_synaptic_goad",
+          "name": "Synaptic Goad",
+          "desc": "In your Command Phase, select one friendly Tyranid Warriors with Melee Bio-Weapons or Tyranid Warriors with Ranged Bio-Weapons unit within 6\" of the bearer. Until the end of the turn, add 2\" to the Movement characteristic of that unit.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_tyr_reinforced_carapace",
+          "name": "Reinforced Carapace",
+          "desc": "Each time an attack is allocated to the bearer, subtract 1 from the Damage Characteristic of that attack (note if given to a Tyranid Prime model, this only affects that model and not other models in its unit).",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "tyr_termagants",
+          "max": 1
+        },
+        {
+          "id": "tyr_winged_prime",
+          "max": 2
+        },
+        {
+          "id": "tyr_warriors_melee",
+          "max": 2,
+          "canTakeEnhancement": true
+        },
+        {
+          "id": "tyr_warriors_ranged",
+          "max": 2,
+          "canTakeEnhancement": true
+        },
+        {
+          "id": "tyr_hormagaunts",
+          "max": 1
+        },
+        {
+          "id": "tyr_neurogaunts",
+          "max": 1
+        },
+        {
+          "id": "tyr_ripper_swarm",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "tyr_termagants",
+      "name": "Termagants",
+      "type": "BATTLELINE",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "BATTLELINE",
+        "GREAT DEVOURER",
+        "ENDLESS MULTITUDE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Skulking Horrors ability. This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "tyr_genestealers",
+      "name": "Genestealers",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 95
+        },
+        {
+          "label": "10 models",
+          "pts": 185
+        }
+      ]
+    },
+    {
+      "id": "tyr_lictor",
+      "name": "Lictor",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Pheromone Trail ability."
+    },
+    {
+      "id": "tyr_winged_prime",
+      "name": "Winged Tyranid Prime",
+      "type": "CHARACTER",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "CHARACTER",
+        "SYNAPSE",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "tyr_warriors_melee",
+      "name": "Tyranid Warriors with Melee Bio-Weapons",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "SYNAPSE",
+        "GREAT DEVOURER"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "tyr_warriors_ranged",
+      "name": "Tyranid Warriors with Ranged Bio-Weapons",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "SYNAPSE",
+        "GREAT DEVOURER"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 65
+        }
+      ]
+    },
+    {
+      "id": "tyr_hormagaunts",
+      "name": "Hormagaunts",
+      "type": "BATTLELINE",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "BATTLELINE",
+        "GREAT DEVOURER",
+        "ENDLESS MULTITUDE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "tyr_neurogaunts",
+      "name": "Neurogaunts",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "GREAT DEVOURER",
+        "ENDLESS MULTITUDE"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 45
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "tyr_ripper_swarm",
+      "name": "Ripper Swarm",
+      "type": "SWARM",
+      "keywords": [
+        "TYRANIDS",
+        "SWARM",
+        "GREAT DEVOURER"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "tyr_deathleaper",
+      "name": "Deathleaper",
+      "type": "CHARACTER",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "tyr_neurolictor",
+      "name": "Neurolictor",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "SYNAPSE",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "tyr_raveners",
+      "name": "Raveners",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER",
+        "BURROWERS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 125
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Death From Below ability."
+    },
+    {
+      "id": "tyr_von_ryans_leapers",
+      "name": "Von Ryan's Leapers",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Pouncing Leap ability."
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "detachments": [
+    {
+      "id": "aoti_interdiction_team",
+      "name": "Interdiction Team",
+      "maxCharacters": 1,
+      "specialRule": {
+        "name": "Chastisor Auto-Vox",
+        "desc": "In your opponent's Command phase, each enemy unit within 3\" of one or more ADEPTUS ARBITES units from your army must take a Battle-shock test. If that enemy unit is also Below Half-strength, subtract 1 from that test. This Detachment rule cannot cause a unit to take two Battle-shock tests in the same phase."
+      },
+      "enhancements": [
+        {
+          "id": "enh_aoti_manhunters_helm",
+          "name": "Manhunter's Helm",
+          "desc": "Proctor-Exactant model only. At the start of the first Battle-round, select one enemy unit to be your Priority Target. Each time an ADEPTUS ARBITES model from your army makes an attack that targets your Priority Target, if the bearer of the enhancement is on the battlefield, add 1 to the Wound roll. Each time your Priority Target is destroyed, if the bearer is on the battlefield, you can select a new enemy unit to be your Priority Target.",
+          "requiresKeywords": ["ADEPTUS ARBITES"]
+        },
+        {
+          "id": "enh_aoti_vasovs_auto_oppressor",
+          "name": "Vasov's Auto-Oppressor",
+          "desc": "Proctor-Exactant model only. At the end of your Movement phase, you can select one enemy unit visible to the bearer. Until the start of your next Movement phase, halve the Movement characteristic of models in that unit, and halve Advance and Charge rolls made for it.",
+          "requiresKeywords": ["ADEPTUS ARBITES"]
+        }
+      ],
+      "keywordRatio": {
+        "numeratorUnitIds": ["aoti_inquisitorial_agents"],
+        "denominatorKeyword": "INQUISITOR",
+        "description": "Inquisitorial Agents units cannot outnumber INQUISITOR units"
+      },
+      "units": [
+        {
+          "id": "aoti_inquisitor_coteaz",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitor_draxus",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitor_greyfax",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitor",
+          "max": 1
+        },
+        {
+          "id": "aoti_exaction_squad",
+          "max": 2,
+          "canTakeEnhancement": true
+        },
+        {
+          "id": "aoti_subductor_squad",
+          "max": 3
+        },
+        {
+          "id": "aoti_vigilant_squad",
+          "max": 3
+        },
+        {
+          "id": "aoti_inquisitorial_agents",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "aoti_voidships_company",
+      "name": "Voidship's Company",
+      "maxCharacters": 3,
+      "specialRule": {
+        "name": "Beseechment Codes",
+        "desc": "In your Movement phase, each time a VOIDFARERS unit from your army makes a Normal move, while that unit is moving it can attempt to operate a closed Hatchway that it is within 1\" of at any point during the move. It cannot do this, however if there are one or more enemy units also within 1\" of that Hatchway. If that VOIDFARERS unit does attempt to operate that Hatchway, it cannot operate a Hatchway again this turn."
+      },
+      "enhancements": [
+        {
+          "id": "enh_aoti_lathimons_flock",
+          "name": "Lathimon's Flock",
+          "desc": "VOIDFARERS model only. In the Deploy Armies step, your opponent must deploy their entire army before you deploy yours. If both players have this rule, they must roll off and deploy their armies normally. In addition Imperial Navy Breachers units gain the Infiltrate rule.",
+          "requiresKeywords": ["VOIDFARERS"]
+        },
+        {
+          "id": "enh_aoti_heirloom_blade",
+          "name": "Heirloom Blade",
+          "desc": "VOIDFARERS model only. Once per battle when the bearer's unit is selected to fight, it can use this Enhancement. If it does, until the end of the phase, improve every characteristic of the bearers monomolecular cane-rapier by 1.",
+          "requiresKeywords": ["VOIDFARERS"]
+        }
+      ],
+      "keywordRatio": {
+        "numeratorUnitIds": ["aoti_inquisitorial_agents"],
+        "denominatorKeyword": "INQUISITOR",
+        "description": "Inquisitorial Agents units cannot outnumber INQUISITOR units"
+      },
+      "exclusiveUnitGroups": [
+        [
+          "aoti_inquisitor",
+          "aoti_inquisitor_coteaz",
+          "aoti_inquisitor_draxus",
+          "aoti_inquisitor_greyfax"
+        ]
+      ],
+      "units": [
+        {
+          "id": "aoti_inquisitor",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitor_coteaz",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitor_draxus",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitor_greyfax",
+          "max": 1
+        },
+        {
+          "id": "aoti_inquisitorial_agents",
+          "max": 1
+        },
+        {
+          "id": "aoti_rogue_trader_entourage",
+          "max": 2
+        },
+        {
+          "id": "aoti_imperial_navy_breachers",
+          "max": 3
+        },
+        {
+          "id": "aoti_voidsmen_at_arms",
+          "max": 6
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "aoti_inquisitor_coteaz",
+      "name": "Inquisitor Coteaz",
+      "type": "CHARACTER",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "INQUISITOR",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "IMPERIUM",
+        "ORDO MALLEUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "aoti_inquisitor_draxus",
+      "name": "Inquisitor Draxus",
+      "type": "CHARACTER",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "INQUISITOR",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "IMPERIUM",
+        "ORDO XENOS",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "aoti_inquisitor_greyfax",
+      "name": "Inquisitor Greyfax",
+      "type": "CHARACTER",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "INQUISITOR",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "IMPERIUM",
+        "ORDO HERETICUS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "aoti_inquisitor",
+      "name": "Inquisitor",
+      "type": "CHARACTER",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "INQUISITOR",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "aoti_exaction_squad",
+      "name": "Exaction Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "ADEPTUS ARBITES",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "The Proctor-Exactant model in this unit may be given enhancements as if they were a CHARACTER model. In the Form Boarding Squads step, split this unit into two units, one containing five models and one containing six models. In the Deploy Armies step, when setting up Exaction Squad units that contain a Proctor-Exactant, you can set them up in Entry Zones as if they had the CHARACTER keyword. The Nuncio Aquilia ability is changed to Nuncio Aquila (Aura): While an enemy unit is within 3\" of the bearer, each time that unit takes a Battle-shock test, subtract one from the result."
+    },
+    {
+      "id": "aoti_subductor_squad",
+      "name": "Subductor Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "ADEPTUS ARBITES",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword. Models in this unit have an Objective Control characteristic of 2. In the Form Boarding Squads step, split this unit into two units, one containing five models and one containing six models. The Nuncio Aquilia ability is changed to Nuncio Aquila (Aura): While an enemy unit is within 3\" of the bearer, each time that unit takes a Battle-shock test, subtract one from the result."
+    },
+    {
+      "id": "aoti_vigilant_squad",
+      "name": "Vigilant Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "ADEPTUS ARBITES",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "11 models",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "In the Form Boarding Squads step, split this unit into two units, one containing five models and one containing six models. The Nuncio Aquilia ability is changed to Nuncio Aquila (Aura): While an enemy unit is within 3\" of the bearer, each time that unit takes a Battle-shock test, subtract one from the result."
+    },
+    {
+      "id": "aoti_inquisitorial_agents",
+      "name": "Inquisitorial Agents",
+      "type": "INFANTRY",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "6 models",
+          "pts": 50
+        },
+        {
+          "label": "12 models",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Loyal Henchmen ability. In the Form Boarding Squads step, if this unit contains 12 models, split this unit into two units, each containing six models."
+    },
+    {
+      "id": "aoti_rogue_trader_entourage",
+      "name": "Rogue Trader Entourage",
+      "type": "CHARACTER",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "VOIDFARERS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "4 models",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Backroom Deals and Warrant of Trade abilities."
+    },
+    {
+      "id": "aoti_imperial_navy_breachers",
+      "name": "Imperial Navy Breachers",
+      "type": "INFANTRY",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "VOIDFARERS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the BATTLELINE keyword and Gheistskull ability."
+    },
+    {
+      "id": "aoti_voidsmen_at_arms",
+      "name": "Voidsmen-at-Arms",
+      "type": "INFANTRY",
+      "keywords": [
+        "AGENTS OF THE IMPERIUM",
+        "VOIDFARERS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "6 models",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit may perform the Secure Site Tactical Manoeuvre as if it had the BATTLELINE keyword."
+    }
+  ]
+}

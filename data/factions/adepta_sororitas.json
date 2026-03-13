@@ -1,0 +1,486 @@
+{
+  "detachments": [
+    {
+      "id": "sor_penitents_and_pilgrims",
+      "name": "Penitents and Pilgrims",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Bloody Redemption",
+        "desc": "The first time that you gain a Miracle dice as the result of an Arco-Flagellants or Repentia Squad unit from your army being destroyed, do not roll a D6; that Miracle dice has a value of 6 instead."
+      },
+      "enhancements": [
+        {
+          "id": "enh_sor_fervent_ferocity",
+          "name": "Fervent Ferocity",
+          "desc": "The bearer has the Feel No Pain 5+ ability.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_sor_sanctification_rituals",
+          "name": "Sanctification Rituals",
+          "desc": "The bearer can perform the Secure Site Tactical Manoeuvre as if it has the BATTLELINE keyword.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "sor_ministorum_priest",
+          "max": 2
+        },
+        {
+          "id": "sor_arco_flagellants",
+          "max": 3
+        },
+        {
+          "id": "sor_repentia_squad",
+          "max": 3
+        }
+      ]
+    },
+    {
+      "id": "sor_pious_protectors",
+      "name": "Pious Protectors",
+      "maxCharacters": 3,
+      "specialRule": {
+        "name": "The Emperor Protects",
+        "desc": "Each time an attack targets an ADEPTA SORORITAS unit from your army (excluding arco-flagellant and repentia squad units), if that unit is within range of an objective marker, models in that unit have a 4+ invulnerable save against that attack. If the models in that unit also performed the Secure Site Tactical Manoeuvre in your previous Shooting phase, models in it have a 3+ invulnerable save against that attack instead."
+      },
+      "enhancements": [
+        {
+          "id": "enh_sor_martial_discipline",
+          "name": "Martial Discipline",
+          "desc": "At the start of your shooting phase, you can select one ADEPTA SORORITAS unit within 6\" of the bearer. Until the end of the phase, that unit is eligible to shoot in a turn in which it Advanced or Fell Back.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_sor_limitless_resolve",
+          "name": "Limitless Resolve",
+          "desc": "When the bearer is on the battlefield, friendly Battle-shocked ADEPTA SORORITAS models (excluding Arco-flagellants and Repentia Squads) have an Objective Control characteristic of 1.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "sor_ministorum_priest",
+          "max": 1
+        },
+        {
+          "id": "sor_arco_flagellants",
+          "max": 1
+        },
+        {
+          "id": "sor_repentia_squad",
+          "max": 1
+        },
+        {
+          "id": "sor_canoness",
+          "max": 1
+        },
+        {
+          "id": "sor_daemonifuge",
+          "max": 1
+        },
+        {
+          "id": "sor_palatine",
+          "max": 1
+        },
+        {
+          "id": "sor_astred_thurga_and_agathae_dolan",
+          "max": 1
+        },
+        {
+          "id": "sor_dialogus",
+          "max": 1
+        },
+        {
+          "id": "sor_dogmata",
+          "max": 1
+        },
+        {
+          "id": "sor_hospitaller",
+          "max": 1
+        },
+        {
+          "id": "sor_imagifier",
+          "max": 1
+        },
+        {
+          "id": "sor_canoness_jump_pack",
+          "max": 1
+        },
+        {
+          "id": "sor_battle_sisters_squad",
+          "max": 3
+        },
+        {
+          "id": "sor_dominion_squad",
+          "max": 3
+        },
+        {
+          "id": "sor_sisters_noviate_squad",
+          "max": 3
+        },
+        {
+          "id": "sor_celestian_sacresants",
+          "max": 1
+        },
+        {
+          "id": "sor_seraphim_squad",
+          "max": 1
+        },
+        {
+          "id": "sor_zephyrim_squad",
+          "max": 1
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "sor_canoness",
+          "sor_canoness_jump_pack",
+          "sor_daemonifuge",
+          "sor_palatine"
+        ],
+        [
+          "sor_seraphim_squad",
+          "sor_zephyrim_squad"
+        ]
+      ],
+      "maxFromGroup": [
+        {
+          "max": 2,
+          "unitIds": [
+            "sor_astred_thurga_and_agathae_dolan",
+            "sor_dialogus",
+            "sor_dogmata",
+            "sor_hospitaller",
+            "sor_imagifier",
+            "sor_ministorum_priest"
+          ],
+          "description": "Only 2 of these support character units may be included in the list."
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "sor_ministorum_priest",
+      "name": "Ministorum Priest",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM",
+        "PENITENT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "sor_arco_flagellants",
+      "name": "Arco-Flagellants",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM",
+        "PENITENT"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ]
+    },
+    {
+      "id": "sor_repentia_squad",
+      "name": "Repentia Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM",
+        "PENITENT"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 160
+        }
+      ]
+    },
+    {
+      "id": "sor_canoness",
+      "name": "Canoness",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "sor_daemonifuge",
+      "name": "Daemonifuge",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Holy Judgement ability."
+    },
+    {
+      "id": "sor_palatine",
+      "name": "Palatine",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Rapturous Blows ability."
+    },
+    {
+      "id": "sor_astred_thurga_and_agathae_dolan",
+      "name": "Astred Thurga and Agathae Dolan",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "sor_dialogus",
+      "name": "Dialogus",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 40
+        }
+      ]
+    },
+    {
+      "id": "sor_dogmata",
+      "name": "Dogmata",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ]
+    },
+    {
+      "id": "sor_hospitaller",
+      "name": "Hospitaller",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "sor_imagifier",
+      "name": "Imagifier",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ]
+    },
+    {
+      "id": "sor_canoness_jump_pack",
+      "name": "Canoness with Jump Pack",
+      "type": "CHARACTER",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "CHARACTER",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sor_battle_sisters_squad",
+      "name": "Battle Sisters Squad",
+      "type": "BATTLELINE",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "BATTLELINE",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 105
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Defenders of the Faith ability. When splitting this unit select one of the resulting Boarding Squads to gain the Cherub token. The Boarding Squad without the Cherub token loses the Cherub ability."
+    },
+    {
+      "id": "sor_dominion_squad",
+      "name": "Dominion Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Righteous Awareness ability. When splitting this unit select one of the resulting Boarding Squads to gain the Cherub token. The Boarding Squad without the Cherub token loses the Cherub ability."
+    },
+    {
+      "id": "sor_sisters_noviate_squad",
+      "name": "Sisters Noviate Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "sor_celestian_sacresants",
+      "name": "Celestian Sacresants",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 70
+        },
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ]
+    },
+    {
+      "id": "sor_seraphim_squad",
+      "name": "Seraphim Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Angelic Ascent abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "sor_zephyrim_squad",
+      "name": "Zephyrim Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "ADEPTA SORORITAS",
+        "INFANTRY",
+        "IMPERIUM"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    }
+  ]
+}

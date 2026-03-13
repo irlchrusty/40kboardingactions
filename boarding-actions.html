@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Boarding Actions — List Builder</title>
+<style>
+  :root {
+    --bg:#0a0b0e; --surface:#12141a; --surface2:#1a1d26;
+    --border:#2a2d3a; --border2:#3a3d4a;
+    --accent:#c8922a; --accent2:#e8b84b;
+    --red:#c0392b; --green:#27ae60;
+    --text:#e2e0d8; --text2:#9a9890; --text3:#6a6860;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;min-height:100vh;display:flex;flex-direction:column;}
+
+  #app-header{background:linear-gradient(180deg,#1a0a00,#0f0c08);border-bottom:2px solid var(--accent);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+  .title{font-size:17px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+  .title span{color:var(--accent);}
+  .subtitle{font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;}
+  #pts-display{text-align:right;}
+  #pts-big{font-size:20px;font-weight:800;}
+  .pts-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;}
+
+  #pts-bar-wrap{background:var(--surface);border-bottom:1px solid var(--border);padding:7px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  #pts-track{flex:1;background:var(--border);border-radius:99px;height:5px;overflow:hidden;}
+  #pts-fill{height:100%;border-radius:99px;width:0%;transition:width .3s,background .3s;background:var(--green);}
+  #pts-remaining{font-size:11px;color:var(--text3);min-width:130px;text-align:right;}
+
+  #warnings{display:flex;flex-wrap:wrap;gap:5px;flex-shrink:0;}
+  #warnings:not(:empty){padding:5px 16px;}
+  .warn-pill{font-size:11px;padding:3px 8px;border-radius:5px;}
+  .warn-pill.alert{background:#1a1000;border:1px solid #6a4000;color:#ffa040;}
+  .warn-pill.error{background:#2a0800;border:1px solid #8b1a1a;color:#ff6060;}
+
+  #layout{display:grid;grid-template-columns:220px 1fr 280px;flex:1;overflow:hidden;min-height:0;}
+  .panel{overflow-y:auto;}
+  .panel-hdr{padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:5;}
+
+  #left-panel{background:var(--surface);border-right:1px solid var(--border);}
+  .sel-group{padding:12px;}
+  .sel-group+.sel-group{padding-top:0;}
+  .sel-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;}
+  select{width:100%;background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:7px 9px;border-radius:6px;font-size:13px;cursor:pointer;}
+  select:focus{outline:none;border-color:var(--accent);}
+  #det-info{padding:12px;border-top:1px solid var(--border);display:none;}
+  .rule-box{background:linear-gradient(135deg,#1a1200,#120e00);border:1px solid #4a3800;border-radius:8px;padding:12px;margin-bottom:12px;}
+  .rule-box--army{background:linear-gradient(135deg,#0d1a0d,#091209);border-color:#2a5a2a;}
+  .rule-tag{font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;}
+  .rule-box--army .rule-tag{color:#4ac84a;}
+  .rule-name{font-size:13px;font-weight:700;margin-bottom:4px;}
+  .rule-desc{font-size:11px;color:var(--text2);line-height:1.5;}
+  .enh-section-title{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+  .enh-info-card{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:10px;margin-bottom:6px;}
+  .enh-info-name{font-size:12px;font-weight:600;margin-bottom:2px;}
+  .enh-info-desc{font-size:11px;color:var(--text2);line-height:1.4;}
+  .enh-info-restrict{font-size:10px;color:var(--text3);margin-top:3px;}
+
+  #mid-panel{background:var(--bg);border-right:1px solid var(--border);}
+  #unit-grid{padding:12px;}
+  .type-divider{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;padding:8px 0 4px;border-top:1px solid var(--surface2);margin-top:4px;}
+  .type-divider:first-child{border-top:none;margin-top:0;}
+  .unit-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:6px;}
+  .unit-card.unit-maxed{opacity:.45;}
+  .unit-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+  .type-badge{font-size:9px;font-weight:700;text-transform:uppercase;padding:2px 5px;border-radius:3px;white-space:nowrap;}
+  .badge-CHARACTER{background:#2a1a00;color:#e8a040;border:1px solid #6a4000;}
+  .badge-BATTLELINE{background:#0a2a0a;color:#40c860;border:1px solid #1a5a1a;}
+  .badge-INFANTRY{background:#0a1a2a;color:#4098e8;border:1px solid #004878;}
+  .badge-VEHICLE{background:#1a0a2a;color:#a040e8;border:1px solid #4a1a6a;}
+  .badge-BEASTS{background:#1a1200;color:#c8922a;border:1px solid #6a4a00;}
+  .badge-BEAST{background:#2a1000;color:#e07030;border:1px solid #7a3000;}
+  .badge-MOUNTED{background:#1a1a0a;color:#b0a020;border:1px solid #605800;}
+  .badge-SWARM{background:#0a1a0a;color:#40a840;border:1px solid #1a5a1a;}
+  .unit-name-text{font-size:14px;font-weight:700;}
+  .unit-name-count{display:flex;align-items:baseline;gap:6px;flex:1;}
+  .unit-count-text{font-size:11px;color:var(--accent2);font-weight:600;}
+  .kw-row{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:7px;}
+  .kw-tag{background:var(--surface2);border:1px solid var(--border);color:var(--text3);font-size:9px;padding:1px 4px;border-radius:3px;}
+  .rules-adapt{font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:7px;padding:6px 8px;background:var(--surface2);border-left:2px solid var(--border2);border-radius:0 4px 4px 0;}
+  .size-row{display:flex;gap:5px;flex-wrap:wrap;}
+  .size-btn{background:var(--surface2);border:1px solid var(--border2);color:var(--text2);padding:5px 10px;border-radius:5px;font-size:12px;cursor:pointer;transition:all .15s;}
+  .size-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent2);}
+  .size-btn:disabled{background:#141618;border-color:var(--border);color:#3a3a3a;cursor:not-allowed;}
+
+  #right-panel{background:var(--surface);display:flex;flex-direction:column;}
+  #list-body{flex:1;overflow-y:auto;}
+  .list-empty{text-align:center;color:var(--text3);padding:40px 12px;font-size:12px;line-height:1.7;}
+  .list-type-hdr{padding:5px 12px;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;background:var(--surface2);border-bottom:1px solid var(--border);}
+  .list-row{padding:8px 12px;border-bottom:1px solid var(--surface2);}
+  .list-row-main{display:flex;align-items:center;gap:8px;}
+  .list-row-info{flex:1;}
+  .list-row-name{font-size:13px;font-weight:600;}
+  .list-row-sub{font-size:11px;color:var(--text3);}
+  .list-row-pts{font-size:13px;font-weight:700;color:var(--accent2);}
+  .remove-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:0 2px;line-height:1;transition:color .15s;}
+  .remove-btn:hover{color:var(--red);}
+  .warlord-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:0 3px;line-height:1;transition:color .15s;position:relative;}
+  .warlord-btn:hover:not(:disabled){color:#f0c040;}
+  .warlord-btn--active{color:#f0c040 !important;}
+  .warlord-btn--locked{opacity:.2;cursor:not-allowed;}
+  .warlord-btn .warlord-tooltip{display:none;position:absolute;bottom:calc(100% + 6px);right:0;background:#1a1600;border:1px solid #806000;color:#f0c040;font-size:10px;font-weight:600;white-space:nowrap;padding:4px 8px;border-radius:5px;pointer-events:none;letter-spacing:.04em;}
+  .warlord-btn .warlord-tooltip::after{content:"";position:absolute;top:100%;right:6px;border:4px solid transparent;border-top-color:#806000;}
+  .warlord-btn.show-tooltip:hover .warlord-tooltip{display:block;}
+  .warlord-kw-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#2a2000;border:1px solid #806000;color:#f0c040;border-radius:3px;padding:1px 5px;margin-left:5px;vertical-align:middle;}
+  .list-row--warlord{background:linear-gradient(90deg,#1a1600,transparent);}
+
+  /* Enhancement assignment */
+  .enh-assign-area{margin-top:7px;}
+  .enh-assigned-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1200;border:1px solid #4a3800;border-radius:5px;padding:4px 8px;font-size:11px;color:var(--accent2);}
+  .unassign-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;padding:0;line-height:1;transition:color .15s;}
+  .unassign-btn:hover{color:var(--red);}
+  .assign-btn{background:var(--surface2);border:1px solid var(--border2);color:var(--text3);padding:3px 9px;border-radius:5px;font-size:11px;cursor:pointer;transition:all .15s;}
+  .assign-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent2);}
+  .assign-btn:disabled{opacity:.35;cursor:not-allowed;}
+  .enh-picker{margin-top:6px;background:var(--surface2);border:1px solid var(--border2);border-radius:7px;overflow:hidden;}
+  .enh-picker-item{padding:9px 12px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s;}
+  .enh-picker-item:last-child{border-bottom:none;}
+  .enh-picker-item:hover:not(.enh-picker-taken){background:#1e2130;}
+  .enh-picker-item.enh-picker-taken{opacity:.35;cursor:not-allowed;}
+  .enh-picker-name{font-size:12px;font-weight:600;margin-bottom:2px;}
+  .enh-picker-desc{font-size:11px;color:var(--text2);line-height:1.4;}
+  .enh-picker-restrict{font-size:10px;color:var(--text3);margin-top:2px;}
+  .enh-picker-taken-label{font-size:10px;color:var(--text3);float:right;margin-left:8px;}
+  .enh-picker-cancel{padding:8px 12px;text-align:center;font-size:11px;color:var(--text3);cursor:pointer;background:var(--surface);border-top:1px solid var(--border);}
+  .enh-picker-cancel:hover{color:var(--text);}
+  .enh-picker-section-hdr{padding:5px 12px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);background:#1a1200;border-bottom:1px solid var(--border);}
+  .enh-picker-section-hdr--generic{color:#4aa8c8;background:#001a22;}
+  .enh-picker-item--generic{background:rgba(0,20,35,.25);}
+  .enh-picker-item--generic:hover:not(.enh-picker-taken){background:#001e30 !important;}
+  .enh-assigned-badge--generic{background:#001825;border-color:#1a5a78;color:#4ac8e8;}
+  .enh-info-card--generic{background:#001420;border-color:#1a4a5a;}
+
+  #list-total{padding:12px;border-top:2px solid var(--accent);background:#1a1200;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+  #list-total .lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;}
+  .pts{font-size:20px;font-weight:800;color:var(--accent2);}
+  .pts.over{color:var(--red);}
+  #clear-btn{margin:10px 12px 0;padding:7px;background:none;border:1px solid var(--border2);color:var(--text3);border-radius:6px;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.08em;transition:all .2s;flex-shrink:0;}
+  #clear-btn:hover{border-color:var(--red);color:var(--red);}
+
+  /* List name */
+  #list-name-wrap{padding:8px 12px;border-bottom:1px solid var(--border);background:var(--surface);display:none;flex-shrink:0;}
+  #list-name-input{width:100%;background:transparent;border:none;border-bottom:1px dashed var(--border2);color:var(--text);font-size:13px;font-weight:600;padding:3px 2px;outline:none;letter-spacing:.02em;transition:border-color .2s;}
+  #list-name-input::placeholder{color:var(--text3);font-weight:400;}
+  #list-name-input:focus{border-bottom-color:var(--accent);}
+
+  /* Print button */
+  #print-btn{margin:6px 12px 10px;padding:7px;background:linear-gradient(135deg,#1a1200,#2a1e00);border:1px solid var(--accent);color:var(--accent2);border-radius:6px;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.08em;transition:all .2s;flex-shrink:0;display:none;}
+  #print-btn:hover{background:linear-gradient(135deg,#2a2000,#3a2e00);border-color:var(--accent2);}
+
+  /* Epic Hero */
+  .epic-hero-label{font-size:10px;color:var(--text3);font-style:italic;letter-spacing:.02em;}
+
+  /* Print modal */
+  #print-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);backdrop-filter:blur(4px);overflow-y:auto;padding:24px 16px;}
+  #print-modal.open{display:flex;align-items:flex-start;justify-content:center;}
+  #print-sheet{background:#fff;color:#111;width:100%;max-width:680px;border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8);font-family:'Segoe UI',system-ui,sans-serif;}
+  .ps-header{background:linear-gradient(135deg,#1a0800,#0d0600);color:#fff;padding:20px 24px;display:flex;justify-content:space-between;align-items:flex-start;}
+  .ps-game{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#c8922a;margin-bottom:3px;}
+  .ps-list-name input{background:transparent;border:none;border-bottom:1px dashed rgba(255,255,255,.3);color:#fff;font-size:22px;font-weight:800;letter-spacing:.04em;outline:none;width:300px;padding:0;}
+  .ps-list-name input::placeholder{color:rgba(255,255,255,.3);}
+  .ps-meta{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;}
+  .ps-pts-block{text-align:right;}
+  .ps-pts-num{font-size:28px;font-weight:800;color:#e8b84b;line-height:1;}
+  .ps-pts-label{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;}
+  .ps-rules{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 24px;background:#f8f5f0;border-bottom:1px solid #e0d8cc;}
+  .ps-rule-card{background:#fff;border:1px solid #ddd;border-radius:7px;padding:12px;}
+  .ps-rule-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;}
+  .ps-rule-tag--army{color:#2a7a2a;}
+  .ps-rule-tag--det{color:#8a6000;}
+  .ps-rule-name{font-size:12px;font-weight:700;margin-bottom:3px;color:#111;}
+  .ps-rule-desc{font-size:10px;color:#555;line-height:1.5;}
+  .ps-units{padding:16px 24px;}
+  .ps-type-hdr{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#888;border-bottom:2px solid #eee;padding-bottom:4px;margin:14px 0 8px;}
+  .ps-type-hdr:first-child{margin-top:0;}
+  .ps-unit-row{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid #f0ece6;}
+  .ps-unit-row:last-child{border-bottom:none;}
+  .ps-unit-badge{font-size:8px;font-weight:700;text-transform:uppercase;padding:2px 5px;border-radius:3px;white-space:nowrap;margin-top:2px;}
+  .ps-badge-CHARACTER{background:#fff3e0;color:#c87000;border:1px solid #e8c080;}
+  .ps-badge-BATTLELINE{background:#e8f5e9;color:#2a7a2a;border:1px solid #80c880;}
+  .ps-badge-INFANTRY{background:#e3f0fb;color:#1a6aaa;border:1px solid #80aad8;}
+  .ps-badge-VEHICLE{background:#f3e8fb;color:#7a2aaa;border:1px solid #c880d8;}
+  .ps-badge-BEASTS{background:#fff8e8;color:#9a6000;border:1px solid #d8b860;}
+  .ps-badge-BEAST{background:#fdf0e8;color:#b05020;border:1px solid #e0a070;}
+  .ps-badge-MOUNTED{background:#f8f8e8;color:#807010;border:1px solid #c8c040;}
+  .ps-badge-SWARM{background:#eef8ee;color:#2a7a2a;border:1px solid #80c080;}
+  .ps-unit-info{flex:1;}
+  .ps-unit-name{font-size:14px;font-weight:700;color:#111;}
+  .ps-warlord-badge{display:inline-block;font-size:8px;font-weight:700;text-transform:uppercase;background:#fff8e0;border:1px solid #d0a020;color:#9a7010;border-radius:3px;padding:1px 5px;margin-left:6px;vertical-align:middle;}
+  .ps-unit-size{font-size:11px;color:#666;margin-top:1px;}
+  .ps-unit-adapt{font-size:10px;color:#a05000;font-style:italic;margin-top:3px;padding-left:6px;border-left:2px solid #d88040;}
+  .ps-enh-badge{display:inline-flex;align-items:center;gap:4px;margin-top:4px;background:#fff8e8;border:1px solid #ddc880;border-radius:4px;padding:3px 7px;font-size:10px;color:#7a5800;}
+  .ps-enh-badge--generic{background:#e8f4fb;border-color:#80b8d8;color:#1a5a7a;}
+  .ps-unit-pts{font-size:14px;font-weight:700;color:#c87000;white-space:nowrap;}
+  .ps-enhancements{margin:0 24px 16px;background:#fffcf0;border:1px solid #e8d880;border-radius:8px;padding:12px 16px;}
+  .ps-enh-section-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#9a7800;margin-bottom:8px;}
+  .ps-enh-list-item{display:flex;gap:8px;align-items:baseline;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.06);}
+  .ps-enh-list-item:last-child{border-bottom:none;}
+  .ps-enh-list-name{font-size:12px;font-weight:700;color:#111;min-width:160px;}
+  .ps-enh-list-desc{font-size:10px;color:#777;margin-top:1px;}
+  .ps-footer{background:#f0ece6;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;border-top:2px solid #e0d8cc;}
+  .ps-footer-kws{font-size:10px;color:#888;}
+  .ps-footer-total{font-size:16px;font-weight:800;color:#111;}
+  .ps-footer-total span{color:#c87000;}
+  .ps-modal-actions{display:flex;gap:8px;padding:16px 24px;background:#1a1600;justify-content:flex-end;}
+  .ps-action-btn{padding:8px 18px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.06em;border:none;transition:all .15s;}
+  .ps-action-btn--print{background:var(--accent);color:#111;}
+  .ps-action-btn--print:hover{background:var(--accent2);}
+  .ps-action-btn--json{background:#1a2a1a;color:#6dbf6d;border:1px solid #3a6a3a;}
+  .ps-action-btn--json:hover{background:#243024;border-color:#6dbf6d;color:#8adf8a;}
+  .ps-action-btn--text{background:#1a1a2a;color:#7a9fd4;border:1px solid #3a4a7a;}
+  .ps-action-btn--text:hover{background:#202030;border-color:#7a9fd4;color:#9abff4;}
+  .ps-action-btn--copy{background:#1a2a1a;color:#7abf9a;border:1px solid #3a6a4a;}
+  .ps-action-btn--copy:hover{background:#202e22;border-color:#7abf9a;color:#9adfc0;}
+  .ps-action-btn--copy--success{background:#1a3a1a;border-color:#4abf6a;color:#4abf6a;}
+  .ps-action-btn--pdf{background:#2a1a1a;color:#e07070;border:1px solid #7a3a3a;}
+  .ps-action-btn--pdf:hover{background:#342020;border-color:#e07070;color:#f09090;}
+  .ps-action-btn--pdf--loading{opacity:.6;cursor:not-allowed;}
+  .ps-action-btn--close{background:#2a2820;color:var(--text2);border:1px solid var(--border2);}
+  .ps-action-btn--close:hover{border-color:var(--text2);color:var(--text);}
+
+  .placeholder{text-align:center;color:var(--text3);padding:40px 16px;font-size:13px;line-height:1.7;}
+
+  /* Chapter filter bar */
+  .chapter-filter-bar{display:flex;align-items:center;gap:9px;padding:9px 12px;background:linear-gradient(135deg,#0e1020,#0a0e18);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:4;}
+  .chapter-filter-label{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);white-space:nowrap;flex-shrink:0;}
+  .chapter-filter-icon{font-size:12px;}
+  .chapter-filter-sel{flex:1;background:var(--surface2);border:1px solid var(--accent);color:var(--text);padding:5px 8px;border-radius:6px;font-size:12px;cursor:pointer;min-width:0;}
+  .chapter-filter-sel:focus{outline:none;border-color:var(--accent2);}
+  .chapter-filter-sel--locked{border-color:#4a3800;color:var(--accent2);cursor:not-allowed;opacity:.8;}
+  .chapter-filter-lock-note{font-size:10px;color:var(--text3);font-style:italic;white-space:nowrap;flex-shrink:0;}
+
+  @media print {
+    body > *:not(#print-modal){ display:none !important; }
+    #print-modal{ display:block !important; position:static; background:none; padding:0; overflow:visible; }
+    #print-sheet{ box-shadow:none; border-radius:0; max-width:100%; }
+    .ps-modal-actions{ display:none !important; }
+    .ps-list-name input{ border-bottom:none; }
+    @page{ margin:15mm; }
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div id="app-header">
+  <div>
+    <div class="title">Boarding <span>Actions</span></div>
+    <div class="subtitle">Warhammer 40,000 — List Builder</div>
+  </div>
+  <div id="pts-display">
+    <div id="pts-big">0 <span style="font-size:12px;color:var(--text3);font-weight:400">/ 500</span></div>
+    <div class="pts-lbl">Points</div>
+  </div>
+</div>
+
+<div id="pts-bar-wrap">
+  <div id="pts-track"><div id="pts-fill"></div></div>
+  <div id="pts-remaining">500pts remaining</div>
+</div>
+
+<div id="warnings"></div>
+
+<div id="layout">
+  <div class="panel" id="left-panel">
+    <div class="panel-hdr">Faction &amp; Detachment</div>
+    <div class="sel-group">
+      <div class="sel-label">Faction</div>
+      <select id="faction-sel" onchange="onFactionChange()">
+        <option value="">— Select —</option>
+      </select>
+    </div>
+    <div class="sel-group" id="det-group" style="display:none">
+      <div class="sel-label">Detachment</div>
+      <select id="det-sel" onchange="onDetachmentChange()">
+        <option value="">— Select —</option>
+      </select>
+    </div>
+    <div id="det-info"></div>
+  </div>
+
+  <div class="panel" id="mid-panel">
+    <div class="panel-hdr">Available Units</div>
+    <div id="unit-grid">
+      <div class="placeholder">Select a faction and detachment<br/>to see available units.</div>
+    </div>
+  </div>
+
+  <div id="right-panel">
+    <div class="panel-hdr">Your List</div>
+    <div id="list-name-wrap">
+      <input id="list-name-input" type="text" maxlength="48" placeholder="Name your list…" oninput="state.listName = this.value"/>
+    </div>
+    <div id="list-body">
+      <div class="list-empty">No units added yet.<br/>Select a detachment to begin.</div>
+    </div>
+    <div id="list-total" style="display:none">
+      <div class="lbl">Total</div>
+      <div class="pts" id="total-pts-text">0 <span style="font-size:12px;color:var(--text3);font-weight:400">/ 500</span></div>
+    </div>
+    <button id="clear-btn" style="display:none" onclick="clearList()">Clear List</button>
+    <button id="print-btn" onclick="openPrintModal()">🖨 Print / Export List</button>
+  </div>
+</div>
+
+<!-- ── Print Modal ─────────────────────────────────────────────────────────── -->
+<div id="print-modal">
+  <div id="print-sheet">
+    <div class="ps-header">
+      <div class="ps-title-block">
+        <div class="ps-game">Warhammer 40,000 — Boarding Actions</div>
+        <div class="ps-list-name"><input id="ps-name-input" placeholder="Untitled List" maxlength="48" oninput="state.listName=this.value;document.getElementById('list-name-input').value=this.value;"/></div>
+        <div class="ps-meta" id="ps-meta"></div>
+      </div>
+      <div class="ps-pts-block">
+        <div class="ps-pts-num" id="ps-pts-num">0</div>
+        <div class="ps-pts-label" id="ps-pts-label">/ 500 pts</div>
+      </div>
+    </div>
+    <div class="ps-rules" id="ps-rules"></div>
+    <div class="ps-units" id="ps-units"></div>
+    <div class="ps-enhancements" id="ps-enhancements" style="display:none"></div>
+    <div class="ps-footer">
+      <div class="ps-footer-kws" id="ps-footer-kws"></div>
+      <div class="ps-footer-total" id="ps-footer-total"></div>
+    </div>
+    <div class="ps-modal-actions">
+      <button class="ps-action-btn ps-action-btn--close" onclick="closePrintModal()">✕ Close</button>
+      <button class="ps-action-btn ps-action-btn--text" onclick="exportText()">⬇ Export .txt</button>
+      <button class="ps-action-btn ps-action-btn--copy" id="copy-btn" onclick="copyText()">⎘ Copy as Text</button>
+      <button class="ps-action-btn ps-action-btn--json" onclick="exportJSON()">⬇ Export .json</button>
+      <button class="ps-action-btn ps-action-btn--pdf" id="pdf-btn" onclick="exportPDF()">⬇ Export .pdf</button>
+      <button class="ps-action-btn ps-action-btn--print" onclick="window.print()">🖨 Print</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let DATA          = null;   // index.json (factions list + generic enhancements)
+let factionCache  = {};     // keyed by faction id, value = loaded faction JSON
+
+const MAX_PTS    = 500;
+const TYPE_ORDER = ["CHARACTER","BATTLELINE","INFANTRY","VEHICLE","BEASTS","BEAST","MOUNTED","SWARM"];
+let state        = { factionId:"", detachmentId:"", list:[], openPickerId:null, warlordId:null, listName:"", chapterFilter:"" };
+let idSeq        = 0;
+
+// ── Data helpers ────────────────────────────────────────────────────────────
+function currentFaction()  { return DATA?.factions.find(f => f.id === state.factionId); }
+function currentFactionData() { return factionCache[state.factionId] || null; }
+function currentDet() {
+  const fd = currentFactionData();
+  return fd?.detachments.find(d => d.id === state.detachmentId);
+}
+function getUnit(id) {
+  const fd = currentFactionData();
+  return fd?.units.find(u => u.id === id);
+}
+// Returns the detachment-level entry {id, max} for a unit in the current detachment
+function getDetUnit(unitId) {
+  const det = currentDet();
+  return det?.units.find(u => u.id === unitId);
+}
+function getUnitMax(unitId) {
+  return getDetUnit(unitId)?.max ?? 1;
+}
+function totalPts()           { return state.list.reduce((s,l) => s + l.pts, 0); }
+function unitCountInList(uid) { return state.list.filter(l => l.unitId === uid).length; }
+function charCountInList()    { return state.list.filter(l => getUnit(l.unitId)?.type === "CHARACTER").length; }
+
+function keywordCountInList(keyword) {
+  return state.list.filter(l => getUnit(l.unitId)?.keywords.includes(keyword)).length;
+}
+function ratioUnitCountInList(unitIds) {
+  return state.list.filter(l => unitIds.includes(l.unitId)).length;
+}
+function isKeywordUnitCapBlocked(unit, det) {
+  const caps = det?.maxKeywordUnits;
+  if (!caps) return false;
+  for (const cap of caps) {
+    if (!unit.keywords.includes(cap.keyword)) continue;
+    if (keywordCountInList(cap.keyword) >= cap.max) return true;
+  }
+  return false;
+}
+function getKeywordUnitCapHint(unit, det) {
+  const caps = det?.maxKeywordUnits;
+  if (!caps) return "";
+  for (const cap of caps) {
+    if (!unit.keywords.includes(cap.keyword)) continue;
+    if (keywordCountInList(cap.keyword) >= cap.max) return cap.description;
+  }
+  return "";
+}
+function isKeywordRatioBlocked(unit, det) {
+  const ratios = [];
+  if (det?.keywordRatio)  ratios.push(det.keywordRatio);
+  if (det?.keywordRatios) ratios.push(...det.keywordRatios);
+  for (const ratio of ratios) {
+    const denCount = ratio.denominatorKeyword
+      ? keywordCountInList(ratio.denominatorKeyword)
+      : ratioUnitCountInList(ratio.denominatorUnitIds);
+    if (ratio.numeratorUnitIds) {
+      if (!ratio.numeratorUnitIds.includes(unit.id)) continue;
+      if (ratioUnitCountInList(ratio.numeratorUnitIds) + 1 > denCount) return true;
+    } else {
+      if (!unit.keywords.includes(ratio.numeratorKeyword)) continue;
+      if (keywordCountInList(ratio.numeratorKeyword) + 1 > denCount) return true;
+    }
+  }
+  return false;
+}
+function isFactionGroupBlocked(unit, det) {
+  const groups = det?.factionKeywordGroups;
+  if (!groups) return false;
+  for (const group of groups) {
+    const unitGroupKws = unit.keywords.filter(k => group.includes(k));
+    if (!unitGroupKws.length) continue;
+    const committed = group.find(kw =>
+      state.list.some(l => getUnit(l.unitId)?.keywords.includes(kw))
+    );
+    if (committed && !unitGroupKws.includes(committed)) return true;
+  }
+  return false;
+}
+function isFactionKeywordRestrictionBlocked(unit, det) {
+  const pairs = det?.factionKeywordRestrictions;
+  if (!pairs) return false;
+  for (const pair of pairs) {
+    const [kwA, kwB] = pair;
+    if (unit.keywords.includes(kwA) && state.list.some(l => getUnit(l.unitId)?.keywords.includes(kwB))) return true;
+    if (unit.keywords.includes(kwB) && state.list.some(l => getUnit(l.unitId)?.keywords.includes(kwA))) return true;
+  }
+  return false;
+}
+function getFactionKeywordRestrictionHint(unit, det) {
+  const pairs = det?.factionKeywordRestrictions;
+  if (!pairs) return "";
+  for (const pair of pairs) {
+    const [kwA, kwB] = pair;
+    if (unit.keywords.includes(kwA) && state.list.some(l => getUnit(l.unitId)?.keywords.includes(kwB)))
+      return `Unavailable — ${kwA} units cannot be taken alongside ${kwB} units.`;
+    if (unit.keywords.includes(kwB) && state.list.some(l => getUnit(l.unitId)?.keywords.includes(kwA)))
+      return `Unavailable — ${kwB} units cannot be taken alongside ${kwA} units.`;
+  }
+  return "";
+}
+function isExclusiveGroupBlocked(unitId, det) {
+  const groups = det?.exclusiveUnitGroups;
+  if (!groups) return false;
+  for (const group of groups) {
+    if (!group.includes(unitId)) continue;
+    // This unit is in the group — blocked if any *different* unit from the group is already in the list
+    if (state.list.some(l => l.unitId !== unitId && group.includes(l.unitId))) return true;
+  }
+  return false;
+}
+function getExclusiveGroupHint(unitId, det) {
+  const groups = det?.exclusiveUnitGroups;
+  if (!groups) return "";
+  for (const group of groups) {
+    if (!group.includes(unitId)) continue;
+    const taken = state.list.find(l => l.unitId !== unitId && group.includes(l.unitId));
+    if (taken) {
+      const takenUnit = getUnit(taken.unitId);
+      return `Unavailable — ${takenUnit ? takenUnit.name : taken.unitId} already selected from this exclusive group.`;
+    }
+  }
+  return "";
+}
+function isMaxFromGroupBlocked(unitId, det) {
+  const groups = det?.maxFromGroup;
+  if (!groups) return false;
+  for (const group of groups) {
+    if (!group.unitIds.includes(unitId)) continue;
+    const alreadyInList = state.list.filter(l => group.unitIds.includes(l.unitId)).length;
+    const thisUnitInList = state.list.some(l => l.unitId === unitId);
+    if (!thisUnitInList && alreadyInList >= group.max) return true;
+  }
+  return false;
+}
+function getMaxFromGroupHint(unitId, det) {
+  const groups = det?.maxFromGroup;
+  if (!groups) return "";
+  for (const group of groups) {
+    if (!group.unitIds.includes(unitId)) continue;
+    const alreadyInList = state.list.filter(l => group.unitIds.includes(l.unitId)).length;
+    const thisUnitInList = state.list.some(l => l.unitId === unitId);
+    if (!thisUnitInList && alreadyInList >= group.max) return group.description || `Only ${group.max} units may be selected from this group.`;
+  }
+  return "";
+}
+// Returns true if this unit requires a CHARACTER with a specific keyword that is not yet in the list
+function isRequiredCharacterMissing(unitId) {
+  const detUnit = getDetUnit(unitId);
+  const kw = detUnit?.requiresCharacterWithKeyword;
+  if (!kw) return false;
+  return !state.list.some(l => {
+    const u = getUnit(l.unitId);
+    return u?.type === "CHARACTER" && u.keywords.includes(kw);
+  });
+}
+
+function assignedEnhIds()     { return state.list.map(l => l.enhancementId).filter(Boolean); }
+function unitCanTakeEnh(unit, enh) {
+  if (!enh.requiresKeywords || !enh.requiresKeywords.length) return true;
+  return enh.requiresKeywords.every(kw => unit.keywords.includes(kw));
+}
+function esc(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+// ── Bootstrap ────────────────────────────────────────────────────────────────
+fetch("data/index.json")
+  .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+  .then(json => {
+    DATA = json;
+    DATA.genericEnhancements = DATA.genericEnhancements || [];
+    initApp();
+  })
+  .catch(err => {
+    document.getElementById("unit-grid").innerHTML =
+      `<div class="placeholder" style="color:#ff6060">
+        ⛔ Could not load data/index.json.<br/>
+        <span style="font-size:11px;color:var(--text3)">
+          Make sure the <strong>data/</strong> folder is in the same directory as this HTML file
+          and open via a local server.<br/><br/>Error: ${err.message}
+        </span>
+      </div>`;
+    console.error("Failed to load data/index.json:", err);
+  });
+
+function initApp() {
+  const sel = document.getElementById("faction-sel");
+  const sorted = [...DATA.factions].sort((a, b) => a.name.localeCompare(b.name));
+  let html = '<option value="">— Select —</option>';
+  sorted.forEach(f => {
+    html += `<option value="${esc(f.id)}">${esc(f.name)}</option>`;
+  });
+  sel.innerHTML = html;
+}
+
+// ── Faction loading ──────────────────────────────────────────────────────────
+function onFactionChange() {
+  state.factionId    = document.getElementById("faction-sel").value;
+  state.detachmentId = "";
+  state.list         = [];
+  state.openPickerId = null;
+  state.warlordId    = null;
+  state.listName     = "";
+  state.chapterFilter = "";
+  idSeq              = 0;
+  document.getElementById("list-name-input").value = "";
+
+  const dg   = document.getElementById("det-group");
+  const dSel = document.getElementById("det-sel");
+  dSel.innerHTML = '<option value="">— Select —</option>';
+
+  if (!state.factionId) { dg.style.display = "none"; renderDetInfo(); renderAll(); return; }
+
+  // Use cache if already loaded, otherwise fetch
+  if (factionCache[state.factionId]) {
+    populateDetachments();
+    dg.style.display = "block";
+    renderDetInfo();
+    renderAll();
+  } else {
+    const faction = currentFaction();
+    dSel.innerHTML = '<option value="">Loading…</option>';
+    dg.style.display = "block";
+    fetch("data/" + faction.file)
+      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(json => {
+        factionCache[state.factionId] = json;
+        dSel.innerHTML = '<option value="">— Select —</option>';
+        populateDetachments();
+        renderDetInfo();
+        renderAll();
+      })
+      .catch(err => {
+        dSel.innerHTML = `<option value="">⛔ Failed to load</option>`;
+        console.error(`Failed to load faction file for ${state.factionId}:`, err);
+      });
+  }
+}
+
+function populateDetachments() {
+  const fd   = currentFactionData();
+  const dSel = document.getElementById("det-sel");
+  const sorted = [...fd.detachments].sort((a, b) => a.name.localeCompare(b.name));
+  let html = '<option value="">— Select —</option>';
+  sorted.forEach(d => {
+    html += `<option value="${esc(d.id)}">${esc(d.name)}</option>`;
+  });
+  dSel.innerHTML = html;
+}
+
+function onDetachmentChange() {
+  state.detachmentId = document.getElementById("det-sel").value;
+  state.list = []; state.openPickerId = null; state.warlordId = null;
+  state.listName = "";
+  state.chapterFilter = "";
+  document.getElementById("list-name-input").value = "";
+  renderDetInfo();
+  renderAll();
+}
+
+// ── Unit status ──────────────────────────────────────────────────────────────
+// Single source of truth for whether a unit can be added to the list.
+// Used by both addUnit() (abort early) and renderUnitGrid() (grey card / disable button).
+//
+// sizeIdx is optional:
+//   omitted  → card-level check only (is the unit blocked regardless of size?)
+//   provided → also checks allowedSizeIndices and the points budget for that size
+//
+// Returns { blocked: bool, hint: string }
+// hint is a human-readable reason displayed on the unit card when blocked.
+function getUnitStatus(unitId, sizeIdx = null) {
+  const unit    = getUnit(unitId);
+  const det     = currentDet();
+  const detUnit = getDetUnit(unitId);
+
+  // Unit-level max — unit already appears in the list as many times as allowed.
+  if (unitCountInList(unitId) >= getUnitMax(unitId))
+    return { blocked: true, hint: "" };
+
+  // Character cap — detachment limits total CHARACTERs; already-added copies
+  // are exempt so that reducing to 0 always remains possible.
+  if (unit.type === "CHARACTER" && det?.maxCharacters !== undefined &&
+      charCountInList() >= det.maxCharacters)
+    return { blocked: true, hint: "" };
+
+  // Keyword ratio — numerator units cannot outnumber denominator units.
+  if (isKeywordRatioBlocked(unit, det))
+    return { blocked: true, hint: "" };
+
+  // requiresCharacterWithKeyword — unit cannot be added until a specific CHARACTER
+  // keyword is present in the list. Same exemption: skip if already in the list.
+  if (unitCountInList(unitId) === 0 && isRequiredCharacterMissing(unitId)) {
+    const kw = detUnit?.requiresCharacterWithKeyword ?? "";
+    return { blocked: true, hint: `Requires a ${kw} CHARACTER to be selected first.` };
+  }
+
+  // Faction keyword group (chapter lock) — once a unit with a chapter keyword is
+  // added, units from a different chapter in the same group are locked out.
+  if (isFactionGroupBlocked(unit, det)) {
+    const groups = det?.factionKeywordGroups ?? [];
+    for (const group of groups) {
+      const committed = group.find(kw =>
+        state.list.some(l => getUnit(l.unitId)?.keywords.includes(kw))
+      );
+      if (committed && unit.keywords.some(k => group.includes(k) && k !== committed))
+        return { blocked: true, hint: `Unavailable — ${committed} units already selected.` };
+    }
+    return { blocked: true, hint: "" };
+  }
+
+  // Faction keyword restrictions — pairs of mutually exclusive keywords.
+  if (isFactionKeywordRestrictionBlocked(unit, det))
+    return { blocked: true, hint: getFactionKeywordRestrictionHint(unit, det) };
+
+  // maxKeywordUnits cap — detachment limits how many units sharing a keyword can be taken.
+  if (isKeywordUnitCapBlocked(unit, det))
+    return { blocked: true, hint: getKeywordUnitCapHint(unit, det) };
+
+  // Exclusive unit group — taking one unit from the group blocks all others in it.
+  if (isExclusiveGroupBlocked(unitId, det))
+    return { blocked: true, hint: getExclusiveGroupHint(unitId, det) };
+
+  // maxFromGroup — limits how many units from a named pool can be taken in total.
+  if (isMaxFromGroupBlocked(unitId, det))
+    return { blocked: true, hint: getMaxFromGroupHint(unitId, det) };
+
+  // exclusiveCharacter — a unit with this flag cannot be taken alongside any other
+  // CHARACTER, and no other CHARACTER may be added while one is in the list.
+  if (unit.type === "CHARACTER") {
+    const detUnitEntry = getDetUnit(unitId);
+    if (detUnitEntry?.exclusiveCharacter) {
+      // This unit is exclusive — block if any other CHARACTER already in list
+      const otherChars = state.list.filter(l => l.unitId !== unitId && getUnit(l.unitId)?.type === "CHARACTER");
+      if (otherChars.length > 0)
+        return { blocked: true, hint: `${unit.name} cannot be taken alongside other CHARACTER units.` };
+    } else {
+      // This is a normal CHARACTER — block if an exclusiveCharacter unit is already in list
+      const exclusiveInList = state.list.some(l => getDetUnit(l.unitId)?.exclusiveCharacter);
+      if (exclusiveInList) {
+        const exclusiveUnit = getUnit(state.list.find(l => getDetUnit(l.unitId)?.exclusiveCharacter).unitId);
+        return { blocked: true, hint: `Cannot be taken alongside ${exclusiveUnit ? exclusiveUnit.name : "an exclusive CHARACTER"}.` };
+      }
+    }
+  }
+
+  // Size-specific checks — only evaluated when a sizeIdx is provided.
+  if (sizeIdx !== null) {
+    // allowedSizeIndices — some detachments restrict a unit to specific size options.
+    if (detUnit?.allowedSizeIndices && !detUnit.allowedSizeIndices.includes(sizeIdx))
+      return { blocked: true, hint: "" };
+
+    // Points budget — adding this size would exceed the 500pt list limit.
+    if (totalPts() + unit.sizes[sizeIdx].pts > MAX_PTS)
+      return { blocked: true, hint: "" };
+  }
+
+  return { blocked: false, hint: "" };
+}
+
+function addUnit(unitId, sizeIdx) {
+  if (getUnitStatus(unitId, sizeIdx).blocked) return;
+  const pts = getUnit(unitId).sizes[sizeIdx].pts;
+  state.list.push({ id: idSeq++, unitId, sizeIdx, pts, enhancementId: null });
+  state.openPickerId = null;
+  renderAll();
+}
+
+function removeUnit(lid) {
+  state.list = state.list.filter(l => l.id !== lid);
+  if (state.openPickerId === lid) state.openPickerId = null;
+  if (state.warlordId === lid) state.warlordId = null;
+  renderAll();
+}
+
+function togglePicker(lid) {
+  state.openPickerId = (state.openPickerId === lid) ? null : lid;
+  renderAll();
+}
+
+function assignEnhancement(lid, enhId) {
+  const item = state.list.find(l => l.id === lid);
+  if (item) item.enhancementId = enhId;
+  state.openPickerId = null;
+  renderAll();
+}
+
+function unassignEnhancement(lid) {
+  const item = state.list.find(l => l.id === lid);
+  if (item) item.enhancementId = null;
+  state.openPickerId = null;
+  renderAll();
+}
+
+function setWarlord(lid) {
+  state.warlordId = (state.warlordId === lid) ? null : lid;
+  renderAll();
+}
+
+function clearList() {
+  state.list = []; state.openPickerId = null; state.warlordId = null;
+  state.listName = "";
+  document.getElementById("list-name-input").value = "";
+  renderAll();
+}
+
+function setChapterFilter(val) {
+  state.chapterFilter = val;
+  renderAll();
+}
+
+function renderPoints() {
+  const pts = totalPts();
+  const pct = Math.min((pts / MAX_PTS) * 100, 100);
+  const isOver = pts > MAX_PTS; const isWarn = !isOver && pts > 430;
+  const color = isOver ? "#c0392b" : isWarn ? "#c8922a" : "#27ae60";
+  document.getElementById("pts-fill").style.width = pct + "%";
+  document.getElementById("pts-fill").style.background = color;
+  const bigEl = document.getElementById("pts-big");
+  bigEl.style.color = isOver ? "#c0392b" : isWarn ? "#e8b84b" : "#e2e0d8";
+  bigEl.innerHTML = `${pts} <span style="font-size:12px;color:var(--text3);font-weight:400">/ ${MAX_PTS}</span>`;
+  const remEl = document.getElementById("pts-remaining");
+  remEl.style.color = isOver ? "#c0392b" : isWarn ? "#c8922a" : "var(--text3)";
+  remEl.textContent = isOver ? `${pts - MAX_PTS}pts over limit` : `${MAX_PTS - pts}pts remaining`;
+}
+
+function renderWarnings() {
+  const pts = totalPts(); const isOver = pts > MAX_PTS; const isWarn = !isOver && pts > 430;
+  const det = currentDet(); const msgs = [];
+  if (isOver) msgs.push({text:`⛔ Over limit by ${pts - MAX_PTS}pts`, cls:"error"});
+  else if (isWarn) msgs.push({text:`⚠ Approaching limit — ${MAX_PTS - pts}pts remaining`, cls:"alert"});
+  if (det && state.list.length > 0 && state.warlordId === null)
+    msgs.push({text:"⚠ No Warlord designated", cls:"alert"});
+  if (det?.maxCharacters !== undefined && charCountInList() >= det.maxCharacters)
+    msgs.push({text:`⚠ Character limit reached (${det.maxCharacters}/${det.maxCharacters})`, cls:"alert"});
+  // Warn if a unit in the list has an unmet requiresCharacterWithKeyword constraint
+  if (det) {
+    state.list.forEach(l => {
+      if (isRequiredCharacterMissing(l.unitId)) {
+        const u = getUnit(l.unitId);
+        const kw = getDetUnit(l.unitId)?.requiresCharacterWithKeyword;
+        msgs.push({text:`⛔ ${u.name} requires a ${kw} CHARACTER`, cls:"error"});
+      }
+    });
+  }
+  const allRatios = [];
+  if (det?.keywordRatio)  allRatios.push(det.keywordRatio);
+  if (det?.keywordRatios) allRatios.push(...det.keywordRatios);
+  for (const ratio of allRatios) {
+    const numCount = ratio.numeratorUnitIds
+      ? ratioUnitCountInList(ratio.numeratorUnitIds)
+      : keywordCountInList(ratio.numeratorKeyword);
+    const denCount = ratio.denominatorKeyword
+      ? keywordCountInList(ratio.denominatorKeyword)
+      : ratioUnitCountInList(ratio.denominatorUnitIds);
+    if (numCount > 0 && numCount >= denCount)
+      msgs.push({text:`⚠ ${ratio.description}`, cls:"alert"});
+  }
+  if (det?.maxKeywordUnits) {
+    det.maxKeywordUnits.forEach(cap => {
+      if (keywordCountInList(cap.keyword) >= cap.max)
+        msgs.push({text:`ℹ ${cap.description}`, cls:"alert"});
+    });
+  }
+  document.getElementById("warnings").innerHTML =
+    msgs.map(m => `<div class="warn-pill ${m.cls}">${esc(m.text)}</div>`).join("");
+}
+
+function renderDetInfo() {
+  const box = document.getElementById("det-info");
+  const det = currentDet();
+  const faction = currentFaction();
+  if (!det) { box.style.display = "none"; box.innerHTML = ""; return; }
+  let html = "";
+
+  // Army rule (shown first)
+  if (faction && faction.armyRule) {
+    html += `
+    <div class="rule-box rule-box--army">
+      <div class="rule-tag">⚔ Army Rule</div>
+      <div class="rule-name">${esc(faction.armyRule.name)}</div>
+      <div class="rule-desc">${esc(faction.armyRule.desc)}</div>
+    </div>`;
+  }
+
+  // Detachment rule
+  html += `
+    <div class="rule-box">
+      <div class="rule-tag">⚡ Detachment Rule</div>
+      <div class="rule-name">${esc(det.specialRule.name)}</div>
+      <div class="rule-desc">${esc(det.specialRule.desc)}</div>
+    </div>
+    <div class="enh-section-title">Available Enhancements</div>`;
+  const assignableEnhs = det.enhancements.filter(e => !e.noAssign);
+  const noAssignEnhs   = det.enhancements.filter(e => e.noAssign);
+  if (assignableEnhs.length === 0 && noAssignEnhs.length > 0) {
+    html += `<div class="enh-info-card" style="border-color:#4a2a2a;background:linear-gradient(135deg,#1a0a0a,#120808);">
+      <div class="rule-tag" style="color:#c04040;">⊘ Enhancement Restriction</div>
+      <div class="enh-info-name">${esc(noAssignEnhs[0].name)}</div>
+      <div class="enh-info-desc">${esc(noAssignEnhs[0].desc)}</div>
+    </div>`;
+  } else {
+    assignableEnhs.forEach(enh => {
+      const restrict = enh.requiresKeywords.length
+        ? `Requires: ${enh.requiresKeywords.join(", ")}`
+        : "Any CHARACTER";
+      html += `<div class="enh-info-card">
+        <div class="enh-info-name">${esc(enh.name)}</div>
+        <div class="enh-info-desc">${esc(enh.desc)}</div>
+        <div class="enh-info-restrict">${esc(restrict)}</div>
+      </div>`;
+    });
+  }
+  html += `<div class="enh-section-title" style="margin-top:10px;">⬡ Universal Enhancements</div>`;
+  DATA.genericEnhancements.forEach(enh => {
+    const restrict = enh.requiresKeywords.length
+      ? `Requires: ${enh.requiresKeywords.join(", ")}`
+      : "Any CHARACTER";
+    html += `<div class="enh-info-card enh-info-card--generic">
+      <div class="enh-info-name">${esc(enh.name)}</div>
+      <div class="enh-info-desc">${esc(enh.desc)}</div>
+      <div class="enh-info-restrict">${esc(restrict)}</div>
+    </div>`;
+  });
+  box.innerHTML = html; box.style.display = "block";
+}
+
+function renderUnitGrid() {
+  const grid = document.getElementById("unit-grid");
+  const det  = currentDet();
+  if (!det) { grid.innerHTML = '<div class="placeholder">Select a faction and detachment<br/>to see available units.</div>'; return; }
+  const pts = totalPts();
+
+  // ── Chapter filter ────────────────────────────────────────────────────────
+  // The flat list of all chapter-type keywords for this detachment (first group only)
+  const chapterGroup = det.factionKeywordGroups?.[0] ?? null;
+
+  // If a chapter keyword is already committed by the current list, lock the filter to it
+  let committedChapter = null;
+  if (chapterGroup) {
+    committedChapter = chapterGroup.find(kw =>
+      state.list.some(l => getUnit(l.unitId)?.keywords.includes(kw))
+    ) ?? null;
+  }
+
+  // Effective filter: committed chapter takes priority over user selection
+  const activeFilter = committedChapter || state.chapterFilter;
+
+  let html = "";
+
+  // ── Filter dropdown ───────────────────────────────────────────────────────
+  if (chapterGroup) {
+    const isLocked = !!committedChapter;
+    html += `<div class="chapter-filter-bar">
+      <label class="chapter-filter-label" for="chapter-filter-sel">
+        <span class="chapter-filter-icon">⚜</span> Chapter
+      </label>
+      <select id="chapter-filter-sel"
+              class="chapter-filter-sel${isLocked ? " chapter-filter-sel--locked" : ""}"
+              onchange="setChapterFilter(this.value)"
+              ${isLocked ? "disabled" : ""}>
+        <option value=""${!activeFilter ? " selected" : ""}>All chapters</option>`;
+    [...chapterGroup]
+      .filter(kw => det.units.some(du => getUnit(du.id)?.keywords.includes(kw)))
+      .sort((a, b) => a.localeCompare(b))
+      .forEach(kw => {
+        html += `<option value="${esc(kw)}"${activeFilter === kw ? " selected" : ""}>${esc(kw)}</option>`;
+      });
+    html += `</select>`;
+    if (isLocked) {
+      html += `<span class="chapter-filter-lock-note">Locked — ${esc(committedChapter)} unit in list</span>`;
+    }
+    html += `</div>`;
+  }
+
+  // ── Unit grid ─────────────────────────────────────────────────────────────
+  TYPE_ORDER.forEach(type => {
+    const units = det.units.map(du => getUnit(du.id)).filter(u => u && u.type === type).sort((a, b) => a.name.localeCompare(b.name));
+    if (!units.length) return;
+
+    // Apply chapter filter: hide units that have a chapter keyword that doesn't match the active filter
+    const visibleUnits = units.filter(unit => {
+      if (!chapterGroup || !activeFilter) return true;
+      const unitChapterKws = unit.keywords.filter(k => chapterGroup.includes(k));
+      if (!unitChapterKws.length) return true; // no chapter keyword — always visible
+      return unitChapterKws.includes(activeFilter);
+    });
+
+    if (!visibleUnits.length) return;
+    html += `<div class="type-divider">${type}</div>`;
+    visibleUnits.forEach(unit => {
+      const cnt        = unitCountInList(unit.id);
+      const cardStatus = getUnitStatus(unit.id); // card-level: no sizeIdx, no pts check
+      html += `<div class="unit-card${cardStatus.blocked ? " unit-maxed" : ""}">
+        <div class="unit-top">
+          <span class="type-badge badge-${unit.type}">${unit.type}</span>
+          <span class="unit-name-count">
+            <span class="unit-name-text">${esc(unit.name)}</span>
+            <span class="unit-count-text">${cnt}/${getUnitMax(unit.id)}</span>
+          </span>
+        </div>
+        <div class="kw-row">${unit.keywords.map(k => `<span class="kw-tag">${esc(k)}</span>`).join("")}</div>
+        ${unit.rulesAdaptations ? `<div class="rules-adapt">${esc(unit.rulesAdaptations)}</div>` : ""}
+        ${cardStatus.hint ? `<div class="rules-adapt" style="border-left-color:#6a4000;color:#c8922a;">${esc(cardStatus.hint)}</div>` : ""}
+        <div class="size-row">`;
+      unit.sizes.forEach((s, i) => {
+        const detUnit = getDetUnit(unit.id);
+        if (detUnit?.allowedSizeIndices && !detUnit.allowedSizeIndices.includes(i)) return;
+        const btnStatus = getUnitStatus(unit.id, i); // button-level: adds allowedSizeIndices + pts check
+        html += `<button class="size-btn" onclick="addUnit('${unit.id}',${i})" ${btnStatus.blocked ? "disabled" : ""}>${esc(s.label)} — ${s.pts}pts</button>`;
+      });
+      html += `</div></div>`;
+    });
+  });
+  grid.innerHTML = html;
+}
+
+function renderList() {
+  const body    = document.getElementById("list-body");
+  const total   = document.getElementById("list-total");
+  const clrBtn  = document.getElementById("clear-btn");
+  const totalEl = document.getElementById("total-pts-text");
+  const det     = currentDet();
+  const pts     = totalPts(); const isOver = pts > MAX_PTS;
+
+  if (!state.list.length) {
+    body.innerHTML = '<div class="list-empty">No units added yet.<br/>Select a detachment to begin.</div>';
+    total.style.display = "none"; clrBtn.style.display = "none";
+    document.getElementById("print-btn").style.display = "none";
+    document.getElementById("list-name-wrap").style.display = "none";
+    return;
+  }
+
+  const taken = assignedEnhIds();
+  let html = "";
+
+  TYPE_ORDER.forEach(type => {
+    const items = state.list.filter(l => getUnit(l.unitId)?.type === type);
+    if (!items.length) return;
+    html += `<div class="list-type-hdr">${type}</div>`;
+
+    items.forEach(item => {
+      const unit       = getUnit(item.unitId);
+      const size       = unit.sizes[item.sizeIdx];
+      const pickerOpen = state.openPickerId === item.id;
+
+      // Find assigned enhancement from detachment or generic pool
+      const allEnhs    = [...(det ? det.enhancements : []), ...DATA.genericEnhancements];
+      const assignedEnh = item.enhancementId ? allEnhs.find(e => e.id === item.enhancementId) : null;
+      const isGenericAssigned = assignedEnh && DATA.genericEnhancements.some(e => e.id === assignedEnh.id);
+
+      const detEnhs    = det ? det.enhancements.filter(e => !e.noAssign && unitCanTakeEnh(unit, e)) : [];
+      const genericEnhs = DATA.genericEnhancements.filter(e => unitCanTakeEnh(unit, e));
+      const eligibleEnhs = [...detEnhs, ...genericEnhs];
+      const listCapReached = taken.length >= 2;
+
+      const hasChars     = state.list.some(l => getUnit(l.unitId)?.type === "CHARACTER");
+      const isChar       = unit.type === "CHARACTER";
+      const isEpicHero   = unit.keywords.includes("EPIC HERO");
+      const noEnhancement = unit.noEnhancement === true;
+      const canTakeEnh   = isChar || !!getDetUnit(item.unitId)?.canTakeEnhancement;
+      const isWarlord    = state.warlordId === item.id;
+      const canBeWarlord = hasChars ? isChar : true;
+
+      const showTooltip  = canBeWarlord && !isWarlord && state.warlordId === null;
+
+      html += `<div class="list-row${isWarlord ? " list-row--warlord" : ""}">
+        <div class="list-row-main">
+          <div class="list-row-info">
+            <div class="list-row-name">
+              ${esc(unit.name)}
+              ${isWarlord ? '<span class="warlord-kw-badge">WARLORD</span>' : ""}
+            </div>
+            <div class="list-row-sub">${esc(size.label)}</div>
+          </div>
+          <button class="warlord-btn${isWarlord ? " warlord-btn--active" : ""}${!canBeWarlord ? " warlord-btn--locked" : ""}${showTooltip ? " show-tooltip" : ""}"
+            onclick="${canBeWarlord ? `setWarlord(${item.id})` : ""}"
+            ${!canBeWarlord ? "disabled" : ""}
+            title="">
+            ★<span class="warlord-tooltip">Make Warlord</span>
+          </button>
+          <div class="list-row-pts">${item.pts}</div>
+          <button class="remove-btn" onclick="removeUnit(${item.id})" title="Remove">✕</button>
+        </div>`;
+
+      if (canTakeEnh) {
+        html += `<div class="enh-assign-area">`;
+        if (isEpicHero) {
+          html += `<span class="epic-hero-label">⚔ Epic Hero — cannot be assigned enhancements</span>`;
+        } else if (noEnhancement) {
+          html += `<span class="epic-hero-label">Cannot be assigned enhancements</span>`;
+        } else if (assignedEnh) {
+          const badgeClass = isGenericAssigned ? "enh-assigned-badge enh-assigned-badge--generic" : "enh-assigned-badge";
+          const prefix = isGenericAssigned ? "⬡" : "✦";
+          html += `<div class="${badgeClass}">
+            ${prefix} ${esc(assignedEnh.name)}
+            <button class="unassign-btn" onclick="unassignEnhancement(${item.id})" title="Remove enhancement">✕</button>
+          </div>`;
+        } else if (!eligibleEnhs.length) {
+          html += `<button class="assign-btn" disabled>No eligible enhancements</button>`;
+        } else {
+          const capHit = listCapReached;
+          const onclickAttr = capHit ? "disabled" : `onclick="togglePicker(${item.id})"`;
+          html += `<button class="assign-btn" ${onclickAttr}>
+            ${pickerOpen ? "▲ Cancel" : "＋ Assign Enhancement"}
+          </button>`;
+          if (capHit && !assignedEnh) {
+            html += `<span style="font-size:10px;color:var(--text3);margin-left:6px;">Enhancement limit reached (2/2)</span>`;
+          }
+          if (pickerOpen && !capHit) {
+            html += `<div class="enh-picker">`;
+            // Detachment enhancements section
+            if (detEnhs.length) {
+              html += `<div class="enh-picker-section-hdr">Detachment</div>`;
+              detEnhs.forEach(enh => {
+                const alreadyTaken = taken.includes(enh.id);
+                const restrict = enh.requiresKeywords.length ? `Requires: ${enh.requiresKeywords.join(", ")}` : "Any CHARACTER";
+                html += `<div class="enh-picker-item${alreadyTaken ? " enh-picker-taken" : ""}"
+                  ${alreadyTaken ? "" : `onclick="assignEnhancement(${item.id},'${enh.id}')"`}>
+                  <div class="enh-picker-name">
+                    ✦ ${esc(enh.name)}
+                    ${alreadyTaken ? '<span class="enh-picker-taken-label">Already assigned</span>' : ""}
+                  </div>
+                  <div class="enh-picker-desc">${esc(enh.desc)}</div>
+                  <div class="enh-picker-restrict">${esc(restrict)}</div>
+                </div>`;
+              });
+            }
+            // Generic enhancements section
+            if (genericEnhs.length) {
+              html += `<div class="enh-picker-section-hdr enh-picker-section-hdr--generic">Universal</div>`;
+              genericEnhs.forEach(enh => {
+                const alreadyTaken = taken.includes(enh.id);
+                const restrict = enh.requiresKeywords.length ? `Requires: ${enh.requiresKeywords.join(", ")}` : "Any CHARACTER";
+                html += `<div class="enh-picker-item enh-picker-item--generic${alreadyTaken ? " enh-picker-taken" : ""}"
+                  ${alreadyTaken ? "" : `onclick="assignEnhancement(${item.id},'${enh.id}')"`}>
+                  <div class="enh-picker-name">
+                    ⬡ ${esc(enh.name)}
+                    ${alreadyTaken ? '<span class="enh-picker-taken-label">Already assigned</span>' : ""}
+                  </div>
+                  <div class="enh-picker-desc">${esc(enh.desc)}</div>
+                  <div class="enh-picker-restrict">${esc(restrict)}</div>
+                </div>`;
+              });
+            }
+            html += `<div class="enh-picker-cancel" onclick="togglePicker(${item.id})">Cancel</div></div>`;
+          }
+        }
+        html += `</div>`;
+      }
+
+      html += `</div>`;
+    });
+  });
+
+  body.innerHTML = html;
+  totalEl.innerHTML = `${pts} <span style="font-size:12px;color:var(--text3);font-weight:400">/ ${MAX_PTS}</span>`;
+  totalEl.className = "pts" + (isOver ? " over" : "");
+  total.style.display = "flex"; clrBtn.style.display = "block";
+  document.getElementById("print-btn").style.display = "block";
+  document.getElementById("list-name-wrap").style.display = "block";
+}
+
+function renderAll() { renderPoints(); renderWarnings(); renderUnitGrid(); renderList(); }
+
+// ── Print Modal ──────────────────────────────────────────────────────────────
+function openPrintModal() {
+  buildPrintSheet();
+  document.getElementById("print-modal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closePrintModal() {
+  document.getElementById("print-modal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("print-modal").addEventListener("click", function(e){
+  if (e.target === this) closePrintModal();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && document.getElementById("print-modal").classList.contains("open"))
+    closePrintModal();
+});
+
+// ── Export ───────────────────────────────────────────────────────────────────
+
+function triggerDownload(filename, content, mimeType) {
+  const blob = new Blob([content], { type: mimeType });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function safeFilename(base, ext) {
+  const clean = (base || "boarding-actions-list").replace(/[^a-z0-9\-_ ]/gi, "").trim() || "boarding-actions-list";
+  return `${clean}.${ext}`;
+}
+
+function exportJSON() {
+  const faction = currentFaction();
+  const det     = currentDet();
+  const payload = {
+    exportVersion: 1,
+    listName:   state.listName || "",
+    factionId:  state.factionId,
+    factionName: faction ? faction.name : "",
+    detachmentId:   state.detachmentId,
+    detachmentName: det ? det.name : "",
+    totalPts:   totalPts(),
+    warlordId:  state.warlordId,
+    units: state.list.map(item => {
+      const unit = getUnit(item.unitId);
+      const size = unit ? unit.sizes[item.sizeIdx] : null;
+      return {
+        id:            item.id,
+        unitId:        item.unitId,
+        unitName:      unit ? unit.name : item.unitId,
+        sizeIdx:       item.sizeIdx,
+        sizeLabel:     size ? size.label : "",
+        pts:           item.pts,
+        enhancementId: item.enhancementId || null,
+        isWarlord:     item.id === state.warlordId
+      };
+    })
+  };
+  triggerDownload(
+    safeFilename(state.listName, "json"),
+    JSON.stringify(payload, null, 2),
+    "application/json"
+  );
+}
+
+function buildTextLines() {
+  const faction = currentFaction();
+  const det     = currentDet();
+  const allEnhs = [...(det ? det.enhancements.filter(e => !e.noAssign) : []), ...DATA.genericEnhancements];
+  const pts     = totalPts();
+  const name    = state.listName || "Untitled List";
+  const lines   = [];
+
+  lines.push("════════════════════════════════════════");
+  lines.push(`  ${name}`);
+  lines.push(`  ${faction ? faction.name : "—"} · ${det ? det.name : "—"}`);
+  lines.push(`  ${pts} / ${MAX_PTS} pts`);
+  lines.push("════════════════════════════════════════");
+  lines.push("");
+
+  if (faction?.armyRule) {
+    lines.push(`⚔ ARMY RULE — ${faction.armyRule.name}`);
+    lines.push(faction.armyRule.desc);
+    lines.push("");
+  }
+
+  if (det?.specialRule) {
+    lines.push(`⚡ DETACHMENT RULE — ${det.specialRule.name}`);
+    lines.push(det.specialRule.desc);
+    lines.push("");
+  }
+
+  lines.push("────────────────────────────────────────");
+  lines.push("  UNITS");
+  lines.push("────────────────────────────────────────");
+
+  TYPE_ORDER.forEach(type => {
+    const items = state.list.filter(l => getUnit(l.unitId)?.type === type);
+    if (!items.length) return;
+    lines.push("");
+    lines.push(`[ ${type} ]`);
+    items.forEach(item => {
+      const unit        = getUnit(item.unitId);
+      const size        = unit.sizes[item.sizeIdx];
+      const isWarlord   = item.id === state.warlordId;
+      const assignedEnh = item.enhancementId ? allEnhs.find(e => e.id === item.enhancementId) : null;
+      const warlordTag  = isWarlord ? " ★ WARLORD" : "";
+      lines.push(`  ${unit.name}${warlordTag}`);
+      lines.push(`    ${size.label} — ${item.pts}pts`);
+      if (unit.rulesAdaptations) lines.push(`    ↳ ${unit.rulesAdaptations}`);
+      if (assignedEnh) {
+        lines.push(`    ✦ Enhancement: ${assignedEnh.name}`);
+        lines.push(`      ${assignedEnh.desc}`);
+      }
+    });
+  });
+
+  lines.push("");
+  lines.push("────────────────────────────────────────");
+  lines.push(`  TOTAL: ${pts} / ${MAX_PTS} pts`);
+  lines.push("════════════════════════════════════════");
+  lines.push("");
+  lines.push("Created with Boarding Actions List Builder");
+
+  return lines.join("\n");
+}
+
+function exportText() {
+  triggerDownload(safeFilename(state.listName, "txt"), buildTextLines(), "text/plain");
+}
+
+async function copyText() {
+  const btn = document.getElementById("copy-btn");
+  try {
+    await navigator.clipboard.writeText(buildTextLines());
+    btn.textContent = "✓ Copied!";
+    btn.classList.add("ps-action-btn--copy--success");
+    setTimeout(() => {
+      btn.textContent = "⎘ Copy as Text";
+      btn.classList.remove("ps-action-btn--copy--success");
+    }, 2000);
+  } catch {
+    alert("Copy failed — please use Export .txt instead.");
+  }
+}
+
+let pdfExporting = false;
+
+async function exportPDF() {
+  if (pdfExporting) return;
+  pdfExporting = true;
+  const btn = document.getElementById("pdf-btn");
+  btn.textContent = "⏳ Generating…";
+  btn.disabled = true;
+  btn.classList.add("ps-action-btn--pdf--loading");
+
+  try {
+    // Temporarily hide the action bar so it doesn't appear in the capture
+    const actionsEl = document.querySelector(".ps-modal-actions");
+    actionsEl.style.display = "none";
+
+    const sheet     = document.getElementById("print-sheet");
+    const sheetRect = sheet.getBoundingClientRect();
+
+    // Collect forbidden cut zones — elements that must not be split across pages.
+    // Measured before html2canvas so the DOM is in its natural layout state.
+    const sectionEls = sheet.querySelectorAll(
+      ".ps-rule-card, .ps-unit-row, .ps-enh-list-item, .ps-enhancements"
+    );
+
+    const canvas = await html2canvas(sheet, {
+      scale:           2,       // 2× for crisp rendering
+      useCORS:         true,
+      backgroundColor: "#ffffff",
+      logging:         false
+    });
+
+    actionsEl.style.display = "";
+
+    // Scale factor from CSS pixels → canvas pixels
+    const scale = canvas.width / sheetRect.width;
+
+    // Build forbidden zones as [topPx, bottomPx] in canvas-pixel coordinates
+    const forbiddenZones = Array.from(sectionEls).map(el => {
+      const r = el.getBoundingClientRect();
+      return [
+        (r.top    - sheetRect.top) * scale,
+        (r.bottom - sheetRect.top) * scale
+      ];
+    });
+
+    const { jsPDF } = window.jspdf;
+    const pdf    = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+    const pageW  = pdf.internal.pageSize.getWidth();
+    const pageH  = pdf.internal.pageSize.getHeight();
+
+    // How many canvas pixels fit on one PDF page
+    const pageCanvasPx = Math.round((pageH / pageW) * canvas.width);
+
+    // Given an ideal cut point (in canvas px), pull it back to just before the
+    // nearest section that would be split. If a single section is taller than a
+    // full page we can't avoid splitting it — fall through to the ideal cut.
+    function safeCutPoint(idealCutPx) {
+      for (const [top, bottom] of forbiddenZones) {
+        const sectionH = bottom - top;
+        if (sectionH >= pageCanvasPx) continue; // section taller than page — can't avoid
+        if (idealCutPx > top && idealCutPx < bottom) {
+          return top; // move cut to just above this section
+        }
+      }
+      return idealCutPx;
+    }
+
+    // Slice the canvas into pages using section-aware cut points
+    let yPx = 0; // current position in canvas pixels
+
+    while (yPx < canvas.height) {
+      const idealEndPx = yPx + pageCanvasPx;
+      const endPx      = idealEndPx >= canvas.height
+        ? canvas.height
+        : safeCutPoint(idealEndPx);
+
+      const sliceCanvasH = endPx - yPx;
+      // mm height for this slice (proportional to its canvas pixel height)
+      const sliceMmH = (sliceCanvasH / canvas.width) * pageW;
+
+      const slice = document.createElement("canvas");
+      slice.width  = canvas.width;
+      slice.height = sliceCanvasH;
+      slice.getContext("2d").drawImage(
+        canvas, 0, yPx, canvas.width, sliceCanvasH,
+        0, 0, canvas.width, sliceCanvasH
+      );
+
+      if (yPx > 0) pdf.addPage();
+      pdf.addImage(slice.toDataURL("image/png"), "PNG", 0, 0, pageW, sliceMmH);
+
+      yPx = endPx;
+    }
+
+    pdf.save(safeFilename(state.listName, "pdf"));
+  } catch (err) {
+    console.error("PDF export failed:", err);
+    alert("PDF export failed. Please try again.");
+    const actionsEl = document.querySelector(".ps-modal-actions");
+    actionsEl.style.display = "";
+  } finally {
+    btn.textContent = "⬇ Export .pdf";
+    btn.disabled    = false;
+    btn.classList.remove("ps-action-btn--pdf--loading");
+    pdfExporting    = false;
+  }
+}
+
+function buildPrintSheet() {
+  const faction = currentFaction();
+  const det     = currentDet();
+  const pts     = totalPts();
+  const allEnhs = [...(det ? det.enhancements.filter(e => !e.noAssign) : []), ...DATA.genericEnhancements];
+
+  document.getElementById("ps-name-input").value = state.listName || "";
+  document.getElementById("ps-pts-num").textContent = pts;
+  document.getElementById("ps-pts-label").textContent = `/ ${MAX_PTS} pts`;
+  document.getElementById("ps-meta").textContent =
+    `${faction ? faction.name : ""} · ${det ? det.name : ""}`;
+
+  const warlordItem = state.list.find(l => l.id === state.warlordId);
+  const warlordUnit = warlordItem ? getUnit(warlordItem.unitId) : null;
+  document.getElementById("ps-footer-kws").textContent =
+    warlordUnit ? `Warlord: ${warlordUnit.name}` : "";
+  document.getElementById("ps-footer-total").innerHTML =
+    `Total: <span>${pts} / ${MAX_PTS} pts</span>`;
+
+  let rulesHtml = "";
+  if (faction?.armyRule) {
+    rulesHtml += `<div class="ps-rule-card">
+      <div class="ps-rule-tag ps-rule-tag--army">⚔ Army Rule</div>
+      <div class="ps-rule-name">${esc(faction.armyRule.name)}</div>
+      <div class="ps-rule-desc">${esc(faction.armyRule.desc)}</div>
+    </div>`;
+  }
+  if (det?.specialRule) {
+    rulesHtml += `<div class="ps-rule-card">
+      <div class="ps-rule-tag ps-rule-tag--det">⚡ Detachment Rule</div>
+      <div class="ps-rule-name">${esc(det.specialRule.name)}</div>
+      <div class="ps-rule-desc">${esc(det.specialRule.desc)}</div>
+    </div>`;
+  }
+  const rulesEl = document.getElementById("ps-rules");
+  rulesEl.innerHTML = rulesHtml;
+  rulesEl.style.display = rulesHtml ? "grid" : "none";
+
+  let unitsHtml = "";
+  TYPE_ORDER.forEach(type => {
+    const items = state.list.filter(l => getUnit(l.unitId)?.type === type);
+    if (!items.length) return;
+    unitsHtml += `<div class="ps-type-hdr">${type}</div>`;
+    items.forEach(item => {
+      const unit = getUnit(item.unitId);
+      const size = unit.sizes[item.sizeIdx];
+      const isWarlord = state.warlordId === item.id;
+      const assignedEnh = item.enhancementId ? allEnhs.find(e => e.id === item.enhancementId) : null;
+      const isGenericEnh = assignedEnh && DATA.genericEnhancements.some(e => e.id === assignedEnh.id);
+      unitsHtml += `<div class="ps-unit-row">
+        <span class="ps-unit-badge ps-badge-${unit.type}">${unit.type}</span>
+        <div class="ps-unit-info">
+          <div class="ps-unit-name">${esc(unit.name)}${isWarlord ? ' <span class="ps-warlord-badge">★ WARLORD</span>' : ""}</div>
+          <div class="ps-unit-size">${esc(size.label)}</div>
+          ${unit.rulesAdaptations ? `<div class="ps-unit-adapt">${esc(unit.rulesAdaptations)}</div>` : ""}
+          ${assignedEnh ? `<div class="ps-enh-badge${isGenericEnh ? " ps-enh-badge--generic" : ""}">${isGenericEnh ? "⬡" : "✦"} ${esc(assignedEnh.name)}</div>` : ""}
+        </div>
+        <div class="ps-unit-pts">${item.pts}pts</div>
+      </div>`;
+    });
+  });
+  document.getElementById("ps-units").innerHTML = unitsHtml;
+
+  const enhItems = state.list.filter(l => l.enhancementId);
+  const enhEl = document.getElementById("ps-enhancements");
+  if (enhItems.length) {
+    let enhHtml = `<div class="ps-enh-section-title">✦ Enhancements</div>`;
+    enhItems.forEach(item => {
+      const unit = getUnit(item.unitId);
+      const enh  = allEnhs.find(e => e.id === item.enhancementId);
+      if (!enh) return;
+      const isGeneric = DATA.genericEnhancements.some(e => e.id === enh.id);
+      enhHtml += `<div class="ps-enh-list-item">
+        <div style="flex:1">
+          <div class="ps-enh-list-name">${isGeneric ? "⬡" : "✦"} ${esc(enh.name)}</div>
+          <div class="ps-enh-list-desc">${esc(enh.desc)}</div>
+        </div>
+        <div style="white-space:nowrap;color:#888;font-size:10px;margin-left:12px;">→ ${esc(unit.name)}</div>
+      </div>`;
+    });
+    enhEl.innerHTML = enhHtml;
+    enhEl.style.display = "block";
+  } else {
+    enhEl.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

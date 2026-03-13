@@ -1,0 +1,810 @@
+{
+  "detachments": [
+    {
+      "id": "csm_champions_of_chaos",
+      "name": "Champions of Chaos",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Dark Purpose",
+        "desc": "Each time a HERETIC ASTARTES unit from your army Consolidates, if it is not within Engagement Range of one or more enemy units, then until the end of the phase, each time a model in that unit makes a Consolidation move, it can move towards the closest objective marker, but only if, after all models have done so, that unit is within range of the objective marker and in Unit Coherency. Chaos Terminator Squad units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_csm_manifest_vengeance",
+          "name": "Manifest Vengeance",
+          "desc": "When the bearer is destroyed, if it has not shot or fought this phase, roll one D6, adding 1 to the result if it was destroyed by a melee attack: on a 4+, do not remove it from play. The bearer can shoot or fight after the attacking unit has finished making its attacks, and is then removed from play.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_csm_dark_majesty",
+          "name": "Dark Majesty",
+          "desc": "Each time the bearer makes a Charge move, select one enemy unit within Engagement Range of it. Until the start of your next Charge phase, that enemy unit is stunned. While an enemy unit is stunned, each time a model in that unit makes an attack, subtract 1 from the Hit Roll.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "csm_lord_terminator",
+          "max": 1
+        },
+        {
+          "id": "csm_sorcerer_terminator",
+          "max": 1
+        },
+        {
+          "id": "csm_abaddon",
+          "max": 1
+        },
+        {
+          "id": "csm_chosen",
+          "max": 2
+        },
+        {
+          "id": "csm_terminators",
+          "max": 2
+        },
+        {
+          "id": "csm_chaos_spawn",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "csm_underdeck_uprising",
+      "name": "Underdeck Uprising",
+      "specialRule": {
+        "name": "Fanatical Onslaught",
+        "desc": "In your opponent's shooting phase, each time an enemy unit has shot, if one or more models from one or more HERETIC ASTARTES units from your army were destroyed as a result of those attacks, each such unit can make a Rush move. To do so, that unit can be moved up to 3\", but must end that move as close as possible to the attacking unit. When doing so, those models can be moved within Engagement Range of enemy units. A unit cannot make a Rush move while it is Battle-shocked, and can only make one Rush move per turn."
+      },
+      "enhancements": [
+        {
+          "id": "enh_csm_rabble_rouser",
+          "name": "Rabble Rouser",
+          "desc": "Once per turn, when a friendly Cultist Mob or Fellgor Beastmen unit within 6\" of the bearer is selected to shoot or fight, the bearer can use this Enhancement. If it does, until the end of the phase add 1 to the Attacks characteristic of weapons equipped by models in that friendly unit.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_csm_vox_malevolus",
+          "name": "Vox Malevolus",
+          "desc": "In the first battle round, if the bearer is on the battlefield, you can re-roll Advance rolls made for HERETIC ASTARTES units in your army.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "csm_dark_apostle",
+          "max": 1
+        },
+        {
+          "id": "csm_cultist_firebrand",
+          "max": 1
+        },
+        {
+          "id": "csm_dark_commune",
+          "max": 1
+        },
+        {
+          "id": "csm_accursed_cultists",
+          "max": 3
+        },
+        {
+          "id": "csm_cultist_mob",
+          "max": 3
+        },
+        {
+          "id": "csm_fellgor_beastmen",
+          "max": 3
+        },
+        {
+          "id": "csm_chaos_spawn",
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "csm_infernal_reavers",
+      "name": "Infernal Reavers",
+      "specialRule": {
+        "name": "Dark Rewards",
+        "desc": "Each time a HERETIC ASTARTES model from your army takes a Leadership test for the Dark Pacts ability, on a 9+, you gain 1 CP."
+      },
+      "enhancements": [
+        {
+          "id": "enh_csm_voice_of_the_octed",
+          "name": "Voice of the Octed",
+          "desc": "Each time the bearer's unit makes a Dark Pact, until the end of the Phase, weapons equipped by models in that unit gain both abilities conferred by that Dark Pact (instead of only one).",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_csm_swollen_with_power",
+          "name": "Swollen with Power",
+          "desc": "Add 1 to the bearers Toughness characteristic. Each time the bearer's unit attempts to operate a Hatchway that an enemy unit is trying to prevent, and each time the bearer's unit tries to prevent an enemy unit from operating a Hatchway, in the resulting roll off, you can re-roll your result.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "csm_abaddon",
+          "max": 1
+        },
+        {
+          "id": "csm_lord",
+          "max": 1
+        },
+        {
+          "id": "csm_lord_terminator",
+          "max": 1
+        },
+        {
+          "id": "csm_sorcerer",
+          "max": 1
+        },
+        {
+          "id": "csm_sorcerer_terminator",
+          "max": 1
+        },
+        {
+          "id": "csm_accursed_cultists",
+          "max": 3
+        },
+        {
+          "id": "csm_cultist_mob",
+          "max": 3
+        },
+        {
+          "id": "csm_fellgor_beastmen",
+          "max": 3
+        },
+        {
+          "id": "csm_terminators",
+          "max": 1
+        },
+        {
+          "id": "csm_chosen",
+          "max": 1
+        },
+        {
+          "id": "csm_lord_jump_pack",
+          "max": 1
+        },
+        {
+          "id": "csm_master_of_executions",
+          "max": 1
+        },
+        {
+          "id": "csm_master_of_possession",
+          "max": 1
+        },
+        {
+          "id": "csm_traitor_enforcer",
+          "max": 1
+        },
+        {
+          "id": "csm_warpsmith",
+          "max": 1
+        },
+        {
+          "id": "csm_possessed",
+          "max": 1
+        },
+        {
+          "id": "csm_raptors",
+          "max": 1
+        },
+        {
+          "id": "csm_cultist_firebrand",
+          "max": 1
+        },
+        {
+          "id": "csm_dark_commune",
+          "max": 1
+        },
+        {
+          "id": "csm_chaos_spawn",
+          "max": 1
+        },
+        {
+          "id": "csm_warriors",
+          "max": 3
+        },
+        {
+          "id": "csm_warp_talons",
+          "max": 1
+        },
+        {
+          "id": "csm_traitor_guardsmen",
+          "max": 3
+        },
+        {
+          "id": "csm_cypher",
+          "max": 1
+        },
+        {
+          "id": "csm_fabius_bile",
+          "max": 1
+        },
+        {
+          "id": "csm_haarken_worldclaimer",
+          "max": 1
+        },
+        {
+          "id": "csm_huron_blackheart",
+          "max": 1
+        },
+        {
+          "id": "csm_dark_apostle",
+          "max": 1
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "csm_cultist_firebrand",
+          "csm_dark_commune",
+          "csm_traitor_enforcer"
+        ],
+        [
+          "csm_chaos_spawn",
+          "csm_raptors",
+          "csm_warp_talons",
+          "csm_possessed"
+        ]
+      ],
+      "keywordRatio": {
+        "numeratorUnitIds": [
+          "csm_accursed_cultists",
+          "csm_cultist_mob",
+          "csm_traitor_guardsmen",
+          "csm_fellgor_beastmen"
+        ],
+        "denominatorUnitIds": [
+          "csm_warriors"
+        ],
+        "description": "Accursed Cultists, Cultist Mob, Traitor Guardsmen Squad and Fellgor Beastmen units cannot outnumber Legionaries units"
+      },
+      "maxFromGroup": [
+        {
+          "max": 2,
+          "unitIds": [
+            "csm_abaddon",
+            "csm_lord",
+            "csm_lord_terminator",
+            "csm_lord_jump_pack",
+            "csm_cypher",
+            "csm_fabius_bile",
+            "csm_haarken_worldclaimer",
+            "csm_huron_blackheart",
+            "csm_master_of_executions",
+            "csm_master_of_possession",
+            "csm_sorcerer",
+            "csm_sorcerer_terminator",
+            "csm_warpsmith",
+            "csm_dark_apostle"
+          ],
+          "description": "Only 2 of these commander units may be included in the list."
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "csm_lord",
+      "name": "Chaos Lord",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "csm_sorcerer",
+      "name": "Sorcerer",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "csm_warriors",
+      "name": "Legionaries",
+      "type": "BATTLELINE",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        },
+        {
+          "label": "10 models",
+          "pts": 170
+        }
+      ]
+    },
+    {
+      "id": "csm_chosen",
+      "name": "Chosen",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 125
+        }
+      ]
+    },
+    {
+      "id": "csm_terminators",
+      "name": "Chaos Terminator Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 180
+        },
+        {
+          "label": "10 models",
+          "pts": 360
+        }
+      ]
+    },
+    {
+      "id": "csm_abaddon",
+      "name": "Abaddon the Despoiler",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 270
+        }
+      ]
+    },
+    {
+      "id": "csm_lord_terminator",
+      "name": "Chaos Lord in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "csm_sorcerer_terminator",
+      "name": "Sorcerer in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS",
+        "TERMINATOR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "csm_chaos_spawn",
+      "name": "Chaos Spawn",
+      "type": "BEAST",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "BEAST",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "csm_dark_apostle",
+      "name": "Dark Apostle",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Malign Sacrifice ability."
+    },
+    {
+      "id": "csm_cultist_firebrand",
+      "name": "Cultist Firebrand",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Fiery Faith ability."
+    },
+    {
+      "id": "csm_dark_commune",
+      "name": "Dark Commune",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "csm_accursed_cultists",
+      "name": "Accursed Cultists",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "8 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Howling Horde ability."
+    },
+    {
+      "id": "csm_cultist_mob",
+      "name": "Cultist Mob",
+      "type": "BATTLELINE",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step. It loses the For the Dark Gods ability."
+    },
+    {
+      "id": "csm_fellgor_beastmen",
+      "name": "Fellgor Beastmen",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "8 models",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "csm_lord_jump_pack",
+      "name": "Chaos Lord with Jump Pack",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "csm_master_of_executions",
+      "name": "Master of Executions",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "csm_master_of_possession",
+      "name": "Master of Possession",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "csm_traitor_enforcer",
+      "name": "Traitor Enforcer",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Brutal Example ability."
+    },
+    {
+      "id": "csm_warpsmith",
+      "name": "Warpsmith",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ]
+    },
+    {
+      "id": "csm_possessed",
+      "name": "Possessed",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "csm_raptors",
+      "name": "Raptors",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 110
+        },
+        {
+          "label": "10 models",
+          "pts": 210
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "csm_warp_talons",
+      "name": "Warp Talons",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 125
+        },
+        {
+          "label": "10 models",
+          "pts": 210
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Warp Strike abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "csm_traitor_guardsmen",
+      "name": "Traitor Guardsmen Squad",
+      "type": "INFANTRY",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHAOS",
+        "DAMNED"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "csm_cypher",
+      "name": "Cypher",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "FALLEN"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Agent of Discord ability."
+    },
+    {
+      "id": "csm_fabius_bile",
+      "name": "Fabius Bile",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Enhanced Warriors ability."
+    },
+    {
+      "id": "csm_haarken_worldclaimer",
+      "name": "Haarken Worldclaimer",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "csm_huron_blackheart",
+      "name": "Huron Blackheart",
+      "type": "CHARACTER",
+      "keywords": [
+        "HERETIC ASTARTES",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ]
+    }
+  ]
+}

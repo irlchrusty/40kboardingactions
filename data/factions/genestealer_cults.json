@@ -1,0 +1,222 @@
+{
+  "detachments": [
+    {
+      "id": "gc_genespawn_onslaught",
+      "name": "Genespawn Onslaught",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Blessed Visages",
+        "desc": "Each time an enemy unit declares a charge that targets one or more GENESTEALER CULTS units from your army, that enemy unit must take a Leadership test. If failed, until the end of the turn, each time an enemy model in that unit makes an attack, subtract 1 from the Hit roll."
+      },
+      "enhancements": [
+        {
+          "id": "enh_gc_spiteful_imp",
+          "name": "Spiteful Imp",
+          "desc": "Abominant model only. Each time an enemy unit open a Hatchway, if the bearer is within 1\" of the Hatchway, roll one D6: on a 3-4 that unit suffers 1 mortal wound, on a 5+ that unit suffers 2 mortal wounds.",
+          "requiresKeywords": ["ABOMINANT"]
+        },
+        {
+          "id": "enh_gc_miasmic_fumes",
+          "name": "Miasmic Fumes",
+          "desc": "Biophagus model only. Each time an attack targets the bearer, subtract 1 from the Hit roll and subtract 1 from the Wound roll.",
+          "requiresKeywords": ["BIOPHAGUS"]
+        }
+      ],
+      "units": [
+        { "id": "gc_abominant",        "max": 1 },
+        { "id": "gc_benefictus",       "max": 1 },
+        { "id": "gc_biophagus",        "max": 1 },
+        { "id": "gc_aberrants",        "max": 2 },
+        { "id": "gc_hybrid_metamorphs","max": 1 }
+      ]
+    },
+    {
+      "id": "gc_cult_unveiled",
+      "name": "Cult Unveiled",
+      "maxCharacters": 3,
+      "specialRule": {
+        "name": "Harassing Fire",
+        "desc": "At the end of your Shooting phase, you can select one GENESTEALER CULTS unit from your army that is not within Engagement range of one or more enemy units. If you do so, that unit can attempt to operate one open Hatchway it is within 1\" of (if there is one), and can then make a Normal move of up to 3\" (regardless of whether it attempted to operate a Hatchway or not). Until the end of the turn, that unit is not eligible to charge."
+      },
+      "enhancements": [
+        {
+          "id": "enh_gc_master_saboteur",
+          "name": "Master Saboteur",
+          "desc": "The first time in a battle that your opponent's army Secures an objective marker while the bearer is on the battlefield, roll one D6: on a 3+, that objective marker is not Secured by your opponent's army.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_gc_primary_detonator",
+          "name": "Primary Detonator",
+          "desc": "Once per battle when an enemy unit opens a closed Hatchway, if the bearer is on the battlefield, it can use this Enhancement. If it does, roll one D6: on a 3-4, that enemy unit suffers 1 mortal wound, on a 5+, that enemy unit suffers 2 mortal wounds.",
+          "requiresKeywords": []
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "gc_magus",
+          "gc_primus"
+        ]
+      ],
+      "maxFromGroup": [
+        {
+          "max": 2,
+          "unitIds": [
+            "gc_acolyte_iconward",
+            "gc_clamavus",
+            "gc_kelermorph",
+            "gc_locus",
+            "gc_sanctus"
+          ],
+          "description": "Only 2 of these support character units may be included in the list."
+        }
+      ],
+      "units": [
+        { "id": "gc_magus",                          "max": 1 },
+        { "id": "gc_primus",                         "max": 1 },
+        { "id": "gc_acolyte_iconward",               "max": 1 },
+        { "id": "gc_clamavus",                       "max": 1 },
+        { "id": "gc_kelermorph",                     "max": 1 },
+        { "id": "gc_locus",                          "max": 1 },
+        { "id": "gc_sanctus",                        "max": 1 },
+        { "id": "gc_acolyte_hybrids_autopistols",    "max": 3 },
+        { "id": "gc_neophyte_hybrids",               "max": 3 },
+        { "id": "gc_acolyte_hybrids_hand_flamers",   "max": 1 }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "gc_abominant",
+      "name": "Abominant",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER","ABOMINANT"],
+      "sizes": [{ "label": "1 model", "pts": 85 }],
+      "rulesAdaptations": "This model loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_benefictus",
+      "name": "Benefictus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 70 }],
+      "rulesAdaptations": "This model loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_biophagus",
+      "name": "Biophagus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER","BIOPHAGUS"],
+      "sizes": [{ "label": "1 model", "pts": 50 }],
+      "rulesAdaptations": "This model loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_aberrants",
+      "name": "Aberrants",
+      "type": "INFANTRY",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","GREAT DEVOURER"],
+      "sizes": [
+        { "label": "5 models",  "pts": 135 },
+        { "label": "10 models", "pts": 300 }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_hybrid_metamorphs",
+      "name": "Hybrid Metamorphs",
+      "type": "INFANTRY",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","GREAT DEVOURER"],
+      "sizes": [
+        { "label": "5 models",  "pts": 70  },
+        { "label": "10 models", "pts": 300 }
+      ],
+      "rulesAdaptations": "This model loses the Scouts, Deep Strike and Brood Surge abilities."
+    },
+    {
+      "id": "gc_magus",
+      "name": "Magus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","PSYKER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 50 }],
+      "rulesAdaptations": "This model loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_primus",
+      "name": "Primus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 70 }],
+      "rulesAdaptations": "This model loses the Deep Strike and Decoys and Misdirection abilities."
+    },
+    {
+      "id": "gc_acolyte_iconward",
+      "name": "Acolyte Iconward",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 50 }],
+      "rulesAdaptations": "This unit loses the Deep Strike and Decoys and Summon the Cult abilities."
+    },
+    {
+      "id": "gc_clamavus",
+      "name": "Clamavus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 50 }],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_kelermorph",
+      "name": "Kelermorph",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 50 }],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_locus",
+      "name": "Locus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 45 }],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_sanctus",
+      "name": "Sanctus",
+      "type": "CHARACTER",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
+      "sizes": [{ "label": "1 model", "pts": 45 }],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    },
+    {
+      "id": "gc_acolyte_hybrids_autopistols",
+      "name": "Acolyte-Hybrids with Autopistols",
+      "type": "BATTLELINE",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","BATTLELINE","GREAT DEVOURER"],
+      "sizes": [
+        { "label": "5 models",  "pts": 65  },
+        { "label": "10 models", "pts": 130 }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Claimed for the Cult abilities."
+    },
+    {
+      "id": "gc_neophyte_hybrids",
+      "name": "Neophyte Hybrids",
+      "type": "BATTLELINE",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","BATTLELINE","GREAT DEVOURER"],
+      "sizes": [{ "label": "10 models", "pts": 65 }],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. This unit does not split into seperate units in the Form Boarding Squads step."
+    },
+    {
+      "id": "gc_acolyte_hybrids_hand_flamers",
+      "name": "Acolyte-Hybrids with Hand Flamers",
+      "type": "BATTLELINE",
+      "keywords": ["GENESTEALER CULTS","INFANTRY","BATTLELINE","GREAT DEVOURER"],
+      "sizes": [
+        { "label": "5 models",  "pts": 70  },
+        { "label": "10 models", "pts": 140 }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability."
+    }
+  ]
+}

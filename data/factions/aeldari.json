@@ -1,0 +1,149 @@
+{
+  "detachments": [
+    {
+      "id": "aeldari_star_dancer_masque",
+      "name": "Star-Dancer Masque",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Faolchu's Last Flight",
+        "desc": "Each time an AELDARI model from your army is destroyed by a melee attack, if it has not fought this phase, roll one D6: on a 3+, do not remove it from play. The destroyed model can fight after the attacking model's unit has finished making its attacks, and is then removed from play."
+      },
+      "enhancements": [
+        {
+          "id": "enh_aeldari_prismatic_garb",
+          "name": "Prismatic Garb",
+          "desc": "Enemy units cannot fire Overwatch at the bearer.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_aeldari_path_of_eldanesh",
+          "name": "Path of Eldanesh",
+          "desc": "The bearer has the Fights First ability and, each time the bearer opens a Hatchway, until the end of the turn, improve the Armour Penetration characteristic of the melee weapons equipped by the bearer by 1.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "aeldari_solitaire",
+          "max": 1,
+          "exclusiveCharacter": true
+        },
+        {
+          "id": "aeldari_death_jester",
+          "max": 1
+        },
+        {
+          "id": "aeldari_shadowseer",
+          "max": 1
+        },
+        {
+          "id": "aeldari_troupe_master",
+          "max": 1
+        },
+        {
+          "id": "aeldari_troupe",
+          "max": 3
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "aeldari_solitaire",
+      "name": "Solitaire",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "HARLEQUIN",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 115
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Blitz and Blur of Movement abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "aeldari_death_jester",
+      "name": "Death Jester",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "HARLEQUIN",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "aeldari_shadowseer",
+      "name": "Shadowseer",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "HARLEQUIN",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "aeldari_troupe_master",
+      "name": "Troupe Master",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "HARLEQUIN",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Cegorach's Favour ability."
+    },
+    {
+      "id": "aeldari_troupe",
+      "name": "Troupe",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "HARLEQUIN",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
+        {
+          "label": "6 models",
+          "pts": 100
+        },
+        {
+          "label": "11 models",
+          "pts": 190
+        }
+      ],
+      "rulesAdaptations": "In the Form Boarding Squads step, Troupe units containing 11 models are each split into two Boarding Squads, one containing 6 models and the other containing the remaining 5 models."
+    }
+  ]
+}

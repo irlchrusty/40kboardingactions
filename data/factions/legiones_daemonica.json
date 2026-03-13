@@ -1,0 +1,834 @@
+{
+  "detachments": [
+    {
+      "id": "ld_rotten_and_rusted",
+      "name": "Rotten and Rusted",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Toxic Miasma",
+        "desc": "While an enemy unit is within 3\" of one or more NURGLE LEGIONES DAEMONICA units from your army, halve the Move characteristic of models in that unit and subtract 1 from Advance and Charge rolls made for it. When measuring this distance, Walls and closed Hatchways are ignored."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ld_virulent_corruption",
+          "name": "Virulent Corruption",
+          "desc": "Each time an enemy unit within Engagement range of the bearer is selected to Fall Back, models in that unit must take Desperate Escape tests as if that unit was Battle-shocked. When doing so, if that unit is also Battle-shocked by other means, subtract 1 from each of those Desperate Escape tests.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ld_endless_gift",
+          "name": "Endless Gift",
+          "desc": "Add 2 to the bearer's Wounds characteristic.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ld_epidemus",
+          "max": 1
+        },
+        {
+          "id": "ld_poxbringer",
+          "max": 1
+        },
+        {
+          "id": "ld_sloppity_bilepiper",
+          "max": 1
+        },
+        {
+          "id": "ld_spoilpox_scrivener",
+          "max": 1
+        },
+        {
+          "id": "ld_plaguebearers",
+          "max": 3
+        },
+        {
+          "id": "ld_nurglings",
+          "max": 3
+        },
+        {
+          "id": "ld_beast_of_nurgle",
+          "max": 1
+        }
+      ]
+    }
+    ,
+    {
+      "id": "ld_infernal_onslaught",
+      "name": "Infernal Onslaught",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Brutal Entrance",
+        "desc": "Each time a KHORNE LEGIONES DAEMONICA unit from your army opens a Hatchway, until the end of the battle, that Hatchway cannot be closed. In addition, until the end of the turn, each time that unit declares a charge, if every target of that charge is on the opposite side of that Hatchway from your unit, add 1 to the charge roll."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ld_worthier_skulls",
+          "name": "Worthier Skulls",
+          "desc": "Each time an enemy unit within Engagement range of the bearer Falls Back, after that unit has moved, if the bearer is not within Engagement Range of one or more enemy units, it can make a Normal move of up to 6\".",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ld_unholy_fury",
+          "name": "Unholy Fury",
+          "desc": "If the bearer is destroyed by a melee attack and it has not fought this phase, roll one D6: on a 2+, do not remove it from play. The destroyed model can fight after the attacking unit has finished making it's attacks, and is then removed from play.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ld_bloodmaster",
+          "max": 1
+        },
+        {
+          "id": "ld_karanak",
+          "max": 1
+        },
+        {
+          "id": "ld_skulltaker",
+          "max": 1
+        },
+        {
+          "id": "ld_bloodletters",
+          "max": 3
+        },
+        {
+          "id": "ld_flesh_hounds",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "ld_dread_carnival",
+      "name": "Dread Carnival",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Lithe Killers",
+        "desc": "Each time a SLAANESH INFANTRY LEGIONES DAEMONICA unit from your army makes a Normal, Advance or Fall Back move, models in the unit can move through other models as if they were not there. When doing so, for each SLAANESH model that moves through one or more enemy models, roll one D6: on a 1-2, that model's unit suffers one mortal wound."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ld_fatal_caress",
+          "name": "Fatal Caress",
+          "desc": "Each time the bearer makes a melee attack, a Critical Wound is scored on an unmodified Wound roll of 5+.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ld_horrifying_visage",
+          "name": "Horrifying Visage",
+          "desc": "Once per battle round, when an enemy unit within 9\" of the bearer attempts to perform a Tactical Manoeuvre or attempts to operate a Hatchway within 9\" of the bearer, the bearer can use this ability. If it does, that enemy unit must take a Leadership test, subtracting 1 from the result: if failed, that enemy unit fails to perform the Tactical Manoeuvre or operate the Hatchway and, until the start of your opponents next turn, that unit cannot perform Tactical Manoeuvres or operate Hatchways.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ld_contorted_epitome",
+          "max": 1
+        },
+        {
+          "id": "ld_the_masque_of_slaanesh",
+          "max": 1
+        },
+        {
+          "id": "ld_infernal_enrapturess",
+          "max": 1
+        },
+        {
+          "id": "ld_tranceweaver",
+          "max": 1
+        },
+        {
+          "id": "ld_daemonettes",
+          "max": 3
+        },
+        {
+          "id": "ld_fiends",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "ld_pandaemoniac_inferno",
+      "name": "Pandaemoniac Inferno",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Living Flame",
+        "desc": "Each time a TZEENTCH LEGIONES DAEMONICA unit from your army is selected to shoot, it can target enemy models within Engagement Range of other friendly TZEENTCH LEGIONES DAEMONICA units. Ranged weapons equipped by TZEENTCH LEGIONES DAEMONICA models have the [SUSTAINED HITS 1] ability while targeting a unit within Engagement Range of one or more friendly models."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ld_fulgurating_presence",
+          "name": "Fulgurating Presence",
+          "desc": "Each time an attack targets the bearer, subtract 1 from the Hit roll.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ld_mutagenic_flames",
+          "name": "Mutagenic Flames",
+          "desc": "In your Shooting phase, after the bearer has shot, select one enemy unit hit by one or more of those attacks. Until the start of your next Shooting phase, each time a model in that unit makes an attack, subtract 1 from the Hit roll.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ld_the_changeling",
+          "max": 1
+        },
+        {
+          "id": "ld_changecaster",
+          "max": 1
+        },
+        {
+          "id": "ld_exalted_flamer",
+          "max": 1
+        },
+        {
+          "id": "ld_blue_horrors",
+          "max": 3
+        },
+        {
+          "id": "ld_pink_horrors",
+          "max": 3
+        },
+        {
+          "id": "ld_flamers",
+          "max": 1
+        },
+        {
+          "id": "ld_screamers",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "ld_daemonic_incursion",
+      "name": "Daemonic Incursion",
+      "maxCharacters": 2,
+      "factionKeywordRestrictions": [
+        ["KHORNE", "SLAANESH"],
+        ["NURGLE", "TZEENTCH"]
+      ],
+      "specialRule": {
+        "name": "Unnatural Energies",
+        "desc": "LEGIONES DAEMONICA units from your army can perform one of the following Tactical Manoeuvres in a turn in which they Advanced or Fell Back: Secure Site; Set to Defend; Set Overwatch."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ld_spite_made_manifest",
+          "name": "Spite Made Manifest",
+          "desc": "Each time an enemy unit is selected to fight, melee weapons equipped by models in that unit have the [HAZARDOUS] ability while targetting the bearer's unit.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ld_geller_breach",
+          "name": "Geller Breach",
+          "desc": "At the start of the first battle round, the bearer's unit can make a Normal move of up to 6\".",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ld_bloodmaster",
+          "max": 1
+        },
+        {
+          "id": "ld_karanak",
+          "max": 1
+        },
+        {
+          "id": "ld_skulltaker",
+          "max": 1
+        },
+        {
+          "id": "ld_changecaster",
+          "max": 1
+        },
+        {
+          "id": "ld_exalted_flamer",
+          "max": 1
+        },
+        {
+          "id": "ld_the_changeling",
+          "max": 1
+        },
+        {
+          "id": "ld_epidemus",
+          "max": 1
+        },
+        {
+          "id": "ld_poxbringer",
+          "max": 1
+        },
+        {
+          "id": "ld_sloppity_bilepiper",
+          "max": 1
+        },
+        {
+          "id": "ld_spoilpox_scrivener",
+          "max": 1
+        },
+        {
+          "id": "ld_contorted_epitome",
+          "max": 1
+        },
+        {
+          "id": "ld_infernal_enrapturess",
+          "max": 1
+        },
+        {
+          "id": "ld_the_masque_of_slaanesh",
+          "max": 1
+        },
+        {
+          "id": "ld_tranceweaver",
+          "max": 1
+        },
+        {
+          "id": "ld_bloodletters",
+          "max": 3
+        },
+        {
+          "id": "ld_blue_horrors",
+          "max": 3
+        },
+        {
+          "id": "ld_pink_horrors",
+          "max": 3
+        },
+        {
+          "id": "ld_plaguebearers",
+          "max": 3
+        },
+        {
+          "id": "ld_nurglings",
+          "max": 3
+        },
+        {
+          "id": "ld_daemonettes",
+          "max": 3
+        },
+        {
+          "id": "ld_flesh_hounds",
+          "max": 1
+        },
+        {
+          "id": "ld_flamers",
+          "max": 1
+        },
+        {
+          "id": "ld_screamers",
+          "max": 1
+        },
+        {
+          "id": "ld_beast_of_nurgle",
+          "max": 1
+        },
+        {
+          "id": "ld_fiends",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "ld_epidemus",
+      "name": "Epidemus",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This model loses the Tally of Pestilence ability."
+    },
+    {
+      "id": "ld_poxbringer",
+      "name": "Poxbringer",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "ld_sloppity_bilepiper",
+      "name": "Sloppity Bilepiper",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ]
+    },
+    {
+      "id": "ld_spoilpox_scrivener",
+      "name": "Spoilpox Scrivener",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "ld_plaguebearers",
+      "name": "Plaguebearers",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 110
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Infected Outbreak ability."
+    },
+    {
+      "id": "ld_nurglings",
+      "name": "Nurglings",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "SWARM",
+        "BATTLELINE",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Mischief Makers ability."
+    },
+    {
+      "id": "ld_beast_of_nurgle",
+      "name": "Beast of Nurgle",
+      "type": "BEAST",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "BEAST",
+        "BATTLELINE",
+        "CHAOS",
+        "NURGLE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        },
+        {
+          "label": "2 models",
+          "pts": 130
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Grotesque Regeneration abilities. In the Form Boarding Squads step, if this unit contains 2 models, it is split into two Boarding Squads, each containing 1 model."
+    },
+    {
+      "id": "ld_bloodmaster",
+      "name": "Bloodmaster",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "ld_karanak",
+      "name": "Karanak",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "BEAST",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "ld_skulltaker",
+      "name": "Skulltaker",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "ld_bloodletters",
+      "name": "Bloodletters",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 110
+        }
+      ]
+    },
+    {
+      "id": "ld_flesh_hounds",
+      "name": "Flesh Hounds",
+      "type": "BEAST",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "BEAST",
+        "BATTLELINE",
+        "CHAOS",
+        "KHORNE",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Hunters from the Warp ability."
+    },
+    {
+      "id": "ld_contorted_epitome",
+      "name": "Contorted Epitome",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS",
+        "SLAANESH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "ld_the_masque_of_slaanesh",
+      "name": "The Masque of Slaanesh",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "CHAOS",
+        "SLAANESH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "ld_infernal_enrapturess",
+      "name": "Infernal Enrapturess",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "SLAANESH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Harmonic Alignment ability."
+    },
+    {
+      "id": "ld_tranceweaver",
+      "name": "Tranceweaver",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "CHAOS",
+        "SLAANESH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "ld_daemonettes",
+      "name": "Daemonettes",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "SLAANESH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "ld_fiends",
+      "name": "Fiends",
+      "type": "BEAST",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "BEAST",
+        "CHAOS",
+        "SLAANESH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 95
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Soporific Musk ability. This unit's Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "ld_the_changeling",
+      "name": "The Changeling",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PSYKER",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Formless Horror ability."
+    },
+    {
+      "id": "ld_changecaster",
+      "name": "Changecaster",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "ld_exalted_flamer",
+      "name": "Exalted Flamer",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHARACTER",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ],
+      "noEnhancement": true
+    },
+    {
+      "id": "ld_blue_horrors",
+      "name": "Blue Horrors",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 125
+        }
+      ]
+    },
+    {
+      "id": "ld_pink_horrors",
+      "name": "Pink Horrors",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "BATTLELINE",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ]
+    },
+    {
+      "id": "ld_flamers",
+      "name": "Flamers",
+      "type": "INFANTRY",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "INFANTRY",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 65
+        }
+      ]
+    },
+    {
+      "id": "ld_screamers",
+      "name": "Screamers",
+      "type": "BEAST",
+      "keywords": [
+        "LEGIONES DAEMONICA",
+        "BEAST",
+        "CHAOS",
+        "TZEENTCH",
+        "DAEMON"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Slashing Dive ability. Its Movement characteristic is reduced to 9\"."
+    }
+  ]
+}

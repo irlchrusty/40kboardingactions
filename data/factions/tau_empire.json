@@ -1,0 +1,488 @@
+{
+  "detachments": [
+    {
+      "id": "tau_starfire_cadre",
+      "name": "Starfire Cadre",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Markerlight Precision",
+        "desc": "Each time a TAU EMPIRE unit from your army (excluding KROOT units) is selected to shoot, ranged weapons equipped by models in your army have their Ballistic Skill characteristic improved by 1 and have the [SUSTAINED HITS 1] ability while targeting an enemy unit that is visible to one or more friendly MARKERLIGHT units that are not within Engagement range of one or more enemy models. Rules that refer to Observer, Guided and/or Spotted units have no effect."
+      },
+      "enhancements": [
+        {
+          "id": "enh_tau_target_optimisation_microdrones",
+          "name": "Target Optimisation Microdrones",
+          "desc": "Cadre Fireblade model only. Once per turn in your shooting phase, when a friendly Fire Warrior, Pathfinder Team or Cadre Fireblade unit within 6\" of the bearer is selected to shoot, the bearer can use this enhancement. If it does, until the end of the phase, improve the Armour Penetration characteristic of ranged weapons equipped by models in that unit by 1.",
+          "requiresKeywords": [
+            "CADRE FIREBLADE"
+          ]
+        },
+        {
+          "id": "enh_tau_dutys_echo",
+          "name": "Duty's Echo",
+          "desc": "Ethereal model only. At the end of your Shooting phase, you can select one friendly Fire Warrior or Pathfinder Team within 6\" of the bearer. If you do, that unit can make a Normal move of up to 3\" and then counts as having performed the Set Overwatch Tactical Manoeuvre this turn.",
+          "requiresKeywords": [
+            "ETHEREAL"
+          ]
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "tau_crisis_fireknife_battlesuits",
+          "tau_crisis_starscythe_battlesuits",
+          "tau_crisis_sunforge_battlesuits"
+        ]
+      ],
+      "units": [
+        {
+          "id": "tau_darkstrider",
+          "max": 1
+        },
+        {
+          "id": "tau_cadre_fireblade",
+          "max": 1
+        },
+        {
+          "id": "tau_ethereal",
+          "max": 1
+        },
+        {
+          "id": "tau_breacher_team",
+          "max": 3
+        },
+        {
+          "id": "tau_strike_team",
+          "max": 3
+        },
+        {
+          "id": "tau_pathfinder_team",
+          "max": 3
+        },
+        {
+          "id": "tau_kroot_carnivores",
+          "max": 1
+        },
+        {
+          "id": "tau_vespid_stingwings",
+          "max": 1
+        },
+        {
+          "id": "tau_stealth_battlesuits",
+          "max": 1
+        },
+        {
+          "id": "tau_crisis_fireknife_battlesuits",
+          "max": 1
+        },
+        {
+          "id": "tau_crisis_starscythe_battlesuits",
+          "max": 1
+        },
+        {
+          "id": "tau_crisis_sunforge_battlesuits",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "tau_kroot_raiding_party",
+      "name": "Kroot Raiding Party",
+      "specialRule": {
+        "name": "Guerrilla Ambushers",
+        "desc": "Each time an enemy unit is selected to fire Overwatch, roll one D6: on a 4+, until the end of the turn, that unit cannot make Overwatch attacks that target KROOT units from your army. Kroot Carnivore units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword. Each time you set up a Kroot Carnivores unit in an Entry Zone, you can also set up a Kroot Hounds unit and/or a Krootox Rider unit in that same Entry Zone."
+      },
+      "enhancements": [
+        {
+          "id": "enh_tau_experienced_leader",
+          "name": "Experienced Leader",
+          "desc": "At the start of the first battle round, select one enemy unit on the battlefield. Until the end of the battle, each time a KROOT model from your army makes an attack that targets that enemy unit, if the bearer is on the battlefield, you can re-roll the Wound roll.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_tau_quill_marker",
+          "name": "Quill Marker",
+          "desc": "At the start of your Charge phase, select one enemy unit within 12\" of the bearer. Until the end of the phase, each time a KROOT unit from your army declares a charge, if it is within 6\" of that enemy unit, it can include that enemy unit as a target of that charge, even if it is not visible to it.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "tau_kroot_carnivores",
+          "max": 3
+        },
+        {
+          "id": "tau_kroot_flesh_shaper",
+          "max": 1
+        },
+        {
+          "id": "tau_kroot_trail_shaper",
+          "max": 1
+        },
+        {
+          "id": "tau_kroot_war_shaper",
+          "max": 1
+        },
+        {
+          "id": "tau_kroot_farstalkers",
+          "max": 3
+        },
+        {
+          "id": "tau_kroot_hounds",
+          "max": 3
+        },
+        {
+          "id": "tau_krootox_rider",
+          "max": 3
+        }
+      ],
+      "maxCharacters": 2,
+      "keywordRatio": {
+        "numeratorUnitIds": [
+          "tau_kroot_farstalkers"
+        ],
+        "denominatorUnitIds": [
+          "tau_kroot_carnivores"
+        ],
+        "description": "Kroot Farstalkers units cannot outnumber Kroot Carnivores units"
+      },
+      "keywordRatios": [
+        {
+          "numeratorUnitIds": [
+            "tau_kroot_hounds"
+          ],
+          "denominatorUnitIds": [
+            "tau_kroot_carnivores"
+          ],
+          "description": "Kroot Hounds units cannot outnumber Kroot Carnivores units"
+        },
+        {
+          "numeratorUnitIds": [
+            "tau_krootox_rider"
+          ],
+          "denominatorUnitIds": [
+            "tau_kroot_carnivores"
+          ],
+          "description": "Krootox Rider units cannot outnumber Kroot Carnivores units"
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "tau_darkstrider",
+      "name": "Darkstrider",
+      "type": "CHARACTER",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "MARKERLIGHT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "tau_cadre_fireblade",
+      "name": "Cadre Fireblade",
+      "type": "CHARACTER",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "CHARACTER",
+        "CADRE FIREBLADE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "tau_ethereal",
+      "name": "Ethereal",
+      "type": "CHARACTER",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "CHARACTER",
+        "ETHEREAL"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "tau_breacher_team",
+      "name": "Breacher Team",
+      "type": "BATTLELINE",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "BATTLELINE",
+        "MARKERLIGHT"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "After forming Boarding Squads, units which do not contain a Shas'ui model lose the MARKERLIGHT keyword."
+    },
+    {
+      "id": "tau_strike_team",
+      "name": "Strike Team",
+      "type": "BATTLELINE",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "BATTLELINE",
+        "MARKERLIGHT"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "After forming Boarding Squads, units which do not contain a Shas'ui model lose the MARKERLIGHT keyword."
+    },
+    {
+      "id": "tau_pathfinder_team",
+      "name": "Pathfinder Team",
+      "type": "INFANTRY",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "MARKERLIGHT"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 90
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "tau_kroot_carnivores",
+      "name": "Kroot Carnivores",
+      "type": "INFANTRY",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "KROOT"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Fieldcraft abilities."
+    },
+    {
+      "id": "tau_vespid_stingwings",
+      "name": "Vespid Stingwings",
+      "type": "INFANTRY",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Airborne Agility abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "tau_stealth_battlesuits",
+      "name": "Stealth Battlesuits",
+      "type": "INFANTRY",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "BATTLESUIT",
+        "MARKERLIGHT"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Homing Beacon ability."
+    },
+    {
+      "id": "tau_crisis_fireknife_battlesuits",
+      "name": "Crisis Fireknife Battlesuits",
+      "type": "VEHICLE",
+      "keywords": [
+        "TAU EMPIRE",
+        "VEHICLE",
+        "BATTLESUIT"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "tau_crisis_starscythe_battlesuits",
+      "name": "Crisis Starscythe Battlesuits",
+      "type": "VEHICLE",
+      "keywords": [
+        "TAU EMPIRE",
+        "VEHICLE",
+        "BATTLESUIT"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 110
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "tau_crisis_sunforge_battlesuits",
+      "name": "Crisis Sunforge Battlesuits",
+      "type": "VEHICLE",
+      "keywords": [
+        "TAU EMPIRE",
+        "VEHICLE",
+        "BATTLESUIT"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 140
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "tau_kroot_flesh_shaper",
+      "name": "Kroot Flesh Shaper",
+      "type": "CHARACTER",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "CHARACTER",
+        "KROOT",
+        "SHAPER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 45
+        }
+      ],
+      "rulesAdaptations": "If a Kroot Carnivores or Kroot Farstalkers unit destroys a unit while under the benefit of the Kroot Flesh Shaper's Rites of Feasting ability, the Feel No Pain 5+ ability they gain stays in effect, even after they stop receiving the benefits of the ability."
+    },
+    {
+      "id": "tau_kroot_trail_shaper",
+      "name": "Kroot Trail Shaper",
+      "type": "CHARACTER",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "CHARACTER",
+        "KROOT",
+        "SHAPER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 55
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "tau_kroot_war_shaper",
+      "name": "Kroot War Shaper",
+      "type": "CHARACTER",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "CHARACTER",
+        "KROOT",
+        "SHAPER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "tau_kroot_farstalkers",
+      "name": "Kroot Farstalkers",
+      "type": "INFANTRY",
+      "keywords": [
+        "TAU EMPIRE",
+        "INFANTRY",
+        "KROOT"
+      ],
+      "sizes": [
+        {
+          "label": "12 models",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "In the Form Boarding Squads step, this unit is split into two Boarding Squads, each containing 6 models."
+    },
+    {
+      "id": "tau_kroot_hounds",
+      "name": "Kroot Hounds",
+      "type": "BEAST",
+      "keywords": [
+        "TAU EMPIRE",
+        "BEAST",
+        "KROOT"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Loping Pounce abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "tau_krootox_rider",
+      "name": "Krootox Rider",
+      "type": "MOUNTED",
+      "keywords": [
+        "TAU EMPIRE",
+        "MOUNTED",
+        "KROOT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 40
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Kroot Packmates abilities."
+    }
+  ]
+}
