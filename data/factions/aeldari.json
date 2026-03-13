@@ -84,6 +84,140 @@
       ]
     },
     {
+      "id": "aeldari_khaines_arrow",
+      "name": "Khaine's Arrow",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Unerring Strike",
+        "desc": "In your Movement phase, each time an AELDARI unit from your army makes a Normal move, while making that move, it can attempt to operate a closed Hatchway that is within 1\" of it at any point during that move, provided that there are no enemy units within 1\" of that Hatchway. If that AELDARI unit does attempt to operate that Hatchway, reduce the distance each model in that unit can move by 2\" (if this makes it impossible for that unit to get within 1 of the Hatchway it wishes to operate, then it cannot attempt to do so), and it cannot operate a Hatchway again this turn."
+      },
+      "enhancements": [
+        {
+          "id": "enh_aeldari_ka_runes_of_sanctuary",
+          "name": "Runes of Sanctuary",
+          "desc": "PSYKER model only. Once per turn, in your opponent's Shooting phase, when a friendly AELDARI unit within 9\" of and visible to the bearer is selected as the target of a ranged attack, the bearer can use this Enhancement. If it does, until the end of the phase, each time an attack targets that friendly AELDARI unit, worsen the Armour Penetration characteristic of the attack by 1.",
+          "requiresKeywords": ["PSYKER"]
+        },
+        {
+          "id": "enh_aeldari_ka_shieldmaster",
+          "name": "Shieldmaster",
+          "desc": "Once per turn, in your Movement phase, after the bearer has moved, you can close one open Hatchway it moved through this phase (this can be done in addition to operating a Hatchway using the Unerring Strike Detachment rule).",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "aeldari_autarch",
+          "max": 1
+        },
+        {
+          "id": "aeldari_eldrad_ulthran",
+          "max": 1
+        },
+        {
+          "id": "aeldari_farseer",
+          "max": 1
+        },
+        {
+          "id": "aeldari_warlock",
+          "max": 1
+        },
+        {
+          "id": "aeldari_warlock_conclave",
+          "max": 1
+        },
+        {
+          "id": "aeldari_dire_avengers",
+          "max": 1
+        },
+        {
+          "id": "aeldari_asurmen",
+          "max": 1
+        },
+        {
+          "id": "aeldari_autarch_wayleaper",
+          "max": 1
+        },
+        {
+          "id": "aeldari_baharroth",
+          "max": 1
+        },
+        {
+          "id": "aeldari_fuegan",
+          "max": 1
+        },
+        {
+          "id": "aeldari_jain_zar",
+          "max": 1
+        },
+        {
+          "id": "aeldari_lhykhis",
+          "max": 1
+        },
+        {
+          "id": "aeldari_maugan_ra",
+          "max": 1
+        },
+        {
+          "id": "aeldari_fire_dragons",
+          "max": 1
+        },
+        {
+          "id": "aeldari_howling_banshees",
+          "max": 1
+        },
+        {
+          "id": "aeldari_striking_scorpions",
+          "max": 1
+        },
+        {
+          "id": "aeldari_swooping_hawks",
+          "max": 1
+        },
+        {
+          "id": "aeldari_warp_spiders",
+          "max": 1
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "aeldari_autarch",
+          "aeldari_eldrad_ulthran",
+          "aeldari_farseer"
+        ],
+        [
+          "aeldari_warlock",
+          "aeldari_warlock_conclave"
+        ],
+        [
+          "aeldari_swooping_hawks",
+          "aeldari_warp_spiders"
+        ]
+      ],
+      "keywordRatios": [
+        {
+          "numeratorUnitIds": ["aeldari_asurmen"],
+          "denominatorUnitIds": ["aeldari_dire_avengers"],
+          "description": "Asurmen cannot outnumber Dire Avengers units"
+        },
+        {
+          "numeratorUnitIds": ["aeldari_baharroth"],
+          "denominatorUnitIds": ["aeldari_swooping_hawks"],
+          "description": "Baharroth cannot outnumber Swooping Hawks units"
+        },
+        {
+          "numeratorUnitIds": ["aeldari_fuegan"],
+          "denominatorUnitIds": ["aeldari_fire_dragons"],
+          "description": "Fuegan cannot outnumber Fire Dragons units"
+        },
+        {
+          "numeratorUnitIds": ["aeldari_jain_zar"],
+          "denominatorUnitIds": ["aeldari_howling_banshees"],
+          "description": "Jain Zar cannot outnumber Howling Banshees units"
+        }
+      ]
+    },
+    {
       "id": "aeldari_protector_host",
       "name": "Protector Host",
       "maxCharacters": 2,
@@ -461,6 +595,246 @@
           "pts": 130
         }
       ]
+    },
+    {
+      "id": "aeldari_asurmen",
+      "name": "Asurmen",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PHOENIX LORD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 135
+        }
+      ],
+      "rulesAdaptations": "This model loses the Tactical Acumen ability."
+    },
+    {
+      "id": "aeldari_autarch_wayleaper",
+      "name": "Autarch Wayleaper",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "aeldari_baharroth",
+      "name": "Baharroth",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PHOENIX LORD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 115
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike and Cloudstrider abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "aeldari_fuegan",
+      "name": "Fuegan",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PHOENIX LORD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ]
+    },
+    {
+      "id": "aeldari_jain_zar",
+      "name": "Jain Zar",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PHOENIX LORD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This model loses the Whirling Death ability."
+    },
+    {
+      "id": "aeldari_lhykhis",
+      "name": "Lhykhis",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PHOENIX LORD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 120
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike and Empyric Ambush abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "aeldari_maugan_ra",
+      "name": "Maugan Ra",
+      "type": "CHARACTER",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "PHOENIX LORD"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 100
+        }
+      ]
+    },
+    {
+      "id": "aeldari_fire_dragons",
+      "name": "Fire Dragons",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 120
+        },
+        {
+          "label": "10 models",
+          "pts": 240
+        }
+      ]
+    },
+    {
+      "id": "aeldari_howling_banshees",
+      "name": "Howling Banshees",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 95
+        },
+        {
+          "label": "10 models",
+          "pts": 190
+        }
+      ]
+    },
+    {
+      "id": "aeldari_striking_scorpions",
+      "name": "Striking Scorpions",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts ability."
+    },
+    {
+      "id": "aeldari_swooping_hawks",
+      "name": "Swooping Hawks",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 95
+        },
+        {
+          "label": "10 models",
+          "pts": 195
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Deep Strike and Skyleap abilities. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "aeldari_warp_spiders",
+      "name": "Warp Spiders",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 105
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Flickerjump ability. Its Movement characteristic is reduced to 9\"."
     }
   ]
 }

@@ -15315,6 +15315,540 @@ test("Smoke — Ursula Creed + Nork Deddog + Kasrkin (10) + Ogryn Squad = 55+60+
 });
 
 
+
+
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  AELDARI — KHAINE'S ARROW                                                ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
+// NOTE: Section 3 covers ID uniqueness, cross-references, and required-field
+// schema checks globally. Only faction-specific behaviour is tested here.
+
+section("126. Aeldari — Khaine's Arrow Detachment");
+
+const kaData = factionData["aeldari"];
+const kaUnits = kaData ? kaData.units : [];
+const kaDets  = kaData ? kaData.detachments : [];
+const kaUnit  = id => kaUnits.find(u => u.id === id);
+const kaDet   = kaDets ? kaDets.find(d => d.id === "aeldari_khaines_arrow") : null;
+
+test("Khaine's Arrow detachment exists in aeldari.json", () => {
+  assert(!!kaDet, "aeldari_khaines_arrow detachment must exist");
+});
+
+test("Khaine's Arrow has correct name", () => {
+  assertEqual(kaDet.name, "Khaine's Arrow", "detachment name must be \"Khaine's Arrow\"");
+});
+
+test("Khaine's Arrow has maxCharacters set to 2", () => {
+  assertEqual(kaDet.maxCharacters, 2, "maxCharacters must be 2");
+});
+
+test("Aeldari now has exactly 4 detachments", () => {
+  assertEqual(kaDets.length, 4,
+    `Expected 4 Aeldari detachments, found ${kaDets.length}`);
+  const ids = kaDets.map(d => d.id);
+  assert(ids.includes("aeldari_star_dancer_masque"),  "aeldari_star_dancer_masque must still exist");
+  assert(ids.includes("aeldari_wraiths_of_the_void"), "aeldari_wraiths_of_the_void must still exist");
+  assert(ids.includes("aeldari_protector_host"),      "aeldari_protector_host must still exist");
+  assert(ids.includes("aeldari_khaines_arrow"),       "aeldari_khaines_arrow must exist");
+});
+
+test("Khaine's Arrow has Unerring Strike special rule", () => {
+  assert(kaDet.specialRule !== undefined, "must have a specialRule");
+  assertEqual(kaDet.specialRule.name, "Unerring Strike",
+    "specialRule name must be 'Unerring Strike'");
+  assert(typeof kaDet.specialRule.desc === "string" && kaDet.specialRule.desc.length > 0,
+    "specialRule must have a non-empty desc");
+});
+
+test("Unerring Strike desc references Normal move", () => {
+  assert(kaDet.specialRule.desc.includes("Normal move"),
+    "Unerring Strike desc must reference 'Normal move'");
+});
+
+test("Unerring Strike desc references AELDARI keyword", () => {
+  assert(kaDet.specialRule.desc.includes("AELDARI"),
+    "Unerring Strike desc must reference 'AELDARI'");
+});
+
+test("Unerring Strike desc references Hatchway", () => {
+  assert(kaDet.specialRule.desc.includes("Hatchway"),
+    "Unerring Strike desc must reference 'Hatchway'");
+});
+
+test("Unerring Strike desc references the 2\" movement reduction", () => {
+  assert(kaDet.specialRule.desc.includes("2\""),
+    "Unerring Strike desc must reference the 2\" movement reduction");
+});
+
+test("Unerring Strike desc references the 1\" proximity condition", () => {
+  assert(kaDet.specialRule.desc.includes("1\""),
+    "Unerring Strike desc must reference the 1\" proximity condition");
+});
+
+test("Khaine's Arrow has exactly 2 enhancements", () => {
+  assertEqual(kaDet.enhancements.length, 2,
+    "Khaine's Arrow must have exactly 2 enhancements");
+});
+
+test("Khaine's Arrow has Runes of Sanctuary enhancement", () => {
+  const enh = kaDet.enhancements.find(e => e.id === "enh_aeldari_ka_runes_of_sanctuary");
+  assert(!!enh, "enh_aeldari_ka_runes_of_sanctuary must exist");
+  assertEqual(enh.name, "Runes of Sanctuary");
+  assert(enh.desc.includes("PSYKER"), "Runes of Sanctuary desc must reference PSYKER");
+  assert(enh.desc.includes("9\""), "Runes of Sanctuary desc must reference 9\"");
+  assert(enh.desc.includes("Armour Penetration"), "Runes of Sanctuary desc must reference Armour Penetration");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.includes("PSYKER"),
+    "Runes of Sanctuary requiresKeywords must include PSYKER");
+});
+
+test("Khaine's Arrow has Shieldmaster enhancement", () => {
+  const enh = kaDet.enhancements.find(e => e.id === "enh_aeldari_ka_shieldmaster");
+  assert(!!enh, "enh_aeldari_ka_shieldmaster must exist");
+  assertEqual(enh.name, "Shieldmaster");
+  assert(enh.desc.includes("Hatchway"), "Shieldmaster desc must reference Hatchway");
+  assert(enh.desc.includes("Unerring Strike"), "Shieldmaster desc must reference Unerring Strike");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Shieldmaster must have no keyword requirements");
+});
+
+test("Khaine's Arrow has exactly 13 units", () => {
+  assertEqual(kaDet.units.length, 13,
+    `Khaine's Arrow must have exactly 13 unit entries, found ${kaDet.units.length}`);
+});
+
+test("Khaine's Arrow unit roster — correct IDs and maxes", () => {
+  const expected = [
+    { id: "aeldari_autarch",             max: 1 },
+    { id: "aeldari_eldrad_ulthran",      max: 1 },
+    { id: "aeldari_farseer",             max: 1 },
+    { id: "aeldari_warlock",             max: 1 },
+    { id: "aeldari_warlock_conclave",    max: 1 },
+    { id: "aeldari_dire_avengers",       max: 1 },
+    { id: "aeldari_asurmen",             max: 1 },
+    { id: "aeldari_autarch_wayleaper",   max: 1 },
+    { id: "aeldari_baharroth",           max: 1 },
+    { id: "aeldari_fuegan",              max: 1 },
+    { id: "aeldari_jain_zar",            max: 1 },
+    { id: "aeldari_lhykhis",             max: 1 },
+    { id: "aeldari_maugan_ra",           max: 1 },
+  ];
+  expected.forEach(({ id, max }) => {
+    const entry = kaDet.units.find(u => u.id === id);
+    assert(entry !== undefined, `Unit "${id}" must be in Khaine's Arrow`);
+    assertEqual(entry.max, max, `"${id}" must have max ${max}`);
+  });
+});
+
+test("Khaine's Arrow has exactly 3 exclusiveUnitGroups", () => {
+  assert(Array.isArray(kaDet.exclusiveUnitGroups) && kaDet.exclusiveUnitGroups.length === 3,
+    "Khaine's Arrow must have exactly 3 exclusiveUnitGroups");
+});
+
+test("Khaine's Arrow exclusive group 1 contains the 3 correct commander IDs", () => {
+  const group = kaDet.exclusiveUnitGroups[0];
+  const expected = ["aeldari_autarch", "aeldari_eldrad_ulthran", "aeldari_farseer"];
+  assertEqual(group.length, 3, "Commander exclusive group must contain exactly 3 unit IDs");
+  expected.forEach(id => assert(group.includes(id),
+    `Commander exclusive group must include "${id}"`));
+});
+
+test("Khaine's Arrow exclusive group 2 contains the 2 correct warlock IDs", () => {
+  const group = kaDet.exclusiveUnitGroups[1];
+  const expected = ["aeldari_warlock", "aeldari_warlock_conclave"];
+  assertEqual(group.length, 2, "Warlock exclusive group must contain exactly 2 unit IDs");
+  expected.forEach(id => assert(group.includes(id),
+    `Warlock exclusive group must include "${id}"`));
+});
+
+test("Khaine's Arrow exclusive group 3 contains Swooping Hawks and Warp Spiders", () => {
+  const group = kaDet.exclusiveUnitGroups[2];
+  assertEqual(group.length, 2, "Swooping Hawks/Warp Spiders exclusive group must contain exactly 2 unit IDs");
+  assert(group.includes("aeldari_swooping_hawks"), "Group must include aeldari_swooping_hawks");
+  assert(group.includes("aeldari_warp_spiders"),   "Group must include aeldari_warp_spiders");
+});
+
+test("Khaine's Arrow has exactly 4 keywordRatios", () => {
+  assert(Array.isArray(kaDet.keywordRatios) && kaDet.keywordRatios.length === 4,
+    "Khaine's Arrow must have exactly 4 keywordRatios");
+});
+
+test("Khaine's Arrow keywordRatios — Asurmen/Dire Avengers ratio is correctly defined", () => {
+  const r = kaDet.keywordRatios.find(r =>
+    r.numeratorUnitIds?.includes("aeldari_asurmen") &&
+    r.denominatorUnitIds?.includes("aeldari_dire_avengers"));
+  assert(!!r, "Asurmen/Dire Avengers ratio must exist");
+  assert(typeof r.description === "string" && r.description.length > 0,
+    "Ratio must have a non-empty description");
+});
+
+test("Khaine's Arrow keywordRatios — Baharroth/Swooping Hawks ratio is correctly defined", () => {
+  const r = kaDet.keywordRatios.find(r =>
+    r.numeratorUnitIds?.includes("aeldari_baharroth") &&
+    r.denominatorUnitIds?.includes("aeldari_swooping_hawks"));
+  assert(!!r, "Baharroth/Swooping Hawks ratio must exist");
+  assert(typeof r.description === "string" && r.description.length > 0,
+    "Ratio must have a non-empty description");
+});
+
+test("Khaine's Arrow keywordRatios — Fuegan/Fire Dragons ratio is correctly defined", () => {
+  const r = kaDet.keywordRatios.find(r =>
+    r.numeratorUnitIds?.includes("aeldari_fuegan") &&
+    r.denominatorUnitIds?.includes("aeldari_fire_dragons"));
+  assert(!!r, "Fuegan/Fire Dragons ratio must exist");
+  assert(typeof r.description === "string" && r.description.length > 0,
+    "Ratio must have a non-empty description");
+});
+
+test("Khaine's Arrow keywordRatios — Jain Zar/Howling Banshees ratio is correctly defined", () => {
+  const r = kaDet.keywordRatios.find(r =>
+    r.numeratorUnitIds?.includes("aeldari_jain_zar") &&
+    r.denominatorUnitIds?.includes("aeldari_howling_banshees"));
+  assert(!!r, "Jain Zar/Howling Banshees ratio must exist");
+  assert(typeof r.description === "string" && r.description.length > 0,
+    "Ratio must have a non-empty description");
+});
+
+
+// ── 127. Aeldari — Khaine's Arrow Game Rule Logic ─────────────────────────────
+
+section("127. Aeldari — Khaine's Arrow Game Rule Logic");
+
+const ka = makeDetHelpers(kaDet, kaUnit);
+const isKaExcBlocked = makeExcGroupChecker(kaDet.exclusiveUnitGroups);
+
+test("Character cap — first CHARACTER can be added to an empty list", () => {
+  assert(ka.canAdd([], "aeldari_autarch"),
+    "Autarch must be addable to an empty list");
+});
+
+test("Character cap — second CHARACTER can be added when one is present", () => {
+  const list = [{ unitId: "aeldari_autarch" }];
+  assert(ka.canAdd(list, "aeldari_warlock"),
+    "Warlock must be addable when one CHARACTER is already present");
+});
+
+test("Character cap — third CHARACTER is blocked when cap of 2 is reached", () => {
+  // Autarch + Warlock fills both CHARACTER slots; Farseer is also a CHARACTER so must be blocked
+  // (Farseer is also group-blocked by Autarch, but the cap would independently block any third CHARACTER)
+  const list = [{ unitId: "aeldari_autarch" }, { unitId: "aeldari_warlock" }];
+  const charCount = list.filter(l => kaUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount >= kaDet.maxCharacters,
+    "Two CHARACTERs in the list must have reached the cap of 2");
+  assert(!ka.canAdd(list, "aeldari_farseer"),
+    "Farseer (CHARACTER) must be blocked when cap of 2 is reached");
+});
+
+test("Character cap — Dire Avengers (INFANTRY) is never blocked by the cap", () => {
+  const list = [{ unitId: "aeldari_autarch" }, { unitId: "aeldari_warlock" }];
+  assert(ka.canAdd(list, "aeldari_dire_avengers"),
+    "Dire Avengers must not be blocked by the character cap");
+});
+
+test("Exclusive group 1 (commanders) — each unit can be added to an empty list", () => {
+  ["aeldari_autarch", "aeldari_eldrad_ulthran", "aeldari_farseer"].forEach(id => {
+    assert(!isKaExcBlocked(id, []),
+      `"${id}" must not be blocked in an empty list`);
+  });
+});
+
+test("Exclusive group 1 — taking Autarch blocks Eldrad Ulthran and Farseer", () => {
+  const list = [{ unitId: "aeldari_autarch" }];
+  ["aeldari_eldrad_ulthran", "aeldari_farseer"].forEach(id => {
+    assert(isKaExcBlocked(id, list),
+      `"${id}" must be blocked when Autarch is in the list`);
+  });
+});
+
+test("Exclusive group 1 — taking Eldrad Ulthran blocks Autarch and Farseer", () => {
+  const list = [{ unitId: "aeldari_eldrad_ulthran" }];
+  ["aeldari_autarch", "aeldari_farseer"].forEach(id => {
+    assert(isKaExcBlocked(id, list),
+      `"${id}" must be blocked when Eldrad Ulthran is in the list`);
+  });
+});
+
+test("Exclusive group 1 — taking Farseer blocks Autarch and Eldrad Ulthran", () => {
+  const list = [{ unitId: "aeldari_farseer" }];
+  ["aeldari_autarch", "aeldari_eldrad_ulthran"].forEach(id => {
+    assert(isKaExcBlocked(id, list),
+      `"${id}" must be blocked when Farseer is in the list`);
+  });
+});
+
+test("Exclusive group 2 (warlocks) — each unit can be added to an empty list", () => {
+  ["aeldari_warlock", "aeldari_warlock_conclave"].forEach(id => {
+    assert(!isKaExcBlocked(id, []),
+      `"${id}" must not be blocked in an empty list`);
+  });
+});
+
+test("Exclusive group 2 — taking Warlock blocks Warlock Conclave", () => {
+  const list = [{ unitId: "aeldari_warlock" }];
+  assert(isKaExcBlocked("aeldari_warlock_conclave", list),
+    "Warlock Conclave must be blocked when Warlock is in the list");
+});
+
+test("Exclusive group 2 — taking Warlock Conclave blocks Warlock", () => {
+  const list = [{ unitId: "aeldari_warlock_conclave" }];
+  assert(isKaExcBlocked("aeldari_warlock", list),
+    "Warlock must be blocked when Warlock Conclave is in the list");
+});
+
+test("Exclusive groups are independent — group 1 choice does not block group 2", () => {
+  const list = [{ unitId: "aeldari_autarch" }];
+  ["aeldari_warlock", "aeldari_warlock_conclave"].forEach(id => {
+    assert(!isKaExcBlocked(id, list),
+      `"${id}" (group 2) must not be blocked by an Autarch (group 1) selection`);
+  });
+});
+
+test("Exclusive groups are independent — group 2 choice does not block group 1", () => {
+  const list = [{ unitId: "aeldari_warlock" }];
+  ["aeldari_autarch", "aeldari_eldrad_ulthran", "aeldari_farseer"].forEach(id => {
+    assert(!isKaExcBlocked(id, list),
+      `"${id}" (group 1) must not be blocked by a Warlock (group 2) selection`);
+  });
+});
+
+test("Exclusive group — a unit is never blocked by its own presence", () => {
+  ["aeldari_autarch", "aeldari_eldrad_ulthran", "aeldari_farseer",
+   "aeldari_warlock", "aeldari_warlock_conclave"].forEach(id => {
+    const list = [{ unitId: id }];
+    assert(!isKaExcBlocked(id, list),
+      `"${id}" must not be blocked by its own presence in the list`);
+  });
+});
+
+test("Dire Avengers are not affected by either exclusive group", () => {
+  const list = [{ unitId: "aeldari_autarch" }, { unitId: "aeldari_warlock" }];
+  assert(!isKaExcBlocked("aeldari_dire_avengers", list),
+    "Dire Avengers must not be affected by either exclusive group");
+});
+
+test("Dire Avengers unit max — only 1 copy can be added", () => {
+  const list = [{ unitId: "aeldari_dire_avengers" }];
+  assert(!ka.canAdd(list, "aeldari_dire_avengers"),
+    "Second Dire Avengers unit must be blocked (max 1)");
+});
+
+test("Smoke — Farseer + Warlock Conclave + Dire Avengers (5) = 70+55+75 = 200pts (legal)", () => {
+  const pts = 70 + 55 + 75;
+  assertEqual(pts, 200, "Expected 200pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "aeldari_farseer"          },
+    { unitId: "aeldari_warlock_conclave" },
+    { unitId: "aeldari_dire_avengers"    },
+  ];
+  const charCount = list.filter(l => kaUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= kaDet.maxCharacters, "Character count must not exceed cap of 2");
+  assert(!isKaExcBlocked("aeldari_farseer",          list.filter(l => l.unitId !== "aeldari_farseer")),
+    "Farseer must not be blocked in this combination");
+  assert(!isKaExcBlocked("aeldari_warlock_conclave",  list.filter(l => l.unitId !== "aeldari_warlock_conclave")),
+    "Warlock Conclave must not be blocked in this combination");
+});
+
+test("Smoke — Eldrad Ulthran alone = 120pts (legal)", () => {
+  const pts = 120;
+  assert(pts <= 500, "Must be within 500pt limit");
+  assert(!isKaExcBlocked("aeldari_eldrad_ulthran", []),
+    "Eldrad Ulthran must be addable to an empty list");
+  assert(ka.canAdd([], "aeldari_eldrad_ulthran"),
+    "Eldrad Ulthran must be addable to an empty list via canAdd");
+});
+
+
+// ── 128. Aeldari — Khaine's Arrow New Unit Definitions ───────────────────────
+
+section("128. Aeldari — Khaine's Arrow New Unit Definitions");
+
+test("Asurmen has correct fields", () => {
+  const u = kaUnit("aeldari_asurmen");
+  assert(!!u, "aeldari_asurmen must exist");
+  assertEqual(u.name, "Asurmen");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "AELDARI", "ASURYANI", "INFANTRY", "CHARACTER", "EPIC HERO", "PHOENIX LORD"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Asurmen must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Asurmen must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 135, "Must cost 135pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Tactical Acumen"),
+    "rulesAdaptations must reference 'Tactical Acumen'");
+});
+
+test("Asurmen has EPIC HERO and PHOENIX LORD keywords", () => {
+  const u = kaUnit("aeldari_asurmen");
+  assert(u?.keywords.includes("EPIC HERO"),    "Asurmen must have EPIC HERO keyword");
+  assert(u?.keywords.includes("PHOENIX LORD"), "Asurmen must have PHOENIX LORD keyword");
+});
+
+test("Autarch Wayleaper has correct fields", () => {
+  const u = kaUnit("aeldari_autarch_wayleaper");
+  assert(!!u, "aeldari_autarch_wayleaper must exist");
+  assertEqual(u.name, "Autarch Wayleaper");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["AELDARI", "ASURYANI", "INFANTRY", "CHARACTER"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Autarch Wayleaper must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Autarch Wayleaper must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 85, "Must cost 85pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+  assert(u.rulesAdaptations?.includes("9\""),
+    "rulesAdaptations must reference the reduced 9\" Movement");
+});
+
+test("Autarch Wayleaper does not have EPIC HERO or PHOENIX LORD keywords", () => {
+  const u = kaUnit("aeldari_autarch_wayleaper");
+  assert(!u?.keywords.includes("EPIC HERO"),    "Autarch Wayleaper must not have EPIC HERO keyword");
+  assert(!u?.keywords.includes("PHOENIX LORD"), "Autarch Wayleaper must not have PHOENIX LORD keyword");
+});
+
+test("Baharroth has correct fields", () => {
+  const u = kaUnit("aeldari_baharroth");
+  assert(!!u, "aeldari_baharroth must exist");
+  assertEqual(u.name, "Baharroth");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "AELDARI", "ASURYANI", "INFANTRY", "CHARACTER", "EPIC HERO", "PHOENIX LORD"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Baharroth must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Baharroth must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 115, "Must cost 115pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+  assert(u.rulesAdaptations?.includes("Cloudstrider"),
+    "rulesAdaptations must reference 'Cloudstrider'");
+  assert(u.rulesAdaptations?.includes("9\""),
+    "rulesAdaptations must reference the reduced 9\" Movement");
+});
+
+test("Fuegan has correct fields", () => {
+  const u = kaUnit("aeldari_fuegan");
+  assert(!!u, "aeldari_fuegan must exist");
+  assertEqual(u.name, "Fuegan");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "AELDARI", "ASURYANI", "INFANTRY", "CHARACTER", "EPIC HERO", "PHOENIX LORD"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Fuegan must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Fuegan must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 120, "Must cost 120pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Fuegan must have no rulesAdaptations");
+});
+
+test("Jain Zar has correct fields", () => {
+  const u = kaUnit("aeldari_jain_zar");
+  assert(!!u, "aeldari_jain_zar must exist");
+  assertEqual(u.name, "Jain Zar");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "AELDARI", "ASURYANI", "INFANTRY", "CHARACTER", "EPIC HERO", "PHOENIX LORD"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Jain Zar must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Jain Zar must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 120, "Must cost 120pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Whirling Death"),
+    "rulesAdaptations must reference 'Whirling Death'");
+});
+
+test("Lhykhis has correct fields", () => {
+  const u = kaUnit("aeldari_lhykhis");
+  assert(!!u, "aeldari_lhykhis must exist");
+  assertEqual(u.name, "Lhykhis");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "AELDARI", "ASURYANI", "INFANTRY", "CHARACTER", "EPIC HERO", "PHOENIX LORD"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Lhykhis must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Lhykhis must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 120, "Must cost 120pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+  assert(u.rulesAdaptations?.includes("Empyric Ambush"),
+    "rulesAdaptations must reference 'Empyric Ambush'");
+  assert(u.rulesAdaptations?.includes("9\""),
+    "rulesAdaptations must reference the reduced 9\" Movement");
+});
+
+test("Maugan Ra has correct fields", () => {
+  const u = kaUnit("aeldari_maugan_ra");
+  assert(!!u, "aeldari_maugan_ra must exist");
+  assertEqual(u.name, "Maugan Ra");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "AELDARI", "ASURYANI", "INFANTRY", "CHARACTER", "EPIC HERO", "PHOENIX LORD"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Maugan Ra must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Maugan Ra must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes[0].pts, 100, "Must cost 100pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations, "Maugan Ra must have no rulesAdaptations");
+});
+
+test("All 6 new Phoenix Lord-keyword units have EPIC HERO and PHOENIX LORD keywords", () => {
+  ["aeldari_asurmen", "aeldari_baharroth", "aeldari_fuegan",
+   "aeldari_jain_zar", "aeldari_lhykhis", "aeldari_maugan_ra"].forEach(id => {
+    const u = kaUnit(id);
+    assert(u?.keywords.includes("EPIC HERO"),    `${id} must have EPIC HERO keyword`);
+    assert(u?.keywords.includes("PHOENIX LORD"), `${id} must have PHOENIX LORD keyword`);
+  });
+});
+
+test("Aeldari now has exactly 28 unit definitions", () => {
+  assertEqual(kaUnits.length, 28,
+    `Expected 28 Aeldari unit definitions, found ${kaUnits.length}`);
+});
+
+test("Smoke — Asurmen + Dire Avengers (5) = 135+75 = 210pts (legal, 1 CHARACTER under cap)", () => {
+  const pts = 135 + 75;
+  assertEqual(pts, 210, "Expected 210pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "aeldari_asurmen"       },
+    { unitId: "aeldari_dire_avengers" },
+  ];
+  const charCount = list.filter(l => kaUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= kaDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Farseer + Baharroth = 70+115 = 185pts (legal, 2 CHARACTERs at cap)", () => {
+  const pts = 70 + 115;
+  assertEqual(pts, 185, "Expected 185pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [{ unitId: "aeldari_farseer" }, { unitId: "aeldari_baharroth" }];
+  const charCount = list.filter(l => kaUnit(l.unitId)?.type === "CHARACTER").length;
+  assertEqual(charCount, 2, "Both units are CHARACTERs");
+  assert(charCount <= kaDet.maxCharacters, "Character count must not exceed cap of 2");
+  assert(!isKaExcBlocked("aeldari_farseer",   list.filter(l => l.unitId !== "aeldari_farseer")),
+    "Farseer must not be blocked in this combination");
+  assert(!isKaExcBlocked("aeldari_baharroth", list.filter(l => l.unitId !== "aeldari_baharroth")),
+    "Baharroth must not be blocked in this combination");
+});
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);
