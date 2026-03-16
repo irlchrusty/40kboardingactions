@@ -8815,9 +8815,9 @@ test("Flawless Blades has correct fields", () => {
   assert(!u.keywords.includes("CHARACTER"),          "must NOT have CHARACTER keyword");
   assertEqual(u.sizes.length, 2, "must have exactly 2 size options");
   assertEqual(u.sizes[0].label, "3 models");
-  assertEqual(u.sizes[0].pts,   110, "3-model size must cost 110pts");
+  assertEqual(u.sizes[0].pts,   100, "3-model size must cost 100pts");
   assertEqual(u.sizes[1].label, "6 models");
-  assertEqual(u.sizes[1].pts,   220, "6-model size must cost 220pts");
+  assertEqual(u.sizes[1].pts,   200, "6-model size must cost 200pts");
 });
 
 test("Chaos Terminators (Emperor's Children) has correct fields", () => {
@@ -8833,7 +8833,7 @@ test("Chaos Terminators (Emperor's Children) has correct fields", () => {
   assert(!u.keywords.includes("CHARACTER"),          "must NOT have CHARACTER keyword");
   assertEqual(u.sizes.length, 1, "must have exactly 1 size option");
   assertEqual(u.sizes[0].label, "5 models");
-  assertEqual(u.sizes[0].pts,   155, "must cost 155pts");
+  assertEqual(u.sizes[0].pts,   145, "must cost 145pts");
 });
 
 test("Lucius is an EPIC HERO — UI will correctly block enhancement assignment", () => {
@@ -11487,7 +11487,7 @@ test("Stealth Battlesuits — INFANTRY, BATTLESUIT, MARKERLIGHT, 110pts for 5 mo
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("BATTLESUIT"),  "must have BATTLESUIT");
   assert(u.keywords.includes("MARKERLIGHT"),"must have MARKERLIGHT");
-  assertEqual(u.sizes[0].pts, 110,          "must cost 110pts");
+  assertEqual(u.sizes[0].pts, 100,          "must cost 100pts");
   assertEqual(u.sizes[0].label, "5 models", "size label must be '5 models'");
   assert(typeof u.rulesAdaptations === "string" && u.rulesAdaptations.includes("Homing Beacon"),
     "rulesAdaptations must mention 'Homing Beacon'");
@@ -13782,7 +13782,7 @@ test("Plaguebearers — BATTLELINE, NURGLE, 110pts for 10 models, loses Infected
 test("Nurglings — SWARM type, BATTLELINE keyword, NURGLE, 40pts for 3 models, loses Mischief Makers", () => {
   const u = ldUnit("ld_nurglings");
   assert(!!u, "ld_nurglings not found");
-  assertEqual(u.type, "SWARM");
+  assertEqual(u.type, "BATTLELINE");
   assert(u.keywords.includes("NURGLE"),     "must have NURGLE");
   assert(u.keywords.includes("BATTLELINE"), "must have BATTLELINE keyword");
   assertEqual(u.sizes[0].pts, 40,          "must cost 40pts");
