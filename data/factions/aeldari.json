@@ -223,6 +223,11 @@
           "numeratorUnitIds": ["aeldari_maugan_ra"],
           "denominatorUnitIds": ["aeldari_dark_reapers"],
           "description": "Maugan Ra cannot outnumber Dark Reapers units"
+        },
+        {
+          "numeratorUnitIds": ["aeldari_lhykhis"],
+          "denominatorUnitIds": ["aeldari_warp_spiders"],
+          "description": "Lhykhis cannot outnumber Warp Spiders units"
         }
       ]
     },

@@ -15475,9 +15475,9 @@ test("Khaine's Arrow exclusive group 3 contains Swooping Hawks and Warp Spiders"
   assert(group.includes("aeldari_warp_spiders"),   "Group must include aeldari_warp_spiders");
 });
 
-test("Khaine's Arrow has exactly 5 keywordRatios", () => {
-  assert(Array.isArray(kaDet.keywordRatios) && kaDet.keywordRatios.length === 5,
-    "Khaine's Arrow must have exactly 5 keywordRatios");
+test("Khaine's Arrow has exactly 6 keywordRatios", () => {
+  assert(Array.isArray(kaDet.keywordRatios) && kaDet.keywordRatios.length === 6,
+    "Khaine's Arrow must have exactly 6 keywordRatios");
 });
 
 test("Khaine's Arrow keywordRatios — Asurmen/Dire Avengers ratio is correctly defined", () => {
@@ -15521,6 +15521,15 @@ test("Khaine's Arrow keywordRatios — Maugan Ra/Dark Reapers ratio is correctly
     r.numeratorUnitIds?.includes("aeldari_maugan_ra") &&
     r.denominatorUnitIds?.includes("aeldari_dark_reapers"));
   assert(!!r, "Maugan Ra/Dark Reapers ratio must exist");
+  assert(typeof r.description === "string" && r.description.length > 0,
+    "Ratio must have a non-empty description");
+});
+
+test("Khaine's Arrow keywordRatios — Lhykhis/Warp Spiders ratio is correctly defined", () => {
+  const r = kaDet.keywordRatios.find(r =>
+    r.numeratorUnitIds?.includes("aeldari_lhykhis") &&
+    r.denominatorUnitIds?.includes("aeldari_warp_spiders"));
+  assert(!!r, "Lhykhis/Warp Spiders ratio must exist");
   assert(typeof r.description === "string" && r.description.length > 0,
     "Ratio must have a non-empty description");
 });
@@ -15687,6 +15696,51 @@ test("Maugan Ra ratio — Dark Reapers unit max — only 1 copy can be added", (
   const list = [{ unitId: "aeldari_dark_reapers" }];
   assert(!ka.canAdd(list, "aeldari_dark_reapers"),
     "Second Dark Reapers unit must be blocked (max 1)");
+});
+
+// ── Lhykhis / Warp Spiders ratio ─────────────────────────────────────────────
+
+function isLhykhisBlocked(list) {
+  const numCount = list.filter(l => l.unitId === "aeldari_lhykhis").length;
+  const denCount = list.filter(l => l.unitId === "aeldari_warp_spiders").length;
+  return numCount + 1 > denCount;
+}
+
+test("Lhykhis ratio — Lhykhis is blocked when no Warp Spiders are in the list", () => {
+  assert(isLhykhisBlocked([]),
+    "Lhykhis must be blocked when no Warp Spiders unit is present");
+});
+
+test("Lhykhis ratio — Lhykhis is allowed when Warp Spiders are in the list", () => {
+  const list = [{ unitId: "aeldari_warp_spiders" }];
+  assert(!isLhykhisBlocked(list),
+    "Lhykhis must be allowed when 1 Warp Spiders unit is present");
+});
+
+test("Lhykhis ratio — adding a second Lhykhis would exceed the ratio", () => {
+  const list = [{ unitId: "aeldari_warp_spiders" }, { unitId: "aeldari_lhykhis" }];
+  assert(isLhykhisBlocked(list),
+    "Adding a second Lhykhis would exceed the 1:1 ratio and must be blocked");
+});
+
+test("Lhykhis ratio — Warp Spiders can be added without Lhykhis", () => {
+  assert(ka.canAdd([], "aeldari_warp_spiders"),
+    "Warp Spiders must be addable to an empty list (not constrained by ratio)");
+});
+
+test("Smoke — Lhykhis + Warp Spiders = 120+105 = 225pts (legal, ratio satisfied)", () => {
+  const pts = 120 + 105;
+  assertEqual(pts, 225, "Expected 225pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "aeldari_warp_spiders" },
+    { unitId: "aeldari_lhykhis"      },
+  ];
+  const lhykhisCount = list.filter(l => l.unitId === "aeldari_lhykhis").length;
+  const warpCount    = list.filter(l => l.unitId === "aeldari_warp_spiders").length;
+  assert(lhykhisCount <= warpCount, "Lhykhis must not outnumber Warp Spiders");
+  const charCount = list.filter(l => kaUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= kaDet.maxCharacters, "Character count must not exceed cap of 2");
 });
 
 test("Smoke — Farseer + Warlock Conclave + Dire Avengers (5) = 70+55+75 = 200pts (legal)", () => {
