@@ -1,0 +1,137 @@
+{
+  "detachments": [
+    {
+      "id": "gd_infestation_swarm",
+      "name": "Infestation Swarm",
+      "maxCharacters": 1,
+      "specialRule": {
+        "name": "Half-Glimpsed Shadows",
+        "desc": "Each time a ranged attack targets a GREAT DEVOURER model from your army, if the attacking model is not within 6\" of that unit, subtract 1 from the Hit roll. Genestealer and Purestrain Genestealer units may perform the Secure Site Tactical Manoeuvre as if they had the Battleline keyword."
+      },
+      "factionKeywordGroups": [
+        [
+          "TYRANIDS",
+          "GENESTEALER CULTS"
+        ]
+      ],
+      "enhancements": [
+        {
+          "id": "enh_gd_stalking_menace",
+          "name": "Stalking Menace",
+          "desc": "Once per battle, at the end of your opponent's Fight phase, if the bearer is not within Engagement Range of one or more enemy units, it can use this Enhancement. If it does, remove the bearer from the battlefield and place it into Strategic Reserves. It will arrive back on the battlefield in the Reinforcements step of your next Movement phase, as if it had the Deep Strike ability. If this is not possible, the bearer is destroyed. When the bearer is set up on the battlefield, until the end of the turn, it cannot declare a charge.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_gd_psi_spoor_sensitivity",
+          "name": "Psi-Spoor Sensitivity",
+          "desc": "Each time the bearer declares a charge, it can target enemy units not visible to it.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "gd_broodlord",
+          "max": 1
+        },
+        {
+          "id": "gd_patriarch",
+          "max": 1
+        },
+        {
+          "id": "gd_genestealers",
+          "max": 3
+        },
+        {
+          "id": "gd_purestrain_genestealers",
+          "max": 3
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "gd_broodlord",
+      "name": "Broodlord",
+      "type": "CHARACTER",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "SYNAPSE",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This model loses the Scouts ability."
+    },
+    {
+      "id": "gd_patriarch",
+      "name": "Patriarch",
+      "type": "CHARACTER",
+      "keywords": [
+        "GENESTEALER CULTS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "SYNAPSE",
+        "GREAT DEVOURER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike ability."
+    },
+    {
+      "id": "gd_genestealers",
+      "name": "Genestealers",
+      "type": "INFANTRY",
+      "keywords": [
+        "TYRANIDS",
+        "INFANTRY",
+        "GREAT DEVOURER",
+        "VANGUARD INVADER"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ],
+      "rulesAdaptations": "This model loses the Scouts ability."
+    },
+    {
+      "id": "gd_purestrain_genestealers",
+      "name": "Purestrain Genestealers",
+      "type": "INFANTRY",
+      "keywords": [
+        "GENESTEALER CULTS",
+        "INFANTRY",
+        "GREAT DEVOURER"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 140
+        }
+      ],
+      "rulesAdaptations": "This model loses the Deep Strike and Swift and Deadly abilities."
+    }
+  ]
+}

@@ -16002,6 +16002,430 @@ test("Smoke — Farseer + Baharroth = 70+115 = 185pts (legal, 2 CHARACTERs at ca
     "Baharroth must not be blocked in this combination");
 });
 
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  GREAT DEVOURER — INFESTATION SWARM                                      ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
+// NOTE: Section 3 covers ID uniqueness, cross-references, and required-field
+// schema checks globally. Only faction-specific behaviour is tested here.
+
+section("129. Great Devourer Faction");
+
+const gdFaction = index.factions.find(f => f.id === "great_devourer");
+const gdData    = factionData["great_devourer"];
+const gdUnits   = gdData ? gdData.units : [];
+const gdDets    = gdData ? gdData.detachments : [];
+const gdUnit    = id => gdUnits.find(u => u.id === id);
+
+test("Great Devourer exists in index.json factions", () => {
+  assert(gdFaction !== undefined, "great_devourer must exist in index.json factions");
+});
+
+test("Great Devourer has correct name", () => {
+  assertEqual(gdFaction.name, "Great Devourer", "faction name must be 'Great Devourer'");
+});
+
+test("Great Devourer file path is factions/great_devourer.json", () => {
+  assertEqual(gdFaction.file, "factions/great_devourer.json",
+    "file must be 'factions/great_devourer.json'");
+});
+
+test("Great Devourer has Auspex Ghosts army rule", () => {
+  assertEqual(gdFaction.armyRule.name, "Auspex Ghosts",
+    "armyRule name must be 'Auspex Ghosts'");
+  assert(typeof gdFaction.armyRule.desc === "string" && gdFaction.armyRule.desc.length > 0,
+    "armyRule must have a non-empty desc");
+});
+
+test("Auspex Ghosts desc references Synapse", () => {
+  assert(gdFaction.armyRule.desc.includes("Synapse"),
+    "Auspex Ghosts desc must reference 'Synapse'");
+});
+
+test("Auspex Ghosts desc references Cult Ambush", () => {
+  assert(gdFaction.armyRule.desc.includes("Cult Ambush"),
+    "Auspex Ghosts desc must reference 'Cult Ambush'");
+});
+
+test("Auspex Ghosts desc references Deploy Armies step", () => {
+  assert(gdFaction.armyRule.desc.includes("Deploy Armies"),
+    "Auspex Ghosts desc must reference 'Deploy Armies'");
+});
+
+test("Great Devourer has exactly 1 detachment", () => {
+  assertEqual(gdDets.length, 1,
+    `Expected 1 Great Devourer detachment, found ${gdDets.length}`);
+});
+
+test("Great Devourer has exactly 4 unit definitions", () => {
+  assertEqual(gdUnits.length, 4,
+    `Expected 4 Great Devourer unit definitions, found ${gdUnits.length}`);
+});
+
+
+// ── 130. Great Devourer — Infestation Swarm Detachment ───────────────────────
+
+section("130. Great Devourer — Infestation Swarm Detachment");
+
+const isDet = gdDets ? gdDets.find(d => d.id === "gd_infestation_swarm") : null;
+
+test("Infestation Swarm detachment exists", () => {
+  assert(!!isDet, "gd_infestation_swarm detachment must exist");
+});
+
+test("Infestation Swarm has correct name", () => {
+  assertEqual(isDet.name, "Infestation Swarm", "detachment name must be 'Infestation Swarm'");
+});
+
+test("Infestation Swarm has maxCharacters set to 1", () => {
+  assertEqual(isDet.maxCharacters, 1, "maxCharacters must be 1");
+});
+
+test("Infestation Swarm has Half-Glimpsed Shadows special rule", () => {
+  assert(isDet.specialRule !== undefined, "must have a specialRule");
+  assertEqual(isDet.specialRule.name, "Half-Glimpsed Shadows",
+    "specialRule name must be 'Half-Glimpsed Shadows'");
+  assert(typeof isDet.specialRule.desc === "string" && isDet.specialRule.desc.length > 0,
+    "specialRule must have a non-empty desc");
+});
+
+test("Half-Glimpsed Shadows desc references GREAT DEVOURER", () => {
+  assert(isDet.specialRule.desc.includes("GREAT DEVOURER"),
+    "Half-Glimpsed Shadows desc must reference 'GREAT DEVOURER'");
+});
+
+test("Half-Glimpsed Shadows desc references the 6\" range", () => {
+  assert(isDet.specialRule.desc.includes("6\""),
+    "Half-Glimpsed Shadows desc must reference '6\"'");
+});
+
+test("Half-Glimpsed Shadows desc references the Hit roll penalty", () => {
+  assert(isDet.specialRule.desc.includes("Hit roll"),
+    "Half-Glimpsed Shadows desc must reference 'Hit roll'");
+});
+
+test("Half-Glimpsed Shadows desc references Genestealer and Purestrain Genestealer", () => {
+  assert(isDet.specialRule.desc.includes("Genestealer"),
+    "Half-Glimpsed Shadows desc must reference 'Genestealer'");
+  assert(isDet.specialRule.desc.includes("Purestrain Genestealer"),
+    "Half-Glimpsed Shadows desc must reference 'Purestrain Genestealer'");
+});
+
+test("Infestation Swarm has exactly 2 enhancements", () => {
+  assertEqual(isDet.enhancements.length, 2,
+    `Infestation Swarm must have exactly 2 enhancements, found ${isDet.enhancements.length}`);
+});
+
+test("Infestation Swarm has Stalking Menace enhancement", () => {
+  const enh = isDet.enhancements.find(e => e.id === "enh_gd_stalking_menace");
+  assert(!!enh, "enh_gd_stalking_menace must exist");
+  assertEqual(enh.name, "Stalking Menace");
+  assert(enh.desc.includes("Strategic Reserves"),
+    "Stalking Menace desc must reference 'Strategic Reserves'");
+  assert(enh.desc.includes("Deep Strike"),
+    "Stalking Menace desc must reference 'Deep Strike'");
+  assert(enh.desc.includes("Engagement Range"),
+    "Stalking Menace desc must reference 'Engagement Range'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Stalking Menace must have no keyword requirements");
+});
+
+test("Infestation Swarm has Psi-Spoor Sensitivity enhancement", () => {
+  const enh = isDet.enhancements.find(e => e.id === "enh_gd_psi_spoor_sensitivity");
+  assert(!!enh, "enh_gd_psi_spoor_sensitivity must exist");
+  assertEqual(enh.name, "Psi-Spoor Sensitivity");
+  assert(enh.desc.includes("declares a charge"),
+    "Psi-Spoor Sensitivity desc must reference 'declares a charge'");
+  assert(enh.desc.includes("not visible"),
+    "Psi-Spoor Sensitivity desc must reference 'not visible'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Psi-Spoor Sensitivity must have no keyword requirements");
+});
+
+test("Infestation Swarm has exactly 4 units", () => {
+  assertEqual(isDet.units.length, 4,
+    `Infestation Swarm must have exactly 4 unit entries, found ${isDet.units.length}`);
+});
+
+test("Infestation Swarm unit roster — correct IDs and maxes", () => {
+  const expected = [
+    { id: "gd_broodlord",               max: 1 },
+    { id: "gd_patriarch",               max: 1 },
+    { id: "gd_genestealers",            max: 3 },
+    { id: "gd_purestrain_genestealers", max: 3 },
+  ];
+  expected.forEach(({ id, max }) => {
+    const entry = isDet.units.find(u => u.id === id);
+    assert(entry !== undefined, `Unit "${id}" must be in Infestation Swarm`);
+    assertEqual(entry.max, max, `"${id}" must have max ${max}`);
+  });
+});
+
+test("Infestation Swarm has factionKeywordGroups with TYRANIDS and GENESTEALER CULTS", () => {
+  assert(Array.isArray(isDet.factionKeywordGroups) && isDet.factionKeywordGroups.length === 1,
+    "factionKeywordGroups must be an array with exactly 1 group");
+  const group = isDet.factionKeywordGroups[0];
+  assert(group.includes("TYRANIDS"),          "group must include 'TYRANIDS'");
+  assert(group.includes("GENESTEALER CULTS"), "group must include 'GENESTEALER CULTS'");
+  assertEqual(group.length, 2, "group must contain exactly 2 keywords");
+});
+
+
+// ── 131. Great Devourer — Unit Definitions & Game Rule Logic ─────────────────
+
+section("131. Great Devourer — Unit Definitions & Game Rule Logic");
+
+test("Broodlord has correct fields", () => {
+  const u = gdUnit("gd_broodlord");
+  assert(!!u, "gd_broodlord must exist");
+  assertEqual(u.name, "Broodlord");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "TYRANIDS", "INFANTRY", "CHARACTER", "PSYKER", "SYNAPSE", "GREAT DEVOURER", "VANGUARD INVADER"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Broodlord must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Broodlord must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 80, "Must cost 80pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Scouts"),
+    "rulesAdaptations must reference 'Scouts'");
+});
+
+test("Broodlord has TYRANIDS keyword, not GENESTEALER CULTS", () => {
+  const u = gdUnit("gd_broodlord");
+  assert( u.keywords.includes("TYRANIDS"),          "Broodlord must have TYRANIDS keyword");
+  assert(!u.keywords.includes("GENESTEALER CULTS"), "Broodlord must not have GENESTEALER CULTS keyword");
+});
+
+test("Patriarch has correct fields", () => {
+  const u = gdUnit("gd_patriarch");
+  assert(!!u, "gd_patriarch must exist");
+  assertEqual(u.name, "Patriarch");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = [
+    "GENESTEALER CULTS", "INFANTRY", "CHARACTER", "PSYKER", "SYNAPSE", "GREAT DEVOURER"
+  ];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Patriarch must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Patriarch must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 80, "Must cost 80pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+});
+
+test("Patriarch has GENESTEALER CULTS keyword, not TYRANIDS", () => {
+  const u = gdUnit("gd_patriarch");
+  assert( u.keywords.includes("GENESTEALER CULTS"), "Patriarch must have GENESTEALER CULTS keyword");
+  assert(!u.keywords.includes("TYRANIDS"),          "Patriarch must not have TYRANIDS keyword");
+});
+
+test("Patriarch does not have VANGUARD INVADER keyword", () => {
+  assert(!gdUnit("gd_patriarch")?.keywords.includes("VANGUARD INVADER"),
+    "Patriarch must not have VANGUARD INVADER keyword");
+});
+
+test("Genestealers has correct fields", () => {
+  const u = gdUnit("gd_genestealers");
+  assert(!!u, "gd_genestealers must exist");
+  assertEqual(u.name, "Genestealers");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["TYRANIDS", "INFANTRY", "GREAT DEVOURER", "VANGUARD INVADER"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Genestealers must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Genestealers must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 2, "Must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 75,  "5-model option must cost 75pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assertEqual(u.sizes[1].pts, 140, "10-model option must cost 140pts");
+  assertEqual(u.sizes[1].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Scouts"),
+    "rulesAdaptations must reference 'Scouts'");
+});
+
+test("Genestealers has TYRANIDS keyword, not GENESTEALER CULTS", () => {
+  const u = gdUnit("gd_genestealers");
+  assert( u.keywords.includes("TYRANIDS"),          "Genestealers must have TYRANIDS keyword");
+  assert(!u.keywords.includes("GENESTEALER CULTS"), "Genestealers must not have GENESTEALER CULTS keyword");
+});
+
+test("Purestrain Genestealers has correct fields", () => {
+  const u = gdUnit("gd_purestrain_genestealers");
+  assert(!!u, "gd_purestrain_genestealers must exist");
+  assertEqual(u.name, "Purestrain Genestealers");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["GENESTEALER CULTS", "INFANTRY", "GREAT DEVOURER"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Purestrain Genestealers must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Purestrain Genestealers must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 2, "Must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 75,  "5-model option must cost 75pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assertEqual(u.sizes[1].pts, 140, "10-model option must cost 140pts");
+  assertEqual(u.sizes[1].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Deep Strike"),
+    "rulesAdaptations must reference 'Deep Strike'");
+  assert(u.rulesAdaptations?.includes("Swift and Deadly"),
+    "rulesAdaptations must reference 'Swift and Deadly'");
+});
+
+test("Purestrain Genestealers has GENESTEALER CULTS keyword, not TYRANIDS", () => {
+  const u = gdUnit("gd_purestrain_genestealers");
+  assert( u.keywords.includes("GENESTEALER CULTS"), "Purestrain Genestealers must have GENESTEALER CULTS keyword");
+  assert(!u.keywords.includes("TYRANIDS"),          "Purestrain Genestealers must not have TYRANIDS keyword");
+});
+
+test("Purestrain Genestealers does not have CHARACTER or VANGUARD INVADER keywords", () => {
+  const u = gdUnit("gd_purestrain_genestealers");
+  assert(!u.keywords.includes("CHARACTER"),        "Purestrain Genestealers must not have CHARACTER keyword");
+  assert(!u.keywords.includes("VANGUARD INVADER"), "Purestrain Genestealers must not have VANGUARD INVADER keyword");
+});
+
+test("Neither non-CHARACTER unit has the CHARACTER keyword", () => {
+  ["gd_genestealers", "gd_purestrain_genestealers"].forEach(id => {
+    assert(!gdUnit(id)?.keywords.includes("CHARACTER"),
+      `${id} must not have CHARACTER keyword`);
+  });
+});
+
+// ── Game rule logic ───────────────────────────────────────────────────────────
+
+const isGdFactionGroupBlocked = (unit, list) => {
+  const groups = isDet.factionKeywordGroups;
+  if (!groups) return false;
+  for (const group of groups) {
+    const unitGroupKws = unit.keywords.filter(k => group.includes(k));
+    if (!unitGroupKws.length) continue;
+    const committed = group.find(kw =>
+      list.some(l => gdUnit(l.unitId)?.keywords.includes(kw))
+    );
+    if (committed && !unitGroupKws.includes(committed)) return true;
+  }
+  return false;
+};
+
+const isHelper = makeDetHelpers(isDet, gdUnit);
+
+test("Character cap — first CHARACTER can be added to an empty list", () => {
+  assert(isHelper.canAdd([], "gd_broodlord"),  "Broodlord must be addable to an empty list");
+  assert(isHelper.canAdd([], "gd_patriarch"),  "Patriarch must be addable to an empty list");
+});
+
+test("Character cap — second CHARACTER is blocked when cap of 1 is reached", () => {
+  assert(!isHelper.canAdd([{ unitId: "gd_broodlord"  }], "gd_patriarch"),
+    "Patriarch must be blocked when Broodlord already fills the CHARACTER cap");
+  assert(!isHelper.canAdd([{ unitId: "gd_patriarch"  }], "gd_broodlord"),
+    "Broodlord must be blocked when Patriarch already fills the CHARACTER cap");
+});
+
+test("Character cap — non-CHARACTER units are never blocked by the cap", () => {
+  const list = [{ unitId: "gd_broodlord" }];
+  assert(isHelper.canAdd(list, "gd_genestealers"),
+    "Genestealers must not be blocked by the character cap");
+  assert(isHelper.canAdd(list, "gd_purestrain_genestealers"),
+    "Purestrain Genestealers must not be blocked by the character cap");
+});
+
+test("Subfaction lock — adding Broodlord (TYRANIDS) blocks Patriarch and Purestrain Genestealers (GENESTEALER CULTS)", () => {
+  const list = [{ unitId: "gd_broodlord" }];
+  assert( isGdFactionGroupBlocked(gdUnit("gd_patriarch"),               list),
+    "Patriarch must be blocked after Broodlord is added");
+  assert( isGdFactionGroupBlocked(gdUnit("gd_purestrain_genestealers"), list),
+    "Purestrain Genestealers must be blocked after Broodlord is added");
+  assert(!isGdFactionGroupBlocked(gdUnit("gd_genestealers"),            list),
+    "Genestealers (TYRANIDS) must not be blocked after Broodlord is added");
+});
+
+test("Subfaction lock — adding Patriarch (GENESTEALER CULTS) blocks Broodlord and Genestealers (TYRANIDS)", () => {
+  const list = [{ unitId: "gd_patriarch" }];
+  assert( isGdFactionGroupBlocked(gdUnit("gd_broodlord"),    list),
+    "Broodlord must be blocked after Patriarch is added");
+  assert( isGdFactionGroupBlocked(gdUnit("gd_genestealers"), list),
+    "Genestealers must be blocked after Patriarch is added");
+  assert(!isGdFactionGroupBlocked(gdUnit("gd_purestrain_genestealers"), list),
+    "Purestrain Genestealers (GENESTEALER CULTS) must not be blocked after Patriarch is added");
+});
+
+test("Subfaction lock — a unit is not blocked by its own subfaction keyword", () => {
+  assert(!isGdFactionGroupBlocked(gdUnit("gd_broodlord"),  [{ unitId: "gd_broodlord"  }]),
+    "Broodlord must not be blocked by its own TYRANIDS keyword");
+  assert(!isGdFactionGroupBlocked(gdUnit("gd_patriarch"),  [{ unitId: "gd_patriarch"  }]),
+    "Patriarch must not be blocked by its own GENESTEALER CULTS keyword");
+});
+
+test("Subfaction lock — empty list blocks nothing", () => {
+  [gdUnit("gd_broodlord"), gdUnit("gd_patriarch"),
+   gdUnit("gd_genestealers"), gdUnit("gd_purestrain_genestealers")].forEach(u => {
+    assert(!isGdFactionGroupBlocked(u, []),
+      `${u.name} must not be blocked in an empty list`);
+  });
+});
+
+test("Unit max — Genestealers max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "gd_genestealers" }, { unitId: "gd_genestealers" }];
+  assert( isHelper.canAdd(list, "gd_genestealers"),
+    "Third Genestealers unit must be addable (max 3)");
+  assert(!isHelper.canAdd([...list, { unitId: "gd_genestealers" }], "gd_genestealers"),
+    "Fourth Genestealers unit must be blocked (max 3)");
+});
+
+test("Unit max — Purestrain Genestealers max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "gd_purestrain_genestealers" }, { unitId: "gd_purestrain_genestealers" }];
+  assert( isHelper.canAdd(list, "gd_purestrain_genestealers"),
+    "Third Purestrain Genestealers unit must be addable (max 3)");
+  assert(!isHelper.canAdd([...list, { unitId: "gd_purestrain_genestealers" }], "gd_purestrain_genestealers"),
+    "Fourth Purestrain Genestealers unit must be blocked (max 3)");
+});
+
+test("Unit max — Broodlord max 1: second copy blocked", () => {
+  assert(!isHelper.canAdd([{ unitId: "gd_broodlord"  }], "gd_broodlord"),
+    "Second Broodlord must be blocked (max 1)");
+});
+
+test("Unit max — Patriarch max 1: second copy blocked", () => {
+  assert(!isHelper.canAdd([{ unitId: "gd_patriarch" }], "gd_patriarch"),
+    "Second Patriarch must be blocked (max 1)");
+});
+
+test("Smoke — Broodlord + 3x Genestealers (5 models) = 80+225 = 305pts (legal, TYRANIDS subfaction)", () => {
+  const pts = 80 + (75 * 3);
+  assertEqual(pts, 305, "Expected 305pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "gd_broodlord"    },
+    { unitId: "gd_genestealers" },
+    { unitId: "gd_genestealers" },
+    { unitId: "gd_genestealers" },
+  ];
+  const charCount = list.filter(l => gdUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= isDet.maxCharacters, "Character count must not exceed cap of 1");
+  assert(!isGdFactionGroupBlocked(gdUnit("gd_genestealers"), [{ unitId: "gd_broodlord" }]),
+    "Genestealers must not be subfaction-blocked alongside Broodlord");
+});
+
+test("Smoke — Patriarch + 3x Purestrain Genestealers (5 models) = 80+225 = 305pts (legal, GENESTEALER CULTS subfaction)", () => {
+  const pts = 80 + (75 * 3);
+  assertEqual(pts, 305, "Expected 305pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "gd_patriarch"               },
+    { unitId: "gd_purestrain_genestealers" },
+    { unitId: "gd_purestrain_genestealers" },
+    { unitId: "gd_purestrain_genestealers" },
+  ];
+  const charCount = list.filter(l => gdUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= isDet.maxCharacters, "Character count must not exceed cap of 1");
+  assert(!isGdFactionGroupBlocked(gdUnit("gd_purestrain_genestealers"), [{ unitId: "gd_patriarch" }]),
+    "Purestrain Genestealers must not be subfaction-blocked alongside Patriarch");
+});
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);

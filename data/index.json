@@ -161,6 +161,15 @@
         "name": "Seer's Guidance",
         "desc": "Units from your army with the Strands of Faith ability replace that ability with this one. Once per battle round, you can target one unit from your army with this ability with the Command Re-roll Strategem for 0CP."
       }
+    },
+    {
+      "id": "great_devourer",
+      "name": "Great Devourer",
+      "file": "factions/great_devourer.json",
+      "armyRule": {
+        "name": "Auspex Ghosts",
+        "desc": "Units from your army with the Synapse or Cult Ambush abilities replace those abilities with this one. In the Deploy Armies step, your opponent must set up their entire army before you set up any of your units. If both players have a rule that allows them to do this, both players set up their units normally."
+      }
     }
   ],
   "genericEnhancements": [
