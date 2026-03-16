@@ -159,6 +159,10 @@
           "max": 1
         },
         {
+          "id": "aeldari_dark_reapers",
+          "max": 1
+        },
+        {
           "id": "aeldari_fire_dragons",
           "max": 1
         },
@@ -214,6 +218,11 @@
           "numeratorUnitIds": ["aeldari_jain_zar"],
           "denominatorUnitIds": ["aeldari_howling_banshees"],
           "description": "Jain Zar cannot outnumber Howling Banshees units"
+        },
+        {
+          "numeratorUnitIds": ["aeldari_maugan_ra"],
+          "denominatorUnitIds": ["aeldari_dark_reapers"],
+          "description": "Maugan Ra cannot outnumber Dark Reapers units"
         }
       ]
     },
@@ -835,6 +844,23 @@
         }
       ],
       "rulesAdaptations": "This unit loses the Flickerjump ability. Its Movement characteristic is reduced to 9\"."
+    },
+    {
+      "id": "aeldari_dark_reapers",
+      "name": "Dark Reapers",
+      "type": "INFANTRY",
+      "keywords": [
+        "AELDARI",
+        "ASURYANI",
+        "INFANTRY",
+        "ASPECT WARRIORS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        }
+      ]
     }
   ]
 }

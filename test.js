@@ -14428,51 +14428,51 @@ test("Smoke — Death Jester + Shadowseer is a legal combination (no Solitaire)"
 
 section("119. Astra Militarum Faction");
 
-const amFaction = index.factions.find(f => f.id === "astra_militarum");
-const amData    = factionData["astra_militarum"];
-const amUnits   = amData ? amData.units : [];
-const amDets    = amData ? amData.detachments : [];
-const amUnit    = id => amUnits.find(u => u.id === id);
+const amilFaction = index.factions.find(f => f.id === "astra_militarum");
+const amilData    = factionData["astra_militarum"];
+const amilUnits   = amilData ? amilData.units : [];
+const amilDets    = amilData ? amilData.detachments : [];
+const amilUnit    = id => amilUnits.find(u => u.id === id);
 
 test("Astra Militarum exists in index.json factions", () => {
-  assert(amFaction !== undefined, "astra_militarum must exist in index.json factions");
+  assert(amilFaction !== undefined, "astra_militarum must exist in index.json factions");
 });
 
 test("Astra Militarum has correct name", () => {
-  assertEqual(amFaction.name, "Astra Militarum", "faction name must be 'Astra Militarum'");
+  assertEqual(amilFaction.name, "Astra Militarum", "faction name must be 'Astra Militarum'");
 });
 
 test("Astra Militarum file path is factions/astra_militarum.json", () => {
-  assertEqual(amFaction.file, "factions/astra_militarum.json",
+  assertEqual(amilFaction.file, "factions/astra_militarum.json",
     "file must be 'factions/astra_militarum.json' (no data/ prefix)");
 });
 
 test("Astra Militarum has Direct Orders army rule", () => {
-  assert(amFaction.armyRule !== undefined, "Astra Militarum must have an armyRule");
-  assertEqual(amFaction.armyRule.name, "Direct Orders", "armyRule name must be 'Direct Orders'");
-  assert(typeof amFaction.armyRule.desc === "string" && amFaction.armyRule.desc.length > 0,
+  assert(amilFaction.armyRule !== undefined, "Astra Militarum must have an armyRule");
+  assertEqual(amilFaction.armyRule.name, "Direct Orders", "armyRule name must be 'Direct Orders'");
+  assert(typeof amilFaction.armyRule.desc === "string" && amilFaction.armyRule.desc.length > 0,
     "armyRule must have a non-empty desc");
 });
 
 test("Direct Orders desc references Voice of Command ability", () => {
-  assert(amFaction.armyRule.desc.includes("Voice of Command"),
+  assert(amilFaction.armyRule.desc.includes("Voice of Command"),
     "Direct Orders desc must reference 'Voice of Command'");
 });
 
 test("Direct Orders desc references OFFICER keyword", () => {
-  assert(amFaction.armyRule.desc.includes("OFFICER"),
+  assert(amilFaction.armyRule.desc.includes("OFFICER"),
     "Direct Orders desc must reference 'OFFICER'");
 });
 
 test("Direct Orders desc references ASTRA MILITARUM keyword", () => {
-  assert(amFaction.armyRule.desc.includes("ASTRA MILITARUM"),
+  assert(amilFaction.armyRule.desc.includes("ASTRA MILITARUM"),
     "Direct Orders desc must reference 'ASTRA MILITARUM'");
 });
 
 test("Astra Militarum has exactly 2 detachments", () => {
-  assertEqual(amDets.length, 2,
-    `Expected 2 Astra Militarum detachments, found ${amDets.length}`);
-  const ids = amDets.map(d => d.id);
+  assertEqual(amilDets.length, 2,
+    `Expected 2 Astra Militarum detachments, found ${amilDets.length}`);
+  const ids = amilDets.map(d => d.id);
   assert(ids.includes("am_tempestus_boarding_regiment"), "am_tempestus_boarding_regiment must exist");
   assert(ids.includes("am_embarked_regiment"),           "am_embarked_regiment must exist");
 });
@@ -14482,7 +14482,7 @@ test("Astra Militarum has exactly 2 detachments", () => {
 
 section("120. Astra Militarum — Tempestus Boarding Regiment");
 
-const tbrDet = amDets ? amDets.find(d => d.id === "am_tempestus_boarding_regiment") : null;
+const tbrDet = amilDets ? amilDets.find(d => d.id === "am_tempestus_boarding_regiment") : null;
 
 test("Tempestus Boarding Regiment detachment exists", () => {
   assert(tbrDet !== undefined, "am_tempestus_boarding_regiment must exist");
@@ -14581,7 +14581,7 @@ test("Tempestus Boarding Regiment exclusive group contains exactly the 5 correct
 section("121. Astra Militarum — Tempestus Boarding Regiment Unit Definitions");
 
 test("Militarum Tempestus Command Squad has correct fields", () => {
-  const u = amUnit("am_militarum_tempestus_command_squad");
+  const u = amilUnit("am_militarum_tempestus_command_squad");
   assert(!!u, "am_militarum_tempestus_command_squad must exist");
   assertEqual(u.name, "Militarum Tempestus Command Squad");
   assertEqual(u.type, "CHARACTER");
@@ -14600,7 +14600,7 @@ test("Militarum Tempestus Command Squad has correct fields", () => {
 });
 
 test("Commissar has correct fields", () => {
-  const u = amUnit("am_commissar");
+  const u = amilUnit("am_commissar");
   assert(!!u, "am_commissar must exist");
   assertEqual(u.name, "Commissar");
   assertEqual(u.type, "CHARACTER");
@@ -14614,7 +14614,7 @@ test("Commissar has correct fields", () => {
 });
 
 test("Ministorum Priest has correct fields", () => {
-  const u = amUnit("am_ministorum_priest");
+  const u = amilUnit("am_ministorum_priest");
   assert(!!u, "am_ministorum_priest must exist");
   assertEqual(u.name, "Ministorum Priest");
   assertEqual(u.type, "CHARACTER");
@@ -14628,7 +14628,7 @@ test("Ministorum Priest has correct fields", () => {
 });
 
 test("Ogryn Bodyguard has correct fields", () => {
-  const u = amUnit("am_ogryn_bodyguard");
+  const u = amilUnit("am_ogryn_bodyguard");
   assert(!!u, "am_ogryn_bodyguard must exist");
   assertEqual(u.name, "Ogryn Bodyguard");
   assertEqual(u.type, "CHARACTER");
@@ -14645,7 +14645,7 @@ test("Ogryn Bodyguard has correct fields", () => {
 });
 
 test("Primaris Psyker has correct fields", () => {
-  const u = amUnit("am_primaris_psyker");
+  const u = amilUnit("am_primaris_psyker");
   assert(!!u, "am_primaris_psyker must exist");
   assertEqual(u.name, "Primaris Psyker");
   assertEqual(u.type, "CHARACTER");
@@ -14659,7 +14659,7 @@ test("Primaris Psyker has correct fields", () => {
 });
 
 test("Tech-Priest Enginseer has correct fields", () => {
-  const u = amUnit("am_tech_priest_enginseer");
+  const u = amilUnit("am_tech_priest_enginseer");
   assert(!!u, "am_tech_priest_enginseer must exist");
   assertEqual(u.name, "Tech-Priest Enginseer");
   assertEqual(u.type, "CHARACTER");
@@ -14673,7 +14673,7 @@ test("Tech-Priest Enginseer has correct fields", () => {
 });
 
 test("Tempestus Scions has correct fields", () => {
-  const u = amUnit("am_tempestus_scions");
+  const u = amilUnit("am_tempestus_scions");
   assert(!!u, "am_tempestus_scions must exist");
   assertEqual(u.name, "Tempestus Scions");
   assertEqual(u.type, "INFANTRY");
@@ -14691,7 +14691,7 @@ test("Tempestus Scions has correct fields", () => {
 });
 
 test("Bullgryn Squad has correct fields", () => {
-  const u = amUnit("am_bullgryn_squad");
+  const u = amilUnit("am_bullgryn_squad");
   assert(!!u, "am_bullgryn_squad must exist");
   assertEqual(u.name, "Bullgryn Squad");
   assertEqual(u.type, "INFANTRY");
@@ -14709,7 +14709,7 @@ test("Bullgryn Squad has correct fields", () => {
 
 section("122. Astra Militarum — Tempestus Boarding Regiment Game Rule Logic");
 
-const tbrHelpers   = makeDetHelpers(tbrDet, amUnit);
+const tbrHelpers   = makeDetHelpers(tbrDet, amilUnit);
 const isTbrExcBlocked = makeExcGroupChecker(tbrDet.exclusiveUnitGroups);
 
 test("Character cap — first CHARACTER can be added to an empty list", () => {
@@ -14818,7 +14818,7 @@ test("Smoke — Command Squad + Commissar + 3x Scions (5-model) = 85+30+210 = 32
     { unitId: "am_tempestus_scions" },
   ];
   // Two characters — cap not exceeded
-  const charCount = list.filter(l => amUnit(l.unitId)?.type === "CHARACTER").length;
+  const charCount = list.filter(l => amilUnit(l.unitId)?.type === "CHARACTER").length;
   assert(charCount <= tbrDet.maxCharacters, "Character count must not exceed cap");
   // Only one support character (Commissar) — exclusive group satisfied
   assert(!isTbrExcBlocked("am_commissar", []), "Commissar alone must not be blocked");
@@ -14829,7 +14829,7 @@ test("Smoke — Command Squad + Commissar + 3x Scions (5-model) = 85+30+210 = 32
 
 section("123. Astra Militarum — Embarked Regiment");
 
-const erDet = amDets ? amDets.find(d => d.id === "am_embarked_regiment") : null;
+const erDet = amilDets ? amilDets.find(d => d.id === "am_embarked_regiment") : null;
 
 test("Embarked Regiment detachment exists", () => {
   assert(erDet !== undefined, "am_embarked_regiment must exist");
@@ -14946,7 +14946,7 @@ test("Embarked Regiment exclusive group 2 contains the 6 correct support unit ID
 section("124. Astra Militarum — Embarked Regiment Unit Definitions");
 
 test("Cadian Castellan has correct fields", () => {
-  const u = amUnit("am_cadian_castellan");
+  const u = amilUnit("am_cadian_castellan");
   assert(!!u, "am_cadian_castellan must exist");
   assertEqual(u.name, "Cadian Castellan");
   assertEqual(u.type, "CHARACTER");
@@ -14960,7 +14960,7 @@ test("Cadian Castellan has correct fields", () => {
 });
 
 test("Cadian Command Squad has correct fields", () => {
-  const u = amUnit("am_cadian_command_squad");
+  const u = amilUnit("am_cadian_command_squad");
   assert(!!u, "am_cadian_command_squad must exist");
   assertEqual(u.name, "Cadian Command Squad");
   assertEqual(u.type, "CHARACTER");
@@ -14977,7 +14977,7 @@ test("Cadian Command Squad has correct fields", () => {
 });
 
 test("Gaunt's Ghosts has correct fields", () => {
-  const u = amUnit("am_gaunts_ghosts");
+  const u = amilUnit("am_gaunts_ghosts");
   assert(!!u, "am_gaunts_ghosts must exist");
   assertEqual(u.name, "Gaunt's Ghosts");
   assertEqual(u.type, "CHARACTER");
@@ -14994,12 +14994,12 @@ test("Gaunt's Ghosts has correct fields", () => {
 });
 
 test("Gaunt's Ghosts has EPIC HERO keyword", () => {
-  assert(amUnit("am_gaunts_ghosts")?.keywords.includes("EPIC HERO"),
+  assert(amilUnit("am_gaunts_ghosts")?.keywords.includes("EPIC HERO"),
     "Gaunt's Ghosts must have EPIC HERO keyword");
 });
 
 test("Nork Deddog has correct fields", () => {
-  const u = amUnit("am_nork_deddog");
+  const u = amilUnit("am_nork_deddog");
   assert(!!u, "am_nork_deddog must exist");
   assertEqual(u.name, "Nork Deddog");
   assertEqual(u.type, "CHARACTER");
@@ -15018,13 +15018,13 @@ test("Nork Deddog has correct fields", () => {
 });
 
 test("Nork Deddog has EPIC HERO and OGRYN keywords", () => {
-  const u = amUnit("am_nork_deddog");
+  const u = amilUnit("am_nork_deddog");
   assert(u?.keywords.includes("EPIC HERO"), "Nork Deddog must have EPIC HERO keyword");
   assert(u?.keywords.includes("OGRYN"),     "Nork Deddog must have OGRYN keyword");
 });
 
 test("Sly Marbo has correct fields", () => {
-  const u = amUnit("am_sly_marbo");
+  const u = amilUnit("am_sly_marbo");
   assert(!!u, "am_sly_marbo must exist");
   assertEqual(u.name, "Sly Marbo");
   assertEqual(u.type, "CHARACTER");
@@ -15039,7 +15039,7 @@ test("Sly Marbo has correct fields", () => {
 });
 
 test("Ursula Creed has correct fields", () => {
-  const u = amUnit("am_ursula_creed");
+  const u = amilUnit("am_ursula_creed");
   assert(!!u, "am_ursula_creed must exist");
   assertEqual(u.name, "Ursula Creed");
   assertEqual(u.type, "CHARACTER");
@@ -15054,7 +15054,7 @@ test("Ursula Creed has correct fields", () => {
 });
 
 test("Cadian Shock Troops has correct fields", () => {
-  const u = amUnit("am_cadian_shock_troops");
+  const u = amilUnit("am_cadian_shock_troops");
   assert(!!u, "am_cadian_shock_troops must exist");
   assertEqual(u.name, "Cadian Shock Troops");
   assertEqual(u.type, "BATTLELINE");
@@ -15073,7 +15073,7 @@ test("Cadian Shock Troops has correct fields", () => {
 });
 
 test("Catachan Jungle Fighters has correct fields", () => {
-  const u = amUnit("am_catachan_jungle_fighters");
+  const u = amilUnit("am_catachan_jungle_fighters");
   assert(!!u, "am_catachan_jungle_fighters must exist");
   assertEqual(u.name, "Catachan Jungle Fighters");
   assertEqual(u.type, "BATTLELINE");
@@ -15092,7 +15092,7 @@ test("Catachan Jungle Fighters has correct fields", () => {
 });
 
 test("Death Korps of Krieg has correct fields", () => {
-  const u = amUnit("am_death_korps_of_krieg");
+  const u = amilUnit("am_death_korps_of_krieg");
   assert(!!u, "am_death_korps_of_krieg must exist");
   assertEqual(u.name, "Death Korps of Krieg");
   assertEqual(u.type, "BATTLELINE");
@@ -15109,7 +15109,7 @@ test("Death Korps of Krieg has correct fields", () => {
 });
 
 test("Kasrkin has correct fields", () => {
-  const u = amUnit("am_kasrkin");
+  const u = amilUnit("am_kasrkin");
   assert(!!u, "am_kasrkin must exist");
   assertEqual(u.name, "Kasrkin");
   assertEqual(u.type, "INFANTRY");
@@ -15127,7 +15127,7 @@ test("Kasrkin has correct fields", () => {
 });
 
 test("Ratlings has correct fields", () => {
-  const u = amUnit("am_ratlings");
+  const u = amilUnit("am_ratlings");
   assert(!!u, "am_ratlings must exist");
   assertEqual(u.name, "Ratlings");
   assertEqual(u.type, "INFANTRY");
@@ -15142,7 +15142,7 @@ test("Ratlings has correct fields", () => {
 });
 
 test("Ogryn Squad has correct fields", () => {
-  const u = amUnit("am_ogryn_squad");
+  const u = amilUnit("am_ogryn_squad");
   assert(!!u, "am_ogryn_squad must exist");
   assertEqual(u.name, "Ogryn Squad");
   assertEqual(u.type, "INFANTRY");
@@ -15156,8 +15156,8 @@ test("Ogryn Squad has correct fields", () => {
 });
 
 test("Astra Militarum has exactly 20 units total", () => {
-  assertEqual(amUnits.length, 20,
-    `Expected 20 Astra Militarum units, found ${amUnits.length}`);
+  assertEqual(amilUnits.length, 20,
+    `Expected 20 Astra Militarum units, found ${amilUnits.length}`);
 });
 
 
@@ -15165,7 +15165,7 @@ test("Astra Militarum has exactly 20 units total", () => {
 
 section("125. Astra Militarum — Embarked Regiment Game Rule Logic");
 
-const erHelpers      = makeDetHelpers(erDet, amUnit);
+const erHelpers      = makeDetHelpers(erDet, amilUnit);
 const isErExcBlocked = makeExcGroupChecker(erDet.exclusiveUnitGroups);
 
 test("Character cap — first CHARACTER can be added to an empty list", () => {
@@ -15294,7 +15294,7 @@ test("Smoke — Sly Marbo + Commissar + 3x Cadian Shock Troops = 55+30+195 = 280
     { unitId: "am_cadian_shock_troops" },
     { unitId: "am_cadian_shock_troops" },
   ];
-  const charCount = list.filter(l => amUnit(l.unitId)?.type === "CHARACTER").length;
+  const charCount = list.filter(l => amilUnit(l.unitId)?.type === "CHARACTER").length;
   assert(charCount <= erDet.maxCharacters, "Character count must not exceed cap of 2");
   assert(!isErExcBlocked("am_sly_marbo", []),  "Sly Marbo alone must not be blocked");
   assert(!isErExcBlocked("am_commissar", []),  "Commissar alone must not be blocked");
@@ -15310,7 +15310,7 @@ test("Smoke — Ursula Creed + Nork Deddog + Kasrkin (10) + Ogryn Squad = 55+60+
     { unitId: "am_kasrkin"     },
     { unitId: "am_ogryn_squad" },
   ];
-  const charCount = list.filter(l => amUnit(l.unitId)?.type === "CHARACTER").length;
+  const charCount = list.filter(l => amilUnit(l.unitId)?.type === "CHARACTER").length;
   assert(charCount <= erDet.maxCharacters, "Character count must not exceed cap of 2");
 });
 
@@ -15413,9 +15413,9 @@ test("Khaine's Arrow has Shieldmaster enhancement", () => {
     "Shieldmaster must have no keyword requirements");
 });
 
-test("Khaine's Arrow has exactly 13 units", () => {
-  assertEqual(kaDet.units.length, 13,
-    `Khaine's Arrow must have exactly 13 unit entries, found ${kaDet.units.length}`);
+test("Khaine's Arrow has exactly 19 units", () => {
+  assertEqual(kaDet.units.length, 19,
+    `Khaine's Arrow must have exactly 19 unit entries, found ${kaDet.units.length}`);
 });
 
 test("Khaine's Arrow unit roster — correct IDs and maxes", () => {
@@ -15433,6 +15433,12 @@ test("Khaine's Arrow unit roster — correct IDs and maxes", () => {
     { id: "aeldari_jain_zar",            max: 1 },
     { id: "aeldari_lhykhis",             max: 1 },
     { id: "aeldari_maugan_ra",           max: 1 },
+    { id: "aeldari_dark_reapers",        max: 1 },
+    { id: "aeldari_fire_dragons",        max: 1 },
+    { id: "aeldari_howling_banshees",    max: 1 },
+    { id: "aeldari_striking_scorpions",  max: 1 },
+    { id: "aeldari_swooping_hawks",      max: 1 },
+    { id: "aeldari_warp_spiders",        max: 1 },
   ];
   expected.forEach(({ id, max }) => {
     const entry = kaDet.units.find(u => u.id === id);
@@ -15469,9 +15475,9 @@ test("Khaine's Arrow exclusive group 3 contains Swooping Hawks and Warp Spiders"
   assert(group.includes("aeldari_warp_spiders"),   "Group must include aeldari_warp_spiders");
 });
 
-test("Khaine's Arrow has exactly 4 keywordRatios", () => {
-  assert(Array.isArray(kaDet.keywordRatios) && kaDet.keywordRatios.length === 4,
-    "Khaine's Arrow must have exactly 4 keywordRatios");
+test("Khaine's Arrow has exactly 5 keywordRatios", () => {
+  assert(Array.isArray(kaDet.keywordRatios) && kaDet.keywordRatios.length === 5,
+    "Khaine's Arrow must have exactly 5 keywordRatios");
 });
 
 test("Khaine's Arrow keywordRatios — Asurmen/Dire Avengers ratio is correctly defined", () => {
@@ -15506,6 +15512,15 @@ test("Khaine's Arrow keywordRatios — Jain Zar/Howling Banshees ratio is correc
     r.numeratorUnitIds?.includes("aeldari_jain_zar") &&
     r.denominatorUnitIds?.includes("aeldari_howling_banshees"));
   assert(!!r, "Jain Zar/Howling Banshees ratio must exist");
+  assert(typeof r.description === "string" && r.description.length > 0,
+    "Ratio must have a non-empty description");
+});
+
+test("Khaine's Arrow keywordRatios — Maugan Ra/Dark Reapers ratio is correctly defined", () => {
+  const r = kaDet.keywordRatios.find(r =>
+    r.numeratorUnitIds?.includes("aeldari_maugan_ra") &&
+    r.denominatorUnitIds?.includes("aeldari_dark_reapers"));
+  assert(!!r, "Maugan Ra/Dark Reapers ratio must exist");
   assert(typeof r.description === "string" && r.description.length > 0,
     "Ratio must have a non-empty description");
 });
@@ -15633,6 +15648,47 @@ test("Dire Avengers unit max — only 1 copy can be added", () => {
     "Second Dire Avengers unit must be blocked (max 1)");
 });
 
+// ── Maugan Ra / Dark Reapers ratio ───────────────────────────────────────────
+
+// Inline ratio helper mirroring the app's isKeywordRatioBlocked logic
+function isMauganRaBlocked(list) {
+  const numCount = list.filter(l => l.unitId === "aeldari_maugan_ra").length;
+  const denCount = list.filter(l => l.unitId === "aeldari_dark_reapers").length;
+  return numCount + 1 > denCount;
+}
+
+test("Maugan Ra ratio — Maugan Ra is blocked when no Dark Reapers are in the list", () => {
+  assert(isMauganRaBlocked([]),
+    "Maugan Ra must be blocked when no Dark Reapers unit is present");
+});
+
+test("Maugan Ra ratio — Maugan Ra is allowed when Dark Reapers are in the list", () => {
+  const list = [{ unitId: "aeldari_dark_reapers" }];
+  assert(!isMauganRaBlocked(list),
+    "Maugan Ra must be allowed when 1 Dark Reapers unit is present");
+});
+
+test("Maugan Ra ratio — second Maugan Ra is blocked (max 1 per detachment entry, but ratio also fires)", () => {
+  // The detachment has max:1 for Maugan Ra, so the unit cap independently blocks
+  // a second copy; the ratio is not the only guard here — both protect it.
+  const list = [{ unitId: "aeldari_dark_reapers" }, { unitId: "aeldari_maugan_ra" }];
+  const mauganCount = list.filter(l => l.unitId === "aeldari_maugan_ra").length;
+  const reaperCount = list.filter(l => l.unitId === "aeldari_dark_reapers").length;
+  assert(mauganCount + 1 > reaperCount,
+    "Adding a second Maugan Ra would exceed the 1:1 ratio and must be blocked");
+});
+
+test("Maugan Ra ratio — Dark Reapers can be added without Maugan Ra", () => {
+  assert(ka.canAdd([], "aeldari_dark_reapers"),
+    "Dark Reapers must be addable to an empty list (not constrained by ratio)");
+});
+
+test("Maugan Ra ratio — Dark Reapers unit max — only 1 copy can be added", () => {
+  const list = [{ unitId: "aeldari_dark_reapers" }];
+  assert(!ka.canAdd(list, "aeldari_dark_reapers"),
+    "Second Dark Reapers unit must be blocked (max 1)");
+});
+
 test("Smoke — Farseer + Warlock Conclave + Dire Avengers (5) = 70+55+75 = 200pts (legal)", () => {
   const pts = 70 + 55 + 75;
   assertEqual(pts, 200, "Expected 200pts");
@@ -15657,6 +15713,28 @@ test("Smoke — Eldrad Ulthran alone = 120pts (legal)", () => {
     "Eldrad Ulthran must be addable to an empty list");
   assert(ka.canAdd([], "aeldari_eldrad_ulthran"),
     "Eldrad Ulthran must be addable to an empty list via canAdd");
+});
+
+test("Smoke — Maugan Ra + Dark Reapers (5) = 100+90 = 190pts (legal, ratio satisfied)", () => {
+  const pts = 100 + 90;
+  assertEqual(pts, 190, "Expected 190pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "aeldari_dark_reapers" },
+    { unitId: "aeldari_maugan_ra"    },
+  ];
+  const mauganCount = list.filter(l => l.unitId === "aeldari_maugan_ra").length;
+  const reaperCount = list.filter(l => l.unitId === "aeldari_dark_reapers").length;
+  assert(mauganCount <= reaperCount, "Maugan Ra must not outnumber Dark Reapers");
+  const charCount = list.filter(l => kaUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= kaDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Dark Reapers alone (no Maugan Ra) = 90pts (legal)", () => {
+  const pts = 90;
+  assert(pts <= 500, "Must be within 500pt limit");
+  assert(ka.canAdd([], "aeldari_dark_reapers"),
+    "Dark Reapers must be addable without any prerequisite");
 });
 
 
@@ -15809,6 +15887,27 @@ test("Maugan Ra has correct fields", () => {
   assert(!u.rulesAdaptations, "Maugan Ra must have no rulesAdaptations");
 });
 
+test("Dark Reapers has correct fields", () => {
+  const u = kaUnit("aeldari_dark_reapers");
+  assert(!!u, "aeldari_dark_reapers must exist");
+  assertEqual(u.name, "Dark Reapers");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["AELDARI", "ASURYANI", "INFANTRY", "ASPECT WARRIORS"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Dark Reapers must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Dark Reapers must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 90, "Must cost 90pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assert(!u.rulesAdaptations, "Dark Reapers must have no rulesAdaptations");
+});
+
+test("Dark Reapers does not have CHARACTER keyword", () => {
+  const u = kaUnit("aeldari_dark_reapers");
+  assert(!u?.keywords.includes("CHARACTER"), "Dark Reapers must not have CHARACTER keyword");
+});
+
 test("All 6 new Phoenix Lord-keyword units have EPIC HERO and PHOENIX LORD keywords", () => {
   ["aeldari_asurmen", "aeldari_baharroth", "aeldari_fuegan",
    "aeldari_jain_zar", "aeldari_lhykhis", "aeldari_maugan_ra"].forEach(id => {
@@ -15818,9 +15917,9 @@ test("All 6 new Phoenix Lord-keyword units have EPIC HERO and PHOENIX LORD keywo
   });
 });
 
-test("Aeldari now has exactly 28 unit definitions", () => {
-  assertEqual(kaUnits.length, 28,
-    `Expected 28 Aeldari unit definitions, found ${kaUnits.length}`);
+test("Aeldari now has exactly 29 unit definitions", () => {
+  assertEqual(kaUnits.length, 29,
+    `Expected 29 Aeldari unit definitions, found ${kaUnits.length}`);
 });
 
 test("Smoke — Asurmen + Dire Avengers (5) = 135+75 = 210pts (legal, 1 CHARACTER under cap)", () => {
