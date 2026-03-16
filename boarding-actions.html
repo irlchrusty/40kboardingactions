@@ -900,13 +900,13 @@ function renderUnitGrid() {
     const isLocked = !!committedChapter;
     html += `<div class="chapter-filter-bar">
       <label class="chapter-filter-label" for="chapter-filter-sel">
-        <span class="chapter-filter-icon">⚜</span> Chapter
+        <span class="chapter-filter-icon">⚜</span> Sub-faction
       </label>
       <select id="chapter-filter-sel"
               class="chapter-filter-sel${isLocked ? " chapter-filter-sel--locked" : ""}"
               onchange="setChapterFilter(this.value)"
               ${isLocked ? "disabled" : ""}>
-        <option value=""${!activeFilter ? " selected" : ""}>All chapters</option>`;
+        <option value=""${!activeFilter ? " selected" : ""}>All sub-factions</option>`;
     [...chapterGroup]
       .filter(kw => det.units.some(du => getUnit(du.id)?.keywords.includes(kw)))
       .sort((a, b) => a.localeCompare(b))
