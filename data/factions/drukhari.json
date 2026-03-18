@@ -1,0 +1,252 @@
+{
+  "detachments": [
+    {
+      "id": "dru_kabalite_corsairs",
+      "name": "Kabalite Corsairs",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Raid and Pillage",
+        "desc": "Each time a DRUKHARI unit from your army destroys an enemy unit, if that enemy unit was within range of an objective marker controlled by your opponent at the start of the phase, you gain 1 Pain token. In addition, in your Command phase, you can select one objective marker you control that has one or more KABAL units from your army within range of it, then expend 1 Pain token from your Pain token pool. If you do, that objective is Secured by your army"
+      },
+      "enhancements": [
+        {
+          "id": "enh_dru_dark_charisma",
+          "name": "Dark Charisma",
+          "desc": "The bearer has an Objective Control characteristic of 5 and you can re-roll Battle-shock tests taken for the bearer.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dru_malevolent_cunning",
+          "name": "Malevolent Cunning",
+          "desc": "The first time in each battle round that your opponent targets a unit from their army that is within 3\" of the bearer with a Strategem, increase that Strategem's cost by 1CP for that usage.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "dru_drazhar",
+          "max": 1
+        },
+        {
+          "id": "dru_archon",
+          "max": 1
+        },
+        {
+          "id": "dru_kabalite_warriors",
+          "max": 3
+        },
+        {
+          "id": "dru_incubi",
+          "max": 1
+        },
+        {
+          "id": "dru_mandrakes",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "dru_ship_killer_cult",
+      "name": "Ship-Killer Cult",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Appetite for Adulation",
+        "desc": "In the Fight phase, if two or more enemy units are destroyed by DRUKHARI units from your army that phase, you gain 1 Pain token. In addition, each time a WYCH CULT unit from your army becomes Empowered in the Fight phase, until the end of the phase, melee weapons equipped by models in that unit have the [ANTI-INFANTRY 4+] ability. "
+      },
+      "enhancements": [
+        {
+          "id": "enh_dru_stimm_fervour",
+          "name": "Stimm-Fervour",
+          "desc": "The bearer is eligible to declare a charge in a turn in which it Advanced.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dru_blood_drenched_champion",
+          "name": "Blood-Drenched Champion",
+          "desc": "In the Battle-shock step of your opponents Command Phase, for each enemy unit that is below it's Starting Strength and is within Engagement Range of the bearer, that unit must take a Battle-shock test. If that enemy unit is also below Half-strength, subtract 1 from that test. This Enhancement cannot cause a unit to take two Battle-shock tests in the same phase.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "dru_lelith_hesperax",
+          "max": 1
+        },
+        {
+          "id": "dru_succubus",
+          "max": 1
+        },
+        {
+          "id": "dru_wyches",
+          "max": 3
+        },
+        {
+          "id": "dru_incubi",
+          "max": 1
+        },
+        {
+          "id": "dru_mandrakes",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "dru_drazhar",
+      "name": "Drazhar",
+      "type": "CHARACTER",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "AELDARI",
+        "BLADES FOR HIRE"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ]
+    },
+    {
+      "id": "dru_archon",
+      "name": "Archon",
+      "type": "CHARACTER",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "CHARACTER",
+        "AELDARI",
+        "KABAL"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Devious Mastermind ability."
+    },
+    {
+      "id": "dru_kabalite_warriors",
+      "name": "Kabalite Warriors",
+      "type": "BATTLELINE",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "BATTLELINE",
+        "AELDARI",
+        "KABAL"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 115
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Sadistic Raiders ability."
+    },
+    {
+      "id": "dru_incubi",
+      "name": "Incubi",
+      "type": "INFANTRY",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "AELDARI",
+        "BLADES FOR HIRE"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 90
+        },
+        {
+          "label": "10 models",
+          "pts": 180
+        }
+      ]
+    },
+    {
+      "id": "dru_mandrakes",
+      "name": "Mandrakes",
+      "type": "INFANTRY",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "AELDARI",
+        "BLADES FOR HIRE"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
+          "label": "10 models",
+          "pts": 150
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Fade Away ability."
+    },
+    {
+      "id": "dru_lelith_hesperax",
+      "name": "Lelith Hesperax",
+      "type": "CHARACTER",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO",
+        "AELDARI",
+        "WYCH CULT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Thrilling Spectacle ability."
+    },
+    {
+      "id": "dru_succubus",
+      "name": "Succubus",
+      "type": "CHARACTER",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "CHARACTER",
+        "AELDARI",
+        "WYCH CULT"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 50
+        }
+      ]
+    },
+    {
+      "id": "dru_wyches",
+      "name": "Wyches",
+      "type": "BATTLELINE",
+      "keywords": [
+        "DRUKHARI",
+        "INFANTRY",
+        "BATTLELINE",
+        "AELDARI",
+        "WYCH CULT"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 90
+        }
+      ]
+    }
+  ]
+}

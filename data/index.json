@@ -73,6 +73,15 @@
       }
     },
     {
+      "id": "drukhari",
+      "name": "Drukhari",
+      "file": "factions/drukhari.json",
+      "armyRule": {
+        "name": "Feast of Pain",
+        "desc": "Units from your army with the Power from Pain ability retain that ability and gain this one. At the start of the battle, you gain 1 Pain token."
+      }
+    },
+    {
       "id": "emperors_children",
       "name": "Emperor's Children",
       "file": "factions/emperors_children.json",
