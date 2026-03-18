@@ -16426,6 +16426,725 @@ test("Smoke — Patriarch + 3x Purestrain Genestealers (5 models) = 80+225 = 305
     "Purestrain Genestealers must not be subfaction-blocked alongside Patriarch");
 });
 
+// NOTE: Do not add tests here for ID uniqueness, cross-faction ID collisions,
+// enhancement ID uniqueness, unit→detachment cross-references, or required-field
+// schema checks (id/name/type/keywords/sizes/armyRule). Section 3 covers all of
+// these globally for every faction. Only test faction-specific behaviour here:
+// points values, keywords, rules adaptations content, and constraint logic.
+
+// ── 132. Thousand Sons Faction ───────────────────────────────────────────────
+
+section("132. Thousand Sons Faction");
+
+const tsFaction = index.factions.find(f => f.id === "thousand_sons");
+const tsData    = factionData["thousand_sons"];
+const tsUnits   = tsData ? tsData.units : [];
+const tsDets    = tsData ? tsData.detachments : [];
+const tsUnit    = id => tsUnits.find(u => u.id === id);
+
+test("Thousand Sons faction exists in index.json", () => {
+  assert(tsFaction !== undefined, "thousand_sons must exist in index.json factions array");
+});
+
+test("Thousand Sons has Twisting Fate army rule", () => {
+  assertEqual(tsFaction.armyRule.name, "Twisting Fate",
+    "army rule name must be 'Twisting Fate'");
+});
+
+test("Twisting Fate desc references Cabal of Sorcerers", () => {
+  assert(tsFaction.armyRule.desc.includes("Cabal of Sorcerers"),
+    "Twisting Fate desc must reference 'Cabal of Sorcerers'");
+});
+
+test("Twisting Fate desc references Ascendence", () => {
+  assert(tsFaction.armyRule.desc.includes("Ascendence"),
+    "Twisting Fate desc must reference 'Ascendence'");
+});
+
+test("Twisting Fate desc references PSYKER condition", () => {
+  assert(tsFaction.armyRule.desc.includes("PSYKER"),
+    "Twisting Fate desc must reference the PSYKER condition");
+});
+
+test("Thousand Sons has exactly 3 detachments", () => {
+  assertEqual(tsDets.length, 3,
+    `Expected 3 Thousand Sons detachments, found ${tsDets.length}`);
+});
+
+test("Thousand Sons has exactly 8 units", () => {
+  assertEqual(tsUnits.length, 8,
+    `Expected 8 Thousand Sons units, found ${tsUnits.length}`);
+});
+
+
+// ── 133. Thousand Sons — Devoted Thralls Detachment ─────────────────────────
+
+section("133. Thousand Sons — Devoted Thralls Detachment");
+
+const dtDet = tsDets.find(d => d.id === "ts_devoted_thralls");
+
+test("Devoted Thralls detachment exists", () => {
+  assert(dtDet !== undefined, "ts_devoted_thralls detachment must exist");
+});
+
+test("Devoted Thralls has correct name", () => {
+  assertEqual(dtDet.name, "Devoted Thralls", "detachment name must be 'Devoted Thralls'");
+});
+
+test("Devoted Thralls has Fervent Devotees special rule", () => {
+  assertEqual(dtDet.specialRule.name, "Fervent Devotees",
+    "specialRule name must be 'Fervent Devotees'");
+});
+
+test("Fervent Devotees desc references SUSTAINED HITS 1", () => {
+  assert(dtDet.specialRule.desc.includes("SUSTAINED HITS 1"),
+    "Fervent Devotees desc must reference '[SUSTAINED HITS 1]'");
+});
+
+test("Fervent Devotees desc references objective marker", () => {
+  assert(dtDet.specialRule.desc.includes("objective marker"),
+    "Fervent Devotees desc must reference 'objective marker'");
+});
+
+test("Devoted Thralls has maxCharacters set to 2", () => {
+  assertEqual(dtDet.maxCharacters, 2, "Devoted Thralls maxCharacters must be 2");
+});
+
+test("Devoted Thralls has exactly 5 unit entries", () => {
+  assertEqual(dtDet.units.length, 5, "Devoted Thralls must have exactly 5 unit entries");
+});
+
+test("Devoted Thralls unit roster — correct IDs and maxes", () => {
+  const find = id => dtDet.units.find(u => u.id === id);
+  assert(find("ts_exalted_sorcerer")?.max === 1,  "ts_exalted_sorcerer max must be 1");
+  assert(find("ts_infernal_master")?.max  === 1,  "ts_infernal_master max must be 1");
+  assert(find("ts_sorcerer")?.max         === 1,  "ts_sorcerer max must be 1");
+  assert(find("ts_tzaangors")?.max        === 3,  "ts_tzaangors max must be 3");
+  assert(find("ts_chaos_spawn")?.max      === 1,  "ts_chaos_spawn max must be 1");
+});
+
+test("Devoted Thralls has exactly 2 enhancements", () => {
+  assertEqual(dtDet.enhancements.length, 2, "Devoted Thralls must have exactly 2 enhancements");
+});
+
+test("Devoted Thralls has Thrallmaster enhancement", () => {
+  const enh = dtDet.enhancements.find(e => e.id === "enh_ts_thrallmaster");
+  assert(enh !== undefined, "enh_ts_thrallmaster must exist");
+  assertEqual(enh.name, "Thrallmaster", "enhancement name must be 'Thrallmaster'");
+  assert(enh.desc.includes("Tzaangors"),
+    "Thrallmaster desc must reference 'Tzaangors'");
+  assert(enh.desc.includes("Normal move"),
+    "Thrallmaster desc must reference 'Normal move'");
+  assert(enh.desc.includes("6\""),
+    "Thrallmaster desc must reference 6\" move distance");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Thrallmaster must have no keyword requirements");
+});
+
+test("Devoted Thralls has Prescient Authority enhancement", () => {
+  const enh = dtDet.enhancements.find(e => e.id === "enh_ts_prescient_authority");
+  assert(enh !== undefined, "enh_ts_prescient_authority must exist");
+  assertEqual(enh.name, "Prescient Authority", "enhancement name must be 'Prescient Authority'");
+  assert(enh.desc.includes("Tzaangors"),
+    "Prescient Authority desc must reference 'Tzaangors'");
+  assert(enh.desc.includes("Wound roll"),
+    "Prescient Authority desc must reference 'Wound roll'");
+  assert(enh.desc.includes("3\""),
+    "Prescient Authority desc must reference 3\" range");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Prescient Authority must have no keyword requirements");
+});
+
+
+// ── 134. Thousand Sons — Fateseekers Detachment ──────────────────────────────
+
+section("134. Thousand Sons — Fateseekers Detachment");
+
+const fsDet = tsDets.find(d => d.id === "ts_fateseekers");
+
+test("Fateseekers detachment exists", () => {
+  assert(fsDet !== undefined, "ts_fateseekers detachment must exist");
+});
+
+test("Fateseekers has correct name", () => {
+  assertEqual(fsDet.name, "Fateseekers", "detachment name must be 'Fateseekers'");
+});
+
+test("Fateseekers has Methodical Conquest special rule", () => {
+  assertEqual(fsDet.specialRule.name, "Methodical Conquest",
+    "specialRule name must be 'Methodical Conquest'");
+});
+
+test("Methodical Conquest desc references Overwatch and 5+ hit roll", () => {
+  assert(fsDet.specialRule.desc.includes("Overwatch"),
+    "Methodical Conquest desc must reference 'Overwatch'");
+  assert(fsDet.specialRule.desc.includes("5+"),
+    "Methodical Conquest desc must reference the 5+ hit roll");
+});
+
+test("Methodical Conquest desc references Scarab Occult Terminators", () => {
+  assert(fsDet.specialRule.desc.includes("Scarab Occult Terminators"),
+    "Methodical Conquest desc must reference 'Scarab Occult Terminators'");
+});
+
+test("Fateseekers has maxCharacters set to 2", () => {
+  assertEqual(fsDet.maxCharacters, 2, "Fateseekers maxCharacters must be 2");
+});
+
+test("Fateseekers has exactly 5 unit entries", () => {
+  assertEqual(fsDet.units.length, 5, "Fateseekers must have exactly 5 unit entries");
+});
+
+test("Fateseekers unit roster — correct IDs and maxes", () => {
+  const find = id => fsDet.units.find(u => u.id === id);
+  assert(find("ts_exalted_sorcerer")?.max              === 1, "ts_exalted_sorcerer max must be 1");
+  assert(find("ts_infernal_master")?.max               === 1, "ts_infernal_master max must be 1");
+  assert(find("ts_chaos_spawn")?.max                   === 2, "ts_chaos_spawn max must be 2");
+  assert(find("ts_sorcerer_in_terminator_armour")?.max === 1, "ts_sorcerer_in_terminator_armour max must be 1");
+  assert(find("ts_scarab_occult_terminators")?.max     === 2, "ts_scarab_occult_terminators max must be 2");
+});
+
+test("Fateseekers — Scarab Occult Terminators has no allowedSizeIndices (both sizes available)", () => {
+  const entry = fsDet.units.find(u => u.id === "ts_scarab_occult_terminators");
+  assert(entry.allowedSizeIndices === undefined,
+    "Scarab Occult Terminators in Fateseekers must not have allowedSizeIndices — both sizes are available");
+});
+
+test("Fateseekers has exactly 2 enhancements", () => {
+  assertEqual(fsDet.enhancements.length, 2, "Fateseekers must have exactly 2 enhancements");
+});
+
+test("Fateseekers has Predestined Champion enhancement", () => {
+  const enh = fsDet.enhancements.find(e => e.id === "enh_ts_predestined_champion");
+  assert(enh !== undefined, "enh_ts_predestined_champion must exist");
+  assertEqual(enh.name, "Predestined Champion", "enhancement name must be 'Predestined Champion'");
+  assert(enh.desc.includes("objective marker"),
+    "Predestined Champion desc must reference 'objective marker'");
+  assert(enh.desc.includes("Twisting Fate"),
+    "Predestined Champion desc must reference 'Twisting Fate'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Predestined Champion must have no keyword requirements");
+});
+
+test("Fateseekers has Astral Predation enhancement", () => {
+  const enh = fsDet.enhancements.find(e => e.id === "enh_ts_astral_predation");
+  assert(enh !== undefined, "enh_ts_astral_predation must exist");
+  assertEqual(enh.name, "Astral Predation", "enhancement name must be 'Astral Predation'");
+  assert(enh.desc.includes("Hatchway"),
+    "Astral Predation desc must reference 'Hatchway'");
+  assert(enh.desc.includes("Movement phase"),
+    "Astral Predation desc must reference 'Movement phase'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Astral Predation must have no keyword requirements");
+});
+
+
+// ── 135. Thousand Sons — Chosen Cabal Detachment ─────────────────────────────
+
+section("135. Thousand Sons — Chosen Cabal Detachment");
+
+const ccDet = tsDets.find(d => d.id === "ts_chosen_cabal");
+
+test("Chosen Cabal detachment exists", () => {
+  assert(ccDet !== undefined, "ts_chosen_cabal detachment must exist");
+});
+
+test("Chosen Cabal has correct name", () => {
+  assertEqual(ccDet.name, "Chosen Cabal", "detachment name must be 'Chosen Cabal'");
+});
+
+test("Chosen Cabal has Witchsight special rule", () => {
+  assertEqual(ccDet.specialRule.name, "Witchsight",
+    "specialRule name must be 'Witchsight'");
+});
+
+test("Witchsight desc references IGNORES COVER", () => {
+  assert(ccDet.specialRule.desc.includes("IGNORES COVER"),
+    "Witchsight desc must reference '[IGNORES COVER]'");
+});
+
+test("Witchsight desc references Ranged Weapons", () => {
+  assert(ccDet.specialRule.desc.includes("Ranged Weapons"),
+    "Witchsight desc must reference 'Ranged Weapons'");
+});
+
+test("Chosen Cabal has maxCharacters set to 2", () => {
+  assertEqual(ccDet.maxCharacters, 2, "Chosen Cabal maxCharacters must be 2");
+});
+
+test("Chosen Cabal has exactly 8 unit entries", () => {
+  assertEqual(ccDet.units.length, 8, "Chosen Cabal must have exactly 8 unit entries");
+});
+
+test("Chosen Cabal unit roster — correct IDs and maxes", () => {
+  const find = id => ccDet.units.find(u => u.id === id);
+  assert(find("ts_exalted_sorcerer")?.max              === 1, "ts_exalted_sorcerer max must be 1");
+  assert(find("ts_infernal_master")?.max               === 1, "ts_infernal_master max must be 1");
+  assert(find("ts_sorcerer")?.max                      === 1, "ts_sorcerer max must be 1");
+  assert(find("ts_sorcerer_in_terminator_armour")?.max === 1, "ts_sorcerer_in_terminator_armour max must be 1");
+  assert(find("ts_tzaangors")?.max                     === 3, "ts_tzaangors max must be 3");
+  assert(find("ts_chaos_spawn")?.max                   === 1, "ts_chaos_spawn max must be 1");
+  assert(find("ts_scarab_occult_terminators")?.max     === 1, "ts_scarab_occult_terminators max must be 1");
+  assert(find("ts_rubric_marines")?.max                === 3, "ts_rubric_marines max must be 3");
+});
+
+test("Chosen Cabal — Scarab Occult Terminators restricted to 5-model size only (allowedSizeIndices: [0])", () => {
+  const entry = ccDet.units.find(u => u.id === "ts_scarab_occult_terminators");
+  assert(Array.isArray(entry.allowedSizeIndices),
+    "Scarab Occult Terminators in Chosen Cabal must have an allowedSizeIndices array");
+  assertEqual(entry.allowedSizeIndices.length, 1,
+    "allowedSizeIndices must contain exactly 1 entry");
+  assertEqual(entry.allowedSizeIndices[0], 0,
+    "allowedSizeIndices[0] must be 0 — only the 5-model size is permitted");
+  assertEqual(tsUnit("ts_scarab_occult_terminators").sizes[0].label, "5 models",
+    "size index 0 must be the 5-model option");
+  assertEqual(tsUnit("ts_scarab_occult_terminators").sizes[1].label, "10 models",
+    "size index 1 (the disallowed option) must be the 10-model option");
+});
+
+test("Chosen Cabal has keywordRatio constraint defined", () => {
+  assert(ccDet.keywordRatio !== undefined,
+    "keywordRatio must be defined on the Chosen Cabal detachment");
+});
+
+test("Chosen Cabal keywordRatio — numeratorUnitIds contains ts_tzaangors", () => {
+  assert(Array.isArray(ccDet.keywordRatio.numeratorUnitIds),
+    "keywordRatio must use numeratorUnitIds");
+  assert(ccDet.keywordRatio.numeratorUnitIds.includes("ts_tzaangors"),
+    "numeratorUnitIds must include 'ts_tzaangors'");
+  assertEqual(ccDet.keywordRatio.numeratorUnitIds.length, 1,
+    "numeratorUnitIds must contain exactly 1 unit ID");
+});
+
+test("Chosen Cabal keywordRatio — denominatorUnitIds contains ts_rubric_marines", () => {
+  assert(Array.isArray(ccDet.keywordRatio.denominatorUnitIds),
+    "keywordRatio must use denominatorUnitIds");
+  assert(ccDet.keywordRatio.denominatorUnitIds.includes("ts_rubric_marines"),
+    "denominatorUnitIds must include 'ts_rubric_marines'");
+  assertEqual(ccDet.keywordRatio.denominatorUnitIds.length, 1,
+    "denominatorUnitIds must contain exactly 1 unit ID");
+});
+
+test("Chosen Cabal keywordRatio has a description string", () => {
+  assert(typeof ccDet.keywordRatio.description === "string" && ccDet.keywordRatio.description.length > 0,
+    "keywordRatio must have a non-empty description string");
+});
+
+test("Chosen Cabal has exactly 2 enhancements", () => {
+  assertEqual(ccDet.enhancements.length, 2, "Chosen Cabal must have exactly 2 enhancements");
+});
+
+test("Chosen Cabal has Warp Mastery enhancement", () => {
+  const enh = ccDet.enhancements.find(e => e.id === "enh_ts_warp_mastery");
+  assert(enh !== undefined, "enh_ts_warp_mastery must exist");
+  assertEqual(enh.name, "Warp Mastery", "enhancement name must be 'Warp Mastery'");
+  assert(enh.desc.includes("Psychic"),
+    "Warp Mastery desc must reference 'Psychic' weapons");
+  assert(enh.desc.includes("re-roll"),
+    "Warp Mastery desc must reference a re-roll");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Warp Mastery must have no keyword requirements");
+});
+
+test("Chosen Cabal has Fires of Change enhancement", () => {
+  const enh = ccDet.enhancements.find(e => e.id === "enh_ts_fires_of_change");
+  assert(enh !== undefined, "enh_ts_fires_of_change must exist");
+  assertEqual(enh.name, "Fires of Change", "enhancement name must be 'Fires of Change'");
+  assert(enh.desc.includes("Psychic"),
+    "Fires of Change desc must reference 'Psychic' weapons");
+  assert(enh.desc.includes("Battle-shock"),
+    "Fires of Change desc must reference 'Battle-shock'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Fires of Change must have no keyword requirements");
+});
+
+
+// ── 136. Thousand Sons — Unit Definitions ────────────────────────────────────
+
+section("136. Thousand Sons — Unit Definitions");
+
+test("Exalted Sorcerer has correct fields", () => {
+  const u = tsUnit("ts_exalted_sorcerer");
+  assert(!!u, "ts_exalted_sorcerer must exist");
+  assertEqual(u.name, "Exalted Sorcerer");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "CHARACTER", "PSYKER", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Exalted Sorcerer must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Exalted Sorcerer must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Exalted Sorcerer must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 80,        "Exalted Sorcerer must cost 80pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Rebind Rubricae"),
+    "rulesAdaptations must reference 'Rebind Rubricae'");
+});
+
+test("Infernal Master has correct fields", () => {
+  const u = tsUnit("ts_infernal_master");
+  assert(!!u, "ts_infernal_master must exist");
+  assertEqual(u.name, "Infernal Master");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "CHARACTER", "PSYKER", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Infernal Master must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Infernal Master must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Infernal Master must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 95,        "Infernal Master must cost 95pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations,
+    "Infernal Master must have no rulesAdaptations");
+});
+
+test("Sorcerer has correct fields", () => {
+  const u = tsUnit("ts_sorcerer");
+  assert(!!u, "ts_sorcerer must exist");
+  assertEqual(u.name, "Sorcerer");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "CHARACTER", "PSYKER", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Sorcerer must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Sorcerer must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Sorcerer must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 80,        "Sorcerer must cost 80pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(!u.rulesAdaptations,
+    "Sorcerer must have no rulesAdaptations");
+});
+
+test("Sorcerer in Terminator Armour has correct fields", () => {
+  const u = tsUnit("ts_sorcerer_in_terminator_armour");
+  assert(!!u, "ts_sorcerer_in_terminator_armour must exist");
+  assertEqual(u.name, "Sorcerer in Terminator Armour");
+  assertEqual(u.type, "CHARACTER");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "CHARACTER", "PSYKER", "TERMINATOR", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Sorcerer in Terminator Armour must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Sorcerer in Terminator Armour must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Sorcerer in Terminator Armour must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 85,        "Sorcerer in Terminator Armour must cost 85pts");
+  assertEqual(u.sizes[0].label, "1 model");
+  assert(u.rulesAdaptations?.includes("Rebind Rubricae"),
+    "rulesAdaptations must reference 'Rebind Rubricae'");
+});
+
+test("Sorcerer in Terminator Armour has TERMINATOR keyword, plain Sorcerer does not", () => {
+  assert( tsUnit("ts_sorcerer_in_terminator_armour").keywords.includes("TERMINATOR"),
+    "Sorcerer in Terminator Armour must have TERMINATOR keyword");
+  assert(!tsUnit("ts_sorcerer").keywords.includes("TERMINATOR"),
+    "Plain Sorcerer must not have TERMINATOR keyword");
+});
+
+test("Tzaangors has correct fields", () => {
+  const u = tsUnit("ts_tzaangors");
+  assert(!!u, "ts_tzaangors must exist");
+  assertEqual(u.name, "Tzaangors");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "MUTANT", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Tzaangors must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Tzaangors must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Tzaangors must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 70,           "Tzaangors must cost 70pts");
+  assertEqual(u.sizes[0].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Scouts"),
+    "rulesAdaptations must reference 'Scouts'");
+  assert(u.rulesAdaptations?.includes("Relic Hunters"),
+    "rulesAdaptations must reference 'Relic Hunters'");
+});
+
+test("Tzaangors is not a CHARACTER and does not have the CHARACTER keyword", () => {
+  const u = tsUnit("ts_tzaangors");
+  assert(u.type !== "CHARACTER",            "Tzaangors type must not be CHARACTER");
+  assert(!u.keywords.includes("CHARACTER"), "Tzaangors must not have CHARACTER keyword");
+});
+
+test("Chaos Spawn has correct fields", () => {
+  const u = tsUnit("ts_chaos_spawn");
+  assert(!!u, "ts_chaos_spawn must exist");
+  assertEqual(u.name, "Chaos Spawn");
+  assertEqual(u.type, "BEAST");
+  const expectedKws = ["THOUSAND SONS", "BEAST", "MUTANT", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Chaos Spawn must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Chaos Spawn must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 1, "Chaos Spawn must have exactly 1 size option");
+  assertEqual(u.sizes[0].pts, 65,          "Chaos Spawn must cost 65pts");
+  assertEqual(u.sizes[0].label, "2 models");
+  assert(u.rulesAdaptations?.includes("Regenerating Monstrosities"),
+    "rulesAdaptations must reference 'Regenerating Monstrosities'");
+});
+
+test("Scarab Occult Terminators has correct fields", () => {
+  const u = tsUnit("ts_scarab_occult_terminators");
+  assert(!!u, "ts_scarab_occult_terminators must exist");
+  assertEqual(u.name, "Scarab Occult Terminators");
+  assertEqual(u.type, "INFANTRY");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "PSYKER", "TERMINATOR", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Scarab Occult Terminators must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Scarab Occult Terminators must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 2, "Scarab Occult Terminators must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 180,          "5-model option must cost 180pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assertEqual(u.sizes[1].pts, 360,          "10-model option must cost 360pts");
+  assertEqual(u.sizes[1].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Scarab Occult Sorcerer"),
+    "rulesAdaptations must reference 'Scarab Occult Sorcerer'");
+  assert(u.rulesAdaptations?.includes("PSYKER"),
+    "rulesAdaptations must reference losing the PSYKER keyword");
+});
+
+test("Scarab Occult Terminators does not have the BATTLELINE keyword", () => {
+  assert(!tsUnit("ts_scarab_occult_terminators").keywords.includes("BATTLELINE"),
+    "Scarab Occult Terminators must not have BATTLELINE keyword in the unit definition");
+});
+
+test("Rubric Marines has correct fields", () => {
+  const u = tsUnit("ts_rubric_marines");
+  assert(!!u, "ts_rubric_marines must exist");
+  assertEqual(u.name, "Rubric Marines");
+  assertEqual(u.type, "BATTLELINE");
+  const expectedKws = ["THOUSAND SONS", "INFANTRY", "BATTLELINE", "PSYKER", "TZEENTCH"];
+  expectedKws.forEach(kw => assert(u.keywords.includes(kw),
+    `Rubric Marines must have keyword "${kw}"`));
+  assertEqual(u.keywords.length, expectedKws.length,
+    `Rubric Marines must have exactly ${expectedKws.length} keywords`);
+  assertEqual(u.sizes.length, 2, "Rubric Marines must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 100,          "5-model option must cost 100pts");
+  assertEqual(u.sizes[0].label, "5 models");
+  assertEqual(u.sizes[1].pts, 190,          "10-model option must cost 190pts");
+  assertEqual(u.sizes[1].label, "10 models");
+  assert(u.rulesAdaptations?.includes("Aspiring Sorcerer"),
+    "rulesAdaptations must reference 'Aspiring Sorcerer'");
+  assert(u.rulesAdaptations?.includes("PSYKER"),
+    "rulesAdaptations must reference losing the PSYKER keyword");
+});
+
+
+// ── 137. Thousand Sons — Game Rule Logic ─────────────────────────────────────
+
+section("137. Thousand Sons — Game Rule Logic");
+
+const dtHelper = makeDetHelpers(dtDet, tsUnit);
+const fsHelper = makeDetHelpers(fsDet, tsUnit);
+const ccHelper = makeDetHelpers(ccDet, tsUnit);
+
+// ── Devoted Thralls — character cap ──────────────────────────────────────────
+
+test("Devoted Thralls — first CHARACTER can be added to an empty list", () => {
+  assert(dtHelper.canAdd([], "ts_exalted_sorcerer"), "Exalted Sorcerer must be addable to an empty list");
+  assert(dtHelper.canAdd([], "ts_infernal_master"),  "Infernal Master must be addable to an empty list");
+  assert(dtHelper.canAdd([], "ts_sorcerer"),         "Sorcerer must be addable to an empty list");
+});
+
+test("Devoted Thralls — second CHARACTER can be added alongside first", () => {
+  const list = [{ unitId: "ts_exalted_sorcerer" }];
+  assert(dtHelper.canAdd(list, "ts_infernal_master"),
+    "Infernal Master must be addable when one CHARACTER already in list");
+});
+
+test("Devoted Thralls — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "ts_exalted_sorcerer" }, { unitId: "ts_infernal_master" }];
+  assert(!dtHelper.canAdd(list, "ts_sorcerer"),
+    "Sorcerer must be blocked when two CHARACTERs already fill the cap");
+});
+
+test("Devoted Thralls — non-CHARACTER units are never blocked by the character cap", () => {
+  const list = [{ unitId: "ts_exalted_sorcerer" }, { unitId: "ts_infernal_master" }];
+  assert(dtHelper.canAdd(list, "ts_tzaangors"),   "Tzaangors must not be blocked by the character cap");
+  assert(dtHelper.canAdd(list, "ts_chaos_spawn"), "Chaos Spawn must not be blocked by the character cap");
+});
+
+test("Devoted Thralls — Tzaangors max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "ts_tzaangors" }, { unitId: "ts_tzaangors" }];
+  assert( dtHelper.canAdd(list, "ts_tzaangors"),
+    "Third Tzaangors unit must be addable (max 3)");
+  assert(!dtHelper.canAdd([...list, { unitId: "ts_tzaangors" }], "ts_tzaangors"),
+    "Fourth Tzaangors unit must be blocked (max 3)");
+});
+
+test("Devoted Thralls — Chaos Spawn max 1: second copy blocked", () => {
+  assert(!dtHelper.canAdd([{ unitId: "ts_chaos_spawn" }], "ts_chaos_spawn"),
+    "Second Chaos Spawn must be blocked (max 1)");
+});
+
+// ── Fateseekers — character cap & unit maxes ─────────────────────────────────
+
+test("Fateseekers — first CHARACTER can be added to an empty list", () => {
+  assert(fsHelper.canAdd([], "ts_exalted_sorcerer"),              "Exalted Sorcerer must be addable");
+  assert(fsHelper.canAdd([], "ts_infernal_master"),               "Infernal Master must be addable");
+  assert(fsHelper.canAdd([], "ts_sorcerer_in_terminator_armour"), "Sorcerer in Terminator Armour must be addable");
+});
+
+test("Fateseekers — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "ts_exalted_sorcerer" }, { unitId: "ts_infernal_master" }];
+  assert(!fsHelper.canAdd(list, "ts_sorcerer_in_terminator_armour"),
+    "Sorcerer in Terminator Armour must be blocked when two CHARACTERs fill the cap");
+});
+
+test("Fateseekers — Chaos Spawn max 2: second copy addable, third blocked", () => {
+  const list = [{ unitId: "ts_chaos_spawn" }];
+  assert( fsHelper.canAdd(list, "ts_chaos_spawn"),
+    "Second Chaos Spawn must be addable (max 2)");
+  assert(!fsHelper.canAdd([...list, { unitId: "ts_chaos_spawn" }], "ts_chaos_spawn"),
+    "Third Chaos Spawn must be blocked (max 2)");
+});
+
+test("Fateseekers — Scarab Occult Terminators max 2: second copy addable, third blocked", () => {
+  const list = [{ unitId: "ts_scarab_occult_terminators" }];
+  assert( fsHelper.canAdd(list, "ts_scarab_occult_terminators"),
+    "Second Scarab Occult Terminators must be addable (max 2)");
+  assert(!fsHelper.canAdd([...list, { unitId: "ts_scarab_occult_terminators" }], "ts_scarab_occult_terminators"),
+    "Third Scarab Occult Terminators must be blocked (max 2)");
+});
+
+// ── Chosen Cabal — character cap, unit maxes, and keywordRatio ───────────────
+
+test("Chosen Cabal — first CHARACTER can be added to an empty list", () => {
+  assert(ccHelper.canAdd([], "ts_exalted_sorcerer"),              "Exalted Sorcerer must be addable");
+  assert(ccHelper.canAdd([], "ts_infernal_master"),               "Infernal Master must be addable");
+  assert(ccHelper.canAdd([], "ts_sorcerer"),                      "Sorcerer must be addable");
+  assert(ccHelper.canAdd([], "ts_sorcerer_in_terminator_armour"), "Sorcerer in Terminator Armour must be addable");
+});
+
+test("Chosen Cabal — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "ts_exalted_sorcerer" }, { unitId: "ts_infernal_master" }];
+  assert(!ccHelper.canAdd(list, "ts_sorcerer"),
+    "Sorcerer must be blocked when two CHARACTERs already fill the cap");
+  assert(!ccHelper.canAdd(list, "ts_sorcerer_in_terminator_armour"),
+    "Sorcerer in Terminator Armour must be blocked when two CHARACTERs already fill the cap");
+});
+
+test("Chosen Cabal — Rubric Marines max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "ts_rubric_marines" }, { unitId: "ts_rubric_marines" }];
+  assert( ccHelper.canAdd(list, "ts_rubric_marines"),
+    "Third Rubric Marines unit must be addable (max 3)");
+  assert(!ccHelper.canAdd([...list, { unitId: "ts_rubric_marines" }], "ts_rubric_marines"),
+    "Fourth Rubric Marines unit must be blocked (max 3)");
+});
+
+test("Chosen Cabal — Tzaangors blocked when no Rubric Marines are present", () => {
+  assert(!canAddUnitR("ts_tzaangors", [], ccDet, tsUnits),
+    "Tzaangors must be blocked when no Rubric Marines are in the list");
+});
+
+test("Chosen Cabal — Tzaangors can be added when one Rubric Marines unit is present", () => {
+  const list = [{ unitId: "ts_rubric_marines" }];
+  assert(canAddUnitR("ts_tzaangors", list, ccDet, tsUnits),
+    "Tzaangors must be addable when one Rubric Marines unit is present");
+});
+
+test("Chosen Cabal — second Tzaangors blocked when only one Rubric Marines unit present", () => {
+  const list = [{ unitId: "ts_rubric_marines" }, { unitId: "ts_tzaangors" }];
+  assert(!canAddUnitR("ts_tzaangors", list, ccDet, tsUnits),
+    "Second Tzaangors must be blocked when Tzaangors count (1) equals Rubric Marines count (1)");
+});
+
+test("Chosen Cabal — second Tzaangors allowed when two Rubric Marines units present", () => {
+  const list = [
+    { unitId: "ts_rubric_marines" },
+    { unitId: "ts_rubric_marines" },
+    { unitId: "ts_tzaangors"      },
+  ];
+  assert(canAddUnitR("ts_tzaangors", list, ccDet, tsUnits),
+    "Second Tzaangors must be allowed when two Rubric Marines units are present");
+});
+
+test("Chosen Cabal — three Tzaangors allowed when three Rubric Marines units present", () => {
+  const list = [
+    { unitId: "ts_rubric_marines" },
+    { unitId: "ts_rubric_marines" },
+    { unitId: "ts_rubric_marines" },
+    { unitId: "ts_tzaangors"      },
+    { unitId: "ts_tzaangors"      },
+  ];
+  assert(canAddUnitR("ts_tzaangors", list, ccDet, tsUnits),
+    "Third Tzaangors must be allowed when three Rubric Marines units are present");
+});
+
+test("Chosen Cabal — Rubric Marines are never blocked by the Tzaangors ratio", () => {
+  const list = [
+    { unitId: "ts_tzaangors"      },
+    { unitId: "ts_tzaangors"      },
+    { unitId: "ts_rubric_marines" },
+  ];
+  assert(canAddUnitR("ts_rubric_marines", list, ccDet, tsUnits),
+    "Rubric Marines must not be blocked by the ratio constraint (they are the denominator)");
+});
+
+test("Chosen Cabal — non-ratio units are never blocked by the Tzaangors/Rubric Marines ratio", () => {
+  const list = [{ unitId: "ts_rubric_marines" }, { unitId: "ts_tzaangors" }];
+  assert(canAddUnitR("ts_chaos_spawn", list, ccDet, tsUnits),
+    "Chaos Spawn must not be blocked by the ratio constraint");
+});
+
+// ── Smoke tests ───────────────────────────────────────────────────────────────
+
+test("Smoke — Devoted Thralls: Exalted Sorcerer + 3x Tzaangors = 80+210 = 290pts (legal)", () => {
+  const pts = 80 + (70 * 3);
+  assertEqual(pts, 290, "Expected 290pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "ts_exalted_sorcerer" },
+    { unitId: "ts_tzaangors" },
+    { unitId: "ts_tzaangors" },
+    { unitId: "ts_tzaangors" },
+  ];
+  const charCount = list.filter(l => tsUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= dtDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Fateseekers: Exalted Sorcerer + Sorcerer in Terminator Armour + 2x Scarab Occult Terminators (5 models) = 80+85+360 = 525pts (over limit)", () => {
+  const pts = 80 + 85 + (180 * 2);
+  assertEqual(pts, 525, "Expected 525pts");
+  assert(pts > 500, "This combination must exceed the 500pt limit");
+});
+
+test("Smoke — Fateseekers: Infernal Master + 2x Scarab Occult Terminators (5 models) = 95+360 = 455pts (legal)", () => {
+  const pts = 95 + (180 * 2);
+  assertEqual(pts, 455, "Expected 455pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "ts_infernal_master"           },
+    { unitId: "ts_scarab_occult_terminators" },
+    { unitId: "ts_scarab_occult_terminators" },
+  ];
+  const charCount = list.filter(l => tsUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= fsDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Chosen Cabal: Exalted Sorcerer + 3x Rubric Marines (5 models) + 3x Tzaangors = 80+300+210 = 590pts (over limit)", () => {
+  const pts = 80 + (100 * 3) + (70 * 3);
+  assertEqual(pts, 590, "Expected 590pts");
+  assert(pts > 500, "Max Rubric Marines + max Tzaangors must exceed the 500pt limit");
+});
+
+test("Smoke — Chosen Cabal: Exalted Sorcerer + 2x Rubric Marines (5 models) + 2x Tzaangors = 80+200+140 = 420pts (legal, ratio satisfied)", () => {
+  const pts = 80 + (100 * 2) + (70 * 2);
+  assertEqual(pts, 420, "Expected 420pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "ts_exalted_sorcerer" },
+    { unitId: "ts_rubric_marines"   },
+    { unitId: "ts_rubric_marines"   },
+    { unitId: "ts_tzaangors"        },
+    { unitId: "ts_tzaangors"        },
+  ];
+  const charCount = list.filter(l => tsUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= ccDet.maxCharacters, "Character count must not exceed cap of 2");
+  const tzaangorCount = list.filter(l => l.unitId === "ts_tzaangors").length;
+  const rubricCount   = list.filter(l => l.unitId === "ts_rubric_marines").length;
+  assert(tzaangorCount <= rubricCount,
+    "Tzaangor count must not exceed Rubric Marines count");
+});
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);

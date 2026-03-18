@@ -1,6 +1,15 @@
 {
   "factions": [
     {
+      "id": "adepta_sororitas",
+      "name": "Adepta Sororitas",
+      "file": "factions/adepta_sororitas.json",
+      "armyRule": {
+        "name": "Minor Miracles",
+        "desc": "Units from your army with the Acts of Faith ability retain that ability and gain this one. When gaining a Miracle dice at the start of your turn from the Acts of Faith ability, you only do so in your turn, not your opponent's. In addition each time you gain a Miracle Dice for any reason, improve the value of that Miracle Dice by 1 (to a maximum of 6)."
+      }
+    },
+    {
       "id": "space_marines",
       "name": "Adeptus Astartes",
       "file": "factions/adeptus_astartes.json",
@@ -19,57 +28,39 @@
       }
     },
     {
-      "id": "chaos_space_marines",
-      "name": "Heretic Astartes",
-      "file": "factions/heretic_astartes.json",
+      "id": "adeptus_mechanicus",
+      "name": "Adeptus Mechanicus",
+      "file": "factions/adeptus_mechanicus.json",
       "armyRule": {
-        "name": "The Forsaken",
-        "desc": "Units from your army with the Dark Pacts ability retain that ability and gain this one: Each time this unit takes a Leadership test for the Dark Pacts ability, if that test is failed, this unit is Forsaken and, until the end of the battle, this unit loses its Dark Pacts ability."
+        "name": "Close-Quarters Doctrinas",
+        "desc": "Units from your army with the Doctrina Imperatives ability replace that ability with this one. At the start of the battle round, select one of the following weapon abilities: [ASSAULT]; [IGNORES COVER]; [PISTOL]. Until the end of the battle, ranged weapons equipped by models in your army with this ability have the weapon ability."
       }
     },
     {
-      "id": "tyranids",
-      "name": "Tyranids",
-      "file": "factions/tyranids.json",
+      "id": "aeldari",
+      "name": "Aeldari",
+      "file": "factions/aeldari.json",
       "armyRule": {
-        "name": "Synaptic Web",
-        "desc": "Units from your army with the Shadow in the Warp ability retain that ability. Units from your army with the Synapse ability retain that ability and gain this one: When measuring whether a unit from your army is within Synapse range of a friendly SYNAPSE model, Walls and Closed Hatchways are ignored."
+        "name": "Seer's Guidance",
+        "desc": "Units from your army with the Strands of Faith ability replace that ability with this one. Once per battle round, you can target one unit from your army with this ability with the Command Re-roll Strategem for 0CP."
       }
     },
     {
-      "id": "necrons",
-      "name": "Necrons",
-      "file": "factions/necrons.json",
+      "id": "agents_of_the_imperium",
+      "name": "Agents of the Imperium",
+      "file": "factions/agents_of_the_imperium.json",
       "armyRule": {
-        "name": "Transdimensional Reinforcement",
-        "desc": "Units from your army with the Reanimation Protocols ability lose that ability. Such units, if they are not CHARACTER units gain this one instead.\n\nOnce per battle in your Command phase, this unit can request reinforcement. When it does, roll one D6 for each destroyed model in this unit: for each 5+, return one destroyed model to this unit with its full wounds remaining.\n\nIf this unit is destroyed without having requested reinforcement, after removing the last model from the battlefield, it immediately requests reinforcement as above. If one or more destroyed models are returned to this unit, set it back up on the battlefield, wholly within one of your Entry Zones containing just the returned models. If this is not possible, the unit remains destroyed.\n\nRules that refer to Reanimation Protocols activating do not apply to this rule and have no effect."
+        "name": "Imperial Insights",
+        "desc": "Units from your army with the Assigned Agents ability replace that ability with this one. Each time this unit perform the Secure Site Tactical Manoeuvre, the objective marker you select for that Tactical Manoeuvre is immediately Secured by your army, instead of at the start of your next Command phase. This unit can then make a Normal move of up to D6\" (but is still not eligible to shoot or declare a charge this turn)."
       }
     },
     {
-      "id": "world_eaters",
-      "name": "World Eaters",
-      "file": "factions/world_eaters.json",
+      "id": "astra_militarum",
+      "name": "Astra Militarum",
+      "file": "factions/astra_militarum.json",
       "armyRule": {
-        "name": "Slaughterer's Glory",
-        "desc": "Units from your army with the Blessings of Khorne ability retain that ability and gain this one. At the start of the battle round when making a Blessings of Khorne roll, roll four D6 instead of eight D6. You can only activate one Blessing of Khorne per battle round instead of up to 2."
-      }
-    },
-    {
-      "id": "adepta_sororitas",
-      "name": "Adepta Sororitas",
-      "file": "factions/adepta_sororitas.json",
-      "armyRule": {
-        "name": "Minor Miracles",
-        "desc": "Units from your army with the Acts of Faith ability retain that ability and gain this one. When gaining a Miracle dice at the start of your turn from the Acts of Faith ability, you only do so in your turn, not your opponent's. In addition each time you gain a Miracle Dice for any reason, improve the value of that Miracle Dice by 1 (to a maximum of 6)."
-      }
-    },
-    {
-      "id": "orks",
-      "name": "Orks",
-      "file": "factions/orks.json",
-      "armyRule": {
-        "name": "Void WAAAGH!",
-        "desc": "Units from your army with the Waaagh ability retain that ability and gain this one. Once per battle, at the start of the battle round, you can call a Void Waaagh!. If you do, until the start of the next battle round, the Void Waaagh! is active for your army and: Add 1 to the Strength and Attacks characteristics of melee weapons equipped by models from our army with this ability. Models from your army with this ability have a 5+ invulnerable save. A Void Waaagh! counts as a Waaagh! for any datasheet abilities."
+        "name": "Direct Orders",
+        "desc": "Units from your army with the Voice of Command ability retain that ability and gain this one. Each time an OFFICER model in this unit issues an Order, that Order can be issued to any one friendly ASTRA MILITARUM unit within range, regardless of any keywords that unit is normally required to have."
       }
     },
     {
@@ -91,24 +82,6 @@
       }
     },
     {
-      "id": "grey_knights",
-      "name": "Grey Knights",
-      "file": "factions/grey_knights.json",
-      "armyRule": {
-        "name": "Eye of the Prognosticars",
-        "desc": "Units from your army with the Teleport Strike ability replace that ability with this one. Each time you target this unit with a Strategem, roll one D6, adding 1 to the result if this unit is within range of an objective marker you control: on a 5+ you gain 1 CP."
-      }
-    },
-    {
-      "id": "agents_of_the_imperium",
-      "name": "Agents of the Imperium",
-      "file": "factions/agents_of_the_imperium.json",
-      "armyRule": {
-        "name": "Imperial Insights",
-        "desc": "Units from your army with the Assigned Agents ability replace that ability with this one. Each time this unit perform the Secure Site Tactical Manoeuvre, the objective marker you select for that Tactical Manoeuvre is immediately Secured by your army, instead of at the start of your next Command phase. This unit can then make a Normal move of up to D6\" (but is still not eligible to shoot or declare a charge this turn)."
-      }
-    },
-    {
       "id": "genestealer_cults",
       "name": "Genestealer Cults",
       "file": "factions/genestealer_cults.json",
@@ -118,21 +91,30 @@
       }
     },
     {
-      "id": "tau_empire",
-      "name": "T'au Empire",
-      "file": "factions/tau_empire.json",
+      "id": "great_devourer",
+      "name": "Great Devourer",
+      "file": "factions/great_devourer.json",
       "armyRule": {
-        "name": "Void Combat Discipline",
-        "desc": "Units for your army with the For the Greater Good ability lose that ability and TAU EMPIRE units from your army gain this one. Each time a model in your army makes a ranged attack, it can ignore other models in this unit for the purposes of determining visibility. In addition this unit is eligible to perform the Set Overwatch Tactical Manoeuvre in a turn in which it Advanced or Fell Back."
+        "name": "Auspex Ghosts",
+        "desc": "Units from your army with the Synapse or Cult Ambush abilities replace those abilities with this one. In the Deploy Armies step, your opponent must set up their entire army before you set up any of your units. If both players have a rule that allows them to do this, both players set up their units normally."
       }
     },
     {
-      "id": "adeptus_mechanicus",
-      "name": "Adeptus Mechanicus",
-      "file": "factions/adeptus_mechanicus.json",
+      "id": "grey_knights",
+      "name": "Grey Knights",
+      "file": "factions/grey_knights.json",
       "armyRule": {
-        "name": "Close-Quarters Doctrinas",
-        "desc": "Units from your army with the Doctrina Imperatives ability replace that ability with this one. At the start of the battle round, select one of the following weapon abilities: [ASSAULT]; [IGNORES COVER]; [PISTOL]. Until the end of the battle, ranged weapons equipped by models in your army with this ability have the weapon ability."
+        "name": "Eye of the Prognosticars",
+        "desc": "Units from your army with the Teleport Strike ability replace that ability with this one. Each time you target this unit with a Strategem, roll one D6, adding 1 to the result if this unit is within range of an objective marker you control: on a 5+ you gain 1 CP."
+      }
+    },
+    {
+      "id": "chaos_space_marines",
+      "name": "Heretic Astartes",
+      "file": "factions/heretic_astartes.json",
+      "armyRule": {
+        "name": "The Forsaken",
+        "desc": "Units from your army with the Dark Pacts ability retain that ability and gain this one: Each time this unit takes a Leadership test for the Dark Pacts ability, if that test is failed, this unit is Forsaken and, until the end of the battle, this unit loses its Dark Pacts ability."
       }
     },
     {
@@ -145,30 +127,57 @@
       }
     },
     {
-      "id": "astra_militarum",
-      "name": "Astra Militarum",
-      "file": "factions/astra_militarum.json",
+      "id": "necrons",
+      "name": "Necrons",
+      "file": "factions/necrons.json",
       "armyRule": {
-        "name": "Direct Orders",
-        "desc": "Units from your army with the Voice of Command ability retain that ability and gain this one. Each time an OFFICER model in this unit issues an Order, that Order can be issued to any one friendly ASTRA MILITARUM unit within range, regardless of any keywords that unit is normally required to have."
+        "name": "Transdimensional Reinforcement",
+        "desc": "Units from your army with the Reanimation Protocols ability lose that ability. Such units, if they are not CHARACTER units gain this one instead.\n\nOnce per battle in your Command phase, this unit can request reinforcement. When it does, roll one D6 for each destroyed model in this unit: for each 5+, return one destroyed model to this unit with its full wounds remaining.\n\nIf this unit is destroyed without having requested reinforcement, after removing the last model from the battlefield, it immediately requests reinforcement as above. If one or more destroyed models are returned to this unit, set it back up on the battlefield, wholly within one of your Entry Zones containing just the returned models. If this is not possible, the unit remains destroyed.\n\nRules that refer to Reanimation Protocols activating do not apply to this rule and have no effect."
       }
     },
     {
-      "id": "aeldari",
-      "name": "Aeldari",
-      "file": "factions/aeldari.json",
+      "id": "orks",
+      "name": "Orks",
+      "file": "factions/orks.json",
       "armyRule": {
-        "name": "Seer's Guidance",
-        "desc": "Units from your army with the Strands of Faith ability replace that ability with this one. Once per battle round, you can target one unit from your army with this ability with the Command Re-roll Strategem for 0CP."
+        "name": "Void WAAAGH!",
+        "desc": "Units from your army with the Waaagh ability retain that ability and gain this one. Once per battle, at the start of the battle round, you can call a Void Waaagh!. If you do, until the start of the next battle round, the Void Waaagh! is active for your army and: Add 1 to the Strength and Attacks characteristics of melee weapons equipped by models from our army with this ability. Models from your army with this ability have a 5+ invulnerable save. A Void Waaagh! counts as a Waaagh! for any datasheet abilities."
       }
     },
     {
-      "id": "great_devourer",
-      "name": "Great Devourer",
-      "file": "factions/great_devourer.json",
+      "id": "tau_empire",
+      "name": "T'au Empire",
+      "file": "factions/tau_empire.json",
       "armyRule": {
-        "name": "Auspex Ghosts",
-        "desc": "Units from your army with the Synapse or Cult Ambush abilities replace those abilities with this one. In the Deploy Armies step, your opponent must set up their entire army before you set up any of your units. If both players have a rule that allows them to do this, both players set up their units normally."
+        "name": "Void Combat Discipline",
+        "desc": "Units for your army with the For the Greater Good ability lose that ability and TAU EMPIRE units from your army gain this one. Each time a model in your army makes a ranged attack, it can ignore other models in this unit for the purposes of determining visibility. In addition this unit is eligible to perform the Set Overwatch Tactical Manoeuvre in a turn in which it Advanced or Fell Back."
+      }
+    },
+    {
+      "id": "thousand_sons",
+      "name": "Thousand Sons",
+      "file": "factions/thousand_sons.json",
+      "armyRule": {
+        "name": "Twisting Fate",
+        "desc": "Units from your army with the Cabal of Sorcerers ability lose it and THOUSAND SONS units from your army gain this one. While a THOUSAND SONS PSYKER unit from your army is on the battlefield and you control at least as many objectives as your opponent does, your plan is considered to be in Ascendence. Each time you or your opponent spend one or more Command Points to use a Stratagem, roll one D6, adding 1 if your plan is in Ascendence: on a 1-2, your opponent gains 1CP, on a 6+, you gain 1 CP. "
+      }
+    },
+    {
+      "id": "tyranids",
+      "name": "Tyranids",
+      "file": "factions/tyranids.json",
+      "armyRule": {
+        "name": "Synaptic Web",
+        "desc": "Units from your army with the Shadow in the Warp ability retain that ability. Units from your army with the Synapse ability retain that ability and gain this one: When measuring whether a unit from your army is within Synapse range of a friendly SYNAPSE model, Walls and Closed Hatchways are ignored."
+      }
+    },
+    {
+      "id": "world_eaters",
+      "name": "World Eaters",
+      "file": "factions/world_eaters.json",
+      "armyRule": {
+        "name": "Slaughterer's Glory",
+        "desc": "Units from your army with the Blessings of Khorne ability retain that ability and gain this one. At the start of the battle round when making a Blessings of Khorne roll, roll four D6 instead of eight D6. You can only activate one Blessing of Khorne per battle round instead of up to 2."
       }
     }
   ],

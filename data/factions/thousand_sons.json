@@ -1,0 +1,316 @@
+{
+  "detachments": [
+    {
+      "id": "ts_devoted_thralls",
+      "name": "Devoted Thralls",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Fervent Devotees",
+        "desc": "Melee weapons equipped by THOUSAND SONS units from your army have the [SUSTAINED HITS 1] ability while targeting an enemy unit within range of an objective marker."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ts_thrallmaster",
+          "name": "Thrallmaster",
+          "desc": "At the start of the first battle round, select one friendly Tzaangors unit within the same Entry Zone as the bearer. If you do, that unit can make a Normal move of up to 6\".",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ts_prescient_authority",
+          "name": "Prescient Authority",
+          "desc": "Once per turn when a friendly Tzaangors unit within 3\" of the bearer is selected to shoot or fight, the bearer can use this Enhancement. If it does, until the end of the phase, each time a model in that Tzaangors unit makes an attack, re-roll a Wound roll of 1.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ts_exalted_sorcerer",
+          "max": 1
+        },
+        {
+          "id": "ts_infernal_master",
+          "max": 1
+        },
+        {
+          "id": "ts_sorcerer",
+          "max": 1
+        },
+        {
+          "id": "ts_tzaangors",
+          "max": 3
+        },
+        {
+          "id": "ts_chaos_spawn",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "ts_fateseekers",
+      "name": "Fateseekers",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Methodical Conquest",
+        "desc": "Each time a THOUSAND SONS model from your army makes an attack while firing Overwatch, an unmodified Hit roll of 5+ is required to score a hit, instead of an unmodified 6. Scarab Occult Terminators may perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword, and may perform the Set Overwatch Tactical Manoeuvre in the same turn as performing the Secure Site Tactical Manoeuvre."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ts_predestined_champion",
+          "name": "Predestined Champion",
+          "desc": "While the bearer is on the battlefield, you are considered to control one additional objective marker for the purposes of the Twisting Fate army rule.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ts_astral_predation",
+          "name": "Astral Predation",
+          "desc": "Once per battle, in your Movement phase, when the bearer is selected to move, it can use this Enhancement. If it does, select one closed Hatchway on the battlefield. Until the end of the phase, the bearer can move through the Hatchway as if it were open (note that this does not open that Hatchway - it remains closed.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ts_exalted_sorcerer",
+          "max": 1
+        },
+        {
+          "id": "ts_infernal_master",
+          "max": 1
+        },
+        {
+          "id": "ts_chaos_spawn",
+          "max": 2
+        },
+        {
+          "id": "ts_sorcerer_in_terminator_armour",
+          "max": 1
+        },
+        {
+          "id": "ts_scarab_occult_terminators",
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "ts_chosen_cabal",
+      "name": "Chosen Cabal",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Witchsight",
+        "desc": "Ranged Weapons equipped by THOUSAND SONS models from your army have the [IGNORES COVER] ability."
+      },
+      "enhancements": [
+        {
+          "id": "enh_ts_warp_mastery",
+          "name": "Warp Mastery",
+          "desc": "Each time you roll to determine the number of attacks made with a Psychic weapon equipped by the bearer, you can re-roll the result.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_ts_fires_of_change",
+          "name": "Fires of Change",
+          "desc": "Each time the bearer shoots, after it has shot, select one enemy unit hit by one or more of those attacks made with a Psychic weapon. That unit must take a Battle-shock test, subtracting 1 from the result.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "ts_exalted_sorcerer",
+          "max": 1
+        },
+        {
+          "id": "ts_infernal_master",
+          "max": 1
+        },
+        {
+          "id": "ts_sorcerer",
+          "max": 1
+        },
+        {
+          "id": "ts_sorcerer_in_terminator_armour",
+          "max": 1
+        },
+        {
+          "id": "ts_tzaangors",
+          "max": 3
+        },
+        {
+          "id": "ts_chaos_spawn",
+          "max": 1
+        },
+        {
+          "id": "ts_scarab_occult_terminators",
+          "max": 1,
+          "allowedSizeIndices": [0]
+        },
+        {
+          "id": "ts_rubric_marines",
+          "max": 3
+        }
+      ],
+      "keywordRatio": {
+        "numeratorUnitIds": ["ts_tzaangors"],
+        "denominatorUnitIds": ["ts_rubric_marines"],
+        "description": "Tzaangors units cannot outnumber Rubric Marines units."
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "ts_exalted_sorcerer",
+      "name": "Exalted Sorcerer",
+      "type": "CHARACTER",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Rebind Rubricae ability."
+    },
+    {
+      "id": "ts_infernal_master",
+      "name": "Infernal Master",
+      "type": "CHARACTER",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "ts_sorcerer",
+      "name": "Sorcerer",
+      "type": "CHARACTER",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "ts_tzaangors",
+      "name": "Tzaangors",
+      "type": "INFANTRY",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "MUTANT",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Scouts and Relic Hunters abilities."
+    },
+    {
+      "id": "ts_chaos_spawn",
+      "name": "Chaos Spawn",
+      "type": "BEAST",
+      "keywords": [
+        "THOUSAND SONS",
+        "BEAST",
+        "MUTANT",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "2 models",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Regenerating Monstrosities ability."
+    },
+    {
+      "id": "ts_sorcerer_in_terminator_armour",
+      "name": "Sorcerer in Terminator Armour",
+      "type": "CHARACTER",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER",
+        "TERMINATOR",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 85
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Rebind Rubricae ability."
+    },
+    {
+      "id": "ts_scarab_occult_terminators",
+      "name": "Scarab Occult Terminators",
+      "type": "INFANTRY",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "PSYKER",
+        "TERMINATOR",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 180
+        },
+        {
+          "label": "10 models",
+          "pts": 360
+        }
+      ],
+      "rulesAdaptations": "Scarab Occult Terminator squads which do not contain a Scarab Occult Sorcerer model after forming Boarding Squads lose the PSYKER keyword and any Psychic abilities they have."
+    },
+    {
+      "id": "ts_rubric_marines",
+      "name": "Rubric Marines",
+      "type": "BATTLELINE",
+      "keywords": [
+        "THOUSAND SONS",
+        "INFANTRY",
+        "BATTLELINE",
+        "PSYKER",
+        "TZEENTCH"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 190
+        }
+      ],
+      "rulesAdaptations": "Rubric Marines squads which do not contain an Aspiring Sorcerer model after forming Boarding Squads lose the PSYKER keyword and any Psychic abilities they have."
+    }
+  ]
+}
