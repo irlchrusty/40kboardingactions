@@ -220,6 +220,10 @@
       ],
       "sizes": [
         {
+          "label": "5 models",
+          "pts": 45
+        },
+        {
           "label": "10 models",
           "pts": 85
         }
@@ -238,6 +242,10 @@
         "SKITARII"
       ],
       "sizes": [
+        {
+          "label": "5 models",
+          "pts": 50
+        },
         {
           "label": "10 models",
           "pts": 95
