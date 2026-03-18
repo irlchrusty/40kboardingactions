@@ -192,6 +192,10 @@
       ],
       "sizes": [
         {
+          "label": "5 models",
+          "pts": 70
+        },
+        {
           "label": "10 models",
           "pts": 140
         }
@@ -404,6 +408,10 @@
         "IMPERIUM"
       ],
       "sizes": [
+        {
+          "label": "5 models",
+          "pts": 60
+        },
         {
           "label": "10 models",
           "pts": 120
