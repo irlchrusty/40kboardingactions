@@ -72,6 +72,12 @@ Press `Ctrl + C` in your terminal.
 - Each faction has one or more detachments, each with a unique special rule
 - Army rules and detachment rules are displayed in the left panel for reference
 
+### Sub-Faction Filter
+- Factions that use the `factionKeywordGroups` constraint (e.g. Adeptus Astartes) show a **Sub-faction** dropdown above the unit grid
+- Selecting a sub-faction (e.g. a Space Marine chapter) filters the unit grid to show only units bearing that keyword, making it easier to browse large rosters
+- Once a unit is added to the list, the filter locks automatically to that unit's sub-faction keyword — preventing chapter mixing and reflecting the constraint already in effect
+- Factions without `factionKeywordGroups` do not show this dropdown
+
 ### Unit Roster
 - Units are grouped by type: **CHARACTER**, **BATTLELINE**, **INFANTRY**, **VEHICLE**, **BEASTS**, **BEAST**, **MOUNTED**, **SWARM**
 - Each unit shows its available size options and point costs
@@ -223,6 +229,7 @@ These fields may be added to any detachment object to enforce faction-specific c
 | `maxFromGroup` | `array` | Caps how many units from a named pool may appear in the list in total. Each entry is `{ "max": N, "unitIds": [...], "description": "..." }`. Unlike `exclusiveUnitGroups`, this allows more than one unit from the group up to the cap. Multiple independent groups may be defined on the same detachment. |
 | `factionKeywordGroups` | `array of arrays` | Each inner array is a mutually exclusive set of faction keywords. Once a unit with one of these keywords is added, only units sharing that same keyword (or units with none of the keywords in the group) may be added. Used by all Adeptus Astartes detachments to enforce chapter purity. |
 | `exclusiveUnitGroups` | `array of arrays` | Each inner array is a set of unit IDs where at most one may appear in the list at a time. Multiple independent groups may be defined on the same detachment. Used to enforce choices like "only one of these Crisis Suit variants". |
+| `factionKeywordRestrictions` | `array of arrays` | Each inner array is a pair of mutually exclusive faction keywords `[kwA, kwB]`. Once a unit with `kwA` is added, no unit with `kwB` may be added, and vice versa. Differs from `factionKeywordGroups` in that it operates on pairs of keywords rather than a broader group, and does not filter the unit grid by sub-faction. |
 
 ### Optional detachment unit entry fields
 
@@ -232,6 +239,8 @@ Each entry in a detachment's `units` array requires `id` and `max`. The followin
 |---|---|---|
 | `requiresCharacterWithKeyword` | `string` | The unit may only be added if a CHARACTER with the specified keyword is already in the list. |
 | `canTakeEnhancement` | `boolean` | When `true`, this non-CHARACTER unit may be assigned an enhancement as if it were a CHARACTER. |
+| `allowedSizeIndices` | `array of numbers` | Restricts which size options (by index into the unit's `sizes` array) are available in this detachment. Unlisted indices are hidden from the picker entirely. For example, `[0]` permits only the first size option. Omit this field to allow all size options. |
+| `exclusiveCharacter` | `boolean` | When `true`, this CHARACTER unit cannot be taken alongside any other CHARACTER unit — and no other CHARACTER may be added while it is in the list. Used for units such as the Aeldari Solitaire that must be taken alone. |
 
 ---
 
