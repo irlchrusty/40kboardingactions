@@ -14,15 +14,19 @@ boarding-actions/
 └── data/
     ├── index.json               # Faction index & universal enhancements
     └── factions/
+        ├── adepta_sororitas.json
         ├── adeptus_astartes.json
         ├── adeptus_custodes.json
-        ├── adepta_sororitas.json
+        ├── adeptus_mechanicus.json
         ├── agents_of_the_imperium.json
+        ├── astra_militarum.json
         ├── death_guard.json
+        ├── drukhari.json
         ├── emperors_children.json
         ├── genestealer_cults.json
         ├── grey_knights.json
         ├── heretic_astartes.json
+        ├── legiones_daemonica.json
         ├── necrons.json
         ├── orks.json
         ├── tau_empire.json
@@ -68,7 +72,7 @@ Press `Ctrl + C` in your terminal.
 ## Features
 
 ### Faction & Detachment Selection
-- Choose from **14 factions**: Adeptus Astartes, Adeptus Custodes, Adepta Sororitas, Agents of the Imperium, Death Guard, Emperor's Children, Genestealer Cults, Grey Knights, Heretic Astartes, Necrons, Orks, T'au Empire, Tyranids, and World Eaters
+- Choose from **18 factions**: Adepta Sororitas, Adeptus Astartes, Adeptus Custodes, Adeptus Mechanicus, Agents of the Imperium, Astra Militarum, Death Guard, Drukhari, Emperor's Children, Genestealer Cults, Grey Knights, Heretic Astartes, Legiones Daemonica, Necrons, Orks, T'au Empire, Tyranids, and World Eaters
 - Each faction has one or more detachments, each with a unique special rule
 - Army rules and detachment rules are displayed in the left panel for reference
 
@@ -241,6 +245,7 @@ Each entry in a detachment's `units` array requires `id` and `max`. The followin
 | `canTakeEnhancement` | `boolean` | When `true`, this non-CHARACTER unit may be assigned an enhancement as if it were a CHARACTER. |
 | `allowedSizeIndices` | `array of numbers` | Restricts which size options (by index into the unit's `sizes` array) are available in this detachment. Unlisted indices are hidden from the picker entirely. For example, `[0]` permits only the first size option. Omit this field to allow all size options. |
 | `exclusiveCharacter` | `boolean` | When `true`, this CHARACTER unit cannot be taken alongside any other CHARACTER unit — and no other CHARACTER may be added while it is in the list. Used for units such as the Aeldari Solitaire that must be taken alone. |
+| `noEnhancement` | `boolean` | When `true` on a unit definition, that unit is ineligible to receive any enhancement, even though it is a CHARACTER. Used for units whose rules explicitly preclude enhancement assignment (e.g. the Exalted Flamer in Legiones Daemonica). |
 
 ---
 
@@ -254,7 +259,7 @@ Each entry in a detachment's `units` array requires `id` and `max`. The followin
 
 ## Running the Test Suite
 
-The project includes a Node.js test suite with **1,273 tests** covering file structure, data integrity, cross-references, and game rule logic for every faction and detachment.
+The project includes a Node.js test suite covering file structure, data integrity, cross-references, and game rule logic for every faction and detachment.
 
 ### Prerequisites
 
@@ -270,9 +275,9 @@ node test.js
 
 ### What the tests cover
 
-The suite is organised into 99 numbered sections. Global checks run once up front; faction-specific sections follow.
+The suite is organised into numbered sections. Global checks run once up front; faction-specific sections follow.
 
-**Global sections (1–12, 24–25, 37)**
+**Global sections**
 
 | Section | Description |
 |---|---|
@@ -292,7 +297,7 @@ The suite is organised into 99 numbered sections. Global checks run once up fron
 | 25. maxFromGroup | Unit pool cap constraint |
 | 37. Code Quality | HTML/JS structural checks |
 
-**Faction-specific sections (13–23, 26–36, 38–99)**
+**Faction-specific sections**
 
 Each faction has dedicated sections covering detachment structure, unit definitions (keywords, points, size labels, rules adaptations), and game rule logic (character cap, unit maxes, ratio constraints, exclusive groups, smoke test points calculations).
 
@@ -311,8 +316,14 @@ Each faction has dedicated sections covering detachment structure, unit definiti
 | 91–97 | T'au Empire |
 | 98 | New unit types — BEAST and MOUNTED |
 | 99 | `keywordRatios` array multi-constraint feature |
+| 100–107 | Adeptus Mechanicus |
+| 108–114 | Astra Militarum |
+| 115–122 | Drukhari |
+| 123–131 | Legiones Daemonica |
 
 > **Note:** Global constraints (ID uniqueness, cross-faction ID collisions, enhancement ID uniqueness, unit→detachment cross-references, required-field schema checks) are all covered by section 3 and are **not** duplicated in faction-specific sections. Faction sections cover only faction-specific behaviour: points values, keywords, rules adaptations content, and constraint logic.
+>
+> Section numbers for new factions (100+) are approximate — the exact numbering depends on the sections added when the suite was last extended. Check the test output headers for the definitive list.
 
 A passing run looks like:
 
