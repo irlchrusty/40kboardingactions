@@ -2215,6 +2215,10 @@
       ],
       "sizes": [
         {
+          "label": "5 models",
+          "pts": 75
+        },
+        {
           "label": "10 models",
           "pts": 150
         }
@@ -2818,6 +2822,10 @@
       ],
       "sizes": [
         {
+          "label": "5 models",
+          "pts": 70
+        },
+        {
           "label": "10 models",
           "pts": 135
         }
@@ -2836,6 +2844,10 @@
         "TACTICUS"
       ],
       "sizes": [
+        {
+          "label": "5 models",
+          "pts": 85
+        },
         {
           "label": "10 models",
           "pts": 165
