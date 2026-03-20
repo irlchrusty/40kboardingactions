@@ -188,6 +188,15 @@
         "name": "Slaughterer's Glory",
         "desc": "Units from your army with the Blessings of Khorne ability retain that ability and gain this one. At the start of the battle round when making a Blessings of Khorne roll, roll four D6 instead of eight D6. You can only activate one Blessing of Khorne per battle round instead of up to 2."
       }
+    },
+    {
+      "id": "leagues_of_votann",
+      "name": "Leagues of Votann",
+      "file": "factions/leagues_of_votann.json",
+      "armyRule": {
+        "name": "Eternal Resentment",
+        "desc": "Units from your army with the Eye of the Ancestors rule retain that ability and gain this one. At the start of the first battle round, select one enemy unit on the battlefield. That enemy unit gains 1 Judgement token. In addition, each time an enemy unit with 1 or more Judgement tokens is destroyed, you can place 1 Judgement token on an enemy unit that is visible to one or more LEAGUES OF VOTANN models from your army."
+      }
     }
   ],
   "genericEnhancements": [

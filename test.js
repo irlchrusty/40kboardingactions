@@ -17944,6 +17944,504 @@ test("Smoke — Space Lane Raiders: Archon + Haemonculus + Kabalite Warriors + W
 });
 
 
+// NOTE: Do not add tests here for ID uniqueness, cross-faction ID collisions,
+// enhancement ID uniqueness, unit→detachment cross-references, or required-field
+// schema checks (id/name/type/keywords/sizes/armyRule). Section 3 covers all of
+// these globally for every faction. Only test faction-specific behaviour here:
+// points values, keywords, rules adaptations content, and constraint logic.
+
+// ── 145. Leagues of Votann Faction ───────────────────────────────────────────
+
+section("145. Leagues of Votann Faction");
+
+const lovFaction = index.factions.find(f => f.id === "leagues_of_votann");
+const lovData    = factionData["leagues_of_votann"];
+const lovUnits   = lovData ? lovData.units : [];
+const lovDets    = lovData ? lovData.detachments : [];
+const lovUnit    = id => lovUnits.find(u => u.id === id);
+
+test("Leagues of Votann faction exists in index.json", () => {
+  assert(lovFaction !== undefined, "leagues_of_votann must exist in index.json factions array");
+});
+
+test("Leagues of Votann has Eternal Resentment army rule", () => {
+  assertEqual(lovFaction.armyRule.name, "Eternal Resentment",
+    "army rule name must be 'Eternal Resentment'");
+});
+
+test("Eternal Resentment desc references Eye of the Ancestors", () => {
+  assert(lovFaction.armyRule.desc.includes("Eye of the Ancestors"),
+    "Eternal Resentment desc must reference 'Eye of the Ancestors'");
+});
+
+test("Eternal Resentment desc references Judgement token", () => {
+  assert(lovFaction.armyRule.desc.includes("Judgement token"),
+    "Eternal Resentment desc must reference 'Judgement token'");
+});
+
+test("Eternal Resentment desc references LEAGUES OF VOTANN", () => {
+  assert(lovFaction.armyRule.desc.includes("LEAGUES OF VOTANN"),
+    "Eternal Resentment desc must reference 'LEAGUES OF VOTANN'");
+});
+
+test("Leagues of Votann has exactly 2 detachments", () => {
+  assertEqual(lovDets.length, 2,
+    `Expected 2 Leagues of Votann detachments, found ${lovDets.length}`);
+});
+
+test("Leagues of Votann has exactly 10 units", () => {
+  assertEqual(lovUnits.length, 10,
+    `Expected 10 Leagues of Votann units, found ${lovUnits.length}`);
+});
+
+
+// ── 146. Leagues of Votann — Hearthfire Strike Detachment ────────────────────
+
+section("146. Leagues of Votann — Hearthfire Strike Detachment");
+
+const hsDet = lovDets.find(d => d.id === "lov_hearthfire_strike");
+
+test("Hearthfire Strike detachment exists", () => {
+  assert(hsDet !== undefined, "lov_hearthfire_strike must exist");
+});
+
+test("Hearthfire Strike has correct name", () => {
+  assertEqual(hsDet.name, "Hearthfire Strike", "detachment name must be 'Hearthfire Strike'");
+});
+
+test("Hearthfire Strike has Wrought in Wrath special rule", () => {
+  assertEqual(hsDet.specialRule.name, "Wrought in Wrath",
+    "specialRule name must be 'Wrought in Wrath'");
+});
+
+test("Wrought in Wrath desc references Advance and Charge rolls", () => {
+  assert(hsDet.specialRule.desc.includes("Advance and Charge rolls"),
+    "Wrought in Wrath desc must reference 'Advance and Charge rolls'");
+});
+
+test("Wrought in Wrath desc references Einhyr Hearthguard", () => {
+  assert(hsDet.specialRule.desc.includes("Einhyr Hearthguard"),
+    "Wrought in Wrath desc must reference 'Einhyr Hearthguard'");
+});
+
+test("Wrought in Wrath desc references Secure Site Tactical Manoeuvre", () => {
+  assert(hsDet.specialRule.desc.includes("Secure Site Tactical Manoeuvre"),
+    "Wrought in Wrath desc must reference 'Secure Site Tactical Manoeuvre'");
+});
+
+test("Hearthfire Strike has maxCharacters set to 2", () => {
+  assertEqual(hsDet.maxCharacters, 2, "Hearthfire Strike maxCharacters must be 2");
+});
+
+test("Hearthfire Strike has exactly 2 unit entries", () => {
+  assertEqual(hsDet.units.length, 2, "Hearthfire Strike must have exactly 2 unit entries");
+});
+
+test("Hearthfire Strike unit roster — correct IDs and maxes", () => {
+  const find = id => hsDet.units.find(u => u.id === id);
+  assert(find("lov_einhyr_champion")?.max    === 2, "lov_einhyr_champion max must be 2");
+  assert(find("lov_einhyr_hearthguard")?.max === 2, "lov_einhyr_hearthguard max must be 2");
+});
+
+test("Hearthfire Strike — Einhyr Hearthguard has no allowedSizeIndices (both sizes available)", () => {
+  const entry = hsDet.units.find(u => u.id === "lov_einhyr_hearthguard");
+  assert(entry.allowedSizeIndices === undefined,
+    "Einhyr Hearthguard in Hearthfire Strike must not have allowedSizeIndices — both sizes are available");
+});
+
+test("Hearthfire Strike has exactly 2 enhancements", () => {
+  assertEqual(hsDet.enhancements.length, 2, "Hearthfire Strike must have exactly 2 enhancements");
+});
+
+test("Hearthfire Strike has Celebrated Folk Hero enhancement", () => {
+  const enh = hsDet.enhancements.find(e => e.id === "enh_lov_celebrated_folk_hero");
+  assert(enh !== undefined, "enh_lov_celebrated_folk_hero must exist");
+  assertEqual(enh.name, "Celebrated Folk Hero", "enhancement name must be 'Celebrated Folk Hero'");
+  assert(enh.desc.includes("destroyed"),
+    "Celebrated Folk Hero desc must reference 'destroyed'");
+  assert(enh.desc.includes("Judgement token"),
+    "Celebrated Folk Hero desc must reference 'Judgement token'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Celebrated Folk Hero must have no keyword requirements");
+});
+
+test("Hearthfire Strike has Gulyk's Stars enhancement", () => {
+  const enh = hsDet.enhancements.find(e => e.id === "enh_lov_gulyks_stars");
+  assert(enh !== undefined, "enh_lov_gulyks_stars must exist");
+  assertEqual(enh.name, "Gulyk's Stars", "enhancement name must be 'Gulyk's Stars'");
+  assert(enh.desc.includes("Charge move"),
+    "Gulyk's Stars desc must reference 'Charge move'");
+  assert(enh.desc.includes("mortal wound"),
+    "Gulyk's Stars desc must reference 'mortal wound'");
+  assert(enh.desc.includes("Hatchway"),
+    "Gulyk's Stars desc must reference 'Hatchway'");
+  assert(enh.desc.includes("6\""),
+    "Gulyk's Stars desc must reference 6\" distance");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Gulyk's Stars must have no keyword requirements");
+});
+
+
+// ── 147. Leagues of Votann — Void Salvagers Detachment ───────────────────────
+
+section("147. Leagues of Votann — Void Salvagers Detachment");
+
+const vsDet = lovDets.find(d => d.id === "lov_void_salvagers");
+
+test("Void Salvagers detachment exists", () => {
+  assert(vsDet !== undefined, "lov_void_salvagers must exist");
+});
+
+test("Void Salvagers has correct name", () => {
+  assertEqual(vsDet.name, "Void Salvagers", "detachment name must be 'Void Salvagers'");
+});
+
+test("Void Salvagers has Stalwart Advance special rule", () => {
+  assertEqual(vsDet.specialRule.name, "Stalwart Advance",
+    "specialRule name must be 'Stalwart Advance'");
+});
+
+test("Stalwart Advance desc references LEAGUES OF VOTANN", () => {
+  assert(vsDet.specialRule.desc.includes("LEAGUES OF VOTANN"),
+    "Stalwart Advance desc must reference 'LEAGUES OF VOTANN'");
+});
+
+test("Stalwart Advance desc references Normal move", () => {
+  assert(vsDet.specialRule.desc.includes("Normal move"),
+    "Stalwart Advance desc must reference 'Normal move'");
+});
+
+test("Stalwart Advance desc references Hatchway", () => {
+  assert(vsDet.specialRule.desc.includes("Hatchway"),
+    "Stalwart Advance desc must reference 'Hatchway'");
+});
+
+test("Void Salvagers has maxCharacters set to 2", () => {
+  assertEqual(vsDet.maxCharacters, 2, "Void Salvagers maxCharacters must be 2");
+});
+
+test("Void Salvagers has exactly 10 unit entries", () => {
+  assertEqual(vsDet.units.length, 10,
+    `Void Salvagers must have exactly 10 unit entries, found ${vsDet.units.length}`);
+});
+
+test("Void Salvagers unit roster — correct IDs and maxes", () => {
+  const find = id => vsDet.units.find(u => u.id === id);
+  assert(find("lov_brokhyr_iron_master")?.max  === 1, "lov_brokhyr_iron_master max must be 1");
+  assert(find("lov_einhyr_champion")?.max      === 1, "lov_einhyr_champion max must be 1");
+  assert(find("lov_grimnyr")?.max              === 1, "lov_grimnyr max must be 1");
+  assert(find("lov_kahl")?.max                 === 1, "lov_kahl max must be 1");
+  assert(find("lov_uthar_the_destined")?.max   === 1, "lov_uthar_the_destined max must be 1");
+  assert(find("lov_hearthkyn_warriors")?.max   === 3, "lov_hearthkyn_warriors max must be 3");
+  assert(find("lov_brokhyr_thunderkyn")?.max   === 1, "lov_brokhyr_thunderkyn max must be 1");
+  assert(find("lov_cthonian_beserks")?.max     === 1, "lov_cthonian_beserks max must be 1");
+  assert(find("lov_einhyr_hearthguard")?.max   === 1, "lov_einhyr_hearthguard max must be 1");
+  assert(find("lov_hernkyn_yaegirs")?.max      === 1, "lov_hernkyn_yaegirs max must be 1");
+});
+
+test("Void Salvagers — Einhyr Hearthguard restricted to 5-model size only", () => {
+  const entry = vsDet.units.find(u => u.id === "lov_einhyr_hearthguard");
+  assert(Array.isArray(entry.allowedSizeIndices),
+    "lov_einhyr_hearthguard must have allowedSizeIndices defined in Void Salvagers");
+  assert(entry.allowedSizeIndices.length === 1 && entry.allowedSizeIndices[0] === 0,
+    "allowedSizeIndices must be [0] to permit only the 5-model size option");
+});
+
+test("Void Salvagers has exactly 2 enhancements", () => {
+  assertEqual(vsDet.enhancements.length, 2, "Void Salvagers must have exactly 2 enhancements");
+});
+
+test("Void Salvagers has Masterful Construction enhancement", () => {
+  const enh = vsDet.enhancements.find(e => e.id === "enh_lov_masterful_construction");
+  assert(enh !== undefined, "enh_lov_masterful_construction must exist");
+  assertEqual(enh.name, "Masterful Construction", "enhancement name must be 'Masterful Construction'");
+  assert(enh.desc.includes("DEVASTATING WOUNDS"),
+    "Masterful Construction desc must reference '[DEVASTATING WOUNDS]'");
+  assert(enh.desc.includes("LETHAL HITS"),
+    "Masterful Construction desc must reference '[LETHAL HITS]'");
+  assert(enh.desc.includes("SUSTAINED HITS 1"),
+    "Masterful Construction desc must reference '[SUSTAINED HITS 1]'");
+  assert(enh.desc.includes("Psychic"),
+    "Masterful Construction desc must reference 'Psychic' weapons exclusion");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Masterful Construction must have no keyword requirements");
+});
+
+test("Void Salvagers has Obsessive Drive enhancement", () => {
+  const enh = vsDet.enhancements.find(e => e.id === "enh_lov_obsessive_drive");
+  assert(enh !== undefined, "enh_lov_obsessive_drive must exist");
+  assertEqual(enh.name, "Obsessive Drive", "enhancement name must be 'Obsessive Drive'");
+  assert(enh.desc.includes("objective marker"),
+    "Obsessive Drive desc must reference 'objective marker'");
+  assert(enh.desc.includes("Judgement token"),
+    "Obsessive Drive desc must reference 'Judgement token'");
+  assert(enh.desc.includes("LEAGUES OF VOTANN"),
+    "Obsessive Drive desc must reference 'LEAGUES OF VOTANN'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Obsessive Drive must have no keyword requirements");
+});
+
+
+// ── 148. Leagues of Votann — Unit Definitions ────────────────────────────────
+
+section("148. Leagues of Votann — Unit Definitions");
+
+test("Einhyr Champion has correct fields", () => {
+  const u = lovUnit("lov_einhyr_champion");
+  assert(!!u, "lov_einhyr_champion not found");
+  assertEqual(u.name, "Einhyr Champion");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("CHARACTER"),         "must have CHARACTER keyword");
+  assert(u.keywords.includes("EXOARMOUR"),         "must have EXOARMOUR keyword");
+  assertEqual(u.sizes[0].pts, 70,                  "must cost 70pts");
+  assert(u.rulesAdaptations?.includes("Mass Driver Accelerators"),
+    "rulesAdaptations must reference 'Mass Driver Accelerators'");
+  assert(u.rulesAdaptations?.includes("Teleport Crest"),
+    "rulesAdaptations must reference 'Teleport Crest'");
+  assert(!u.rulesAdaptations?.includes("abliities"),
+    "rulesAdaptations must not contain the typo 'abliities'");
+});
+
+test("Einhyr Hearthguard has correct fields", () => {
+  const u = lovUnit("lov_einhyr_hearthguard");
+  assert(!!u, "lov_einhyr_hearthguard not found");
+  assertEqual(u.name, "Einhyr Hearthguard");
+  assertEqual(u.type, "INFANTRY");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("EXOARMOUR"),         "must have EXOARMOUR keyword");
+  assert(!u.keywords.includes("CHARACTER"),        "must not have CHARACTER keyword");
+  assertEqual(u.sizes.length, 2,                   "must have 2 size options");
+  assertEqual(u.sizes[0].pts, 135,                 "5-model size must cost 135pts");
+  assertEqual(u.sizes[1].pts, 270,                 "10-model size must cost 270pts");
+});
+
+test("Brokhyr Iron-Master has correct fields", () => {
+  const u = lovUnit("lov_brokhyr_iron_master");
+  assert(!!u, "lov_brokhyr_iron_master not found");
+  assertEqual(u.name, "Brokhyr Iron-Master");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("CHARACTER"),         "must have CHARACTER keyword");
+  assert(!u.keywords.includes("EPIC HERO"),        "must not have EPIC HERO keyword");
+  assertEqual(u.sizes[0].label, "5 models",        "size label must be '5 models'");
+  assertEqual(u.sizes[0].pts, 75,                  "must cost 75pts");
+});
+
+test("Grimnyr has correct fields", () => {
+  const u = lovUnit("lov_grimnyr");
+  assert(!!u, "lov_grimnyr not found");
+  assertEqual(u.name, "Grimnyr");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("CHARACTER"),         "must have CHARACTER keyword");
+  assert(u.keywords.includes("PSYKER"),            "must have PSYKER keyword");
+  assertEqual(u.sizes[0].label, "3 models",        "size label must be '3 models'");
+  assertEqual(u.sizes[0].pts, 75,                  "must cost 75pts");
+});
+
+test("Kahl has correct fields", () => {
+  const u = lovUnit("lov_kahl");
+  assert(!!u, "lov_kahl not found");
+  assertEqual(u.name, "Kahl");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("CHARACTER"),         "must have CHARACTER keyword");
+  assert(!u.keywords.includes("EPIC HERO"),        "must not have EPIC HERO keyword");
+  assertEqual(u.sizes[0].pts, 65,                  "must cost 65pts");
+  assert(u.rulesAdaptations?.includes("Teleport Crest"),
+    "rulesAdaptations must reference 'Teleport Crest'");
+});
+
+test("Uthar the Destined has correct fields", () => {
+  const u = lovUnit("lov_uthar_the_destined");
+  assert(!!u, "lov_uthar_the_destined not found");
+  assertEqual(u.name, "Uthar the Destined");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("CHARACTER"),         "must have CHARACTER keyword");
+  assert(u.keywords.includes("EPIC HERO"),         "must have EPIC HERO keyword");
+  assertEqual(u.sizes[0].pts, 95,                  "must cost 95pts");
+});
+
+test("Hearthkyn Warriors has correct fields", () => {
+  const u = lovUnit("lov_hearthkyn_warriors");
+  assert(!!u, "lov_hearthkyn_warriors not found");
+  assertEqual(u.name, "Hearthkyn Warriors");
+  assertEqual(u.type, "BATTLELINE");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("BATTLELINE"),        "must have BATTLELINE keyword");
+  assertEqual(u.sizes[0].pts, 100,                 "10-model size must cost 100pts");
+  assert(u.rulesAdaptations?.includes("Luck Has. Need Keeps. Toil Earns."),
+    "rulesAdaptations must reference 'Luck Has. Need Keeps. Toil Earns.'");
+});
+
+test("Brokhyr Thunderkyn has correct fields", () => {
+  const u = lovUnit("lov_brokhyr_thunderkyn");
+  assert(!!u, "lov_brokhyr_thunderkyn not found");
+  assertEqual(u.name, "Brokhyr Thunderkyn");
+  assertEqual(u.type, "INFANTRY");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assert(u.keywords.includes("EXOFRAME"),          "must have EXOFRAME keyword");
+  assert(!u.keywords.includes("EXOARMOUR"),        "must not have EXOARMOUR keyword");
+  assertEqual(u.sizes[0].label, "3 models",        "size label must be '3 models'");
+  assertEqual(u.sizes[0].pts, 80,                  "must cost 80pts");
+});
+
+test("Cthonian Beserks has correct fields", () => {
+  const u = lovUnit("lov_cthonian_beserks");
+  assert(!!u, "lov_cthonian_beserks not found");
+  assertEqual(u.name, "Cthonian Beserks");
+  assertEqual(u.type, "INFANTRY");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assertEqual(u.sizes.length, 2,                   "must have 2 size options");
+  assertEqual(u.sizes[0].pts, 100,                 "5-model size must cost 100pts");
+  assertEqual(u.sizes[1].pts, 200,                 "10-model size must cost 200pts");
+});
+
+test("Hernkyn Yaegirs has correct fields", () => {
+  const u = lovUnit("lov_hernkyn_yaegirs");
+  assert(!!u, "lov_hernkyn_yaegirs not found");
+  assertEqual(u.name, "Hernkyn Yaegirs");
+  assertEqual(u.type, "INFANTRY");
+  assert(u.keywords.includes("LEAGUES OF VOTANN"), "must have LEAGUES OF VOTANN keyword");
+  assertEqual(u.sizes[0].label, "10 models",       "size label must be '10 models'");
+  assertEqual(u.sizes[0].pts, 90,                  "must cost 90pts");
+});
+
+
+// ── 149. Leagues of Votann — Game Rule Logic ─────────────────────────────────
+
+section("149. Leagues of Votann — Game Rule Logic");
+
+const hsHelper = makeDetHelpers(hsDet, id => lovUnit(id));
+const vsHelper = makeDetHelpers(vsDet, id => lovUnit(id));
+
+// ── Hearthfire Strike — character cap & unit maxes ────────────────────────────
+
+test("Hearthfire Strike — Einhyr Champion can be added to an empty list", () => {
+  assert(hsHelper.canAdd([], "lov_einhyr_champion"),
+    "Einhyr Champion must be addable to empty list");
+});
+
+test("Hearthfire Strike — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "lov_einhyr_champion" }, { unitId: "lov_einhyr_champion" }];
+  assert(!hsHelper.canAdd(list, "lov_einhyr_champion"),
+    "Third CHARACTER must be blocked when cap of 2 is reached");
+});
+
+test("Hearthfire Strike — Einhyr Champion max 2: second copy addable, third blocked", () => {
+  const list = [{ unitId: "lov_einhyr_champion" }];
+  assert( hsHelper.canAdd(list, "lov_einhyr_champion"),
+    "Second Einhyr Champion must be addable (max 2)");
+  assert(!hsHelper.canAdd([...list, { unitId: "lov_einhyr_champion" }], "lov_einhyr_champion"),
+    "Third Einhyr Champion must be blocked (max 2)");
+});
+
+test("Hearthfire Strike — Einhyr Hearthguard max 2: second copy addable, third blocked", () => {
+  const list = [{ unitId: "lov_einhyr_hearthguard" }];
+  assert( hsHelper.canAdd(list, "lov_einhyr_hearthguard"),
+    "Second Einhyr Hearthguard must be addable (max 2)");
+  assert(!hsHelper.canAdd([...list, { unitId: "lov_einhyr_hearthguard" }], "lov_einhyr_hearthguard"),
+    "Third Einhyr Hearthguard must be blocked (max 2)");
+});
+
+test("Hearthfire Strike — non-CHARACTER units are unaffected by the character cap", () => {
+  const list = [{ unitId: "lov_einhyr_champion" }, { unitId: "lov_einhyr_champion" }];
+  assert(hsHelper.canAdd(list, "lov_einhyr_hearthguard"),
+    "Einhyr Hearthguard must still be addable when character cap of 2 is reached");
+});
+
+// ── Void Salvagers — character cap & unit maxes ───────────────────────────────
+
+test("Void Salvagers — first CHARACTER can be added to an empty list", () => {
+  assert(vsHelper.canAdd([], "lov_brokhyr_iron_master"),  "Brokhyr Iron-Master must be addable");
+  assert(vsHelper.canAdd([], "lov_einhyr_champion"),      "Einhyr Champion must be addable");
+  assert(vsHelper.canAdd([], "lov_grimnyr"),              "Grimnyr must be addable");
+  assert(vsHelper.canAdd([], "lov_kahl"),                 "Kahl must be addable");
+  assert(vsHelper.canAdd([], "lov_uthar_the_destined"),   "Uthar the Destined must be addable");
+});
+
+test("Void Salvagers — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "lov_kahl" }, { unitId: "lov_grimnyr" }];
+  assert(!vsHelper.canAdd(list, "lov_einhyr_champion"),
+    "Third CHARACTER must be blocked when cap of 2 is reached");
+  assert(!vsHelper.canAdd(list, "lov_uthar_the_destined"),
+    "Uthar the Destined must also be blocked when cap of 2 is reached");
+});
+
+test("Void Salvagers — Hearthkyn Warriors max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "lov_hearthkyn_warriors" }, { unitId: "lov_hearthkyn_warriors" }];
+  assert( vsHelper.canAdd(list, "lov_hearthkyn_warriors"),
+    "Third Hearthkyn Warriors must be addable (max 3)");
+  assert(!vsHelper.canAdd([...list, { unitId: "lov_hearthkyn_warriors" }], "lov_hearthkyn_warriors"),
+    "Fourth Hearthkyn Warriors must be blocked (max 3)");
+});
+
+test("Void Salvagers — non-CHARACTER units are unaffected by the character cap", () => {
+  const list = [{ unitId: "lov_kahl" }, { unitId: "lov_grimnyr" }];
+  assert(vsHelper.canAdd(list, "lov_hearthkyn_warriors"),
+    "Hearthkyn Warriors must still be addable when character cap of 2 is reached");
+  assert(vsHelper.canAdd(list, "lov_einhyr_hearthguard"),
+    "Einhyr Hearthguard must still be addable when character cap of 2 is reached");
+});
+
+test("Void Salvagers — Einhyr Hearthguard max 1: second copy blocked", () => {
+  assert(!vsHelper.canAdd([{ unitId: "lov_einhyr_hearthguard" }], "lov_einhyr_hearthguard"),
+    "Second Einhyr Hearthguard must be blocked (max 1 in Void Salvagers)");
+});
+
+// ── Smoke tests ───────────────────────────────────────────────────────────────
+
+test("Smoke — Hearthfire Strike: 2x Einhyr Champion + 2x Einhyr Hearthguard (5 models) = 140+270 = 410pts (legal)", () => {
+  const pts = (70 * 2) + (135 * 2);
+  assertEqual(pts, 410, "Expected 410pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "lov_einhyr_champion"    },
+    { unitId: "lov_einhyr_champion"    },
+    { unitId: "lov_einhyr_hearthguard" },
+    { unitId: "lov_einhyr_hearthguard" },
+  ];
+  const charCount = list.filter(l => lovUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= hsDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Hearthfire Strike: 2x Einhyr Champion + 2x Einhyr Hearthguard (10 models) = 140+540 = 680pts (over limit)", () => {
+  const pts = (70 * 2) + (270 * 2);
+  assertEqual(pts, 680, "Expected 680pts");
+  assert(pts > 500, "Max Hearthguard (10 models) + max Champions must exceed 500pt limit");
+});
+
+test("Smoke — Void Salvagers: Kahl + Hearthkyn Warriors + Einhyr Hearthguard (5 models) = 65+100+135 = 300pts (legal)", () => {
+  const pts = 65 + 100 + 135;
+  assertEqual(pts, 300, "Expected 300pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "lov_kahl"                },
+    { unitId: "lov_hearthkyn_warriors"  },
+    { unitId: "lov_einhyr_hearthguard"  },
+  ];
+  const charCount = list.filter(l => lovUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= vsDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Void Salvagers: Uthar the Destined + 3x Hearthkyn Warriors + Cthonian Beserks (5 models) = 95+300+100 = 495pts (legal)", () => {
+  const pts = 95 + (100 * 3) + 100;
+  assertEqual(pts, 495, "Expected 495pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "lov_uthar_the_destined"  },
+    { unitId: "lov_hearthkyn_warriors"  },
+    { unitId: "lov_hearthkyn_warriors"  },
+    { unitId: "lov_hearthkyn_warriors"  },
+    { unitId: "lov_cthonian_beserks"    },
+  ];
+  const charCount = list.filter(l => lovUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= vsDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);

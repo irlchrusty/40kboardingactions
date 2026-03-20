@@ -1,0 +1,279 @@
+{
+  "detachments": [
+    {
+      "id": "lov_hearthfire_strike",
+      "name": "Hearthfire Strike",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Wrought in Wrath",
+        "desc": "Add 1 to Advance and Charge rolls made for LEAGUES OF VOTANN units in your army. Einhyr Hearthguard units can perform the Secure Site Tactical Manoeuvre as if they had the BATTLELINE keyword."
+      },
+      "enhancements": [
+        {
+          "id": "enh_lov_celebrated_folk_hero",
+          "name": "Celebrated Folk Hero",
+          "desc": "The first time the bearer is destroyed, each enemy unit on the battlefield gains 1 Judgement token.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_lov_gulyks_stars",
+          "name": "Gulyk's Stars",
+          "desc": "Each time the bearer ends a Charge move, select one enemy unit within Engagement Range of it and roll one D6: on a 2-4, that enemy unit suffers 1 mortal wound; on a 5+ that enemy unit suffers 2 mortal wounds. If this results in one or more enemy models being destroyed, you can select one closed Hatchway within 6\" of the bearer and open it.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "lov_einhyr_champion",
+          "max": 2
+        },
+        {
+          "id": "lov_einhyr_hearthguard",
+          "max": 2
+        }
+      ]
+    },
+    {
+      "id": "lov_void_salvagers",
+      "name": "Void Salvagers",
+      "maxCharacters": 2,
+      "specialRule": {
+        "name": "Stalwart Advance",
+        "desc": "In your shooting phase, each time a LEAGUES OF VOTANN unit from your army has shot, if one or more enemy units were destroyed by those attacks and that LEAGUES OF VOTANN unit is not within Engagement Range of one or more enemy units, it can make a Normal move of up to 3\" and can then attempt to operate a Hatchway."
+      },
+      "enhancements": [
+        {
+          "id": "enh_lov_masterful_construction",
+          "name": "Masterful Construction",
+          "desc": "Each time the bearer is selected to shoot or fight, you can select one of the following weapon abilities: [DEVASTATING WOUNDS], [LETHAL HITS], [SUSTAINED HITS 1]. Until the end of the phase, weapons equipped by the bearer (excluding Psychic weapons) have that ability.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_lov_obsessive_drive",
+          "name": "Obsessive Drive",
+          "desc": "At the start of the first battle round, select one objective marker. While the bearer is on the battlefield, each time a LEAGUES OF VOTANN unit from your army is selected to shoot or fight, each enemy unit within range of that objective marker is considered to have 1 additional Judgement token while resolving those attacks.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "lov_brokhyr_iron_master",
+          "max": 1
+        },
+        {
+          "id": "lov_einhyr_champion",
+          "max": 1
+        },
+        {
+          "id": "lov_grimnyr",
+          "max": 1
+        },
+        {
+          "id": "lov_kahl",
+          "max": 1
+        },
+        {
+          "id": "lov_uthar_the_destined",
+          "max": 1
+        },
+        {
+          "id": "lov_hearthkyn_warriors",
+          "max": 3
+        },
+        {
+          "id": "lov_brokhyr_thunderkyn",
+          "max": 1
+        },
+        {
+          "id": "lov_cthonian_beserks",
+          "max": 1
+        },
+        {
+          "id": "lov_einhyr_hearthguard",
+          "max": 1,
+          "allowedSizeIndices": [
+            0
+          ]
+        },
+        {
+          "id": "lov_hernkyn_yaegirs",
+          "max": 1
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "lov_einhyr_champion",
+      "name": "Einhyr Champion",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "CHARACTER",
+        "EXOARMOUR"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 70
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Mass Driver Accelerators and Teleport Crest abilities."
+    },
+    {
+      "id": "lov_einhyr_hearthguard",
+      "name": "Einhyr Hearthguard",
+      "type": "INFANTRY",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "EXOARMOUR"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 135
+        },
+        {
+          "label": "10 models",
+          "pts": 270
+        }
+      ]
+    },
+    {
+      "id": "lov_brokhyr_iron_master",
+      "name": "Brokhyr Iron-Master",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "lov_grimnyr",
+      "name": "Grimnyr",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "CHARACTER",
+        "PSYKER"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 75
+        }
+      ]
+    },
+    {
+      "id": "lov_kahl",
+      "name": "Kahl",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "CHARACTER"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 65
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Teleport Crest ability."
+    },
+    {
+      "id": "lov_uthar_the_destined",
+      "name": "Uthar the Destined",
+      "type": "CHARACTER",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "CHARACTER",
+        "EPIC HERO"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 95
+        }
+      ]
+    },
+    {
+      "id": "lov_hearthkyn_warriors",
+      "name": "Hearthkyn Warriors",
+      "type": "BATTLELINE",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "BATTLELINE"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 100
+        }
+      ],
+      "rulesAdaptations": "This unit loses the Luck Has. Need Keeps. Toil Earns. ability."
+    },
+    {
+      "id": "lov_brokhyr_thunderkyn",
+      "name": "Brokhyr Thunderkyn",
+      "type": "INFANTRY",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY",
+        "EXOFRAME"
+      ],
+      "sizes": [
+        {
+          "label": "3 models",
+          "pts": 80
+        }
+      ]
+    },
+    {
+      "id": "lov_cthonian_beserks",
+      "name": "Cthonian Beserks",
+      "type": "INFANTRY",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 100
+        },
+        {
+          "label": "10 models",
+          "pts": 200
+        }
+      ]
+    },
+    {
+      "id": "lov_hernkyn_yaegirs",
+      "name": "Hernkyn Yaegirs",
+      "type": "INFANTRY",
+      "keywords": [
+        "LEAGUES OF VOTANN",
+        "INFANTRY"
+      ],
+      "sizes": [
+        {
+          "label": "10 models",
+          "pts": 90
+        }
+      ]
+    }
+  ]
+}
