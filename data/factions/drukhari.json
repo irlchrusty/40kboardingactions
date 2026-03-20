@@ -90,6 +90,137 @@
         }
       ]
     }
+    ,
+    {
+      "id": "dru_painbringers",
+      "name": "Painbringers",
+      "maxCharacters": 1,
+      "specialRule": {
+        "name": "Regenerative Agony",
+        "desc": "Each time four or more Feel No Pain rolls are successful for HAEMONCULUS COVENS models from your army in a single phase, you gain 1 Pain token. In addition, each battle round, the first time a HAEMONCULUS COVENS unit from your army becomes Empowered in that battle round, roll one D6: on a 2-5, one model in that unit regains 1 lost wound, or if that unit has the WRACKS keyword, one destroyed model is returned to it with it's full wounds remaining; on a 6, one model in that unit regains up to two lost wounds or if that unit has the WRACKS keyword, one destroyed model is returned to it with it's full wounds remaining."
+      },
+      "enhancements": [
+        {
+          "id": "enh_dru_rending_chain_flails",
+          "name": "Rending Chain-Flails",
+          "desc": "Each time an enemy unit within Engagement Range of the bearer is selected to Fall Back, roll one D6: on a 2-4, that enemy unit suffers 1 mortal wound, on a 5+, that enemy unit suffers 2 mortal wounds.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dru_vile_surgeon",
+          "name": "Vile Surgeon",
+          "desc": "The bearer's Haemonculus tools and scissorhands have a Damage characteristic of 3 while targeting CHARACTER units.",
+          "requiresKeywords": []
+        }
+      ],
+      "units": [
+        {
+          "id": "dru_haemonculus",
+          "max": 1
+        },
+        {
+          "id": "dru_wracks",
+          "max": 3
+        },
+        {
+          "id": "dru_incubi",
+          "max": 1
+        },
+        {
+          "id": "dru_mandrakes",
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "dru_space_lane_raiders",
+      "name": "Space Lane Raiders",
+      "maxCharacters": 3,
+      "specialRule": {
+        "name": "Commorrite Rivalries",
+        "desc": "Each time a DRUKHARI CHARACTER model from your army destroys an enemy CHARACTER model, you gain 1 Pain token. In addition, each time you use the Battlefield Command Stratagem, you can expend 1 Pain token from your Pain token pool. If you do, decrease that Stratagem's cost by 1CP for that usage."
+      },
+      "enhancements": [
+        {
+          "id": "enh_dru_power_and_greed",
+          "name": "Power and Greed",
+          "desc": "The first time in each turn that the bearer is Empowered, roll one D6: on a 3+, you gain 1 Pain token.",
+          "requiresKeywords": []
+        },
+        {
+          "id": "enh_dru_spiteful_demise",
+          "name": "Spiteful Demise",
+          "desc": "When the bearer is destroyed, if it has not fought this phase, roll one D6: on a 2+, do not remove it from play. The bearer can fight after the attacking unit has finished making it's attacks, and is then removed from play.",
+          "requiresKeywords": []
+        }
+      ],
+      "keywordRatios": [
+        {
+          "numeratorUnitIds": ["dru_archon"],
+          "denominatorUnitIds": ["dru_kabalite_warriors"],
+          "description": "Archon cannot be selected unless one or more Kabalite Warriors units are included."
+        },
+        {
+          "numeratorUnitIds": ["dru_haemonculus"],
+          "denominatorUnitIds": ["dru_wracks"],
+          "description": "Haemonculus cannot be selected unless one or more Wracks units are included."
+        },
+        {
+          "numeratorUnitIds": ["dru_succubus"],
+          "denominatorUnitIds": ["dru_wyches"],
+          "description": "Succubus cannot be selected unless one or more Wyches units are included."
+        },
+        {
+          "numeratorUnitIds": ["dru_lelith_hesperax"],
+          "denominatorUnitIds": ["dru_wyches"],
+          "description": "Lelith Hesperax cannot be selected unless one or more Wyches units are included."
+        }
+      ],
+      "exclusiveUnitGroups": [
+        [
+          "dru_lelith_hesperax",
+          "dru_succubus"
+        ]
+      ],
+      "units": [
+        {
+          "id": "dru_archon",
+          "max": 1
+        },
+        {
+          "id": "dru_haemonculus",
+          "max": 1
+        },
+        {
+          "id": "dru_lelith_hesperax",
+          "max": 1
+        },
+        {
+          "id": "dru_succubus",
+          "max": 1
+        },
+        {
+          "id": "dru_kabalite_warriors",
+          "max": 3
+        },
+        {
+          "id": "dru_wracks",
+          "max": 3
+        },
+        {
+          "id": "dru_wyches",
+          "max": 3
+        },
+        {
+          "id": "dru_incubi",
+          "max": 1
+        },
+        {
+          "id": "dru_mandrakes",
+          "max": 1
+        }
+      ]
+    }
   ],
   "units": [
     {
@@ -245,6 +376,47 @@
         {
           "label": "10 models",
           "pts": 90
+        }
+      ]
+    },
+    {
+      "id": "dru_haemonculus",
+      "name": "Haemonculus",
+      "type": "CHARACTER",
+      "keywords": [
+        "DRUKHARI",
+        "HAEMONCULUS COVENS",
+        "INFANTRY",
+        "CHARACTER",
+        "AELDARI"
+      ],
+      "sizes": [
+        {
+          "label": "1 model",
+          "pts": 60
+        }
+      ]
+    },
+    {
+      "id": "dru_wracks",
+      "name": "Wracks",
+      "type": "BATTLELINE",
+      "keywords": [
+        "DRUKHARI",
+        "HAEMONCULUS COVENS",
+        "INFANTRY",
+        "BATTLELINE",
+        "AELDARI",
+        "WRACKS"
+      ],
+      "sizes": [
+        {
+          "label": "5 models",
+          "pts": 60
+        },
+        {
+          "label": "10 models",
+          "pts": 100
         }
       ]
     }

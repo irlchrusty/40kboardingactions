@@ -17145,6 +17145,805 @@ test("Smoke — Chosen Cabal: Exalted Sorcerer + 2x Rubric Marines (5 models) + 
     "Tzaangor count must not exceed Rubric Marines count");
 });
 
+// NOTE: Do not add tests here for ID uniqueness, cross-faction ID collisions,
+// enhancement ID uniqueness, unit→detachment cross-references, or required-field
+// schema checks (id/name/type/keywords/sizes/armyRule). Section 3 covers all of
+// these globally for every faction. Only test faction-specific behaviour here:
+// points values, keywords, rules adaptations content, and constraint logic.
+
+// ── 138. Drukhari Faction ─────────────────────────────────────────────────────
+
+section("138. Drukhari Faction");
+
+const druFaction = index.factions.find(f => f.id === "drukhari");
+const druData    = factionData["drukhari"];
+const druUnits   = druData ? druData.units : [];
+const druDets    = druData ? druData.detachments : [];
+const druUnit    = id => druUnits.find(u => u.id === id);
+
+test("Drukhari faction exists in index.json", () => {
+  assert(druFaction !== undefined, "drukhari must exist in index.json factions array");
+});
+
+test("Drukhari has Feast of Pain army rule", () => {
+  assertEqual(druFaction.armyRule.name, "Feast of Pain",
+    "army rule name must be 'Feast of Pain'");
+});
+
+test("Feast of Pain desc references Power from Pain", () => {
+  assert(druFaction.armyRule.desc.includes("Power from Pain"),
+    "Feast of Pain desc must reference 'Power from Pain'");
+});
+
+test("Feast of Pain desc references Pain token", () => {
+  assert(druFaction.armyRule.desc.includes("Pain token"),
+    "Feast of Pain desc must reference 'Pain token'");
+});
+
+test("Drukhari has exactly 4 detachments", () => {
+  assertEqual(druDets.length, 4,
+    `Expected 4 Drukhari detachments, found ${druDets.length}`);
+});
+
+test("Drukhari has exactly 10 units", () => {
+  assertEqual(druUnits.length, 10,
+    `Expected 10 Drukhari units, found ${druUnits.length}`);
+});
+
+
+// ── 139. Drukhari — Kabalite Corsairs Detachment ─────────────────────────────
+
+section("139. Drukhari — Kabalite Corsairs Detachment");
+
+const kcDet = druDets.find(d => d.id === "dru_kabalite_corsairs");
+
+test("Kabalite Corsairs detachment exists", () => {
+  assert(kcDet !== undefined, "dru_kabalite_corsairs must exist");
+});
+
+test("Kabalite Corsairs has correct name", () => {
+  assertEqual(kcDet.name, "Kabalite Corsairs", "detachment name must be 'Kabalite Corsairs'");
+});
+
+test("Kabalite Corsairs has Raid and Pillage special rule", () => {
+  assertEqual(kcDet.specialRule.name, "Raid and Pillage",
+    "specialRule name must be 'Raid and Pillage'");
+});
+
+test("Raid and Pillage desc references Pain token", () => {
+  assert(kcDet.specialRule.desc.includes("Pain token"),
+    "Raid and Pillage desc must reference 'Pain token'");
+});
+
+test("Raid and Pillage desc references KABAL keyword", () => {
+  assert(kcDet.specialRule.desc.includes("KABAL"),
+    "Raid and Pillage desc must reference 'KABAL'");
+});
+
+test("Kabalite Corsairs has maxCharacters set to 2", () => {
+  assertEqual(kcDet.maxCharacters, 2, "Kabalite Corsairs maxCharacters must be 2");
+});
+
+test("Kabalite Corsairs has exactly 5 unit entries", () => {
+  assertEqual(kcDet.units.length, 5, "Kabalite Corsairs must have exactly 5 unit entries");
+});
+
+test("Kabalite Corsairs unit roster — correct IDs and maxes", () => {
+  const find = id => kcDet.units.find(u => u.id === id);
+  assert(find("dru_drazhar")?.max           === 1, "dru_drazhar max must be 1");
+  assert(find("dru_archon")?.max            === 1, "dru_archon max must be 1");
+  assert(find("dru_kabalite_warriors")?.max === 3, "dru_kabalite_warriors max must be 3");
+  assert(find("dru_incubi")?.max            === 1, "dru_incubi max must be 1");
+  assert(find("dru_mandrakes")?.max         === 1, "dru_mandrakes max must be 1");
+});
+
+test("Kabalite Corsairs has exactly 2 enhancements", () => {
+  assertEqual(kcDet.enhancements.length, 2, "Kabalite Corsairs must have exactly 2 enhancements");
+});
+
+test("Kabalite Corsairs has Dark Charisma enhancement", () => {
+  const enh = kcDet.enhancements.find(e => e.id === "enh_dru_dark_charisma");
+  assert(enh !== undefined, "enh_dru_dark_charisma must exist");
+  assertEqual(enh.name, "Dark Charisma", "enhancement name must be 'Dark Charisma'");
+  assert(enh.desc.includes("Objective Control"),
+    "Dark Charisma desc must reference 'Objective Control'");
+  assert(enh.desc.includes("Battle-shock"),
+    "Dark Charisma desc must reference 'Battle-shock'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Dark Charisma must have no keyword requirements");
+});
+
+test("Kabalite Corsairs has Malevolent Cunning enhancement", () => {
+  const enh = kcDet.enhancements.find(e => e.id === "enh_dru_malevolent_cunning");
+  assert(enh !== undefined, "enh_dru_malevolent_cunning must exist");
+  assertEqual(enh.name, "Malevolent Cunning", "enhancement name must be 'Malevolent Cunning'");
+  assert(enh.desc.includes("Stratagem"),
+    "Malevolent Cunning desc must reference 'Stratagem'");
+  assert(enh.desc.includes("1CP"),
+    "Malevolent Cunning desc must reference '1CP'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Malevolent Cunning must have no keyword requirements");
+});
+
+
+// ── 140. Drukhari — Ship-Killer Cult Detachment ───────────────────────────────
+
+section("140. Drukhari — Ship-Killer Cult Detachment");
+
+const skcDet = druDets.find(d => d.id === "dru_ship_killer_cult");
+
+test("Ship-Killer Cult detachment exists", () => {
+  assert(skcDet !== undefined, "dru_ship_killer_cult must exist");
+});
+
+test("Ship-Killer Cult has correct name", () => {
+  assertEqual(skcDet.name, "Ship-Killer Cult", "detachment name must be 'Ship-Killer Cult'");
+});
+
+test("Ship-Killer Cult has Appetite for Adulation special rule", () => {
+  assertEqual(skcDet.specialRule.name, "Appetite for Adulation",
+    "specialRule name must be 'Appetite for Adulation'");
+});
+
+test("Appetite for Adulation desc references Pain token", () => {
+  assert(skcDet.specialRule.desc.includes("Pain token"),
+    "Appetite for Adulation desc must reference 'Pain token'");
+});
+
+test("Appetite for Adulation desc references WYCH CULT keyword", () => {
+  assert(skcDet.specialRule.desc.includes("WYCH CULT"),
+    "Appetite for Adulation desc must reference 'WYCH CULT'");
+});
+
+test("Appetite for Adulation desc references Empowered", () => {
+  assert(skcDet.specialRule.desc.includes("Empowered"),
+    "Appetite for Adulation desc must reference 'Empowered'");
+});
+
+test("Ship-Killer Cult has maxCharacters set to 2", () => {
+  assertEqual(skcDet.maxCharacters, 2, "Ship-Killer Cult maxCharacters must be 2");
+});
+
+test("Ship-Killer Cult has exactly 5 unit entries", () => {
+  assertEqual(skcDet.units.length, 5, "Ship-Killer Cult must have exactly 5 unit entries");
+});
+
+test("Ship-Killer Cult unit roster — correct IDs and maxes", () => {
+  const find = id => skcDet.units.find(u => u.id === id);
+  assert(find("dru_lelith_hesperax")?.max === 1, "dru_lelith_hesperax max must be 1");
+  assert(find("dru_succubus")?.max        === 1, "dru_succubus max must be 1");
+  assert(find("dru_wyches")?.max          === 3, "dru_wyches max must be 3");
+  assert(find("dru_incubi")?.max          === 1, "dru_incubi max must be 1");
+  assert(find("dru_mandrakes")?.max       === 1, "dru_mandrakes max must be 1");
+});
+
+test("Ship-Killer Cult has exactly 2 enhancements", () => {
+  assertEqual(skcDet.enhancements.length, 2, "Ship-Killer Cult must have exactly 2 enhancements");
+});
+
+test("Ship-Killer Cult has Stimm-Fervour enhancement", () => {
+  const enh = skcDet.enhancements.find(e => e.id === "enh_dru_stimm_fervour");
+  assert(enh !== undefined, "enh_dru_stimm_fervour must exist");
+  assertEqual(enh.name, "Stimm-Fervour", "enhancement name must be 'Stimm-Fervour'");
+  assert(enh.desc.includes("Advanced"),
+    "Stimm-Fervour desc must reference 'Advanced'");
+  assert(enh.desc.includes("charge"),
+    "Stimm-Fervour desc must reference 'charge'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Stimm-Fervour must have no keyword requirements");
+});
+
+test("Ship-Killer Cult has Blood-Drenched Champion enhancement", () => {
+  const enh = skcDet.enhancements.find(e => e.id === "enh_dru_blood_drenched_champion");
+  assert(enh !== undefined, "enh_dru_blood_drenched_champion must exist");
+  assertEqual(enh.name, "Blood-Drenched Champion", "enhancement name must be 'Blood-Drenched Champion'");
+  assert(enh.desc.includes("Battle-shock"),
+    "Blood-Drenched Champion desc must reference 'Battle-shock'");
+  assert(enh.desc.includes("Engagement Range"),
+    "Blood-Drenched Champion desc must reference 'Engagement Range'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Blood-Drenched Champion must have no keyword requirements");
+});
+
+
+// ── 141. Drukhari — Painbringers Detachment ───────────────────────────────────
+
+section("141. Drukhari — Painbringers Detachment");
+
+const pbDet = druDets.find(d => d.id === "dru_painbringers");
+
+test("Painbringers detachment exists", () => {
+  assert(pbDet !== undefined, "dru_painbringers must exist");
+});
+
+test("Painbringers has correct name", () => {
+  assertEqual(pbDet.name, "Painbringers", "detachment name must be 'Painbringers'");
+});
+
+test("Painbringers has Regenerative Agony special rule", () => {
+  assertEqual(pbDet.specialRule.name, "Regenerative Agony",
+    "specialRule name must be 'Regenerative Agony'");
+});
+
+test("Regenerative Agony desc references Feel No Pain", () => {
+  assert(pbDet.specialRule.desc.includes("Feel No Pain"),
+    "Regenerative Agony desc must reference 'Feel No Pain'");
+});
+
+test("Regenerative Agony desc references HAEMONCULUS COVENS", () => {
+  assert(pbDet.specialRule.desc.includes("HAEMONCULUS COVENS"),
+    "Regenerative Agony desc must reference 'HAEMONCULUS COVENS'");
+});
+
+test("Regenerative Agony desc references Empowered", () => {
+  assert(pbDet.specialRule.desc.includes("Empowered"),
+    "Regenerative Agony desc must reference 'Empowered'");
+});
+
+test("Regenerative Agony desc references WRACKS keyword", () => {
+  assert(pbDet.specialRule.desc.includes("WRACKS"),
+    "Regenerative Agony desc must reference the 'WRACKS' keyword");
+});
+
+test("Painbringers has maxCharacters set to 1", () => {
+  assertEqual(pbDet.maxCharacters, 1, "Painbringers maxCharacters must be 1");
+});
+
+test("Painbringers has exactly 4 unit entries", () => {
+  assertEqual(pbDet.units.length, 4, "Painbringers must have exactly 4 unit entries");
+});
+
+test("Painbringers unit roster — correct IDs and maxes", () => {
+  const find = id => pbDet.units.find(u => u.id === id);
+  assert(find("dru_haemonculus")?.max === 1, "dru_haemonculus max must be 1");
+  assert(find("dru_wracks")?.max      === 3, "dru_wracks max must be 3");
+  assert(find("dru_incubi")?.max      === 1, "dru_incubi max must be 1");
+  assert(find("dru_mandrakes")?.max   === 1, "dru_mandrakes max must be 1");
+});
+
+test("Painbringers has exactly 2 enhancements", () => {
+  assertEqual(pbDet.enhancements.length, 2, "Painbringers must have exactly 2 enhancements");
+});
+
+test("Painbringers has Rending Chain-Flails enhancement", () => {
+  const enh = pbDet.enhancements.find(e => e.id === "enh_dru_rending_chain_flails");
+  assert(enh !== undefined, "enh_dru_rending_chain_flails must exist");
+  assertEqual(enh.name, "Rending Chain-Flails", "enhancement name must be 'Rending Chain-Flails'");
+  assert(enh.desc.includes("Fall Back"),
+    "Rending Chain-Flails desc must reference 'Fall Back'");
+  assert(enh.desc.includes("mortal wound"),
+    "Rending Chain-Flails desc must reference 'mortal wound'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Rending Chain-Flails must have no keyword requirements");
+});
+
+test("Painbringers has Vile Surgeon enhancement", () => {
+  const enh = pbDet.enhancements.find(e => e.id === "enh_dru_vile_surgeon");
+  assert(enh !== undefined, "enh_dru_vile_surgeon must exist");
+  assertEqual(enh.name, "Vile Surgeon", "enhancement name must be 'Vile Surgeon'");
+  assert(enh.desc.includes("scissorhands"),
+    "Vile Surgeon desc must reference 'scissorhands'");
+  assert(enh.desc.includes("Damage"),
+    "Vile Surgeon desc must reference 'Damage'");
+  assert(enh.desc.includes("CHARACTER"),
+    "Vile Surgeon desc must reference 'CHARACTER'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Vile Surgeon must have no keyword requirements");
+});
+
+
+// ── 142. Drukhari — Space Lane Raiders Detachment ────────────────────────────
+
+section("142. Drukhari — Space Lane Raiders Detachment");
+
+const slrDet = druDets.find(d => d.id === "dru_space_lane_raiders");
+
+test("Space Lane Raiders detachment exists", () => {
+  assert(slrDet !== undefined, "dru_space_lane_raiders must exist");
+});
+
+test("Space Lane Raiders has correct name", () => {
+  assertEqual(slrDet.name, "Space Lane Raiders", "detachment name must be 'Space Lane Raiders'");
+});
+
+test("Space Lane Raiders has Commorrite Rivalries special rule", () => {
+  assertEqual(slrDet.specialRule.name, "Commorrite Rivalries",
+    "specialRule name must be 'Commorrite Rivalries'");
+});
+
+test("Commorrite Rivalries desc references Pain token", () => {
+  assert(slrDet.specialRule.desc.includes("Pain token"),
+    "Commorrite Rivalries desc must reference 'Pain token'");
+});
+
+test("Commorrite Rivalries desc references Battlefield Command Stratagem", () => {
+  assert(slrDet.specialRule.desc.includes("Battlefield Command Stratagem"),
+    "Commorrite Rivalries desc must reference 'Battlefield Command Stratagem'");
+});
+
+test("Commorrite Rivalries desc references CHARACTER model", () => {
+  assert(slrDet.specialRule.desc.includes("CHARACTER model"),
+    "Commorrite Rivalries desc must reference 'CHARACTER model'");
+});
+
+test("Commorrite Rivalries desc uses correct spelling of 'decrease'", () => {
+  assert(!slrDet.specialRule.desc.includes("descrease"),
+    "Commorrite Rivalries desc must not contain typo 'descrease'");
+  assert(slrDet.specialRule.desc.includes("decrease"),
+    "Commorrite Rivalries desc must contain correctly spelled 'decrease'");
+});
+
+test("Space Lane Raiders has maxCharacters set to 3", () => {
+  assertEqual(slrDet.maxCharacters, 3, "Space Lane Raiders maxCharacters must be 3");
+});
+
+test("Space Lane Raiders has exactly 9 unit entries", () => {
+  assertEqual(slrDet.units.length, 9, "Space Lane Raiders must have exactly 9 unit entries");
+});
+
+test("Space Lane Raiders unit roster — correct IDs and maxes", () => {
+  const find = id => slrDet.units.find(u => u.id === id);
+  assert(find("dru_archon")?.max            === 1, "dru_archon max must be 1");
+  assert(find("dru_haemonculus")?.max       === 1, "dru_haemonculus max must be 1");
+  assert(find("dru_lelith_hesperax")?.max   === 1, "dru_lelith_hesperax max must be 1");
+  assert(find("dru_succubus")?.max          === 1, "dru_succubus max must be 1");
+  assert(find("dru_kabalite_warriors")?.max === 3, "dru_kabalite_warriors max must be 3");
+  assert(find("dru_wracks")?.max            === 3, "dru_wracks max must be 3");
+  assert(find("dru_wyches")?.max            === 3, "dru_wyches max must be 3");
+  assert(find("dru_incubi")?.max            === 1, "dru_incubi max must be 1");
+  assert(find("dru_mandrakes")?.max         === 1, "dru_mandrakes max must be 1");
+});
+
+test("Space Lane Raiders has exactly 2 enhancements", () => {
+  assertEqual(slrDet.enhancements.length, 2, "Space Lane Raiders must have exactly 2 enhancements");
+});
+
+test("Space Lane Raiders has Power and Greed enhancement", () => {
+  const enh = slrDet.enhancements.find(e => e.id === "enh_dru_power_and_greed");
+  assert(enh !== undefined, "enh_dru_power_and_greed must exist");
+  assertEqual(enh.name, "Power and Greed", "enhancement name must be 'Power and Greed'");
+  assert(enh.desc.includes("Empowered"),
+    "Power and Greed desc must reference 'Empowered'");
+  assert(enh.desc.includes("Pain token"),
+    "Power and Greed desc must reference 'Pain token'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Power and Greed must have no keyword requirements");
+});
+
+test("Space Lane Raiders has Spiteful Demise enhancement", () => {
+  const enh = slrDet.enhancements.find(e => e.id === "enh_dru_spiteful_demise");
+  assert(enh !== undefined, "enh_dru_spiteful_demise must exist");
+  assertEqual(enh.name, "Spiteful Demise", "enhancement name must be 'Spiteful Demise'");
+  assert(enh.desc.includes("destroyed"),
+    "Spiteful Demise desc must reference 'destroyed'");
+  assert(enh.desc.includes("fought"),
+    "Spiteful Demise desc must reference 'fought'");
+  assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
+    "Spiteful Demise must have no keyword requirements");
+});
+
+test("Space Lane Raiders has Lelith Hesperax / Succubus exclusive unit group", () => {
+  assert(Array.isArray(slrDet.exclusiveUnitGroups),
+    "Space Lane Raiders must have exclusiveUnitGroups defined");
+  const group = slrDet.exclusiveUnitGroups.find(
+    g => g.includes("dru_lelith_hesperax") && g.includes("dru_succubus")
+  );
+  assert(group !== undefined,
+    "exclusiveUnitGroups must contain a group pairing dru_lelith_hesperax and dru_succubus");
+  assertEqual(group.length, 2,
+    "The Lelith Hesperax / Succubus exclusive group must contain exactly 2 entries");
+});
+
+test("Space Lane Raiders has 4 keywordRatios constraints", () => {
+  assert(Array.isArray(slrDet.keywordRatios),
+    "Space Lane Raiders must have keywordRatios defined");
+  assertEqual(slrDet.keywordRatios.length, 4,
+    `Expected 4 keywordRatios entries, found ${slrDet.keywordRatios.length}`);
+});
+
+test("Space Lane Raiders keywordRatios — Archon / Kabalite Warriors", () => {
+  const r = slrDet.keywordRatios.find(
+    r => r.numeratorUnitIds?.includes("dru_archon") &&
+         r.denominatorUnitIds?.includes("dru_kabalite_warriors")
+  );
+  assert(r !== undefined, "keywordRatios must contain an Archon / Kabalite Warriors constraint");
+});
+
+test("Space Lane Raiders keywordRatios — Haemonculus / Wracks", () => {
+  const r = slrDet.keywordRatios.find(
+    r => r.numeratorUnitIds?.includes("dru_haemonculus") &&
+         r.denominatorUnitIds?.includes("dru_wracks")
+  );
+  assert(r !== undefined, "keywordRatios must contain a Haemonculus / Wracks constraint");
+});
+
+test("Space Lane Raiders keywordRatios — Succubus / Wyches", () => {
+  const r = slrDet.keywordRatios.find(
+    r => r.numeratorUnitIds?.includes("dru_succubus") &&
+         r.denominatorUnitIds?.includes("dru_wyches")
+  );
+  assert(r !== undefined, "keywordRatios must contain a Succubus / Wyches constraint");
+});
+
+test("Space Lane Raiders keywordRatios — Lelith Hesperax / Wyches", () => {
+  const r = slrDet.keywordRatios.find(
+    r => r.numeratorUnitIds?.includes("dru_lelith_hesperax") &&
+         r.denominatorUnitIds?.includes("dru_wyches")
+  );
+  assert(r !== undefined, "keywordRatios must contain a Lelith Hesperax / Wyches constraint");
+});
+
+test("All Space Lane Raiders keywordRatios have description strings", () => {
+  slrDet.keywordRatios.forEach(r => {
+    assert(typeof r.description === "string" && r.description.length > 0,
+      `keywordRatios entry with numerator ${JSON.stringify(r.numeratorUnitIds)} must have a non-empty description`);
+  });
+});
+
+
+// ── 143. Drukhari — Unit Definitions ─────────────────────────────────────────
+
+section("143. Drukhari — Unit Definitions");
+
+test("Drazhar has correct fields", () => {
+  const u = druUnit("dru_drazhar");
+  assert(!!u, "dru_drazhar not found");
+  assertEqual(u.name, "Drazhar");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("DRUKHARI"),        "must have DRUKHARI keyword");
+  assert(u.keywords.includes("EPIC HERO"),        "must have EPIC HERO keyword");
+  assert(u.keywords.includes("BLADES FOR HIRE"),  "must have BLADES FOR HIRE keyword");
+  assertEqual(u.sizes[0].pts, 85,                 "must cost 85pts");
+});
+
+test("Archon has correct fields", () => {
+  const u = druUnit("dru_archon");
+  assert(!!u, "dru_archon not found");
+  assertEqual(u.name, "Archon");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("DRUKHARI"), "must have DRUKHARI keyword");
+  assert(u.keywords.includes("KABAL"),    "must have KABAL keyword");
+  assertEqual(u.sizes[0].pts, 80,         "must cost 80pts");
+  assert(u.rulesAdaptations?.includes("Devious Mastermind"),
+    "rulesAdaptations must reference 'Devious Mastermind'");
+});
+
+test("Kabalite Warriors has correct fields", () => {
+  const u = druUnit("dru_kabalite_warriors");
+  assert(!!u, "dru_kabalite_warriors not found");
+  assertEqual(u.name, "Kabalite Warriors");
+  assertEqual(u.type, "BATTLELINE");
+  assert(u.keywords.includes("DRUKHARI"), "must have DRUKHARI keyword");
+  assert(u.keywords.includes("KABAL"),    "must have KABAL keyword");
+  assertEqual(u.sizes[0].pts, 115,        "10-model size must cost 115pts");
+  assert(u.rulesAdaptations?.includes("Sadistic Raiders"),
+    "rulesAdaptations must reference 'Sadistic Raiders'");
+});
+
+test("Incubi has correct fields", () => {
+  const u = druUnit("dru_incubi");
+  assert(!!u, "dru_incubi not found");
+  assertEqual(u.name, "Incubi");
+  assertEqual(u.type, "INFANTRY");
+  assert(u.keywords.includes("DRUKHARI"),        "must have DRUKHARI keyword");
+  assert(u.keywords.includes("BLADES FOR HIRE"),  "must have BLADES FOR HIRE keyword");
+  assertEqual(u.sizes.length, 2,                  "must have 2 size options");
+  assertEqual(u.sizes[0].pts, 90,                 "5-model size must cost 90pts");
+  assertEqual(u.sizes[1].pts, 180,                "10-model size must cost 180pts");
+});
+
+test("Mandrakes has correct fields", () => {
+  const u = druUnit("dru_mandrakes");
+  assert(!!u, "dru_mandrakes not found");
+  assertEqual(u.name, "Mandrakes");
+  assertEqual(u.type, "INFANTRY");
+  assert(u.keywords.includes("DRUKHARI"),        "must have DRUKHARI keyword");
+  assert(u.keywords.includes("BLADES FOR HIRE"),  "must have BLADES FOR HIRE keyword");
+  assertEqual(u.sizes[0].pts, 75,                 "5-model size must cost 75pts");
+  assertEqual(u.sizes[1].pts, 150,                "10-model size must cost 150pts");
+  assert(u.rulesAdaptations?.includes("Fade Away"),
+    "rulesAdaptations must reference 'Fade Away'");
+});
+
+test("Lelith Hesperax has correct fields", () => {
+  const u = druUnit("dru_lelith_hesperax");
+  assert(!!u, "dru_lelith_hesperax not found");
+  assertEqual(u.name, "Lelith Hesperax");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("DRUKHARI"),  "must have DRUKHARI keyword");
+  assert(u.keywords.includes("EPIC HERO"), "must have EPIC HERO keyword");
+  assert(u.keywords.includes("WYCH CULT"), "must have WYCH CULT keyword");
+  assertEqual(u.sizes[0].pts, 85,          "must cost 85pts");
+  assert(u.rulesAdaptations?.includes("Thrilling Spectacle"),
+    "rulesAdaptations must reference 'Thrilling Spectacle'");
+});
+
+test("Succubus has correct fields", () => {
+  const u = druUnit("dru_succubus");
+  assert(!!u, "dru_succubus not found");
+  assertEqual(u.name, "Succubus");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("DRUKHARI"),  "must have DRUKHARI keyword");
+  assert(u.keywords.includes("WYCH CULT"), "must have WYCH CULT keyword");
+  assertEqual(u.sizes[0].pts, 50,          "must cost 50pts");
+});
+
+test("Wyches has correct fields", () => {
+  const u = druUnit("dru_wyches");
+  assert(!!u, "dru_wyches not found");
+  assertEqual(u.name, "Wyches");
+  assertEqual(u.type, "BATTLELINE");
+  assert(u.keywords.includes("DRUKHARI"),  "must have DRUKHARI keyword");
+  assert(u.keywords.includes("WYCH CULT"), "must have WYCH CULT keyword");
+  assertEqual(u.sizes[0].pts, 90,          "10-model size must cost 90pts");
+});
+
+test("Haemonculus has correct fields", () => {
+  const u = druUnit("dru_haemonculus");
+  assert(!!u, "dru_haemonculus not found");
+  assertEqual(u.name, "Haemonculus");
+  assertEqual(u.type, "CHARACTER");
+  assert(u.keywords.includes("DRUKHARI"),           "must have DRUKHARI keyword");
+  assert(u.keywords.includes("HAEMONCULUS COVENS"),  "must have HAEMONCULUS COVENS keyword");
+  assert(!u.keywords.includes("EPIC HERO"),          "must not have EPIC HERO keyword");
+  assertEqual(u.sizes[0].pts, 60,                    "must cost 60pts");
+});
+
+test("Wracks has correct fields", () => {
+  const u = druUnit("dru_wracks");
+  assert(!!u, "dru_wracks not found");
+  assertEqual(u.name, "Wracks");
+  assertEqual(u.type, "BATTLELINE");
+  assert(u.keywords.includes("DRUKHARI"),           "must have DRUKHARI keyword");
+  assert(u.keywords.includes("HAEMONCULUS COVENS"),  "must have HAEMONCULUS COVENS keyword");
+  assert(u.keywords.includes("WRACKS"),              "must have WRACKS keyword");
+  assertEqual(u.sizes.length, 2,                     "must have 2 size options");
+  assertEqual(u.sizes[0].pts, 60,                    "5-model size must cost 60pts");
+  assertEqual(u.sizes[1].pts, 100,                   "10-model size must cost 100pts");
+});
+
+
+// ── 144. Drukhari — Game Rule Logic ──────────────────────────────────────────
+
+section("144. Drukhari — Game Rule Logic");
+
+const kcHelper  = makeDetHelpers(kcDet,  id => druUnit(id));
+const skcHelper = makeDetHelpers(skcDet, id => druUnit(id));
+const pbHelper  = makeDetHelpers(pbDet,  id => druUnit(id));
+const slrHelper = makeDetHelpers(slrDet, id => druUnit(id));
+const slrIsExcBlocked = makeExcGroupChecker(slrDet.exclusiveUnitGroups);
+
+// ── Kabalite Corsairs — character cap & unit maxes ────────────────────────────
+
+test("Kabalite Corsairs — first CHARACTER can be added to an empty list", () => {
+  assert(kcHelper.canAdd([], "dru_drazhar"), "Drazhar must be addable to empty list");
+  assert(kcHelper.canAdd([], "dru_archon"),  "Archon must be addable to empty list");
+});
+
+test("Kabalite Corsairs — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "dru_drazhar" }, { unitId: "dru_archon" }];
+  assert(!kcHelper.canAdd(list, "dru_drazhar"),
+    "Third CHARACTER must be blocked when cap of 2 is reached");
+});
+
+test("Kabalite Corsairs — Kabalite Warriors max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "dru_kabalite_warriors" }, { unitId: "dru_kabalite_warriors" }];
+  assert( kcHelper.canAdd(list, "dru_kabalite_warriors"),
+    "Third Kabalite Warriors must be addable (max 3)");
+  assert(!kcHelper.canAdd([...list, { unitId: "dru_kabalite_warriors" }], "dru_kabalite_warriors"),
+    "Fourth Kabalite Warriors must be blocked (max 3)");
+});
+
+test("Kabalite Corsairs — Incubi max 1: second copy blocked", () => {
+  assert(!kcHelper.canAdd([{ unitId: "dru_incubi" }], "dru_incubi"),
+    "Second Incubi must be blocked (max 1)");
+});
+
+// ── Ship-Killer Cult — character cap & unit maxes ─────────────────────────────
+
+test("Ship-Killer Cult — first CHARACTER can be added to an empty list", () => {
+  assert(skcHelper.canAdd([], "dru_lelith_hesperax"), "Lelith Hesperax must be addable to empty list");
+  assert(skcHelper.canAdd([], "dru_succubus"),        "Succubus must be addable to empty list");
+});
+
+test("Ship-Killer Cult — third CHARACTER is blocked when cap of 2 is reached", () => {
+  const list = [{ unitId: "dru_lelith_hesperax" }, { unitId: "dru_succubus" }];
+  assert(!skcHelper.canAdd(list, "dru_lelith_hesperax"),
+    "Third CHARACTER must be blocked when cap of 2 is reached");
+});
+
+test("Ship-Killer Cult — Wyches max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "dru_wyches" }, { unitId: "dru_wyches" }];
+  assert( skcHelper.canAdd(list, "dru_wyches"),
+    "Third Wyches must be addable (max 3)");
+  assert(!skcHelper.canAdd([...list, { unitId: "dru_wyches" }], "dru_wyches"),
+    "Fourth Wyches must be blocked (max 3)");
+});
+
+// ── Painbringers — character cap & unit maxes ─────────────────────────────────
+
+test("Painbringers — Haemonculus can be added to an empty list", () => {
+  assert(pbHelper.canAdd([], "dru_haemonculus"),
+    "Haemonculus must be addable to empty list");
+});
+
+test("Painbringers — second CHARACTER is blocked when cap of 1 is reached", () => {
+  assert(!pbHelper.canAdd([{ unitId: "dru_haemonculus" }], "dru_haemonculus"),
+    "Second Haemonculus must be blocked (max 1 AND character cap of 1)");
+});
+
+test("Painbringers — Wracks max 3: third copy addable, fourth blocked", () => {
+  const list = [{ unitId: "dru_wracks" }, { unitId: "dru_wracks" }];
+  assert( pbHelper.canAdd(list, "dru_wracks"),
+    "Third Wracks must be addable (max 3)");
+  assert(!pbHelper.canAdd([...list, { unitId: "dru_wracks" }], "dru_wracks"),
+    "Fourth Wracks must be blocked (max 3)");
+});
+
+test("Painbringers — non-CHARACTER units are unaffected by the character cap", () => {
+  assert(pbHelper.canAdd([{ unitId: "dru_haemonculus" }], "dru_wracks"),
+    "Wracks must still be addable when the character cap of 1 is reached");
+});
+
+// ── Space Lane Raiders — character cap & unit maxes ───────────────────────────
+
+test("Space Lane Raiders — first CHARACTER can be added to an empty list", () => {
+  assert(slrHelper.canAdd([], "dru_archon"),          "Archon must be addable to empty list");
+  assert(slrHelper.canAdd([], "dru_haemonculus"),     "Haemonculus must be addable to empty list");
+  assert(slrHelper.canAdd([], "dru_lelith_hesperax"), "Lelith Hesperax must be addable to empty list");
+  assert(slrHelper.canAdd([], "dru_succubus"),        "Succubus must be addable to empty list");
+});
+
+test("Space Lane Raiders — fourth CHARACTER is blocked when cap of 3 is reached", () => {
+  const list = [
+    { unitId: "dru_archon"          },
+    { unitId: "dru_haemonculus"     },
+    { unitId: "dru_lelith_hesperax" },
+  ];
+  assert(!slrHelper.canAdd(list, "dru_succubus"),
+    "Fourth CHARACTER must be blocked when cap of 3 is reached");
+});
+
+// ── Space Lane Raiders — exclusive unit group (Lelith / Succubus) ─────────────
+
+test("Space Lane Raiders — Lelith Hesperax and Succubus are mutually exclusive: Lelith blocks Succubus", () => {
+  const list = [{ unitId: "dru_lelith_hesperax" }];
+  assert(slrIsExcBlocked("dru_succubus", list),
+    "Succubus must be blocked when Lelith Hesperax is already in the list");
+});
+
+test("Space Lane Raiders — Lelith Hesperax and Succubus are mutually exclusive: Succubus blocks Lelith", () => {
+  const list = [{ unitId: "dru_succubus" }];
+  assert(slrIsExcBlocked("dru_lelith_hesperax", list),
+    "Lelith Hesperax must be blocked when Succubus is already in the list");
+});
+
+test("Space Lane Raiders — Lelith Hesperax is not blocked by her own presence", () => {
+  const list = [{ unitId: "dru_lelith_hesperax" }];
+  assert(!slrIsExcBlocked("dru_lelith_hesperax", list),
+    "Lelith Hesperax must not be blocked by her own entry in the exclusive group check");
+});
+
+test("Space Lane Raiders — units outside the exclusive group are unaffected", () => {
+  const list = [{ unitId: "dru_lelith_hesperax" }];
+  assert(!slrIsExcBlocked("dru_archon", list),
+    "Archon must not be blocked by the Lelith / Succubus exclusive group");
+  assert(!slrIsExcBlocked("dru_wracks", list),
+    "Wracks must not be blocked by the Lelith / Succubus exclusive group");
+});
+
+// ── Space Lane Raiders — keywordRatios constraints ────────────────────────────
+
+test("Space Lane Raiders — Archon blocked when no Kabalite Warriors present", () => {
+  assert(!canAddUnitR("dru_archon", [], slrDet, druUnits),
+    "Archon must be blocked when no Kabalite Warriors are in the list");
+});
+
+test("Space Lane Raiders — Archon can be added when one Kabalite Warriors unit is present", () => {
+  const list = [{ unitId: "dru_kabalite_warriors" }];
+  assert(canAddUnitR("dru_archon", list, slrDet, druUnits),
+    "Archon must be addable when one Kabalite Warriors unit is present");
+});
+
+test("Space Lane Raiders — Haemonculus blocked when no Wracks present", () => {
+  assert(!canAddUnitR("dru_haemonculus", [], slrDet, druUnits),
+    "Haemonculus must be blocked when no Wracks are in the list");
+});
+
+test("Space Lane Raiders — Haemonculus can be added when one Wracks unit is present", () => {
+  const list = [{ unitId: "dru_wracks" }];
+  assert(canAddUnitR("dru_haemonculus", list, slrDet, druUnits),
+    "Haemonculus must be addable when one Wracks unit is present");
+});
+
+test("Space Lane Raiders — Succubus blocked when no Wyches present", () => {
+  assert(!canAddUnitR("dru_succubus", [], slrDet, druUnits),
+    "Succubus must be blocked when no Wyches are in the list");
+});
+
+test("Space Lane Raiders — Succubus can be added when one Wyches unit is present", () => {
+  const list = [{ unitId: "dru_wyches" }];
+  assert(canAddUnitR("dru_succubus", list, slrDet, druUnits),
+    "Succubus must be addable when one Wyches unit is present");
+});
+
+test("Space Lane Raiders — Lelith Hesperax blocked when no Wyches present", () => {
+  assert(!canAddUnitR("dru_lelith_hesperax", [], slrDet, druUnits),
+    "Lelith Hesperax must be blocked when no Wyches are in the list");
+});
+
+test("Space Lane Raiders — Lelith Hesperax can be added when one Wyches unit is present", () => {
+  const list = [{ unitId: "dru_wyches" }];
+  assert(canAddUnitR("dru_lelith_hesperax", list, slrDet, druUnits),
+    "Lelith Hesperax must be addable when one Wyches unit is present");
+});
+
+test("Space Lane Raiders — non-ratio units are never blocked by ratio constraints", () => {
+  assert(canAddUnitR("dru_incubi",    [], slrDet, druUnits),
+    "Incubi must not be blocked by any ratio constraint");
+  assert(canAddUnitR("dru_mandrakes", [], slrDet, druUnits),
+    "Mandrakes must not be blocked by any ratio constraint");
+  assert(canAddUnitR("dru_wyches",    [], slrDet, druUnits),
+    "Wyches must not be blocked by any ratio constraint (they are denominators)");
+});
+
+// ── Smoke tests ───────────────────────────────────────────────────────────────
+
+test("Smoke — Kabalite Corsairs: Archon + 3x Kabalite Warriors = 80+345 = 425pts (legal)", () => {
+  const pts = 80 + (115 * 3);
+  assertEqual(pts, 425, "Expected 425pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "dru_archon"            },
+    { unitId: "dru_kabalite_warriors" },
+    { unitId: "dru_kabalite_warriors" },
+    { unitId: "dru_kabalite_warriors" },
+  ];
+  const charCount = list.filter(l => druUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= kcDet.maxCharacters, "Character count must not exceed cap of 2");
+});
+
+test("Smoke — Painbringers: Haemonculus + 3x Wracks (5 models) = 60+180 = 240pts (legal)", () => {
+  const pts = 60 + (60 * 3);
+  assertEqual(pts, 240, "Expected 240pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "dru_haemonculus" },
+    { unitId: "dru_wracks"      },
+    { unitId: "dru_wracks"      },
+    { unitId: "dru_wracks"      },
+  ];
+  const charCount = list.filter(l => druUnit(l.unitId)?.type === "CHARACTER").length;
+  assert(charCount <= pbDet.maxCharacters, "Character count must not exceed cap of 1");
+});
+
+test("Smoke — Space Lane Raiders: Archon + Haemonculus + Kabalite Warriors + Wracks + Wyches = 80+60+115+60+90 = 405pts (legal, all ratios satisfied)", () => {
+  const pts = 80 + 60 + 115 + 60 + 90;
+  assertEqual(pts, 405, "Expected 405pts");
+  assert(pts <= 500, "Must be within 500pt limit");
+  const list = [
+    { unitId: "dru_archon"            },
+    { unitId: "dru_haemonculus"       },
+    { unitId: "dru_kabalite_warriors" },
+    { unitId: "dru_wracks"            },
+    { unitId: "dru_wyches"            },
+  ];
+  const charCount     = list.filter(l => druUnit(l.unitId)?.type === "CHARACTER").length;
+  const archonCount   = list.filter(l => l.unitId === "dru_archon").length;
+  const kabCount      = list.filter(l => l.unitId === "dru_kabalite_warriors").length;
+  const haemoCount    = list.filter(l => l.unitId === "dru_haemonculus").length;
+  const wracksCount   = list.filter(l => l.unitId === "dru_wracks").length;
+  const succubusCount = list.filter(l => l.unitId === "dru_succubus").length;
+  const wychesCount   = list.filter(l => l.unitId === "dru_wyches").length;
+  const lelithCount   = list.filter(l => l.unitId === "dru_lelith_hesperax").length;
+  assert(charCount     <= slrDet.maxCharacters, "Character count must not exceed cap of 3");
+  assert(archonCount   <= kabCount,    "Archon count must not exceed Kabalite Warriors count");
+  assert(haemoCount    <= wracksCount, "Haemonculus count must not exceed Wracks count");
+  assert(succubusCount <= wychesCount, "Succubus count must not exceed Wyches count");
+  assert(lelithCount   <= wychesCount, "Lelith Hesperax count must not exceed Wyches count");
+});
+
+
 // ── Summary ──────────────────────────────────────────────────────────────────
 
 console.log(`\n${"─".repeat(58)}`);
