@@ -1,7 +1,7 @@
 {
   "detachments": [
     {
-      "id": "am_response_clade",
+      "id": "adm_response_clade",
       "name": "Response Clade",
       "maxCharacters": 2,
       "specialRule": {
@@ -10,13 +10,13 @@
       },
       "enhancements": [
         {
-          "id": "enh_am_admonissor_shunt",
+          "id": "enh_adm_admonissor_shunt",
           "name": "Admonissor Shunt",
           "desc": "Once per battle, at the start of any phase, if the bearer is on the battlefield, you can select one friendly SKITARII unit that is Battle-shocked. That unit is no longer Battle-shocked.",
           "requiresKeywords": []
         },
         {
-          "id": "enh_am_optimised_cogitators",
+          "id": "enh_adm_optimised_cogitators",
           "name": "Optimised Cogitators",
           "desc": "Once per battle round when you target the bearer with a Stratagem, that use of the Stratagem costs 1 less CP than normal.",
           "requiresKeywords": []
@@ -24,29 +24,29 @@
       ],
       "units": [
         {
-          "id": "am_skitarii_marshall",
+          "id": "adm_skitarii_marshall",
           "max": 2
         },
         {
-          "id": "am_skitarii_rangers",
+          "id": "adm_skitarii_rangers",
           "max": 3
         },
         {
-          "id": "am_skitarii_vanguard",
+          "id": "adm_skitarii_vanguard",
           "max": 3
         },
         {
-          "id": "am_sicarian_infiltrators",
+          "id": "adm_sicarian_infiltrators",
           "max": 1
         },
         {
-          "id": "am_sicarian_ruststalkers",
+          "id": "adm_sicarian_ruststalkers",
           "max": 1
         }
       ]
     },
     {
-      "id": "am_machine_cult",
+      "id": "adm_machine_cult",
       "name": "Machine Cult",
       "maxCharacters": 2,
       "specialRule": {
@@ -55,13 +55,13 @@
       },
       "enhancements": [
         {
-          "id": "enh_am_beseech_the_machine_spirits",
+          "id": "enh_adm_beseech_the_machine_spirits",
           "name": "Beseech the Machine Spirits",
           "desc": "At the end of the Move Units step of your Movement phase, the bearer can attempt to operte a Hatchway that is visible to and within 9\" of it, instead of within 1\". When doing so, if your opponent attempts to prevent it, add the bearer's Toughness characteristic to your result of the roll-off, instead of that of a friendly model within 1\" of that Hatchway.",
           "requiresKeywords": []
         },
         {
-          "id": "enh_am_harmonic_discordator",
+          "id": "enh_adm_harmonic_discordator",
           "name": "Harmonic Discordator",
           "desc": "In the Battle-shock step of your opponents Command Phase, if an enemy unit that is below it's Starting Strength is within 3\" of the bearer, that unit must take a Battle-shock test. If that enemy unit is also Below Half-Strength, subtract 1 from that test. This Enhancement cannot cause a unit to take two Battle-shock tests in the same phase.",
           "requiresKeywords": []
@@ -69,41 +69,41 @@
       ],
       "units": [
         {
-          "id": "am_tech_priest_dominus",
+          "id": "adm_tech_priest_dominus",
           "max": 1
         },
         {
-          "id": "am_tech_priest_enginseer",
+          "id": "adm_tech_priest_enginseer",
           "max": 1
         },
         {
-          "id": "am_tech_priest_manipulus",
+          "id": "adm_tech_priest_manipulus",
           "max": 1
         },
         {
-          "id": "am_technoarcheologist",
+          "id": "adm_technoarcheologist",
           "max": 1
         },
         {
-          "id": "am_corpuscarii_electro_priests",
+          "id": "adm_corpuscarii_electro_priests",
           "max": 1
         },
         {
-          "id": "am_fulgurite_electro_priests",
+          "id": "adm_fulgurite_electro_priests",
           "max": 1
         },
         {
-          "id": "am_kataphron_breachers",
+          "id": "adm_kataphron_breachers",
           "max": 1
         },
         {
-          "id": "am_kataphron_destroyers",
+          "id": "adm_kataphron_destroyers",
           "max": 1
         }
       ]
     },
     {
-      "id": "am_electromartyrs",
+      "id": "adm_electromartyrs",
       "name": "Electromartyrs",
       "maxCharacters": 2,
       "specialRule": {
@@ -112,13 +112,13 @@
       },
       "enhancements": [
         {
-          "id": "enh_am_remote_lockdown",
+          "id": "enh_adm_remote_lockdown",
           "name": "Remote Lockdown",
           "desc": "Once per battle round when an enemy unit attempts to operate a Hatchway, if that Hatchway is within 9\" and visible to the bearer, it can use this Enhancement. If it does, it can attempt to prevent that unit from operating that Hatchway as if the bearer was within 1\" of that Hatchway.",
           "requiresKeywords": []
         },
         {
-          "id": "enh_am_multi_dimensional_auspex",
+          "id": "enh_adm_multi_dimensional_auspex",
           "name": "Multi-Dimensional Auspex",
           "desc": "Once per battle, in your Shooting phase, when the bearer is selected to shoot, it can use this Enhancement. If it does, until the end of the phase, it can ignore Walls and closed Hatchways for the purposes of determining visibility and the Range characteristic of the ranged weapons it is equipped with is changed to 6\".",
           "requiresKeywords": []
@@ -126,71 +126,71 @@
       ],
       "units": [
         {
-          "id": "am_tech_priest_dominus",
+          "id": "adm_tech_priest_dominus",
           "max": 1
         },
         {
-          "id": "am_tech_priest_enginseer",
+          "id": "adm_tech_priest_enginseer",
           "max": 1
         },
         {
-          "id": "am_tech_priest_manipulus",
+          "id": "adm_tech_priest_manipulus",
           "max": 1
         },
         {
-          "id": "am_technoarcheologist",
+          "id": "adm_technoarcheologist",
           "max": 1
         },
         {
-          "id": "am_skitarii_marshall",
+          "id": "adm_skitarii_marshall",
           "max": 1
         },
         {
-          "id": "am_skitarii_rangers",
+          "id": "adm_skitarii_rangers",
           "max": 3
         },
         {
-          "id": "am_skitarii_vanguard",
+          "id": "adm_skitarii_vanguard",
           "max": 3
         },
         {
-          "id": "am_corpuscarii_electro_priests",
+          "id": "adm_corpuscarii_electro_priests",
           "max": 1
         },
         {
-          "id": "am_fulgurite_electro_priests",
+          "id": "adm_fulgurite_electro_priests",
           "max": 1
         },
         {
-          "id": "am_kataphron_breachers",
+          "id": "adm_kataphron_breachers",
           "max": 1
         },
         {
-          "id": "am_kataphron_destroyers",
+          "id": "adm_kataphron_destroyers",
           "max": 1
         },
         {
-          "id": "am_sicarian_infiltrators",
+          "id": "adm_sicarian_infiltrators",
           "max": 1
         },
         {
-          "id": "am_sicarian_ruststalkers",
+          "id": "adm_sicarian_ruststalkers",
           "max": 1
         }
       ],
       "exclusiveUnitGroups": [
         [
-          "am_tech_priest_dominus",
-          "am_tech_priest_enginseer",
-          "am_tech_priest_manipulus",
-          "am_technoarcheologist"
+          "adm_tech_priest_dominus",
+          "adm_tech_priest_enginseer",
+          "adm_tech_priest_manipulus",
+          "adm_technoarcheologist"
         ]
       ]
     }
   ],
   "units": [
     {
-      "id": "am_skitarii_marshall",
+      "id": "adm_skitarii_marshall",
       "name": "Skitarii Marshall",
       "type": "CHARACTER",
       "keywords": [
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "id": "am_skitarii_rangers",
+      "id": "adm_skitarii_rangers",
       "name": "Skitarii Rangers",
       "type": "BATTLELINE",
       "keywords": [
@@ -231,7 +231,7 @@
       "rulesAdaptations": "This unit loses the Scouts and Objective Scouted abilities."
     },
     {
-      "id": "am_skitarii_vanguard",
+      "id": "adm_skitarii_vanguard",
       "name": "Skitarii Vanguard",
       "type": "BATTLELINE",
       "keywords": [
@@ -253,7 +253,7 @@
       ]
     },
     {
-      "id": "am_sicarian_infiltrators",
+      "id": "adm_sicarian_infiltrators",
       "name": "Sicarian Infiltrators",
       "type": "INFANTRY",
       "keywords": [
@@ -274,7 +274,7 @@
       ]
     },
     {
-      "id": "am_sicarian_ruststalkers",
+      "id": "adm_sicarian_ruststalkers",
       "name": "Sicarian Ruststalkers",
       "type": "INFANTRY",
       "keywords": [
@@ -295,7 +295,7 @@
       ]
     },
     {
-      "id": "am_tech_priest_dominus",
+      "id": "adm_tech_priest_dominus",
       "name": "Tech-Priest Dominus",
       "type": "CHARACTER",
       "keywords": [
@@ -315,7 +315,7 @@
       "rulesAdaptations": "This unit loses the Dataspike ability."
     },
     {
-      "id": "am_tech_priest_enginseer",
+      "id": "adm_tech_priest_enginseer",
       "name": "Tech-Priest Enginseer",
       "type": "CHARACTER",
       "keywords": [
@@ -334,7 +334,7 @@
       ]
     },
     {
-      "id": "am_tech_priest_manipulus",
+      "id": "adm_tech_priest_manipulus",
       "name": "Tech-Priest Manipulus",
       "type": "CHARACTER",
       "keywords": [
@@ -353,7 +353,7 @@
       ]
     },
     {
-      "id": "am_technoarcheologist",
+      "id": "adm_technoarcheologist",
       "name": "Technoarcheologist",
       "type": "CHARACTER",
       "keywords": [
@@ -372,7 +372,7 @@
       ]
     },
     {
-      "id": "am_corpuscarii_electro_priests",
+      "id": "adm_corpuscarii_electro_priests",
       "name": "Corpuscarii Electro-Priests",
       "type": "INFANTRY",
       "keywords": [
@@ -394,7 +394,7 @@
       ]
     },
     {
-      "id": "am_fulgurite_electro_priests",
+      "id": "adm_fulgurite_electro_priests",
       "name": "Fulgurite Electro-Priests",
       "type": "INFANTRY",
       "keywords": [
@@ -416,7 +416,7 @@
       ]
     },
     {
-      "id": "am_kataphron_breachers",
+      "id": "adm_kataphron_breachers",
       "name": "Kataphron Breachers",
       "type": "INFANTRY",
       "keywords": [
@@ -434,7 +434,7 @@
       ]
     },
     {
-      "id": "am_kataphron_destroyers",
+      "id": "adm_kataphron_destroyers",
       "name": "Kataphron Destroyers",
       "type": "INFANTRY",
       "keywords": [

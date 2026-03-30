@@ -12319,9 +12319,9 @@ test("Adeptus Mechanicus has exactly 13 units", () => {
   assertEqual(amUnits.length, 13, "Expected 13 units, got " + amUnits.length);
 });
 
-test("Adeptus Mechanicus unit IDs are all prefixed am_", () => {
+test("Adeptus Mechanicus unit IDs are all prefixed adm_", () => {
   amUnits.forEach(u => {
-    assert(u.id.startsWith("am_"), "Unit id '" + u.id + "' must start with 'am_'");
+    assert(u.id.startsWith("adm_"), "Unit id '" + u.id + "' must start with 'adm_'");
   });
 });
 
@@ -12330,10 +12330,10 @@ test("Adeptus Mechanicus unit IDs are all prefixed am_", () => {
 
 section("101. Adeptus Mechanicus — Response Clade Detachment");
 
-const rcDet = amDets ? amDets.find(d => d.id === "am_response_clade") : null;
+const rcDet = amDets ? amDets.find(d => d.id === "adm_response_clade") : null;
 
 test("Response Clade detachment exists", () => {
-  assert(!!rcDet, "am_response_clade must exist in Adeptus Mechanicus detachments");
+  assert(!!rcDet, "adm_response_clade must exist in Adeptus Mechanicus detachments");
 });
 
 test("Response Clade has maxCharacters of 2", () => {
@@ -12368,41 +12368,41 @@ test("Response Clade has exactly 2 enhancements", () => {
 
 test("Response Clade enhancements — Admonissor Shunt and Optimised Cogitators present", () => {
   const ids = rcDet.enhancements.map(e => e.id);
-  assert(ids.includes("enh_am_admonissor_shunt"),       "must include enh_am_admonissor_shunt");
-  assert(ids.includes("enh_am_optimised_cogitators"),   "must include enh_am_optimised_cogitators");
+  assert(ids.includes("enh_adm_admonissor_shunt"),       "must include enh_am_admonissor_shunt");
+  assert(ids.includes("enh_adm_optimised_cogitators"),   "must include enh_am_optimised_cogitators");
 });
 
 test("Admonissor Shunt requiresKeywords is empty array", () => {
-  const enh = rcDet.enhancements.find(e => e.id === "enh_am_admonissor_shunt");
+  const enh = rcDet.enhancements.find(e => e.id === "enh_adm_admonissor_shunt");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
     "Admonissor Shunt must have empty requiresKeywords array");
 });
 
 test("Admonissor Shunt desc references Battle-shocked and SKITARII", () => {
-  const enh = rcDet.enhancements.find(e => e.id === "enh_am_admonissor_shunt");
+  const enh = rcDet.enhancements.find(e => e.id === "enh_adm_admonissor_shunt");
   assert(enh.desc.includes("Battle-shocked"), "desc must mention 'Battle-shocked'");
   assert(enh.desc.includes("SKITARII"),       "desc must mention 'SKITARII'");
 });
 
 test("Optimised Cogitators requiresKeywords is empty array", () => {
-  const enh = rcDet.enhancements.find(e => e.id === "enh_am_optimised_cogitators");
+  const enh = rcDet.enhancements.find(e => e.id === "enh_adm_optimised_cogitators");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
     "Optimised Cogitators must have empty requiresKeywords array");
 });
 
 test("Optimised Cogitators desc references Stratagem and CP", () => {
-  const enh = rcDet.enhancements.find(e => e.id === "enh_am_optimised_cogitators");
+  const enh = rcDet.enhancements.find(e => e.id === "enh_adm_optimised_cogitators");
   assert(enh.desc.includes("Stratagem"), "desc must mention 'Stratagem'");
   assert(enh.desc.includes("CP"),        "desc must mention 'CP'");
 });
 
 test("Response Clade unit roster — correct IDs and maxes", () => {
   const find = id => rcDet.units.find(u => u.id === id);
-  assert(find("am_skitarii_marshall")?.max     === 2, "am_skitarii_marshall max must be 2");
-  assert(find("am_skitarii_rangers")?.max      === 3, "am_skitarii_rangers max must be 3");
-  assert(find("am_skitarii_vanguard")?.max     === 3, "am_skitarii_vanguard max must be 3");
-  assert(find("am_sicarian_infiltrators")?.max === 1, "am_sicarian_infiltrators max must be 1");
-  assert(find("am_sicarian_ruststalkers")?.max === 1, "am_sicarian_ruststalkers max must be 1");
+  assert(find("adm_skitarii_marshall")?.max     === 2, "adm_skitarii_marshall max must be 2");
+  assert(find("adm_skitarii_rangers")?.max      === 3, "adm_skitarii_rangers max must be 3");
+  assert(find("adm_skitarii_vanguard")?.max     === 3, "adm_skitarii_vanguard max must be 3");
+  assert(find("adm_sicarian_infiltrators")?.max === 1, "adm_sicarian_infiltrators max must be 1");
+  assert(find("adm_sicarian_ruststalkers")?.max === 1, "adm_sicarian_ruststalkers max must be 1");
 });
 
 test("Response Clade has exactly 5 unit slots", () => {
@@ -12420,8 +12420,8 @@ test("Response Clade has no ratio constraints", () => {
 section("102. Adeptus Mechanicus — Response Clade Unit Definitions");
 
 test("Skitarii Marshall — CHARACTER, SKITARII, 35pts for 1 model, no rulesAdaptations", () => {
-  const u = amUnit("am_skitarii_marshall");
-  assert(!!u, "am_skitarii_marshall not found");
+  const u = amUnit("adm_skitarii_marshall");
+  assert(!!u, "adm_skitarii_marshall not found");
   assertEqual(u.type, "CHARACTER");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("INFANTRY"),           "must have INFANTRY");
@@ -12436,8 +12436,8 @@ test("Skitarii Marshall — CHARACTER, SKITARII, 35pts for 1 model, no rulesAdap
 });
 
 test("Skitarii Rangers — BATTLELINE, SKITARII, 85pts for 10 models, loses Scouts and Objective Scouted", () => {
-  const u = amUnit("am_skitarii_rangers");
-  assert(!!u, "am_skitarii_rangers not found");
+  const u = amUnit("adm_skitarii_rangers");
+  assert(!!u, "adm_skitarii_rangers not found");
   assertEqual(u.type, "BATTLELINE");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("INFANTRY"),           "must have INFANTRY");
@@ -12453,8 +12453,8 @@ test("Skitarii Rangers — BATTLELINE, SKITARII, 85pts for 10 models, loses Scou
 });
 
 test("Skitarii Vanguard — BATTLELINE, SKITARII, 95pts for 10 models, no rulesAdaptations", () => {
-  const u = amUnit("am_skitarii_vanguard");
-  assert(!!u, "am_skitarii_vanguard not found");
+  const u = amUnit("adm_skitarii_vanguard");
+  assert(!!u, "adm_skitarii_vanguard not found");
   assertEqual(u.type, "BATTLELINE");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("BATTLELINE"),         "must have BATTLELINE");
@@ -12465,7 +12465,7 @@ test("Skitarii Vanguard — BATTLELINE, SKITARII, 95pts for 10 models, no rulesA
 });
 
 test("Skitarii Rangers and Skitarii Vanguard share SKITARII keyword and BATTLELINE type", () => {
-  ["am_skitarii_rangers", "am_skitarii_vanguard"].forEach(id => {
+  ["adm_skitarii_rangers", "adm_skitarii_vanguard"].forEach(id => {
     const u = amUnit(id);
     assertEqual(u.type, "BATTLELINE", id + " must be BATTLELINE type");
     assert(u.keywords.includes("SKITARII"),   id + " must have SKITARII keyword");
@@ -12474,13 +12474,13 @@ test("Skitarii Rangers and Skitarii Vanguard share SKITARII keyword and BATTLELI
 });
 
 test("Skitarii Marshall does not have BATTLELINE keyword", () => {
-  const u = amUnit("am_skitarii_marshall");
+  const u = amUnit("adm_skitarii_marshall");
   assert(!u.keywords.includes("BATTLELINE"), "Skitarii Marshall must NOT have BATTLELINE");
 });
 
 test("Sicarian Infiltrators — INFANTRY, SKITARII, 75pts/5 models and 155pts/10 models", () => {
-  const u = amUnit("am_sicarian_infiltrators");
-  assert(!!u, "am_sicarian_infiltrators not found");
+  const u = amUnit("adm_sicarian_infiltrators");
+  assert(!!u, "adm_sicarian_infiltrators not found");
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("SKITARII"),           "must have SKITARII");
@@ -12493,8 +12493,8 @@ test("Sicarian Infiltrators — INFANTRY, SKITARII, 75pts/5 models and 155pts/10
 });
 
 test("Sicarian Ruststalkers — INFANTRY, SKITARII, 80pts/5 models and 165pts/10 models", () => {
-  const u = amUnit("am_sicarian_ruststalkers");
-  assert(!!u, "am_sicarian_ruststalkers not found");
+  const u = amUnit("adm_sicarian_ruststalkers");
+  assert(!!u, "adm_sicarian_ruststalkers not found");
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("SKITARII"),           "must have SKITARII");
@@ -12507,7 +12507,7 @@ test("Sicarian Ruststalkers — INFANTRY, SKITARII, 80pts/5 models and 165pts/10
 });
 
 test("Sicarian Infiltrators and Ruststalkers both have SKITARII but not CULT MECHANICUS", () => {
-  ["am_sicarian_infiltrators", "am_sicarian_ruststalkers"].forEach(id => {
+  ["adm_sicarian_infiltrators", "adm_sicarian_ruststalkers"].forEach(id => {
     const u = amUnit(id);
     assert(u.keywords.includes("SKITARII"),        id + " must have SKITARII");
     assert(!u.keywords.includes("CULT MECHANICUS"), id + " must NOT have CULT MECHANICUS");
@@ -12515,8 +12515,8 @@ test("Sicarian Infiltrators and Ruststalkers both have SKITARII but not CULT MEC
 });
 
 test("Response Clade SKITARII units — all five have SKITARII keyword", () => {
-  ["am_skitarii_marshall", "am_skitarii_rangers", "am_skitarii_vanguard",
-   "am_sicarian_infiltrators", "am_sicarian_ruststalkers"].forEach(id => {
+  ["adm_skitarii_marshall", "adm_skitarii_rangers", "adm_skitarii_vanguard",
+   "adm_sicarian_infiltrators", "adm_sicarian_ruststalkers"].forEach(id => {
     assert(amUnit(id)?.keywords.includes("SKITARII"), id + " must have SKITARII keyword");
   });
 });
@@ -12529,64 +12529,64 @@ section("103. Adeptus Mechanicus — Response Clade Game Rule Logic");
 const rc = makeDetHelpers(rcDet, id => amUnit(id));
 
 test("Character cap — Skitarii Marshall can be added to an empty list", () => {
-  assert(rc.canAdd([], "am_skitarii_marshall"),
+  assert(rc.canAdd([], "adm_skitarii_marshall"),
     "Skitarii Marshall must be addable to an empty list");
 });
 
 test("Character cap — up to 2 Skitarii Marshalls allowed (per unit max)", () => {
-  assertEqual(rc.unitMax("am_skitarii_marshall"), 2, "Skitarii Marshall max must be 2");
-  const list = [{ unitId: "am_skitarii_marshall" }];
-  assert(rc.canAdd(list, "am_skitarii_marshall"),
+  assertEqual(rc.unitMax("adm_skitarii_marshall"), 2, "Skitarii Marshall max must be 2");
+  const list = [{ unitId: "adm_skitarii_marshall" }];
+  assert(rc.canAdd(list, "adm_skitarii_marshall"),
     "Second Skitarii Marshall must be allowed when only 1 is present");
 });
 
 test("Character cap — third CHARACTER blocked when cap of 2 filled by 2 Marshalls", () => {
-  const list = [{ unitId: "am_skitarii_marshall" }, { unitId: "am_skitarii_marshall" }];
+  const list = [{ unitId: "adm_skitarii_marshall" }, { unitId: "adm_skitarii_marshall" }];
   assertEqual(rc.charCount(list), 2, "must count 2 CHARACTERs");
-  assert(!rc.canAdd(list, "am_skitarii_marshall"),
+  assert(!rc.canAdd(list, "adm_skitarii_marshall"),
     "Third Skitarii Marshall must be blocked by both unit max (2) and char cap (2)");
 });
 
 test("Character cap — non-CHARACTER units are never blocked by the cap", () => {
-  const list = [{ unitId: "am_skitarii_marshall" }, { unitId: "am_skitarii_marshall" }];
-  ["am_skitarii_rangers", "am_skitarii_vanguard",
-   "am_sicarian_infiltrators", "am_sicarian_ruststalkers"].forEach(id => {
+  const list = [{ unitId: "adm_skitarii_marshall" }, { unitId: "adm_skitarii_marshall" }];
+  ["adm_skitarii_rangers", "adm_skitarii_vanguard",
+   "adm_sicarian_infiltrators", "adm_sicarian_ruststalkers"].forEach(id => {
     assert(rc.canAdd(list, id),
       id + " must still be addable when char cap of 2 is filled");
   });
 });
 
 test("Unit max — Skitarii Rangers capped at 3", () => {
-  assertEqual(rc.unitMax("am_skitarii_rangers"), 3, "Skitarii Rangers max must be 3");
+  assertEqual(rc.unitMax("adm_skitarii_rangers"), 3, "Skitarii Rangers max must be 3");
   const list = [
-    { unitId: "am_skitarii_rangers" },
-    { unitId: "am_skitarii_rangers" },
-    { unitId: "am_skitarii_rangers" },
+    { unitId: "adm_skitarii_rangers" },
+    { unitId: "adm_skitarii_rangers" },
+    { unitId: "adm_skitarii_rangers" },
   ];
-  assert(!rc.canAdd(list, "am_skitarii_rangers"),
+  assert(!rc.canAdd(list, "adm_skitarii_rangers"),
     "Fourth Skitarii Rangers must be blocked by unit max of 3");
 });
 
 test("Unit max — Skitarii Vanguard capped at 3", () => {
-  assertEqual(rc.unitMax("am_skitarii_vanguard"), 3, "Skitarii Vanguard max must be 3");
+  assertEqual(rc.unitMax("adm_skitarii_vanguard"), 3, "Skitarii Vanguard max must be 3");
   const list = [
-    { unitId: "am_skitarii_vanguard" },
-    { unitId: "am_skitarii_vanguard" },
-    { unitId: "am_skitarii_vanguard" },
+    { unitId: "adm_skitarii_vanguard" },
+    { unitId: "adm_skitarii_vanguard" },
+    { unitId: "adm_skitarii_vanguard" },
   ];
-  assert(!rc.canAdd(list, "am_skitarii_vanguard"),
+  assert(!rc.canAdd(list, "adm_skitarii_vanguard"),
     "Fourth Skitarii Vanguard must be blocked by unit max of 3");
 });
 
 test("Unit max — Sicarian Infiltrators capped at 1", () => {
-  assertEqual(rc.unitMax("am_sicarian_infiltrators"), 1, "Sicarian Infiltrators max must be 1");
-  assert(!rc.canAdd([{ unitId: "am_sicarian_infiltrators" }], "am_sicarian_infiltrators"),
+  assertEqual(rc.unitMax("adm_sicarian_infiltrators"), 1, "Sicarian Infiltrators max must be 1");
+  assert(!rc.canAdd([{ unitId: "adm_sicarian_infiltrators" }], "adm_sicarian_infiltrators"),
     "Second Sicarian Infiltrators must be blocked by unit max of 1");
 });
 
 test("Unit max — Sicarian Ruststalkers capped at 1", () => {
-  assertEqual(rc.unitMax("am_sicarian_ruststalkers"), 1, "Sicarian Ruststalkers max must be 1");
-  assert(!rc.canAdd([{ unitId: "am_sicarian_ruststalkers" }], "am_sicarian_ruststalkers"),
+  assertEqual(rc.unitMax("adm_sicarian_ruststalkers"), 1, "Sicarian Ruststalkers max must be 1");
+  assert(!rc.canAdd([{ unitId: "adm_sicarian_ruststalkers" }], "adm_sicarian_ruststalkers"),
     "Second Sicarian Ruststalkers must be blocked by unit max of 1");
 });
 
@@ -12619,10 +12619,10 @@ test("Smoke test — 2x Marshall + 1x Sicarian Infiltrators (10-model) + 1x Sica
 
 section("104. Adeptus Mechanicus — Machine Cult Detachment");
 
-const mcDet = amDets ? amDets.find(d => d.id === "am_machine_cult") : null;
+const mcDet = amDets ? amDets.find(d => d.id === "adm_machine_cult") : null;
 
 test("Machine Cult detachment exists", () => {
-  assert(!!mcDet, "am_machine_cult must exist in Adeptus Mechanicus detachments");
+  assert(!!mcDet, "adm_machine_cult must exist in Adeptus Mechanicus detachments");
 });
 
 test("Machine Cult has maxCharacters of 2", () => {
@@ -12666,56 +12666,56 @@ test("Machine Cult has exactly 2 enhancements", () => {
 
 test("Machine Cult enhancements — Beseech the Machine Spirits and Harmonic Discordator present", () => {
   const ids = mcDet.enhancements.map(e => e.id);
-  assert(ids.includes("enh_am_beseech_the_machine_spirits"), "must include enh_am_beseech_the_machine_spirits");
-  assert(ids.includes("enh_am_harmonic_discordator"),        "must include enh_am_harmonic_discordator");
+  assert(ids.includes("enh_adm_beseech_the_machine_spirits"), "must include enh_am_beseech_the_machine_spirits");
+  assert(ids.includes("enh_adm_harmonic_discordator"),        "must include enh_am_harmonic_discordator");
 });
 
 test("Beseech the Machine Spirits requiresKeywords is empty array", () => {
-  const enh = mcDet.enhancements.find(e => e.id === "enh_am_beseech_the_machine_spirits");
+  const enh = mcDet.enhancements.find(e => e.id === "enh_adm_beseech_the_machine_spirits");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
     "Beseech the Machine Spirits must have empty requiresKeywords array");
 });
 
 test("Beseech the Machine Spirits desc references Hatchway and Movement phase", () => {
-  const enh = mcDet.enhancements.find(e => e.id === "enh_am_beseech_the_machine_spirits");
+  const enh = mcDet.enhancements.find(e => e.id === "enh_adm_beseech_the_machine_spirits");
   assert(enh.desc.includes("Hatchway"),        "desc must mention 'Hatchway'");
   assert(enh.desc.includes("Movement phase"),  "desc must mention 'Movement phase'");
 });
 
 test("Beseech the Machine Spirits desc references Toughness and roll-off", () => {
-  const enh = mcDet.enhancements.find(e => e.id === "enh_am_beseech_the_machine_spirits");
+  const enh = mcDet.enhancements.find(e => e.id === "enh_adm_beseech_the_machine_spirits");
   assert(enh.desc.includes("Toughness"), "desc must mention 'Toughness'");
   assert(enh.desc.includes("roll-off"),  "desc must mention 'roll-off'");
 });
 
 test("Harmonic Discordator requiresKeywords is empty array", () => {
-  const enh = mcDet.enhancements.find(e => e.id === "enh_am_harmonic_discordator");
+  const enh = mcDet.enhancements.find(e => e.id === "enh_adm_harmonic_discordator");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
     "Harmonic Discordator must have empty requiresKeywords array");
 });
 
 test("Harmonic Discordator desc references Battle-shock and Command Phase", () => {
-  const enh = mcDet.enhancements.find(e => e.id === "enh_am_harmonic_discordator");
+  const enh = mcDet.enhancements.find(e => e.id === "enh_adm_harmonic_discordator");
   assert(enh.desc.includes("Battle-shock"),   "desc must mention 'Battle-shock'");
   assert(enh.desc.includes("Command Phase"),  "desc must mention 'Command Phase'");
 });
 
 test("Harmonic Discordator desc references Starting Strength and Below Half-Strength", () => {
-  const enh = mcDet.enhancements.find(e => e.id === "enh_am_harmonic_discordator");
+  const enh = mcDet.enhancements.find(e => e.id === "enh_adm_harmonic_discordator");
   assert(enh.desc.includes("Starting Strength"),    "desc must mention 'Starting Strength'");
   assert(enh.desc.includes("Below Half-Strength"),  "desc must mention 'Below Half-Strength'");
 });
 
 test("Machine Cult unit roster — correct IDs and maxes", () => {
   const find = id => mcDet.units.find(u => u.id === id);
-  assert(find("am_tech_priest_dominus")?.max        === 1, "am_tech_priest_dominus max must be 1");
-  assert(find("am_tech_priest_enginseer")?.max      === 1, "am_tech_priest_enginseer max must be 1");
-  assert(find("am_tech_priest_manipulus")?.max      === 1, "am_tech_priest_manipulus max must be 1");
-  assert(find("am_technoarcheologist")?.max         === 1, "am_technoarcheologist max must be 1");
-  assert(find("am_corpuscarii_electro_priests")?.max === 1, "am_corpuscarii_electro_priests max must be 1");
-  assert(find("am_fulgurite_electro_priests")?.max  === 1, "am_fulgurite_electro_priests max must be 1");
-  assert(find("am_kataphron_breachers")?.max        === 1, "am_kataphron_breachers max must be 1");
-  assert(find("am_kataphron_destroyers")?.max       === 1, "am_kataphron_destroyers max must be 1");
+  assert(find("adm_tech_priest_dominus")?.max        === 1, "adm_tech_priest_dominus max must be 1");
+  assert(find("adm_tech_priest_enginseer")?.max      === 1, "adm_tech_priest_enginseer max must be 1");
+  assert(find("adm_tech_priest_manipulus")?.max      === 1, "adm_tech_priest_manipulus max must be 1");
+  assert(find("adm_technoarcheologist")?.max         === 1, "adm_technoarcheologist max must be 1");
+  assert(find("adm_corpuscarii_electro_priests")?.max === 1, "adm_corpuscarii_electro_priests max must be 1");
+  assert(find("adm_fulgurite_electro_priests")?.max  === 1, "adm_fulgurite_electro_priests max must be 1");
+  assert(find("adm_kataphron_breachers")?.max        === 1, "adm_kataphron_breachers max must be 1");
+  assert(find("adm_kataphron_destroyers")?.max       === 1, "adm_kataphron_destroyers max must be 1");
 });
 
 test("Machine Cult has exactly 8 unit slots", () => {
@@ -12733,8 +12733,8 @@ test("Machine Cult has no ratio constraints", () => {
 section("105. Adeptus Mechanicus — Machine Cult Unit Definitions");
 
 test("Tech-Priest Dominus — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 65pts, loses Dataspike", () => {
-  const u = amUnit("am_tech_priest_dominus");
-  assert(!!u, "am_tech_priest_dominus not found");
+  const u = amUnit("adm_tech_priest_dominus");
+  assert(!!u, "adm_tech_priest_dominus not found");
   assertEqual(u.type, "CHARACTER");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("INFANTRY"),           "must have INFANTRY");
@@ -12750,8 +12750,8 @@ test("Tech-Priest Dominus — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 65pts, lo
 });
 
 test("Tech-Priest Enginseer — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 55pts, no rulesAdaptations", () => {
-  const u = amUnit("am_tech_priest_enginseer");
-  assert(!!u, "am_tech_priest_enginseer not found");
+  const u = amUnit("adm_tech_priest_enginseer");
+  assert(!!u, "adm_tech_priest_enginseer not found");
   assertEqual(u.type, "CHARACTER");
   assert(u.keywords.includes("CULT MECHANICUS"), "must have CULT MECHANICUS");
   assert(u.keywords.includes("TECH-PRIEST"),     "must have TECH-PRIEST");
@@ -12762,8 +12762,8 @@ test("Tech-Priest Enginseer — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 55pts, 
 });
 
 test("Tech-Priest Manipulus — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 60pts, hyphenated name", () => {
-  const u = amUnit("am_tech_priest_manipulus");
-  assert(!!u, "am_tech_priest_manipulus not found");
+  const u = amUnit("adm_tech_priest_manipulus");
+  assert(!!u, "adm_tech_priest_manipulus not found");
   assertEqual(u.name, "Tech-Priest Manipulus", "name must be 'Tech-Priest Manipulus' with hyphen");
   assertEqual(u.type, "CHARACTER");
   assert(u.keywords.includes("CULT MECHANICUS"), "must have CULT MECHANICUS");
@@ -12773,8 +12773,8 @@ test("Tech-Priest Manipulus — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 60pts, 
 });
 
 test("Technoarcheologist — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 60pts", () => {
-  const u = amUnit("am_technoarcheologist");
-  assert(!!u, "am_technoarcheologist not found");
+  const u = amUnit("adm_technoarcheologist");
+  assert(!!u, "adm_technoarcheologist not found");
   assertEqual(u.type, "CHARACTER");
   assert(u.keywords.includes("CULT MECHANICUS"), "must have CULT MECHANICUS");
   assert(u.keywords.includes("TECH-PRIEST"),     "must have TECH-PRIEST");
@@ -12784,8 +12784,8 @@ test("Technoarcheologist — CHARACTER, TECH-PRIEST, CULT MECHANICUS, 60pts", ()
 });
 
 test("All four Tech-Priest variants share CHARACTER type, TECH-PRIEST and CULT MECHANICUS keywords", () => {
-  ["am_tech_priest_dominus", "am_tech_priest_enginseer",
-   "am_tech_priest_manipulus", "am_technoarcheologist"].forEach(id => {
+  ["adm_tech_priest_dominus", "adm_tech_priest_enginseer",
+   "adm_tech_priest_manipulus", "adm_technoarcheologist"].forEach(id => {
     const u = amUnit(id);
     assertEqual(u.type, "CHARACTER",               id + " must be CHARACTER type");
     assert(u.keywords.includes("TECH-PRIEST"),     id + " must have TECH-PRIEST keyword");
@@ -12795,8 +12795,8 @@ test("All four Tech-Priest variants share CHARACTER type, TECH-PRIEST and CULT M
 });
 
 test("Corpuscarii Electro-Priests — INFANTRY, ELECTRO-PRIESTS, CULT MECHANICUS, 65pts/5 models, 130pts/10 models", () => {
-  const u = amUnit("am_corpuscarii_electro_priests");
-  assert(!!u, "am_corpuscarii_electro_priests not found");
+  const u = amUnit("adm_corpuscarii_electro_priests");
+  assert(!!u, "adm_corpuscarii_electro_priests not found");
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("INFANTRY"),           "must have INFANTRY");
@@ -12812,8 +12812,8 @@ test("Corpuscarii Electro-Priests — INFANTRY, ELECTRO-PRIESTS, CULT MECHANICUS
 });
 
 test("Fulgurite Electro-Priests — INFANTRY, ELECTRO-PRIESTS, CULT MECHANICUS, 70pts/5 models, 140pts/10 models", () => {
-  const u = amUnit("am_fulgurite_electro_priests");
-  assert(!!u, "am_fulgurite_electro_priests not found");
+  const u = amUnit("adm_fulgurite_electro_priests");
+  assert(!!u, "adm_fulgurite_electro_priests not found");
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("ELECTRO-PRIESTS"),    "must have ELECTRO-PRIESTS");
   assert(u.keywords.includes("CULT MECHANICUS"),    "must have CULT MECHANICUS");
@@ -12824,7 +12824,7 @@ test("Fulgurite Electro-Priests — INFANTRY, ELECTRO-PRIESTS, CULT MECHANICUS, 
 });
 
 test("Both Electro-Priests variants share ELECTRO-PRIESTS and CULT MECHANICUS keywords, not SKITARII", () => {
-  ["am_corpuscarii_electro_priests", "am_fulgurite_electro_priests"].forEach(id => {
+  ["adm_corpuscarii_electro_priests", "adm_fulgurite_electro_priests"].forEach(id => {
     const u = amUnit(id);
     assert(u.keywords.includes("ELECTRO-PRIESTS"),    id + " must have ELECTRO-PRIESTS");
     assert(u.keywords.includes("CULT MECHANICUS"),    id + " must have CULT MECHANICUS");
@@ -12834,8 +12834,8 @@ test("Both Electro-Priests variants share ELECTRO-PRIESTS and CULT MECHANICUS ke
 });
 
 test("Kataphron Breachers — INFANTRY, KATAPHRON, CULT MECHANICUS, 160pts for 3 models", () => {
-  const u = amUnit("am_kataphron_breachers");
-  assert(!!u, "am_kataphron_breachers not found");
+  const u = amUnit("adm_kataphron_breachers");
+  assert(!!u, "adm_kataphron_breachers not found");
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("INFANTRY"),           "must have INFANTRY");
@@ -12849,8 +12849,8 @@ test("Kataphron Breachers — INFANTRY, KATAPHRON, CULT MECHANICUS, 160pts for 3
 });
 
 test("Kataphron Destroyers — INFANTRY, KATAPHRON, CULT MECHANICUS, 105pts for 3 models", () => {
-  const u = amUnit("am_kataphron_destroyers");
-  assert(!!u, "am_kataphron_destroyers not found");
+  const u = amUnit("adm_kataphron_destroyers");
+  assert(!!u, "adm_kataphron_destroyers not found");
   assertEqual(u.type, "INFANTRY");
   assert(u.keywords.includes("CULT MECHANICUS"),    "must have CULT MECHANICUS");
   assert(u.keywords.includes("KATAPHRON"),          "must have KATAPHRON");
@@ -12860,7 +12860,7 @@ test("Kataphron Destroyers — INFANTRY, KATAPHRON, CULT MECHANICUS, 105pts for 
 });
 
 test("Both Kataphron variants share KATAPHRON and CULT MECHANICUS keywords, not SKITARII", () => {
-  ["am_kataphron_breachers", "am_kataphron_destroyers"].forEach(id => {
+  ["adm_kataphron_breachers", "adm_kataphron_destroyers"].forEach(id => {
     const u = amUnit(id);
     assert(u.keywords.includes("KATAPHRON"),       id + " must have KATAPHRON");
     assert(u.keywords.includes("CULT MECHANICUS"), id + " must have CULT MECHANICUS");
@@ -12869,8 +12869,8 @@ test("Both Kataphron variants share KATAPHRON and CULT MECHANICUS keywords, not 
 });
 
 test("Machine Cult CHARACTER units all have CULT MECHANICUS, none have SKITARII", () => {
-  ["am_tech_priest_dominus", "am_tech_priest_enginseer",
-   "am_tech_priest_manipulus", "am_technoarcheologist"].forEach(id => {
+  ["adm_tech_priest_dominus", "adm_tech_priest_enginseer",
+   "adm_tech_priest_manipulus", "adm_technoarcheologist"].forEach(id => {
     const u = amUnit(id);
     assert(u.keywords.includes("CULT MECHANICUS"), id + " must have CULT MECHANICUS");
     assert(!u.keywords.includes("SKITARII"),       id + " must NOT have SKITARII");
@@ -12899,66 +12899,66 @@ section("106. Adeptus Mechanicus — Machine Cult Game Rule Logic");
 const mc = makeDetHelpers(mcDet, id => amUnit(id));
 
 test("Character cap — first Tech-Priest can be added to an empty list", () => {
-  assert(mc.canAdd([], "am_tech_priest_dominus"),
+  assert(mc.canAdd([], "adm_tech_priest_dominus"),
     "Tech-Priest Dominus must be addable to an empty list");
 });
 
 test("Character cap — second different Tech-Priest allowed when one is present", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }];
-  assert(mc.canAdd(list, "am_tech_priest_enginseer"),
+  const list = [{ unitId: "adm_tech_priest_dominus" }];
+  assert(mc.canAdd(list, "adm_tech_priest_enginseer"),
     "Tech-Priest Enginseer must be addable when only one CHARACTER is in the list");
 });
 
 test("Character cap — third CHARACTER blocked when cap of 2 filled", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }, { unitId: "am_tech_priest_enginseer" }];
+  const list = [{ unitId: "adm_tech_priest_dominus" }, { unitId: "adm_tech_priest_enginseer" }];
   assertEqual(mc.charCount(list), 2, "must count 2 CHARACTERs");
-  assert(!mc.canAdd(list, "am_tech_priest_manipulus"),
+  assert(!mc.canAdd(list, "adm_tech_priest_manipulus"),
     "Tech-Priest Manipulus must be blocked when char cap of 2 is already filled");
 });
 
 test("Character cap — all four Tech-Priest variants can each fill the second slot", () => {
-  ["am_tech_priest_enginseer", "am_tech_priest_manipulus", "am_technoarcheologist"].forEach(id => {
-    const list = [{ unitId: "am_tech_priest_dominus" }];
+  ["adm_tech_priest_enginseer", "adm_tech_priest_manipulus", "adm_technoarcheologist"].forEach(id => {
+    const list = [{ unitId: "adm_tech_priest_dominus" }];
     assert(mc.canAdd(list, id),
       id + " must be addable when only 1 CHARACTER is in the list");
   });
 });
 
 test("Character cap — non-CHARACTER units never blocked by the cap", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }, { unitId: "am_tech_priest_enginseer" }];
-  ["am_corpuscarii_electro_priests", "am_fulgurite_electro_priests",
-   "am_kataphron_breachers", "am_kataphron_destroyers"].forEach(id => {
+  const list = [{ unitId: "adm_tech_priest_dominus" }, { unitId: "adm_tech_priest_enginseer" }];
+  ["adm_corpuscarii_electro_priests", "adm_fulgurite_electro_priests",
+   "adm_kataphron_breachers", "adm_kataphron_destroyers"].forEach(id => {
     assert(mc.canAdd(list, id),
       id + " must still be addable when char cap of 2 is filled");
   });
 });
 
 test("Unit max — Tech-Priest Dominus capped at 1", () => {
-  assertEqual(mc.unitMax("am_tech_priest_dominus"), 1, "Tech-Priest Dominus max must be 1");
-  assert(!mc.canAdd([{ unitId: "am_tech_priest_dominus" }], "am_tech_priest_dominus"),
+  assertEqual(mc.unitMax("adm_tech_priest_dominus"), 1, "Tech-Priest Dominus max must be 1");
+  assert(!mc.canAdd([{ unitId: "adm_tech_priest_dominus" }], "adm_tech_priest_dominus"),
     "Second Tech-Priest Dominus must be blocked by unit max of 1");
 });
 
 test("Unit max — Tech-Priest Enginseer capped at 1", () => {
-  assertEqual(mc.unitMax("am_tech_priest_enginseer"), 1, "Tech-Priest Enginseer max must be 1");
-  assert(!mc.canAdd([{ unitId: "am_tech_priest_enginseer" }], "am_tech_priest_enginseer"),
+  assertEqual(mc.unitMax("adm_tech_priest_enginseer"), 1, "Tech-Priest Enginseer max must be 1");
+  assert(!mc.canAdd([{ unitId: "adm_tech_priest_enginseer" }], "adm_tech_priest_enginseer"),
     "Second Tech-Priest Enginseer must be blocked by unit max of 1");
 });
 
 test("Unit max — Tech-Priest Manipulus capped at 1", () => {
-  assertEqual(mc.unitMax("am_tech_priest_manipulus"), 1, "Tech-Priest Manipulus max must be 1");
-  assert(!mc.canAdd([{ unitId: "am_tech_priest_manipulus" }], "am_tech_priest_manipulus"),
+  assertEqual(mc.unitMax("adm_tech_priest_manipulus"), 1, "Tech-Priest Manipulus max must be 1");
+  assert(!mc.canAdd([{ unitId: "adm_tech_priest_manipulus" }], "adm_tech_priest_manipulus"),
     "Second Tech-Priest Manipulus must be blocked by unit max of 1");
 });
 
 test("Unit max — Technoarcheologist capped at 1", () => {
-  assertEqual(mc.unitMax("am_technoarcheologist"), 1, "Technoarcheologist max must be 1");
-  assert(!mc.canAdd([{ unitId: "am_technoarcheologist" }], "am_technoarcheologist"),
+  assertEqual(mc.unitMax("adm_technoarcheologist"), 1, "Technoarcheologist max must be 1");
+  assert(!mc.canAdd([{ unitId: "adm_technoarcheologist" }], "adm_technoarcheologist"),
     "Second Technoarcheologist must be blocked by unit max of 1");
 });
 
 test("Unit max — both Electro-Priests capped at 1 each", () => {
-  ["am_corpuscarii_electro_priests", "am_fulgurite_electro_priests"].forEach(id => {
+  ["adm_corpuscarii_electro_priests", "adm_fulgurite_electro_priests"].forEach(id => {
     assertEqual(mc.unitMax(id), 1, id + " max must be 1");
     assert(!mc.canAdd([{ unitId: id }], id),
       "Second " + id + " must be blocked by unit max of 1");
@@ -12966,7 +12966,7 @@ test("Unit max — both Electro-Priests capped at 1 each", () => {
 });
 
 test("Unit max — both Kataphron variants capped at 1 each", () => {
-  ["am_kataphron_breachers", "am_kataphron_destroyers"].forEach(id => {
+  ["adm_kataphron_breachers", "adm_kataphron_destroyers"].forEach(id => {
     assertEqual(mc.unitMax(id), 1, id + " max must be 1");
     assert(!mc.canAdd([{ unitId: id }], id),
       "Second " + id + " must be blocked by unit max of 1");
@@ -12997,10 +12997,10 @@ test("Smoke test — all four Tech-Priests + both Kataphrons = 65 + 55 + 60 + 60
   assert(pts > 500, "must exceed 500pt limit");
   // Also verify the char cap makes this list illegal before points even matter
   const list = [
-    { unitId: "am_tech_priest_dominus" },
-    { unitId: "am_tech_priest_enginseer" },
+    { unitId: "adm_tech_priest_dominus" },
+    { unitId: "adm_tech_priest_enginseer" },
   ];
-  assert(!mc.canAdd(list, "am_tech_priest_manipulus"),
+  assert(!mc.canAdd(list, "adm_tech_priest_manipulus"),
     "Third Tech-Priest must be blocked by the char cap of 2, not just points");
 });
 
@@ -13009,10 +13009,10 @@ test("Smoke test — all four Tech-Priests + both Kataphrons = 65 + 55 + 60 + 60
 
 section("107. Adeptus Mechanicus — Electromartyrs Detachment");
 
-const emDet = amDets ? amDets.find(d => d.id === "am_electromartyrs") : null;
+const emDet = amDets ? amDets.find(d => d.id === "adm_electromartyrs") : null;
 
 test("Electromartyrs detachment exists", () => {
-  assert(!!emDet, "am_electromartyrs must exist in Adeptus Mechanicus detachments");
+  assert(!!emDet, "adm_electromartyrs must exist in Adeptus Mechanicus detachments");
 });
 
 test("Electromartyrs has maxCharacters of 2", () => {
@@ -13045,55 +13045,55 @@ test("Electromartyrs has exactly 2 enhancements", () => {
 
 test("Electromartyrs enhancements — Remote Lockdown and Multi-Dimensional Auspex present", () => {
   const ids = emDet.enhancements.map(e => e.id);
-  assert(ids.includes("enh_am_remote_lockdown"),          "must include enh_am_remote_lockdown");
-  assert(ids.includes("enh_am_multi_dimensional_auspex"), "must include enh_am_multi_dimensional_auspex");
+  assert(ids.includes("enh_adm_remote_lockdown"),          "must include enh_am_remote_lockdown");
+  assert(ids.includes("enh_adm_multi_dimensional_auspex"), "must include enh_am_multi_dimensional_auspex");
 });
 
 test("Remote Lockdown requiresKeywords is empty array", () => {
-  const enh = emDet.enhancements.find(e => e.id === "enh_am_remote_lockdown");
+  const enh = emDet.enhancements.find(e => e.id === "enh_adm_remote_lockdown");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
     "Remote Lockdown must have empty requiresKeywords array");
 });
 
 test("Remote Lockdown desc references Hatchway and 9\"", () => {
-  const enh = emDet.enhancements.find(e => e.id === "enh_am_remote_lockdown");
+  const enh = emDet.enhancements.find(e => e.id === "enh_adm_remote_lockdown");
   assert(enh.desc.includes("Hatchway"), "desc must mention 'Hatchway'");
   assert(enh.desc.includes("9\""),      "desc must mention '9\"'");
 });
 
 test("Multi-Dimensional Auspex requiresKeywords is empty array", () => {
-  const enh = emDet.enhancements.find(e => e.id === "enh_am_multi_dimensional_auspex");
+  const enh = emDet.enhancements.find(e => e.id === "enh_adm_multi_dimensional_auspex");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
     "Multi-Dimensional Auspex must have empty requiresKeywords array");
 });
 
 test("Multi-Dimensional Auspex desc references Walls and Hatchways", () => {
-  const enh = emDet.enhancements.find(e => e.id === "enh_am_multi_dimensional_auspex");
+  const enh = emDet.enhancements.find(e => e.id === "enh_adm_multi_dimensional_auspex");
   assert(enh.desc.includes("Walls"),    "desc must mention 'Walls'");
   assert(enh.desc.includes("Hatchway"), "desc must mention 'Hatchway'");
 });
 
 test("Multi-Dimensional Auspex desc references Shooting phase and visibility", () => {
-  const enh = emDet.enhancements.find(e => e.id === "enh_am_multi_dimensional_auspex");
+  const enh = emDet.enhancements.find(e => e.id === "enh_adm_multi_dimensional_auspex");
   assert(enh.desc.includes("Shooting phase"), "desc must mention 'Shooting phase'");
   assert(enh.desc.includes("visibility"),     "desc must mention 'visibility'");
 });
 
 test("Electromartyrs unit roster — correct IDs and maxes", () => {
   const find = id => emDet.units.find(u => u.id === id);
-  assert(find("am_tech_priest_dominus")?.max        === 1, "am_tech_priest_dominus max must be 1");
-  assert(find("am_tech_priest_enginseer")?.max      === 1, "am_tech_priest_enginseer max must be 1");
-  assert(find("am_tech_priest_manipulus")?.max      === 1, "am_tech_priest_manipulus max must be 1");
-  assert(find("am_technoarcheologist")?.max         === 1, "am_technoarcheologist max must be 1");
-  assert(find("am_skitarii_marshall")?.max          === 1, "am_skitarii_marshall max must be 1");
-  assert(find("am_skitarii_rangers")?.max           === 3, "am_skitarii_rangers max must be 3");
-  assert(find("am_skitarii_vanguard")?.max          === 3, "am_skitarii_vanguard max must be 3");
-  assert(find("am_corpuscarii_electro_priests")?.max === 1, "am_corpuscarii_electro_priests max must be 1");
-  assert(find("am_fulgurite_electro_priests")?.max  === 1, "am_fulgurite_electro_priests max must be 1");
-  assert(find("am_kataphron_breachers")?.max        === 1, "am_kataphron_breachers max must be 1");
-  assert(find("am_kataphron_destroyers")?.max       === 1, "am_kataphron_destroyers max must be 1");
-  assert(find("am_sicarian_infiltrators")?.max      === 1, "am_sicarian_infiltrators max must be 1");
-  assert(find("am_sicarian_ruststalkers")?.max      === 1, "am_sicarian_ruststalkers max must be 1");
+  assert(find("adm_tech_priest_dominus")?.max        === 1, "adm_tech_priest_dominus max must be 1");
+  assert(find("adm_tech_priest_enginseer")?.max      === 1, "adm_tech_priest_enginseer max must be 1");
+  assert(find("adm_tech_priest_manipulus")?.max      === 1, "adm_tech_priest_manipulus max must be 1");
+  assert(find("adm_technoarcheologist")?.max         === 1, "adm_technoarcheologist max must be 1");
+  assert(find("adm_skitarii_marshall")?.max          === 1, "adm_skitarii_marshall max must be 1");
+  assert(find("adm_skitarii_rangers")?.max           === 3, "adm_skitarii_rangers max must be 3");
+  assert(find("adm_skitarii_vanguard")?.max          === 3, "adm_skitarii_vanguard max must be 3");
+  assert(find("adm_corpuscarii_electro_priests")?.max === 1, "adm_corpuscarii_electro_priests max must be 1");
+  assert(find("adm_fulgurite_electro_priests")?.max  === 1, "adm_fulgurite_electro_priests max must be 1");
+  assert(find("adm_kataphron_breachers")?.max        === 1, "adm_kataphron_breachers max must be 1");
+  assert(find("adm_kataphron_destroyers")?.max       === 1, "adm_kataphron_destroyers max must be 1");
+  assert(find("adm_sicarian_infiltrators")?.max      === 1, "adm_sicarian_infiltrators max must be 1");
+  assert(find("adm_sicarian_ruststalkers")?.max      === 1, "adm_sicarian_ruststalkers max must be 1");
 });
 
 test("Electromartyrs has exactly 13 unit slots", () => {
@@ -13107,10 +13107,10 @@ test("Electromartyrs has exactly one exclusiveUnitGroups entry", () => {
 
 test("Exclusive group contains all four Tech-Priest variants and no others", () => {
   const group = emDet.exclusiveUnitGroups[0];
-  assert(group.includes("am_tech_priest_dominus"),   "must include am_tech_priest_dominus");
-  assert(group.includes("am_tech_priest_enginseer"), "must include am_tech_priest_enginseer");
-  assert(group.includes("am_tech_priest_manipulus"), "must include am_tech_priest_manipulus");
-  assert(group.includes("am_technoarcheologist"),    "must include am_technoarcheologist");
+  assert(group.includes("adm_tech_priest_dominus"),   "must include am_tech_priest_dominus");
+  assert(group.includes("adm_tech_priest_enginseer"), "must include adm_tech_priest_enginseer");
+  assert(group.includes("adm_tech_priest_manipulus"), "must include am_tech_priest_manipulus");
+  assert(group.includes("adm_technoarcheologist"),    "must include am_technoarcheologist");
   assertEqual(group.length, 4, "exclusive group must contain exactly 4 unit IDs");
 });
 
@@ -13120,8 +13120,8 @@ test("Electromartyrs has no ratio constraints", () => {
 });
 
 test("Skitarii Marshall max is 1 in Electromartyrs (vs 2 in Response Clade)", () => {
-  const emSlot = emDet.units.find(u => u.id === "am_skitarii_marshall");
-  const rcSlot = rcDet.units.find(u => u.id === "am_skitarii_marshall");
+  const emSlot = emDet.units.find(u => u.id === "adm_skitarii_marshall");
+  const rcSlot = rcDet.units.find(u => u.id === "adm_skitarii_marshall");
   assertEqual(emSlot.max, 1, "Skitarii Marshall max must be 1 in Electromartyrs");
   assertEqual(rcSlot.max, 2, "Skitarii Marshall max must be 2 in Response Clade");
 });
@@ -13135,33 +13135,33 @@ const em = makeDetHelpers(emDet, id => amUnit(id));
 const isEmExcGroupBlocked = makeExcGroupChecker(emDet.exclusiveUnitGroups);
 
 test("Character cap — Tech-Priest Dominus can be added to an empty list", () => {
-  assert(em.canAdd([], "am_tech_priest_dominus"),
+  assert(em.canAdd([], "adm_tech_priest_dominus"),
     "Tech-Priest Dominus must be addable to an empty list");
 });
 
 test("Character cap — Skitarii Marshall can also be added to an empty list", () => {
-  assert(em.canAdd([], "am_skitarii_marshall"),
+  assert(em.canAdd([], "adm_skitarii_marshall"),
     "Skitarii Marshall must be addable to an empty list");
 });
 
 test("Character cap — second CHARACTER slot can be filled by Skitarii Marshall when one Tech-Priest is present", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }];
-  assert(em.canAdd(list, "am_skitarii_marshall"),
+  const list = [{ unitId: "adm_tech_priest_dominus" }];
+  assert(em.canAdd(list, "adm_skitarii_marshall"),
     "Skitarii Marshall must be addable when 1 CHARACTER (Tech-Priest) is already present");
 });
 
 test("Character cap — third CHARACTER blocked when cap of 2 filled", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }, { unitId: "am_skitarii_marshall" }];
+  const list = [{ unitId: "adm_tech_priest_dominus" }, { unitId: "adm_skitarii_marshall" }];
   assertEqual(em.charCount(list), 2, "must count 2 CHARACTERs");
-  assert(!em.canAdd(list, "am_technoarcheologist"),
+  assert(!em.canAdd(list, "adm_technoarcheologist"),
     "Technoarcheologist must be blocked when char cap of 2 is already filled");
 });
 
 test("Character cap — non-CHARACTER units never blocked by the cap", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }, { unitId: "am_skitarii_marshall" }];
-  ["am_skitarii_rangers", "am_skitarii_vanguard", "am_corpuscarii_electro_priests",
-   "am_fulgurite_electro_priests", "am_kataphron_breachers", "am_kataphron_destroyers",
-   "am_sicarian_infiltrators", "am_sicarian_ruststalkers"].forEach(id => {
+  const list = [{ unitId: "adm_tech_priest_dominus" }, { unitId: "adm_skitarii_marshall" }];
+  ["adm_skitarii_rangers", "adm_skitarii_vanguard", "adm_corpuscarii_electro_priests",
+   "adm_fulgurite_electro_priests", "adm_kataphron_breachers", "adm_kataphron_destroyers",
+   "adm_sicarian_infiltrators", "adm_sicarian_ruststalkers"].forEach(id => {
     assert(em.canAdd(list, id),
       id + " must still be addable when char cap of 2 is filled");
   });
@@ -13170,51 +13170,51 @@ test("Character cap — non-CHARACTER units never blocked by the cap", () => {
 // ── Exclusive group ───────────────────────────────────────────────────────────
 
 test("Exclusive group — empty list blocks none of the four Tech-Priest variants", () => {
-  ["am_tech_priest_dominus", "am_tech_priest_enginseer",
-   "am_tech_priest_manipulus", "am_technoarcheologist"].forEach(id => {
+  ["adm_tech_priest_dominus", "adm_tech_priest_enginseer",
+   "adm_tech_priest_manipulus", "adm_technoarcheologist"].forEach(id => {
     assert(!isEmExcGroupBlocked(id, []),
       id + " must not be blocked in an empty list");
   });
 });
 
 test("Exclusive group — Tech-Priest Dominus blocks all other Tech-Priest variants", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }];
-  ["am_tech_priest_enginseer", "am_tech_priest_manipulus", "am_technoarcheologist"].forEach(id => {
+  const list = [{ unitId: "adm_tech_priest_dominus" }];
+  ["adm_tech_priest_enginseer", "adm_tech_priest_manipulus", "adm_technoarcheologist"].forEach(id => {
     assert(isEmExcGroupBlocked(id, list),
       id + " must be blocked when Tech-Priest Dominus is in the list");
   });
 });
 
 test("Exclusive group — Tech-Priest Enginseer blocks all other Tech-Priest variants", () => {
-  const list = [{ unitId: "am_tech_priest_enginseer" }];
-  ["am_tech_priest_dominus", "am_tech_priest_manipulus", "am_technoarcheologist"].forEach(id => {
+  const list = [{ unitId: "adm_tech_priest_enginseer" }];
+  ["adm_tech_priest_dominus", "adm_tech_priest_manipulus", "adm_technoarcheologist"].forEach(id => {
     assert(isEmExcGroupBlocked(id, list),
       id + " must be blocked when Tech-Priest Enginseer is in the list");
   });
 });
 
 test("Exclusive group — Tech-Priest Manipulus blocks all other Tech-Priest variants", () => {
-  const list = [{ unitId: "am_tech_priest_manipulus" }];
-  ["am_tech_priest_dominus", "am_tech_priest_enginseer", "am_technoarcheologist"].forEach(id => {
+  const list = [{ unitId: "adm_tech_priest_manipulus" }];
+  ["adm_tech_priest_dominus", "adm_tech_priest_enginseer", "adm_technoarcheologist"].forEach(id => {
     assert(isEmExcGroupBlocked(id, list),
       id + " must be blocked when Tech-Priest Manipulus is in the list");
   });
 });
 
 test("Exclusive group — Technoarcheologist blocks all other Tech-Priest variants", () => {
-  const list = [{ unitId: "am_technoarcheologist" }];
-  ["am_tech_priest_dominus", "am_tech_priest_enginseer", "am_tech_priest_manipulus"].forEach(id => {
+  const list = [{ unitId: "adm_technoarcheologist" }];
+  ["adm_tech_priest_dominus", "adm_tech_priest_enginseer", "adm_tech_priest_manipulus"].forEach(id => {
     assert(isEmExcGroupBlocked(id, list),
       id + " must be blocked when Technoarcheologist is in the list");
   });
 });
 
 test("Exclusive group — non-Tech-Priest units are never affected by the group", () => {
-  const list = [{ unitId: "am_tech_priest_dominus" }];
-  ["am_skitarii_marshall", "am_skitarii_rangers", "am_skitarii_vanguard",
-   "am_corpuscarii_electro_priests", "am_fulgurite_electro_priests",
-   "am_kataphron_breachers", "am_kataphron_destroyers",
-   "am_sicarian_infiltrators", "am_sicarian_ruststalkers"].forEach(id => {
+  const list = [{ unitId: "adm_tech_priest_dominus" }];
+  ["adm_skitarii_marshall", "adm_skitarii_rangers", "adm_skitarii_vanguard",
+   "adm_corpuscarii_electro_priests", "adm_fulgurite_electro_priests",
+   "adm_kataphron_breachers", "adm_kataphron_destroyers",
+   "adm_sicarian_infiltrators", "adm_sicarian_ruststalkers"].forEach(id => {
     assert(!isEmExcGroupBlocked(id, list),
       id + " must not be blocked by the Tech-Priest exclusive group");
   });
@@ -13223,37 +13223,37 @@ test("Exclusive group — non-Tech-Priest units are never affected by the group"
 // ── Unit maxes ────────────────────────────────────────────────────────────────
 
 test("Unit max — Skitarii Marshall capped at 1 in Electromartyrs", () => {
-  assertEqual(em.unitMax("am_skitarii_marshall"), 1, "Skitarii Marshall max must be 1");
-  assert(!em.canAdd([{ unitId: "am_skitarii_marshall" }], "am_skitarii_marshall"),
+  assertEqual(em.unitMax("adm_skitarii_marshall"), 1, "Skitarii Marshall max must be 1");
+  assert(!em.canAdd([{ unitId: "adm_skitarii_marshall" }], "adm_skitarii_marshall"),
     "Second Skitarii Marshall must be blocked by unit max of 1");
 });
 
 test("Unit max — Skitarii Rangers capped at 3", () => {
-  assertEqual(em.unitMax("am_skitarii_rangers"), 3, "Skitarii Rangers max must be 3");
+  assertEqual(em.unitMax("adm_skitarii_rangers"), 3, "Skitarii Rangers max must be 3");
   const list = [
-    { unitId: "am_skitarii_rangers" },
-    { unitId: "am_skitarii_rangers" },
-    { unitId: "am_skitarii_rangers" },
+    { unitId: "adm_skitarii_rangers" },
+    { unitId: "adm_skitarii_rangers" },
+    { unitId: "adm_skitarii_rangers" },
   ];
-  assert(!em.canAdd(list, "am_skitarii_rangers"),
+  assert(!em.canAdd(list, "adm_skitarii_rangers"),
     "Fourth Skitarii Rangers must be blocked by unit max of 3");
 });
 
 test("Unit max — Skitarii Vanguard capped at 3", () => {
-  assertEqual(em.unitMax("am_skitarii_vanguard"), 3, "Skitarii Vanguard max must be 3");
+  assertEqual(em.unitMax("adm_skitarii_vanguard"), 3, "Skitarii Vanguard max must be 3");
   const list = [
-    { unitId: "am_skitarii_vanguard" },
-    { unitId: "am_skitarii_vanguard" },
-    { unitId: "am_skitarii_vanguard" },
+    { unitId: "adm_skitarii_vanguard" },
+    { unitId: "adm_skitarii_vanguard" },
+    { unitId: "adm_skitarii_vanguard" },
   ];
-  assert(!em.canAdd(list, "am_skitarii_vanguard"),
+  assert(!em.canAdd(list, "adm_skitarii_vanguard"),
     "Fourth Skitarii Vanguard must be blocked by unit max of 3");
 });
 
 test("Unit max — all max-1 non-CHARACTER units are capped at 1", () => {
-  ["am_corpuscarii_electro_priests", "am_fulgurite_electro_priests",
-   "am_kataphron_breachers", "am_kataphron_destroyers",
-   "am_sicarian_infiltrators", "am_sicarian_ruststalkers"].forEach(id => {
+  ["adm_corpuscarii_electro_priests", "adm_fulgurite_electro_priests",
+   "adm_kataphron_breachers", "adm_kataphron_destroyers",
+   "adm_sicarian_infiltrators", "adm_sicarian_ruststalkers"].forEach(id => {
     assertEqual(em.unitMax(id), 1, id + " max must be 1");
     assert(!em.canAdd([{ unitId: id }], id),
       "Second " + id + " must be blocked by unit max of 1");
