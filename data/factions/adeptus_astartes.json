@@ -124,6 +124,10 @@
           "max": 1
         },
         {
+          "id": "sm_marneus_calgar_antilochus",
+          "max": 1
+        },
+        {
           "id": "sm_arjac_rockfist",
           "max": 1
         },
@@ -242,10 +246,6 @@
           "max": 1
         },
         {
-          "id": "sm_captain_sicarius",
-          "max": 1
-        },
-        {
           "id": "sm_captain_jump_pack",
           "max": 1
         },
@@ -326,15 +326,11 @@
           "max": 1
         },
         {
-          "id": "sm_marneus_calgar",
+          "id": "sm_captain_titus",
           "max": 1
         },
         {
           "id": "sm_marneus_calgar_antilochus",
-          "max": 1
-        },
-        {
-          "id": "sm_captain_titus",
           "max": 1
         },
         {
@@ -548,14 +544,6 @@
       ],
       "exclusiveUnitGroups": [
         [
-          "sm_captain_sicarius",
-          "sm_cato_sicarius"
-        ],
-        [
-          "sm_marneus_calgar",
-          "sm_marneus_calgar_antilochus"
-        ],
-        [
           "sm_eradicator_squad",
           "sm_hellblaster_squad"
         ],
@@ -610,16 +598,6 @@
           "IRON HANDS"
         ]
       ],
-      "exclusiveUnitGroups": [
-        [
-          "sm_captain_sicarius",
-          "sm_cato_sicarius"
-        ],
-        [
-          "sm_marneus_calgar",
-          "sm_marneus_calgar_antilochus"
-        ]
-      ],
       "units": [
         {
           "id": "sm_ancient",
@@ -659,10 +637,6 @@
         },
         {
           "id": "sm_captain_terminator",
-          "max": 1
-        },
-        {
-          "id": "sm_captain_sicarius",
           "max": 1
         },
         {
@@ -766,15 +740,11 @@
           "max": 1
         },
         {
-          "id": "sm_marneus_calgar",
+          "id": "sm_captain_titus",
           "max": 1
         },
         {
           "id": "sm_marneus_calgar_antilochus",
-          "max": 1
-        },
-        {
-          "id": "sm_captain_titus",
           "max": 1
         },
         {
@@ -1544,27 +1514,6 @@
       ]
     },
     {
-      "id": "sm_captain_sicarius",
-      "name": "Captain Sicarius",
-      "type": "CHARACTER",
-      "keywords": [
-        "ADEPTUS ASTARTES",
-        "ULTRAMARINES",
-        "INFANTRY",
-        "CHARACTER",
-        "EPIC HERO",
-        "IMPERIUM",
-        "TACTICUS"
-      ],
-      "sizes": [
-        {
-          "label": "1 model",
-          "pts": 85
-        }
-      ],
-      "rulesAdaptations": "This model loses the Knight Champion of Macragge ability."
-    },
-    {
       "id": "sm_captain_jump_pack",
       "name": "Captain with Jump Pack",
       "type": "CHARACTER",
@@ -1840,27 +1789,6 @@
           "pts": 55
         }
       ]
-    },
-    {
-      "id": "sm_marneus_calgar",
-      "name": "Marneus Calgar",
-      "type": "CHARACTER",
-      "keywords": [
-        "ADEPTUS ASTARTES",
-        "ULTRAMARINES",
-        "INFANTRY",
-        "CHARACTER",
-        "EPIC HERO",
-        "IMPERIUM",
-        "GRAVIS"
-      ],
-      "sizes": [
-        {
-          "label": "1 model",
-          "pts": 200
-        }
-      ],
-      "rulesAdaptations": "This unit loses the Master Tactician ability."
     },
     {
       "id": "sm_captain_titus",

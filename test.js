@@ -789,6 +789,13 @@ test("Terminator Assault detachment has maxCharacters set to 2", () => {
     "Terminator Assault must have maxCharacters: 2");
 });
 
+test("Marneus Calgar in Armour of Antilochus is in Terminator Assault at max 1", () => {
+  const ta = factionData["space_marines"].detachments.find(d => d.id === "sm_terminator_assault");
+  const entry = ta.units.find(u => u.id === "sm_marneus_calgar_antilochus");
+  assert(entry !== undefined, "sm_marneus_calgar_antilochus must be in Terminator Assault");
+  assertEqual(entry.max, 1, "Marneus Calgar in Armour of Antilochus must have max 1");
+});
+
 // ── Keyword Ratio Constraint ──────────────────────────────────────────────────
 
 section("7. Keyword Ratio Constraint");
@@ -2295,20 +2302,20 @@ test("Adeptus Astartes has 4 detachments including Boarding Strike", () => {
   assert(smDataBS.detachments.find(d => d.id === "sm_shield_of_the_void"),  "sm_shield_of_the_void must exist");
 });
 
-test("Boarding Strike has all 83 expected units", () => {
+test("Boarding Strike has all 81 expected units", () => {
   const expectedIds = [
     "sm_captain", "sm_librarian", "sm_tacticals",
     "sm_adrax_agatone", "sm_aggressor_squad", "sm_ancient",
     "sm_apothecary", "sm_apothecary_biologis",
     "sm_assault_intercessors", "sm_assault_intercessors_jump",
     "sm_bladeguard_ancient", "sm_bladeguard_veterans", "sm_captain_gravis",
-    "sm_captain_sicarius", "sm_captain_jump_pack", "sm_cato_sicarius",
+    "sm_captain_jump_pack", "sm_cato_sicarius",
     "sm_chaplain", "sm_chaplain_jump_pack", "sm_chief_librarian_tigurius",
     "sm_company_heroes",
     "sm_eradicator_squad", "sm_heavy_intercessors", "sm_hellblaster_squad",
     "sm_infernus_squad", "sm_intercessor_squad", "sm_iron_father_feirros",
     "sm_judiciar",
-    "sm_korsarro_khan", "sm_lieutenant", "sm_marneus_calgar",
+    "sm_korsarro_khan", "sm_lieutenant", "sm_marneus_calgar_antilochus",
     "sm_pedro_kantor", "sm_roboute_guilliman",
     "sm_sternguard_veterans", "sm_techmarine", "sm_tor_garadon",
     "sm_uriel_ventris", "sm_vanguard_veterans_jump", "sm_vulkan_hestan",
@@ -2328,7 +2335,7 @@ test("Boarding Strike has all 83 expected units", () => {
     "sm_iron_priest", "sm_wolf_guard_battle_leader", "sm_wolf_priest",
     "sm_bloodclaws", "sm_grey_hunters", "sm_wolf_guard_headtakers",
     "sm_wulfen", "sm_wulfen_storm_shields", "sm_fenrisian_wolves",
-    "sm_captain_titus", "sm_marneus_calgar_antilochus"
+    "sm_captain_titus"
   ];
   const actualIds = boardingStrikeDet.units.map(u => u.id);
   expectedIds.forEach(id => {
@@ -2540,19 +2547,6 @@ test("Captain in Gravis Armour has correct fields", () => {
   assertEqual(boardingStrikeDet.units.find(du => du.id === "sm_captain_gravis")?.max, 1, "Must have max 1");
 });
 
-test("Captain Sicarius has correct fields and rules adaptation", () => {
-  const unit = smDataBS.units.find(u => u.id === "sm_captain_sicarius");
-  assert(unit !== undefined, "sm_captain_sicarius must exist");
-  assertEqual(unit.name, "Captain Sicarius");
-  assertEqual(unit.type, "CHARACTER");
-  assertEqual(unit.sizes[0].pts, 85);
-  assert(unit.keywords.includes("ULTRAMARINES"), "Must have ULTRAMARINES keyword");
-  assert(unit.keywords.includes("EPIC HERO"),    "Must have EPIC HERO keyword");
-  assert(unit.keywords.includes("TACTICUS"),     "Must have TACTICUS keyword");
-  assert(unit.rulesAdaptations?.includes("Knight Champion of Macragge"), "Must mention Knight Champion of Macragge");
-  assertEqual(boardingStrikeDet.units.find(du => du.id === "sm_captain_sicarius")?.max, 1, "Must have max 1");
-});
-
 test("Captain with Jump Pack has correct fields and rules adaptation", () => {
   const unit = smDataBS.units.find(u => u.id === "sm_captain_jump_pack");
   assert(unit !== undefined, "sm_captain_jump_pack must exist");
@@ -2727,17 +2721,17 @@ test("Lieutenant has correct fields", () => {
   assertEqual(boardingStrikeDet.units.find(du => du.id === "sm_lieutenant")?.max, 1, "Must have max 1");
 });
 
-test("Marneus Calgar has correct fields and rules adaptation", () => {
-  const unit = smDataBS.units.find(u => u.id === "sm_marneus_calgar");
-  assert(unit !== undefined, "sm_marneus_calgar must exist");
-  assertEqual(unit.name, "Marneus Calgar");
+test("Marneus Calgar in Armour of Antilochus has correct fields and rules adaptation", () => {
+  const unit = smDataBS.units.find(u => u.id === "sm_marneus_calgar_antilochus");
+  assert(unit !== undefined, "sm_marneus_calgar_antilochus must exist");
+  assertEqual(unit.name, "Marneus Calgar in Armour of Antilochus");
   assertEqual(unit.type, "CHARACTER");
-  assertEqual(unit.sizes[0].pts, 200);
+  assertEqual(unit.sizes[0].pts, 140);
   assert(unit.keywords.includes("ULTRAMARINES"), "Must have ULTRAMARINES keyword");
   assert(unit.keywords.includes("EPIC HERO"),    "Must have EPIC HERO keyword");
-  assert(unit.keywords.includes("GRAVIS"),       "Must have GRAVIS keyword");
+  assert(unit.keywords.includes("TERMINATOR"),   "Must have TERMINATOR keyword");
   assert(unit.rulesAdaptations?.includes("Master Tactician"), "rulesAdaptations must mention Master Tactician");
-  assertEqual(boardingStrikeDet.units.find(du => du.id === "sm_marneus_calgar")?.max, 1, "Must have max 1");
+  assertEqual(boardingStrikeDet.units.find(du => du.id === "sm_marneus_calgar_antilochus")?.max, 1, "Must have max 1");
 });
 
 test("Pedro Kantor has correct fields", () => {
@@ -3419,31 +3413,9 @@ test("HTML sorts units alphabetically by name within each type in renderUnitGrid
 
 section("15. Boarding Strike — Constraint Logic");
 
-test("Boarding Strike has exactly 5 exclusive unit groups", () => {
-  assertEqual(boardingStrikeDet.exclusiveUnitGroups.length, 5,
-    "Boarding Strike must have exactly 5 exclusive unit groups");
-});
-
-test("Boarding Strike has an exclusive group for Sicarius variants", () => {
-  const group = boardingStrikeDet.exclusiveUnitGroups.find(g =>
-    g.includes("sm_captain_sicarius") && g.includes("sm_cato_sicarius")
-  );
-  assert(group !== undefined, "Must have an exclusive group containing both Sicarius variants");
-  assertEqual(group.length, 2, "Sicarius exclusive group must contain exactly 2 units");
-});
-
-test("Captain Sicarius and Cato Sicarius mutually block each other", () => {
-  function isBlocked(unitId, list) {
-    for (const group of (boardingStrikeDet.exclusiveUnitGroups || [])) {
-      if (!group.includes(unitId)) continue;
-      if (list.some(l => l.unitId !== unitId && group.includes(l.unitId))) return true;
-    }
-    return false;
-  }
-  assert(isBlocked("sm_cato_sicarius",    [{ unitId: "sm_captain_sicarius" }]), "Cato must be blocked when Captain Sicarius is present");
-  assert(isBlocked("sm_captain_sicarius", [{ unitId: "sm_cato_sicarius"    }]), "Captain Sicarius must be blocked when Cato is present");
-  assert(!isBlocked("sm_captain_sicarius", [{ unitId: "sm_captain_sicarius" }]), "Captain Sicarius must not block itself");
-  assert(!isBlocked("sm_chaplain",         [{ unitId: "sm_captain_sicarius" }]), "Chaplain must not be blocked by Sicarius group");
+test("Boarding Strike has exactly 3 exclusive unit groups", () => {
+  assertEqual(boardingStrikeDet.exclusiveUnitGroups.length, 3,
+    "Boarding Strike must have exactly 3 exclusive unit groups");
 });
 
 test("Boarding Strike has an exclusive group for Eradicator/Hellblaster", () => {
@@ -3506,11 +3478,11 @@ test("Chapter keyword exclusivity — chapter-specific units block other chapter
   // Salamanders blocks other chapters
   const salamandersCommitted = [{ unitId: "sm_adrax_agatone" }];
   assert(isChapterBlocked("sm_korsarro_khan",   salamandersCommitted), "WHITE SCARS unit must be blocked when SALAMANDERS is committed");
-  assert(isChapterBlocked("sm_captain_sicarius", salamandersCommitted), "ULTRAMARINES unit must be blocked when SALAMANDERS is committed");
+  assert(isChapterBlocked("sm_uriel_ventris",   salamandersCommitted), "ULTRAMARINES unit must be blocked when SALAMANDERS is committed");
   assert(!isChapterBlocked("sm_adrax_agatone",  salamandersCommitted), "SALAMANDERS unit must not block itself");
   assert(!isChapterBlocked("sm_captain",        salamandersCommitted), "Generic captain (no chapter kw) must never be blocked");
   // ULTRAMARINES blocks SPACE WOLVES
-  const ultraCommitted = [{ unitId: "sm_captain_sicarius" }];
+  const ultraCommitted = [{ unitId: "sm_uriel_ventris" }];
   assert(isChapterBlocked("sm_ragnar_blackmane", ultraCommitted), "SPACE WOLVES unit must be blocked when ULTRAMARINES is committed");
 });
 
