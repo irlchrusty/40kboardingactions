@@ -2926,8 +2926,11 @@ test("Crusader Squad has correct fields", () => {
   assert(unit !== undefined, "sm_crusader_squad must exist");
   assertEqual(unit.name, "Crusader Squad");
   assertEqual(unit.type, "BATTLELINE");
-  assertEqual(unit.sizes[0].label, "10 models");
-  assertEqual(unit.sizes[0].pts, 150);
+  assertEqual(unit.sizes.length, 2,               "Must have 2 size options");
+  assertEqual(unit.sizes[0].label, "5 models");
+  assertEqual(unit.sizes[0].pts, 75);
+  assertEqual(unit.sizes[1].label, "10 models");
+  assertEqual(unit.sizes[1].pts, 150);
   assert(unit.keywords.includes("BLACK TEMPLARS"), "Must have BLACK TEMPLARS keyword");
   assert(unit.keywords.includes("BATTLELINE"),     "Must have BATTLELINE keyword");
   assertEqual(boardingStrikeDet.units.find(du => du.id === "sm_crusader_squad")?.max, 3, "Must have max 3");
@@ -3324,8 +3327,11 @@ test("Bloodclaws has correct fields", () => {
   assert(unit !== undefined, "sm_bloodclaws must exist");
   assertEqual(unit.name, "Bloodclaws");
   assertEqual(unit.type, "BATTLELINE");
-  assertEqual(unit.sizes[0].label, "10 models");
-  assertEqual(unit.sizes[0].pts, 135);
+  assertEqual(unit.sizes.length, 2,              "Must have 2 size options");
+  assertEqual(unit.sizes[0].label, "5 models");
+  assertEqual(unit.sizes[0].pts, 70);
+  assertEqual(unit.sizes[1].label, "10 models");
+  assertEqual(unit.sizes[1].pts, 135);
   assert(unit.keywords.includes("SPACE WOLVES"),  "Must have SPACE WOLVES keyword");
   assert(unit.keywords.includes("BATTLELINE"),    "Must have BATTLELINE keyword");
   assert(!unit.rulesAdaptations, "Must have no rulesAdaptations");
@@ -3337,8 +3343,11 @@ test("Grey Hunters has correct fields", () => {
   assert(unit !== undefined, "sm_grey_hunters must exist");
   assertEqual(unit.name, "Grey Hunters");
   assertEqual(unit.type, "BATTLELINE");
-  assertEqual(unit.sizes[0].label, "10 models");
-  assertEqual(unit.sizes[0].pts, 165);
+  assertEqual(unit.sizes.length, 2,              "Must have 2 size options");
+  assertEqual(unit.sizes[0].label, "5 models");
+  assertEqual(unit.sizes[0].pts, 85);
+  assertEqual(unit.sizes[1].label, "10 models");
+  assertEqual(unit.sizes[1].pts, 165);
   assert(unit.keywords.includes("SPACE WOLVES"),  "Must have SPACE WOLVES keyword");
   assert(unit.keywords.includes("BATTLELINE"),    "Must have BATTLELINE keyword");
   assert(!unit.rulesAdaptations, "Must have no rulesAdaptations");
@@ -7542,9 +7551,11 @@ test("Arco-Flagellants has correct fields", () => {
     `Arco-Flagellants must have exactly ${expectedKws.length} keywords`);
   assert(u.type !== "CHARACTER", "Arco-Flagellants must not be type CHARACTER");
   assert(!u.keywords.includes("CHARACTER"), "Arco-Flagellants must not have CHARACTER keyword");
-  assertEqual(u.sizes.length, 1, "Arco-Flagellants must have exactly 1 size option");
-  assertEqual(u.sizes[0].pts, 140, "Arco-Flagellants must cost 140pts");
-  assertEqual(u.sizes[0].label, "10 models", "Arco-Flagellants size label must be '10 models'");
+  assertEqual(u.sizes.length, 2, "Arco-Flagellants must have exactly 2 size options");
+  assertEqual(u.sizes[0].pts, 70,   "Arco-Flagellants 5-model option must cost 70pts");
+  assertEqual(u.sizes[0].label, "5 models",  "Arco-Flagellants first size label must be '5 models'");
+  assertEqual(u.sizes[1].pts, 140,  "Arco-Flagellants 10-model option must cost 140pts");
+  assertEqual(u.sizes[1].label, "10 models", "Arco-Flagellants second size label must be '10 models'");
 });
 
 test("Repentia Squad has correct fields", () => {
@@ -8166,9 +8177,11 @@ test("Dominion Squad has correct fields", () => {
     `Dominion Squad must have keyword "${kw}"`));
   assertEqual(u.keywords.length, expectedKws.length,
     `Dominion Squad must have exactly ${expectedKws.length} keywords`);
-  assertEqual(u.sizes.length, 1, "Dominion Squad must have 1 size option");
-  assertEqual(u.sizes[0].pts, 120, "Dominion Squad must cost 120pts");
-  assertEqual(u.sizes[0].label, "10 models", "Dominion Squad size label must be '10 models'");
+  assertEqual(u.sizes.length, 2, "Dominion Squad must have 2 size options");
+  assertEqual(u.sizes[0].pts, 60,   "Dominion Squad 5-model option must cost 60pts");
+  assertEqual(u.sizes[0].label, "5 models",  "Dominion Squad first size label must be '5 models'");
+  assertEqual(u.sizes[1].pts, 120,  "Dominion Squad 10-model option must cost 120pts");
+  assertEqual(u.sizes[1].label, "10 models", "Dominion Squad second size label must be '10 models'");
   assert(typeof u.rulesAdaptations === "string" && u.rulesAdaptations.includes("Righteous Awareness"),
     "Dominion Squad must have rulesAdaptations referencing 'Righteous Awareness'");
   assert(u.rulesAdaptations.includes("Cherub"),
@@ -12435,7 +12448,7 @@ test("Skitarii Marshall — CHARACTER, SKITARII, 35pts for 1 model, no rulesAdap
   assert(!u.rulesAdaptations,              "Skitarii Marshall must have no rulesAdaptations");
 });
 
-test("Skitarii Rangers — BATTLELINE, SKITARII, 85pts for 10 models, loses Scouts and Objective Scouted", () => {
+test("Skitarii Rangers — BATTLELINE, SKITARII, 45pts for 5 models / 85pts for 10 models, loses Scouts and Objective Scouted", () => {
   const u = amUnit("adm_skitarii_rangers");
   assert(!!u, "adm_skitarii_rangers not found");
   assertEqual(u.type, "BATTLELINE");
@@ -12444,23 +12457,29 @@ test("Skitarii Rangers — BATTLELINE, SKITARII, 85pts for 10 models, loses Scou
   assert(u.keywords.includes("BATTLELINE"),         "must have BATTLELINE");
   assert(u.keywords.includes("IMPERIUM"),           "must have IMPERIUM");
   assert(u.keywords.includes("SKITARII"),           "must have SKITARII");
-  assertEqual(u.sizes[0].pts, 85,            "must cost 85pts");
-  assertEqual(u.sizes[0].label, "10 models", "size label must be '10 models'");
+  assertEqual(u.sizes.length, 2,              "must have 2 size options");
+  assertEqual(u.sizes[0].pts, 45,             "5-model option must cost 45pts");
+  assertEqual(u.sizes[0].label, "5 models",   "first size label must be '5 models'");
+  assertEqual(u.sizes[1].pts, 85,             "10-model option must cost 85pts");
+  assertEqual(u.sizes[1].label, "10 models",  "second size label must be '10 models'");
   assert(typeof u.rulesAdaptations === "string" && u.rulesAdaptations.includes("Scouts"),
     "rulesAdaptations must mention 'Scouts'");
   assert(u.rulesAdaptations.includes("Objective Scouted"),
     "rulesAdaptations must mention 'Objective Scouted'");
 });
 
-test("Skitarii Vanguard — BATTLELINE, SKITARII, 95pts for 10 models, no rulesAdaptations", () => {
+test("Skitarii Vanguard — BATTLELINE, SKITARII, 50pts for 5 models / 95pts for 10 models, no rulesAdaptations", () => {
   const u = amUnit("adm_skitarii_vanguard");
   assert(!!u, "adm_skitarii_vanguard not found");
   assertEqual(u.type, "BATTLELINE");
   assert(u.keywords.includes("ADEPTUS MECHANICUS"), "must have ADEPTUS MECHANICUS");
   assert(u.keywords.includes("BATTLELINE"),         "must have BATTLELINE");
   assert(u.keywords.includes("SKITARII"),           "must have SKITARII");
-  assertEqual(u.sizes[0].pts, 95,            "must cost 95pts");
-  assertEqual(u.sizes[0].label, "10 models", "size label must be '10 models'");
+  assertEqual(u.sizes.length, 2,             "must have 2 size options");
+  assertEqual(u.sizes[0].pts, 50,            "5-model option must cost 50pts");
+  assertEqual(u.sizes[0].label, "5 models",  "first size label must be '5 models'");
+  assertEqual(u.sizes[1].pts, 95,            "10-model option must cost 95pts");
+  assertEqual(u.sizes[1].label, "10 models", "second size label must be '10 models'");
   assert(!u.rulesAdaptations,                "Skitarii Vanguard must have no rulesAdaptations");
 });
 
@@ -17257,8 +17276,8 @@ test("Kabalite Corsairs has Malevolent Cunning enhancement", () => {
   const enh = kcDet.enhancements.find(e => e.id === "enh_dru_malevolent_cunning");
   assert(enh !== undefined, "enh_dru_malevolent_cunning must exist");
   assertEqual(enh.name, "Malevolent Cunning", "enhancement name must be 'Malevolent Cunning'");
-  assert(enh.desc.includes("Stratagem"),
-    "Malevolent Cunning desc must reference 'Stratagem'");
+  assert(enh.desc.includes("Strategem"),
+    "Malevolent Cunning desc must reference 'Strategem'");
   assert(enh.desc.includes("1CP"),
     "Malevolent Cunning desc must reference '1CP'");
   assert(Array.isArray(enh.requiresKeywords) && enh.requiresKeywords.length === 0,
