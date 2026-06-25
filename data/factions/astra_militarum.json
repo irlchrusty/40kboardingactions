@@ -305,11 +305,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 70
+          "pts": 75
         },
         {
           "label": "10 models",
-          "pts": 140
+          "pts": 155
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability."
@@ -327,7 +327,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 100
+          "pts": 90
         }
       ]
     },
@@ -383,7 +383,7 @@
       "sizes": [
         {
           "label": "6 models",
-          "pts": 100
+          "pts": 95
         }
       ],
       "rulesAdaptations": "This unit loses the Covert Stealth Team ability."
@@ -441,7 +441,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 85
         }
       ],
       "rulesAdaptations": "This unit loses the Tactical Genius ability."
@@ -461,7 +461,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 65
+          "pts": 75
         }
       ],
       "rulesAdaptations": "This unit loses the Shock Troops ability. This unit does not split into separate units in the Form Boarding Squads step."
@@ -481,7 +481,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 65
+          "pts": 75
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability. This unit does not split into separate units in the Form Boarding Squads step."
@@ -501,7 +501,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 65
+          "pts": 75
         }
       ],
       "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
@@ -519,11 +519,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 55
+          "pts": 60
         },
         {
           "label": "10 models",
-          "pts": 110
+          "pts": 115
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability."
