@@ -326,7 +326,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 65
+          "pts": 80
         }
       ],
       "rulesAdaptations": "This unit loses the Chronometron ability."
@@ -363,7 +363,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 165
+          "pts": 175
         }
       ],
       "rulesAdaptations": "When setting up this model on the battlefield, no other units can be set up in the same Entry Zone they are set up in."
@@ -382,7 +382,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This model loses the The Stars are Right ability."
@@ -457,7 +457,7 @@
         },
         {
           "label": "10 models",
-          "pts": 150
+          "pts": 140
         }
       ]
     },
@@ -473,7 +473,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 90
+          "pts": 80
         }
       ]
     },
@@ -490,7 +490,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 75
         }
       ],
       "rulesAdaptations": "This unit loses the Inescapable Death ability."
@@ -524,11 +524,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 60
+          "pts": 55
         },
         {
           "label": "10 models",
-          "pts": 120
+          "pts": 100
         }
       ]
     },
@@ -561,7 +561,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 90
+          "pts": 85
         }
       ],
       "rulesAdaptations": "This unit loses the Plasmacyte ability."
@@ -578,7 +578,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 110
+          "pts": 95
         }
       ],
       "rulesAdaptations": "This unit loses the Wraith Form ability. Its movement characteristic is reduced to 9\"."
@@ -632,7 +632,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 90
         }
       ]
     },
@@ -649,7 +649,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Translocation Shroud ability."
@@ -684,7 +684,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 75
+          "pts": 65
         }
       ],
       "rulesAdaptations": "This model loses the Ancient Collector ability."
@@ -719,11 +719,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 85
+          "pts": 80
         },
         {
           "label": "10 models",
-          "pts": 170
+          "pts": 160
         }
       ]
     },
@@ -738,11 +738,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 90
+          "pts": 80
         },
         {
           "label": "10 models",
-          "pts": 180
+          "pts": 160
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
