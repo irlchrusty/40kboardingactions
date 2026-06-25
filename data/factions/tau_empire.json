@@ -269,7 +269,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 90
+          "pts": 80
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability."
@@ -302,7 +302,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 65
+          "pts": 70
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike and Airborne Agility abilities. Its Movement characteristic is reduced to 9\"."
@@ -337,7 +337,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 120
+          "pts": 100
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
@@ -354,7 +354,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 110
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
@@ -371,7 +371,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 140
+          "pts": 125
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
@@ -409,7 +409,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 50
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability."
@@ -428,7 +428,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 50
+          "pts": 60
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability."
@@ -445,7 +445,7 @@
       "sizes": [
         {
           "label": "12 models",
-          "pts": 85
+          "pts": 75
         }
       ],
       "rulesAdaptations": "In the Form Boarding Squads step, this unit is split into two Boarding Squads, each containing 6 models."
@@ -462,7 +462,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 40
+          "pts": 45
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts and Loping Pounce abilities. Its Movement characteristic is reduced to 9\"."
@@ -479,7 +479,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 40
+          "pts": 45
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts and Kroot Packmates abilities."
