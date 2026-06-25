@@ -99,7 +99,7 @@
       "name": "Benefictus",
       "type": "CHARACTER",
       "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
-      "sizes": [{ "label": "1 model", "pts": 70 }],
+      "sizes": [{ "label": "1 model", "pts": 75 }],
       "rulesAdaptations": "This model loses the Deep Strike ability."
     },
     {
@@ -116,7 +116,7 @@
       "type": "INFANTRY",
       "keywords": ["GENESTEALER CULTS","INFANTRY","GREAT DEVOURER"],
       "sizes": [
-        { "label": "5 models",  "pts": 135 },
+        { "label": "5 models",  "pts": 150 },
         { "label": "10 models", "pts": 300 }
       ],
       "rulesAdaptations": "This model loses the Deep Strike ability."
@@ -127,8 +127,8 @@
       "type": "INFANTRY",
       "keywords": ["GENESTEALER CULTS","INFANTRY","GREAT DEVOURER"],
       "sizes": [
-        { "label": "5 models",  "pts": 70  },
-        { "label": "10 models", "pts": 300 }
+        { "label": "5 models",  "pts": 75  },
+        { "label": "10 models", "pts": 150 }
       ],
       "rulesAdaptations": "This model loses the Scouts, Deep Strike and Brood Surge abilities."
     },
@@ -169,7 +169,7 @@
       "name": "Kelermorph",
       "type": "CHARACTER",
       "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
-      "sizes": [{ "label": "1 model", "pts": 50 }],
+      "sizes": [{ "label": "1 model", "pts": 60 }],
       "rulesAdaptations": "This unit loses the Deep Strike ability."
     },
     {
@@ -177,7 +177,7 @@
       "name": "Locus",
       "type": "CHARACTER",
       "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
-      "sizes": [{ "label": "1 model", "pts": 45 }],
+      "sizes": [{ "label": "1 model", "pts": 35 }],
       "rulesAdaptations": "This unit loses the Deep Strike ability."
     },
     {
@@ -185,7 +185,7 @@
       "name": "Sanctus",
       "type": "CHARACTER",
       "keywords": ["GENESTEALER CULTS","INFANTRY","CHARACTER","GREAT DEVOURER"],
-      "sizes": [{ "label": "1 model", "pts": 45 }],
+      "sizes": [{ "label": "1 model", "pts": 65 }],
       "rulesAdaptations": "This unit loses the Deep Strike ability."
     },
     {
@@ -194,7 +194,7 @@
       "type": "BATTLELINE",
       "keywords": ["GENESTEALER CULTS","INFANTRY","BATTLELINE","GREAT DEVOURER"],
       "sizes": [
-        { "label": "5 models",  "pts": 65  },
+        { "label": "5 models",  "pts": 70  },
         { "label": "10 models", "pts": 130 }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike and Claimed for the Cult abilities."
@@ -204,7 +204,7 @@
       "name": "Neophyte Hybrids",
       "type": "BATTLELINE",
       "keywords": ["GENESTEALER CULTS","INFANTRY","BATTLELINE","GREAT DEVOURER"],
-      "sizes": [{ "label": "10 models", "pts": 65 }],
+      "sizes": [{ "label": "10 models", "pts": 70 }],
       "rulesAdaptations": "This unit loses the Deep Strike ability. This unit does not split into seperate units in the Form Boarding Squads step."
     },
     {
@@ -213,8 +213,8 @@
       "type": "BATTLELINE",
       "keywords": ["GENESTEALER CULTS","INFANTRY","BATTLELINE","GREAT DEVOURER"],
       "sizes": [
-        { "label": "5 models",  "pts": 70  },
-        { "label": "10 models", "pts": 140 }
+        { "label": "5 models",  "pts": 75  },
+        { "label": "10 models", "pts": 150 }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability."
     }
