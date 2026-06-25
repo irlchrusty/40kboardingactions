@@ -394,7 +394,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 270
+          "pts": 285
         }
       ]
     },
@@ -447,7 +447,7 @@
       "sizes": [
         {
           "label": "2 models",
-          "pts": 70
+          "pts": 60
         }
       ]
     },
@@ -556,8 +556,8 @@
       ],
       "sizes": [
         {
-          "label": "8 models",
-          "pts": 70
+          "label": "10 models",
+          "pts": 60
         }
       ],
       "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
@@ -575,7 +575,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
@@ -593,7 +593,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 70
         }
       ]
     },
@@ -611,7 +611,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 60
         }
       ]
     },
@@ -629,7 +629,7 @@
       "sizes": [
         {
           "label": "2 models",
-          "pts": 80
+          "pts": 70
         }
       ],
       "rulesAdaptations": "This unit loses the Brutal Example ability."
@@ -648,7 +648,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 70
+          "pts": 60
         }
       ]
     },
@@ -665,7 +665,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 80
+          "pts": 120
         }
       ]
     },
@@ -707,7 +707,7 @@
         },
         {
           "label": "10 models",
-          "pts": 210
+          "pts": 280
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike and Warp Strike abilities. Its Movement characteristic is reduced to 9\"."
