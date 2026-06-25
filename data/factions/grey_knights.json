@@ -160,7 +160,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 110
+          "pts": 140
         }
       ],
       "rulesAdaptations": "This unit loses the Hammer Aflame ability."
@@ -199,7 +199,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 90
+          "pts": 95
         }
       ]
     },
@@ -237,7 +237,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Vortex of Doom ability."
@@ -257,7 +257,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 185
+          "pts": 175
         },
         {
           "label": "10 models",
@@ -279,7 +279,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 225
+          "pts": 215
         },
         {
           "label": "10 models",
@@ -302,7 +302,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 90
+          "pts": 100
         }
       ]
     },
@@ -400,11 +400,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 125
+          "pts": 130
         },
         {
           "label": "10 models",
-          "pts": 250
+          "pts": 260
         }
       ]
     }
