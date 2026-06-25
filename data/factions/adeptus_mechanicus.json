@@ -244,11 +244,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 50
+          "pts": 45
         },
         {
           "label": "10 models",
-          "pts": 95
+          "pts": 90
         }
       ]
     },
@@ -286,11 +286,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 80
+          "pts": 75
         },
         {
           "label": "10 models",
-          "pts": 165
+          "pts": 160
         }
       ]
     },
@@ -367,7 +367,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 60
+          "pts": 45
         }
       ]
     },
@@ -429,7 +429,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 160
+          "pts": 150
         }
       ]
     },
@@ -447,7 +447,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 105
+          "pts": 100
         }
       ]
     }
