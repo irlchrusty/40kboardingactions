@@ -333,7 +333,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 90
+          "pts": 80
         }
       ]
     },
@@ -412,7 +412,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 65
+          "pts": 55
         }
       ],
       "rulesAdaptations": "This unit loses the Tears of Isha ability."
@@ -430,7 +430,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 150
+          "pts": 140
         }
       ]
     },
@@ -447,7 +447,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 160
+          "pts": 145
         }
       ],
       "rulesAdaptations": "This unit loses the War Construct ability."
@@ -485,7 +485,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 130
         }
       ],
       "rulesAdaptations": "This model loses the Diviner of Futures ability."
@@ -543,7 +543,7 @@
       "sizes": [
         {
           "label": "11 models",
-          "pts": 100
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Defenders of Fate ability. In the Form Boarding Squads step, this unit is split into two Boarding Squads, one containing 6 models (including the Heavy Weapon Platform) and the other containing the remaining 5 models."
@@ -606,7 +606,7 @@
         },
         {
           "label": "4 models",
-          "pts": 130
+          "pts": 120
         }
       ]
     },
@@ -643,7 +643,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 80
         }
       ],
       "rulesAdaptations": "This model loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
@@ -663,7 +663,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 115
+          "pts": 125
         }
       ],
       "rulesAdaptations": "This model loses the Deep Strike and Cloudstrider abilities. Its Movement characteristic is reduced to 9\"."
@@ -683,7 +683,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 130
         }
       ]
     },
@@ -702,7 +702,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 105
         }
       ],
       "rulesAdaptations": "This model loses the Whirling Death ability."
@@ -722,7 +722,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 135
         }
       ],
       "rulesAdaptations": "This model loses the Deep Strike and Empyric Ambush abilities. Its Movement characteristic is reduced to 9\"."
@@ -780,11 +780,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 95
+          "pts": 85
         },
         {
           "label": "10 models",
-          "pts": 190
+          "pts": 165
         }
       ]
     },
@@ -801,11 +801,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 85
+          "pts": 75
         },
         {
           "label": "10 models",
-          "pts": 150
+          "pts": 145
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability."
@@ -823,11 +823,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 95
+          "pts": 100
         },
         {
           "label": "10 models",
-          "pts": 195
+          "pts": 190
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike and Skyleap abilities. Its Movement characteristic is reduced to 9\"."
@@ -845,7 +845,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 105
+          "pts": 115
         }
       ],
       "rulesAdaptations": "This unit loses the Flickerjump ability. Its Movement characteristic is reduced to 9\"."
@@ -863,7 +863,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 90
+          "pts": 100
         }
       ]
     }
