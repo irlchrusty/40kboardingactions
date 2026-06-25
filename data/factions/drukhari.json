@@ -275,7 +275,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 115
+          "pts": 110
         }
       ],
       "rulesAdaptations": "This unit loses the Sadistic Raiders ability."
@@ -314,11 +314,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 75
+          "pts": 80
         },
         {
           "label": "10 models",
-          "pts": 150
+          "pts": 160
         }
       ],
       "rulesAdaptations": "This unit loses the Fade Away ability."
@@ -338,7 +338,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 80
         }
       ],
       "rulesAdaptations": "This unit loses the Thrilling Spectacle ability."
@@ -393,7 +393,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 60
+          "pts": 50
         }
       ]
     },
