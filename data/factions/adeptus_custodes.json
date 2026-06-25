@@ -157,7 +157,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 110
         }
       ],
       "rulesAdaptations": "This unit loses the Martial Inspiration ability."
@@ -175,11 +175,11 @@
       "sizes": [
         {
           "label": "4 models",
-          "pts": 160
+          "pts": 170
         },
         {
           "label": "5 models",
-          "pts": 200
+          "pts": 215
         }
       ],
       "rulesAdaptations": "This unit cannot perform the Secure Site Tactical Manoeuver."
@@ -201,7 +201,7 @@
         },
         {
           "label": "10 models",
-          "pts": 100
+          "pts": 85
         }
       ]
     },
@@ -321,7 +321,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 140
+          "pts": 135
         }
       ]
     },
@@ -338,7 +338,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 110
         }
       ],
       "rulesAdaptations": "This unit loses the Mastery of the Stances ability."
