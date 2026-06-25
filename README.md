@@ -18,18 +18,22 @@ boarding-actions/
         ├── adeptus_astartes.json
         ├── adeptus_custodes.json
         ├── adeptus_mechanicus.json
+        ├── aeldari.json
         ├── agents_of_the_imperium.json
         ├── astra_militarum.json
         ├── death_guard.json
         ├── drukhari.json
         ├── emperors_children.json
         ├── genestealer_cults.json
+        ├── great_devourer.json
         ├── grey_knights.json
         ├── heretic_astartes.json
+        ├── leagues_of_votann.json
         ├── legiones_daemonica.json
         ├── necrons.json
         ├── orks.json
         ├── tau_empire.json
+        ├── thousand_sons.json
         ├── tyranids.json
         └── world_eaters.json
 ```
@@ -72,7 +76,7 @@ Press `Ctrl + C` in your terminal.
 ## Features
 
 ### Faction & Detachment Selection
-- Choose from **18 factions**: Adepta Sororitas, Adeptus Astartes, Adeptus Custodes, Adeptus Mechanicus, Agents of the Imperium, Astra Militarum, Death Guard, Drukhari, Emperor's Children, Genestealer Cults, Grey Knights, Heretic Astartes, Legiones Daemonica, Necrons, Orks, T'au Empire, Tyranids, and World Eaters
+- Choose from **22 factions**: Adepta Sororitas, Adeptus Astartes, Adeptus Custodes, Adeptus Mechanicus, Aeldari, Agents of the Imperium, Astra Militarum, Death Guard, Drukhari, Emperor's Children, Genestealer Cults, Great Devourer, Grey Knights, Heretic Astartes, Leagues of Votann, Legiones Daemonica, Necrons, Orks, T'au Empire, Thousand Sons, Tyranids, and World Eaters
 - Each faction has one or more detachments, each with a unique special rule
 - Army rules and detachment rules are displayed in the left panel for reference
 
