@@ -76,7 +76,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 70
+          "pts": 130
         }
       ]
     },
@@ -93,11 +93,11 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 100
+          "pts": 95
         },
         {
           "label": "6 models",
-          "pts": 200
+          "pts": 190
         }
       ]
     },
