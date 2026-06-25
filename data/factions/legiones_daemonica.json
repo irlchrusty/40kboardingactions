@@ -425,7 +425,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 110
+          "pts": 115
         }
       ],
       "rulesAdaptations": "This unit loses the Infected Outbreak ability."
@@ -445,7 +445,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 40
+          "pts": 45
         }
       ],
       "rulesAdaptations": "This unit loses the Mischief Makers ability."
@@ -465,11 +465,11 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 65
+          "pts": 70
         },
         {
           "label": "2 models",
-          "pts": 130
+          "pts": 140
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts and Grotesque Regeneration abilities. In the Form Boarding Squads step, if this unit contains 2 models, it is split into two Boarding Squads, each containing 1 model."
@@ -489,7 +489,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 75
+          "pts": 65
         }
       ]
     },
@@ -509,7 +509,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 70
         }
       ]
     },
@@ -671,7 +671,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 100
+          "pts": 90
         }
       ]
     },
@@ -689,7 +689,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 95
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Soporific Musk ability. This unit's Movement characteristic is reduced to 9\"."
@@ -711,7 +711,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 90
+          "pts": 105
         }
       ],
       "rulesAdaptations": "This unit loses the Formless Horror ability."
@@ -789,7 +789,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 140
+          "pts": 150
         }
       ]
     },
