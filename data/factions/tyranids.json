@@ -260,7 +260,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 65
+          "pts": 60
         }
       ]
     },
@@ -278,7 +278,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 65
+          "pts": 70
         }
       ],
       "rulesAdaptations": "This unit does not split into separate units in the Form Boarding Squads step."
@@ -351,7 +351,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 70
+          "pts": 80
         }
       ]
     },
@@ -387,7 +387,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 70
+          "pts": 60
         }
       ],
       "rulesAdaptations": "This unit loses the Pouncing Leap ability."
