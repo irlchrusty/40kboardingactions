@@ -838,7 +838,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 65
+          "pts": 60
         }
       ]
     },
@@ -872,11 +872,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 170
+          "pts": 160
         },
         {
           "label": "10 models",
-          "pts": 340
+          "pts": 320
         }
       ],
       "rulesAdaptations": "This unit loses the Teleport Homer ability."
@@ -913,11 +913,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 80
+          "pts": 85
         },
         {
           "label": "10 models",
-          "pts": 160
+          "pts": 150
         }
       ],
       "rulesAdaptations": "This unit loses the Haywire Mine and Scouts Ability."
@@ -975,11 +975,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 100
+          "pts": 110
         },
         {
           "label": "10 models",
-          "pts": 200
+          "pts": 180
         }
       ]
     },
@@ -997,7 +997,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 45
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike and Scouts abilities."
@@ -1016,7 +1016,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 45
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts ability."
@@ -1053,11 +1053,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 80
+          "pts": 75
         },
         {
           "label": "10 models",
-          "pts": 160
+          "pts": 150
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts and Reiver Grav-chute abilities."
@@ -1075,11 +1075,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 180
+          "pts": 155
         },
         {
           "label": "10 models",
-          "pts": 360
+          "pts": 310
         }
       ],
       "rulesAdaptations": "This unit loses the Teleport Homer ability."
@@ -1098,7 +1098,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 75
+          "pts": 65
         }
       ]
     },
@@ -1116,7 +1116,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 95
+          "pts": 85
         }
       ]
     },
@@ -1212,11 +1212,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 170
+          "pts": 150
         },
         {
           "label": "10 models",
-          "pts": 340
+          "pts": 300
         }
       ]
     },
@@ -1236,7 +1236,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 75
         }
       ],
       "rulesAdaptations": "This unit loses the Strikes of Retribution ability."
@@ -1255,7 +1255,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 250
+          "pts": 240
         }
       ],
       "rulesAdaptations": "This unit loses the Inner Circle ability."
@@ -1274,11 +1274,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 180
+          "pts": 165
         },
         {
           "label": "10 models",
-          "pts": 360
+          "pts": 330
         }
       ]
     },
@@ -1316,11 +1316,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 190
+          "pts": 180
         },
         {
           "label": "10 models",
-          "pts": 350
+          "pts": 330
         }
       ]
     },
@@ -1340,7 +1340,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 80
         }
       ]
     },
@@ -1357,7 +1357,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 95
+          "pts": 90
         }
       ]
     },
@@ -1375,7 +1375,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 50
+          "pts": 40
         }
       ]
     },
@@ -1393,7 +1393,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 50
+          "pts": 40
         }
       ],
       "rulesAdaptations": "This unit loses the Narthecium and Gene-seed Recovery abilities."
@@ -1451,11 +1451,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 90
+          "pts": 85
         },
         {
           "label": "10 models",
-          "pts": 170
+          "pts": 160
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike and Hammer of Wrath abilities. Its Movement characteristic is reduced to 9\"."
@@ -1474,7 +1474,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 45
+          "pts": 40
         }
       ]
     },
@@ -1607,7 +1607,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 95
         }
       ],
       "rulesAdaptations": "This model loses the Master of Prescience ability."
@@ -1682,11 +1682,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 90
+          "pts": 85
         },
         {
           "label": "10 models",
-          "pts": 180
+          "pts": 170
         }
       ]
     },
@@ -1708,7 +1708,7 @@
         },
         {
           "label": "10 models",
-          "pts": 160
+          "pts": 150
         }
       ],
       "rulesAdaptations": "This unit loses the Objective Secured ability."
@@ -1729,7 +1729,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 95
+          "pts": 85
         }
       ],
       "rulesAdaptations": "This unit loses the Iron Father and Master of the Forge abilities."
@@ -1748,7 +1748,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 70
+          "pts": 55
         }
       ]
     },
@@ -1768,7 +1768,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 60
+          "pts": 55
         }
       ]
     },
@@ -1786,7 +1786,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 45
         }
       ]
     },
@@ -1847,7 +1847,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 90
+          "pts": 80
         }
       ]
     },
@@ -1889,7 +1889,7 @@
         },
         {
           "label": "10 models",
-          "pts": 170
+          "pts": 190
         }
       ]
     },
@@ -1927,7 +1927,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 90
+          "pts": 80
         }
       ]
     },
@@ -1990,7 +1990,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 100
+          "pts": 85
         }
       ]
     },
@@ -2068,7 +2068,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 45
         }
       ]
     },
@@ -2189,7 +2189,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 110
         }
       ],
       "rulesAdaptations": "This unit loses the The Quickening ability."
@@ -2210,7 +2210,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 120
+          "pts": 125
         }
       ],
       "rulesAdaptations": "This unit loses the Deep Strike ability. Its Movement characteristic is reduced to 9\"."
@@ -2369,11 +2369,11 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 85
+          "pts": 80
         },
         {
           "label": "10 models",
-          "pts": 160
+          "pts": 155
         }
       ],
       "rulesAdaptations": "This unit loses the Visions of Heresy ability."
@@ -2456,7 +2456,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 125
+          "pts": 140
         }
       ],
       "rulesAdaptations": "This unit loses the Masterful Tactician ability."
@@ -2517,7 +2517,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 315
+          "pts": 285
         }
       ]
     },
@@ -2535,7 +2535,7 @@
       "sizes": [
         {
           "label": "3 models",
-          "pts": 90
+          "pts": 80
         }
       ]
     },
@@ -2713,7 +2713,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 55
+          "pts": 65
         }
       ]
     },
@@ -2857,7 +2857,7 @@
       "sizes": [
         {
           "label": "5 models",
-          "pts": 40
+          "pts": 45
         }
       ],
       "rulesAdaptations": "This unit's Movement characteristic is reduced to 9\"."
