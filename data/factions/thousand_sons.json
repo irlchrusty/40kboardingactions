@@ -169,7 +169,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 90
         }
       ],
       "rulesAdaptations": "This unit loses the Rebind Rubricae ability."
@@ -206,7 +206,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 80
+          "pts": 85
         }
       ]
     },
@@ -223,7 +223,7 @@
       "sizes": [
         {
           "label": "10 models",
-          "pts": 70
+          "pts": 75
         }
       ],
       "rulesAdaptations": "This unit loses the Scouts and Relic Hunters abilities."
@@ -261,7 +261,7 @@
       "sizes": [
         {
           "label": "1 model",
-          "pts": 85
+          "pts": 95
         }
       ],
       "rulesAdaptations": "This unit loses the Rebind Rubricae ability."
